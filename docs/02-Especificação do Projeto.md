@@ -2,57 +2,111 @@
 
 <span style="color:red">Pré-requisitos: <a href="1-Documentação de Contexto.md"> Documentação de Contexto</a></span>
 
-Definição do problema e ideia de solução a partir da perspectiva do usuário. É composta pela definição do  diagrama de personas, histórias de usuários, requisitos funcionais e não funcionais além das restrições do projeto.
+A empresa de varejo enfrenta desafios críticos relacionados ao gerenciamento de estoque, incluindo excesso ou falta de produtos, ineficiências logísticas, dificuldades na previsão de demanda e na reposição de estoque, impactando negativamente a operação e a experiência do cliente.
 
-Apresente uma visão geral do que será abordado nesta parte do documento, enumerando as técnicas e/ou ferramentas utilizadas para realizar a especificações do projeto
+O objetivo deste projeto é desenvolver um sistema de gerenciamento de estoque integrado, capaz de transformar a maneira como uma empresa de varejo opera, tornando-a mais eficiente, responsiva e adaptável às demandas do mercado. A solução proposta visa abordar diversos desafios enfrentados pela empresa, melhorando significativamente a gestão de estoque.
 
 ## Personas
 
-Pedro Paulo tem 26 anos, é arquiteto recém-formado e autônomo. Pensa em se desenvolver profissionalmente através de um mestrado fora do país, pois adora viajar, é solteiro e sempre quis fazer um intercâmbio. Está buscando uma agência que o ajude a encontrar universidades na Europa que aceitem alunos estrangeiros.
+### Sayori - Gerente de Operações </h2>
+ 
+ ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-dist-temp/assets/81201021/c55b19bd-9a72-4938-8875-a8f8e1b6b5de)
 
-Enumere e detalhe as personas da sua solução. Para tanto, baseie-se tanto nos documentos disponibilizados na disciplina e/ou nos seguintes links:
+ 
+> ### História de usuário
+> Sayori, Gerente de Operações em uma empresa de varejo, utiliza um sistema de gerenciamento de estoque para manter a disponibilidade de produtos e minimizar perdas. Ela inicia o dia analisando relatórios e dashboards que mostram os níveis de estoque, produtos mais vendidos e itens com baixo estoque, recebendo notificações automáticas para reabastecimentos necessários. Em reuniões estratégicas, ela emprega esses dados para otimizar o estoque, ajustando os pedidos conforme a demanda sazonal. Esse sistema permite a Sayori tomar decisões informadas, equilibrando oferta e demanda e contribuindo significativamente para o sucesso da empresa.
 
-> **Links Úteis**:
-> - [Rock Content](https://rockcontent.com/blog/personas/)
-> - [Hotmart](https://blog.hotmart.com/pt-br/como-criar-persona-negocio/)
-> - [O que é persona?](https://resultadosdigitais.com.br/blog/persona-o-que-e/)
-> - [Persona x Público-alvo](https://flammo.com.br/blog/persona-e-publico-alvo-qual-a-diferenca/)
-> - [Mapa de Empatia](https://resultadosdigitais.com.br/blog/mapa-da-empatia/)
-> - [Mapa de Stalkeholders](https://www.racecomunicacao.com.br/blog/como-fazer-o-mapeamento-de-stakeholders/)
->
-Lembre-se que você deve ser enumerar e descrever precisamente e personalizada todos os clientes ideais que sua solução almeja.
+ 
+ - Acesso fácil e rápido às informações do estoque.
+ - Relatórios detalhados para tomar decisões estratégicas.
+ - Notificações automáticas para reabastecimento de produtos. 
 
-## Histórias de Usuários
 
-Com base na análise das personas forma identificadas as seguintes histórias de usuários:
+### Carlos - Coordenador de Logística 
 
-|EU COMO... `PERSONA`| QUERO/PRECISO ... `FUNCIONALIDADE` |PARA ... `MOTIVO/VALOR`                 |
-|--------------------|------------------------------------|----------------------------------------|
-|Usuário do sistema  | Registrar minhas tarefas           | Não esquecer de fazê-las               |
-|Administrador       | Alterar permissões                 | Permitir que possam administrar contas |
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-dist-temp/assets/81201021/8ad06031-a0de-465e-8c65-a7712bd08304)
 
-Apresente aqui as histórias de usuário que são relevantes para o projeto de sua solução. As Histórias de Usuário consistem em uma ferramenta poderosa para a compreensão e elicitação dos requisitos funcionais e não funcionais da sua aplicação. Se possível, agrupe as histórias de usuário por contexto, para facilitar consultas recorrentes à essa parte do documento.
+> ### História de usuário
+> Carlos é responsável pela logística de uma empresa de distribuição. Ele precisa de um sistema que o ajude a otimizar a movimentação de produtos, garantindo entregas pontuais e eficientes.
+Um Coordenador de Logística, busca um sistema de gerenciamento de estoque que o auxilie na otimização da movimentação de produtos para garantir entregas pontuais. Ele necessita de funcionalidades como rastreamento em tempo real, integração com sistemas de transporte e alertas automáticos para enfrentar desafios logísticos. Ao utilizar essas funcionalidades, Carlos consegue coordenar eficientemente as entregas, planejar rotas adequadas e tomar ações proativas diante de possíveis atrasos, contribuindo para a eficiência operacional e satisfação dos clientes. O sistema torna-se uma peça fundamental para o sucesso da cadeia de distribuição da empresa.
+ 
+ - Rastreamento em tempo real do estoque e movimentação de produtos.
+ - Integração com sistemas de transporte para coordenar entregas.
+ - Alertas automáticos para possíveis atrasos ou problemas logísticos.
 
-> **Links Úteis**:
-> - [Histórias de usuários com exemplos e template](https://www.atlassian.com/br/agile/project-management/user-stories)
-> - [Como escrever boas histórias de usuário (User Stories)](https://medium.com/vertice/como-escrever-boas-users-stories-hist%C3%B3rias-de-usu%C3%A1rios-b29c75043fac)
-> - [User Stories: requisitos que humanos entendem](https://www.luiztools.com.br/post/user-stories-descricao-de-requisitos-que-humanos-entendem/)
-> - [Histórias de Usuários: mais exemplos](https://www.reqview.com/doc/user-stories-example.html)
-> - [9 Common User Story Mistakes](https://airfocus.com/blog/user-story-mistakes/)
+
+### Mateus - Analista de Compras 
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-dist-temp/assets/81201021/fc0fc049-b2b4-4e59-8fab-62fdb5bbaa25)
+
+> ### História de usuário
+> Mateus, Analista de Compras, busca um sistema que o ajude a gerenciar eficientemente os estoques e a realizar pedidos de forma assertiva. Com funcionalidades como rastreamento em tempo real, integração com transporte e alertas automáticos, ele garante reposições oportunas e ações proativas diante de possíveis desafios logísticos. O sistema torna-se essencial para a eficiência do departamento de compras e contribui para um fluxo contínuo no processo de abastecimento.
+
+ - Rastreamento em tempo real do estoque e movimentação de produtos.
+ - Integração com sistemas de transporte para coordenar entregas.
+ - Alertas automáticos para possíveis atrasos ou problemas logísticos.
+
+### Rafaela - Operadora de Caixa
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-dist-temp/assets/81201021/2134f704-d2c9-42aa-a0ef-de7a2c4977ab)
+
+> ### História de usuário
+> Rafaela, Operadora de Caixa, busca um sistema que forneça informações instantâneas sobre o estoque para atender clientes de forma eficiente. Com funcionalidades como disponibilidade em tempo real, alertas automáticos para produtos em baixa e facilidade de consulta, Rafaela garante um atendimento ágil, evita falta de produtos e responde prontamente às dúvidas dos clientes, contribuindo para uma experiência positiva no ponto de venda. O sistema torna-se essencial para melhorar a eficiência do atendimento ao cliente no varejo.
+ - Disponibilidade em tempo real das informações de estoque.
+ - Alertas para produtos fora de estoque ou com quantidade baixa.
+ - Facilidade de consulta para responder a dúvidas dos clientes sobre a disponibilidade de produtos.
+
+
 
 ## Modelagem do Processo de Negócio 
 
 ### Análise da Situação Atual
 
-Apresente aqui os problemas existentes que viabilizam sua proposta. Apresente o modelo do sistema como ele funciona hoje. Caso sua proposta seja inovadora e não existam processos claramente definidos, apresente como as tarefas que o seu sistema pretende implementar são executadas atualmente, mesmo que não se utilize tecnologia computacional. 
+Atualmente, a empresa de varejo enfrenta diversos desafios no gerenciamento de seu estoque, principalmente devido à falta de automação e integração nos processos existentes. A maior parte do controle de estoque é realizada manualmente ou por meio de sistemas isolados, que não se comunicam eficientemente entre si ou com fornecedores e sistemas de logística. Isso resulta em:
+
+ - Desafios de Precisão: Erros humanos na entrada de dados e no acompanhamento de estoque levam a discrepâncias significativas entre o estoque registrado e o físico.
+ - Demora na Reação: A falta de dados em tempo real sobre o nível de estoque atrasa a identificação de necessidades de reabastecimento, resultando em excesso de estoque ou, pior, em rupturas que afetam a satisfação do cliente.
+ - Ineficiências Operacionais: Sem automação, o tempo gasto para gerenciar o estoque é substancial, desviando recursos de atividades mais estratégicas.
+ - Decisões Baseadas em Intuição: A ausência de relatórios analíticos dificulta a tomada de decisão baseada em dados, tornando as compras e o planejamento de estoque menos eficazes
 
 ### Descrição Geral da Proposta
 
-Apresente aqui uma descrição da sua proposta abordando seus limites e suas ligações com as estratégias e objetivos do negócio. Apresente aqui as oportunidades de melhorias.
+A proposta visa desenvolver e implementar um sistema integrado de gerenciamento de estoque que se alinhe com os objetivos estratégicos do negócio e aborde os problemas identificados na análise da situação atual. Este sistema buscará:
+
+ - Automatizar o Controle de Estoque: Utilizando tecnologia para rastrear e gerenciar o inventário em tempo real, reduzindo erros humanos e aumentando a precisão.
+ - Integrar com Sistemas Externos: Conectar-se com fornecedores e sistemas de logística para uma cadeia de suprimentos mais eficiente, permitindo reabastecimento automático e otimização da entrega.
+ - Fornecer Análise e Relatórios Avançados: Oferecer insights valiosos para a tomada de decisão estratégica, incluindo previsão de demanda e análise de tendências de vendas.
+ - Melhorar a Eficiência Operacional: Reduzir o tempo gasto em tarefas manuais de gerenciamento de estoque, liberando a equipe para se concentrar em atividades que agregam mais valor.
 
 ### Processo 1 – NOME DO PROCESSO
 
 Apresente aqui o nome e as oportunidades de melhorias para o processo 1. Em seguida, apresente o modelo do processo 1, descrito no padrão BPMN. 
+
+```mermaid
+%%{init: {'theme':'base', 'themeVariables': { 'primaryColor': '#FF6D00', 'edgeLabelBackground':'#FFF', 'tertiaryColor': '#FFD54F'}}}%%
+graph TB
+
+subgraph sub1[ ]
+    direction TB
+    start(Alerta de Nível de Estoque Baixo) --> analise[Análise de Dados de Estoque]
+    analise --> previsao[Previsão de Demanda]
+    previsao --> aprovação{Aprovação de Pedido}
+    aprovação -->|Aprovado| pedido[Pedido Automático ao Fornecedor]
+    aprovação -->|Ajustado| ajuste[Ajuste e Reenvio do Pedido]
+    ajuste --> pedido
+    pedido --> confirmação[Confirmação do Pedido pelo Fornecedor]
+    confirmação --> recebimento[Recebimento de Mercadoria]
+    recebimento --> verificação[Verificação e Atualização de Estoque]
+    verificação --> fim[Estoque Atualizado e Reabastecido]
+end
+
+classDef default fill:#f9f,stroke:#333,stroke-width:2px;
+classDef decision fill:#ff6,stroke:#333,stroke-width:2px;
+classDef startend fill:#9f6,stroke:#333,stroke-width:2px;
+class start,fim startend;
+class aprovação decision;
+
+```
 
 ![Processo 1](img/02-bpmn-proc1.png)
 
@@ -111,7 +165,10 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 |ID| Restrição                                             |
 |--|-------------------------------------------------------|
 |01| O projeto deverá ser entregue até o final do semestre |
-|02| Não pode ser desenvolvido um módulo de backend        |
+|02| Deve ser desenvolvido uma aplicação distribuída       |
+|03| Deve ser desenvolvido um módulo de backend        |
+|04| Deve ser desenvolvido um módulo de frontend        |
+|05| Deve ser desenvolvido um módulo de mobile        |
 
 Enumere as restrições à sua solução. Lembre-se de que as restrições geralmente limitam a solução candidata.
 
