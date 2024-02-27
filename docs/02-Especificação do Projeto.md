@@ -138,7 +138,7 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 |RF-003| Emitir um relatório a cada movimentação    | MÉDIA |
 |RF-004| Registrar produtos de compra/adição realizada | MÉDIA |
 |RF-005| Registrar produtos de venda/baixa realizada | MÉDIA |
-|RF-005| Notificar o usuario sobre produtos que foram zerados | MÉDIA |
+|RF-006| Notificar o usuario sobre produtos que foram zerados | MÉDIA |
 
 ### Requisitos não Funcionais
 
