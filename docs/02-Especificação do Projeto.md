@@ -133,8 +133,12 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 
 |ID    | Descrição do Requisito  | Prioridade |
 |------|-----------------------------------------|----|
-|RF-001| Permitir que o usuário cadastre tarefas | ALTA | 
-|RF-002| Emitir um relatório de tarefas no mês   | MÉDIA |
+|RF-001| Permitir que o usuário gerencie produtos | ALTA | 
+|RF-002| Permitir que o usuário faz login | ALTA | 
+|RF-003| Emitir um relatório a cada movimentação    | MÉDIA |
+|RF-004| Registrar produtos de compra/adição realizada | MÉDIA |
+|RF-005| Registrar produtos de venda/baixa realizada | MÉDIA |
+|RF-005| Notificar o usuario sobre produtos que foram zerados | MÉDIA |
 
 ### Requisitos não Funcionais
 
