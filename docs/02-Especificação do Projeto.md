@@ -207,20 +207,88 @@ De acordo com o PMBoK v6 as dez áreas que constituem os pilares para gerenciar 
 
 Com diagramas bem organizados que permitem gerenciar o tempo nos projetos, o gerente de projetos agenda e coordena tarefas dentro de um projeto para estimar o tempo necessário de conclusão.
 
-![Diagrama de rede simplificado notação francesa (método francês)](img/02-diagrama-rede-simplificado.png)
-
 O gráfico de Gantt ou diagrama de Gantt também é uma ferramenta visual utilizada para controlar e gerenciar o cronograma de atividades de um projeto. Com ele, é possível listar tudo que precisa ser feito para colocar o projeto em prática, dividir em atividades e estimar o tempo necessário para executá-las.
 
-![Gráfico de Gantt](img/02-grafico-gantt.png)
+```mermaid
+gantt
+    title Gerenciamento de Tempo
+    todayMarker off
+    dateFormat  YYYY-MMM-DD
+    axisFormat %d/%b/%y
+
+    section 1ª Etapa
+    Encontro inicial :done, 2023-08-01, 1d
+    Definição do tema     :done, 7d
+    Contextualização    :done, 9d
+    Especificação do Projeto   :active, 10d
+
+    section 2ª Etapa
+    Metodologia      :a1, 2023-08-28  , 7d
+    Projeto de Interface    :after a1, 11d
+    Arquitetura da solução :after a1, 11d 
+    Início desenvolvimento : 10d
+    Funcionalidades novas  :milestone, 2023-09-25, 0d 
+
+    section 3ª Etapa
+    Programação de Funcionalidades : 2023-09-25  , 17d
+    Registro de Testes      :4d
+    Funcionalidades novas  :milestone, 2023-10-16, 0d 
+
+    section 4ª Etapa
+    Programação de Funcionalidades :2023-10-16  , 15d
+    Registro de Testes      :3d
+    Funcionalidades novas  :milestone, 0d 
+    Programação de Funcionalidades :15d
+    Registro de Testes      :2d
+    Funcionalidades novas  :milestone, 0d
+
+    section 5ª Etapa
+    Considerações finais  :2023-11-20  , 2d
+    Entrega da solução :6d
+    Apresentação :6d
+```
 
 ## Gerenciamento de Equipe
 
 O gerenciamento adequado de tarefas contribuirá para que o projeto alcance altos níveis de produtividade. Por isso, é fundamental que ocorra a gestão de tarefas e de pessoas, de modo que os times envolvidos no projeto possam ser facilmente gerenciados. 
 
-![Simple Project Timeline](img/02-project-timeline.png)
+```mermaid
+gantt
+    title Gerenciamento de Equipe
+    todayMarker off
+    dateFormat  YYYY-MMM-DD
+    axisFormat %d/%b/%y
+
+    section Gerente de Projetos <br>(Gabriel)
+    Definição do problema : 2023-08-01, 14d
+    Especificação do projeto    : 2023-08-07, 21d
+    Alinhamentos  : 2023-08-28, 14d
+
+    section Time de Desenvolvedores <br>(Lucas, Roberta)
+    Projeto de Interface      : 2023-08-28, 14d
+    Desenvolvimento da solução    : 63d
+
+    section Time de QA <br>(Nayra)
+    Testes da aplicação : 2023-09-18  , 63d
+
+    section Time de Suporte <br>(Gabriel)
+    Entrega da solução  :2023-11-20  , 14d
+```
 
 ## Gestão de Orçamento
 
-O processo de determinar o orçamento do projeto é uma tarefa que depende, além dos produtos (saídas) dos processos anteriores do gerenciamento de custos, também de produtos oferecidos por outros processos de gerenciamento, como o escopo e o tempo.
-
-![Orçamento](img/02-orcamento.png)
+| ID | Recurso               | Quantidade | Custo Unitário | Custo Mensal | Custo Semestral |
+|----|-----------------------|------------|----------------|--------------|-----------------|
+| **1**  | **Recursos Humanos**      |            |                |              |                 |   
+|    | Gestor de Projetos    | 1          | R$ 15.000,00   | R$ 15.000,00 | R$ 90.000,00    |   
+|    | Desenvolvedor / QA    | 2          | R$ 10.000,00   | R$ 20.000,00 | R$ 120.000,00   |   
+|    | Designer UX/UI        | 1          | R$ 6.000,00    | R$ 6.000,00  | R$ 36.000,00    |   
+|    | Cursos e Treinamentos | 4          | R$ 500,00      | R$ 2.000,00  | R$ 12.000,00    |   
+| **2**  | **Hardware**              |            |                |              |                 |  
+|    | Notebook              | 4          | R$ 5.000,00    | -            | R$ 20.000,00    |   
+|    | Periféricos           | 4          | R$ 500,00      | -            | R$ 2.000,00     |   
+| **3**  | **Software**              |            |                |              |                 |   
+|    | Licenças              | 4          | R$ 400,00      | R$ 1.600,00  | R$ 9.600,00     |   
+| **4**  | **Serviços**              |            |                |              |                 |   
+|    | Azure                 | 1          | R$ 2.500,00    | R$ 2.500,00  | R$ 15.000,00    |
+|    |                       |            | **Total**          | **R$ 47.100,00** | **R$ 304.600,00**   |
