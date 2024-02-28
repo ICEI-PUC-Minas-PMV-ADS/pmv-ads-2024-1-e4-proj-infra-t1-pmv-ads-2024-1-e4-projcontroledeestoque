@@ -222,7 +222,7 @@ Entregar um arquivo banco.sql contendo os scripts de criação das tabelas do ba
 O sistema será hospedado e lançado no Azure. 
 Primeiro, configuramos um projeto Web App para o Backend e um para o Frontend. Em seguida, configuramos o banco de dados Azure Cosmos DB.
 
-Utilizamos o Azure DevOps para implantar o sistema e garantir que ele seja acessível na Web. Após o lançamento, implementamos estratégias de marketing para atrair usuários e continuamos a oferecer suporte e atualizações para melhorar a experiência do usuário. O Azure simplificou o processo de hospedagem e permitiu um lançamento suave do aplicativo.
+Utilizamos o Azure DevOps para implantar o sistema e garantir que ele seja acessível na Web. O Azure simplifica o processo de hospedagem e permite um lançamento com qualidade do sistema.
 
 ## Qualidade de Software
 
