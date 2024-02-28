@@ -1,19 +1,16 @@
 # TÍTULO DO PROJETO
 
-`CURSO`
+`Análise e Desenvolvimento de Sistemas`
 
-`DISCIPLINA`
+`Eixo 4 - Projeto: Desenvolvimento de uma Aplicação Distribuída`
 
-`SEMESTRE`
+`2024.1`
 
 Descrever resumidamente, em um ou dois parágrafos, o projeto que está sendo desenvolvido.
 
 ## Integrantes
-
-* Nome completo do aluno 1
-* Nome completo do aluno 2
-* Nome completo do aluno 3
-* Nome completo do aluno 4
+| [<img src="https://github.com/gabriellourenco12.png" width=115><br><sub>Gabriel Augusto Alves Lourenço</sub>](https://github.com/gabriellourenco12) | [<img src="https://github.com/iugorsette.png" width=115><br><sub>Iugor</sub>](https://github.com/iugorsette) | [<img src="https://github.com/MarceloHF27.png" width=115><br><sub>Marcelo</sub>](https://github.com/MarceloHF27) | [<img src="https://github.com/Nayra-Reis.png" width=115><br><sub>Nayra Alessandra Simao Reis</sub>](https://github.com/Nayra-Reis) | [<img src="https://github.com/Samuelribeiro57.png" width=115><br><sub>Samuel</sub>](https://github.com/Samuelribeiro57) | [<img src="https://github.com/Silvestre-Castro.png" width=115><br><sub>Silvestre</sub>](https://github.com/Silvestre-Castro) | 
+| -- | -- | -- | -- | -- | -- |
 
 ## Orientador
 
