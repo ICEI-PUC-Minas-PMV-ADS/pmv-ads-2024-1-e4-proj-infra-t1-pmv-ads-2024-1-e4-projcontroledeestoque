@@ -4,6 +4,9 @@
 
 Definição de como o software é estruturado em termos dos componentes que fazem parte da solução e do ambiente de hospedagem da aplicação.
 
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t1-pmv-ads-2024-1-e4-projcontroledeestoque/assets/70116762/eb1d7f96-4055-44ed-a32a-de703998b97d)
+
+
 ![Arquitetura da Solução](img/02-mob-arch.png)
 
 ## Diagrama de Classes
