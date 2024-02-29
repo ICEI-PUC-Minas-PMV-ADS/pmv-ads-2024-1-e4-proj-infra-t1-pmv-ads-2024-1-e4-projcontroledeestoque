@@ -217,33 +217,37 @@ gantt
     axisFormat %d/%b/%y
 
     section 1ª Etapa
-    Encontro inicial :done, 2023-08-01, 1d
-    Definição do tema     :done, 7d
-    Contextualização    :done, 9d
-    Especificação do Projeto   :active, 10d
+    Encontro inicial :done, t1, 2024-02-19, 1d
+    Definição do tema     : done, t2, after t1, 3d
+    Contextualização do Projeto   : done, after t2, 10d
+    Especificação do Projeto   : done, after t2, 10d
+    Metodologia do Projeto: done, after t2, 10d
+    Arquitetura da solução: done, after t2, 10d
 
     section 2ª Etapa
-    Metodologia      :a1, 2023-08-28  , 7d
-    Projeto de Interface    :after a1, 11d
-    Arquitetura da solução :after a1, 11d 
-    Início desenvolvimento : 10d
-    Funcionalidades novas  :milestone, 2023-09-25, 0d 
+    Modelo de dados      :a1, 2024-03-04  , 3d
+    Implementação do NoSQL    : 5d
+    Programação de Funcionalidades API : 20d 
+    Testes unitários : 4d
+    Atualizar documentação : 2d
+    Backend API REST  :milestone, 2024-04-07, 0d 
 
     section 3ª Etapa
-    Programação de Funcionalidades : 2023-09-25  , 17d
-    Registro de Testes      :4d
-    Funcionalidades novas  :milestone, 2023-10-16, 0d 
+    Projeto de interface Web : 2024-04-08  , 7d
+    Programação de Funcionalidades Frontend : 14d 
+    Testes unitários : 4d
+    Atualizar documentação : 2d
+    Frontend Web  :milestone, 2024-05-05, 0d 
 
     section 4ª Etapa
-    Programação de Funcionalidades :2023-10-16  , 15d
-    Registro de Testes      :3d
-    Funcionalidades novas  :milestone, 0d 
-    Programação de Funcionalidades :15d
-    Registro de Testes      :2d
-    Funcionalidades novas  :milestone, 0d
+    Projeto de interface Mobile : 2024-05-06  , 7d
+    Programação de Funcionalidades Frontend : 14d 
+    Testes unitários : 4d
+    Atualizar documentação : 2d
+    Frontend Mobile  :milestone, 2024-06-02, 0d 
 
     section 5ª Etapa
-    Considerações finais  :2023-11-20  , 2d
+    Considerações finais  :2024-06-03  , 2d
     Entrega da solução :6d
     Apresentação :6d
 ```
