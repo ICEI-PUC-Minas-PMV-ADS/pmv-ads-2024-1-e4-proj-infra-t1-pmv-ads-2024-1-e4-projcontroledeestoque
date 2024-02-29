@@ -78,9 +78,9 @@ A proposta visa desenvolver e implementar um sistema integrado de gerenciamento 
  - Fornecer Análise e Relatórios Avançados: Oferecer insights valiosos para a tomada de decisão estratégica, incluindo previsão de demanda e análise de tendências de vendas.
  - Melhorar a Eficiência Operacional: Reduzir o tempo gasto em tarefas manuais de gerenciamento de estoque, liberando a equipe para se concentrar em atividades que agregam mais valor.
 
-### Processo 1 – NOME DO PROCESSO
+### Processo 1 – alerta de estoque baixo
 
-Apresente aqui o nome e as oportunidades de melhorias para o processo 1. Em seguida, apresente o modelo do processo 1, descrito no padrão BPMN. 
+ Esse processo visa prevenir a escassez de produtos e garantir a continuidade das operações comerciais
 
 ```mermaid
 %%{init: {'theme':'base', 'themeVariables': { 'primaryColor': '#FF6D00', 'edgeLabelBackground':'#FFF', 'tertiaryColor': '#FFD54F'}}}%%
@@ -110,20 +110,47 @@ class aprovação decision;
 
 ![Processo 1](img/02-bpmn-proc1.png)
 
-### Processo 2 – NOME DO PROCESSO
+### Processo 2 – Recebimento de Mercadorias
 
-Apresente aqui o nome e as oportunidades de melhorias para o processo 2. Em seguida, apresente o modelo do processo 2, descrito no padrão BPMN.
+Este processo envolve a chegada de novos produtos ao armazém, a verificação da conformidade dos itens recebidos e a atualização do estoque no sistema.
 
-![Processo 2](img/02-bpmn-proc2.png)
+![Processo 2](img/processo-bpmn-2.png)
+
+
+### Processo 3 – Controle de Saída de Produtos
+
+Engloba a saída de produtos do estoque por venda. Este processo inclui a solicitação de retirada, a baixa no estoque e a atualização do sistema.
+
+![Processo 2](img/processo-bpmn-3.png)
+
+### Processo 4 – Controle de Saída de Produtos
+
+Processo de geração de relatório dos produtos com mais saída.
+
+![Processo 2](img/processo-bpmn-4.png)
+
+
+
 
 ## Indicadores de Desempenho
 
 Apresente aqui os principais indicadores de desempenho e algumas metas para o processo. Atenção: as informações necessárias para gerar os indicadores devem estar contempladas no diagrama de classe. Colocar no mínimo 5 indicadores. 
 
-Usar o seguinte modelo: 
 
-![Indicadores de Desempenho](img/02-indic-desemp.png)
+
+| Indicador| Objetivo do Indicador| Descrição do Indicador| Cálculo do Indicador| Fonte de Dados| Perspectiva|
+|---------------|---------------------------|-----------------------------|--------------------------|--------------------|-----------------|
+| Giro de Estoque | Otimizar a rotação de estoque | Mede quantas vezes o estoque é vendido ou utilizado em um período | Divide o custo dos bens vendidos pelo valor médio do estoque durante o período. | Registros de vendas, Inventário | Financeira/Operacional |
+| Cobertura de Estoque | Prevenir rupturas ou excessos de estoque | Indica por quantos dias o estoque atual pode cobrir as vendas | Calcula-se dividindo o estoque atual pelo consumo médio diário de produtos. | Inventário, Histórico de vendas | Operacional |
+| Precisão do Inventário | Garantir a exatidão dos registros de estoque | Reflete a exatidão entre o estoque registrado e o físico | A precisão é encontrada ao dividir o estoque registrado pelo estoque real e multiplicar por 100 para obter a porcentagem. | Inventário físico e registrado | Qualidade |
+| Tempo de Reposição de Estoque | Minimizar o tempo de espera por novos estoques | Tempo desde o pedido até a entrega | Medido pelo número de dias desde a realização do pedido até a recepção do estoque. | Pedidos de compra, Registros de entrega | Logística |
+| Taxa de Atendimento de Pedidos | Maximizar a capacidade de atender pedidos | Capacidade de atender aos pedidos com o estoque disponível | Calcula-se pela divisão do número de pedidos atendidos com o estoque existente pelo total de pedidos, multiplicado por 100 para a porcentagem. | Registros de pedidos, Inventário | Cliente/Serviço |
+| Custo de Armazenamento | Reduzir custos de manutenção de estoque | Custos associados à manutenção do estoque | Soma-se os custos fixos aos custos variáveis associados à manutenção do estoque. | Contabilidade, Inventário | Financeira |
+| Nível de Serviço ao Cliente | Melhorar a satisfação do cliente | Efetividade em atender à demanda dos clientes | Divide-se o número de demandas atendidas completamente pelo total de demandas, multiplicando o resultado por 100 para obter a porcentagem. | Registros de vendas, Feedback do cliente | Cliente/Serviço |
+| Índice de Obsolescência de Estoque | Minimizar perdas com estoque não vendido | Proporção de estoque que se tornou obsoleto | Calcula-se pela divisão do estoque obsoleto pelo estoque total, multiplicando o resultado por 100 para encontrar a porcentagem. | Inventário, Registros de vendas | Operacional |
+
 Obs.: todas as informações para gerar os indicadores devem estar no diagrama de classe a ser apresentado a posteriori. 
+
 
 ## Requisitos
 
