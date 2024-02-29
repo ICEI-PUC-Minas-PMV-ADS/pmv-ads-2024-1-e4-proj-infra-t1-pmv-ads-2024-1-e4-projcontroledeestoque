@@ -263,20 +263,21 @@ gantt
     dateFormat  YYYY-MMM-DD
     axisFormat %d/%b/%y
 
-    section Gerente de Projetos <br>(Gabriel)
-    Definição do problema : 2023-08-01, 14d
-    Especificação do projeto    : 2023-08-07, 21d
-    Alinhamentos  : 2023-08-28, 14d
+    section Product Owner <br>(Nayra)
+    Definição do problema : 2024-02-01, 7d
+    Especificação do projeto    : 10d
+    Criação de Backlog    : 7d
+    Alinhamentos  : 7d
 
-    section Time de Desenvolvedores <br>(Lucas, Roberta)
-    Projeto de Interface      : 2023-08-28, 14d
-    Desenvolvimento da solução    : 63d
+    section Equipe de Desenvolvimento <br>(Marcelo, Samuel, Silvestre)
+    Desenvolvimento da solução    : 2024-03-04, 91d
+    Entrega da solução: 30d
 
-    section Time de QA <br>(Nayra)
-    Testes da aplicação : 2023-09-18  , 63d
+    section Equipe de Design <br>(Iugor)
+    Projeto de Interface : 2024-05-04  , 30d
 
-    section Time de Suporte <br>(Gabriel)
-    Entrega da solução  :2023-11-20  , 14d
+    section Scrum Master <br>(Gabriel)
+    Assegurar que o uso de metodologias ágeis  :2024-03-04  , 91d
 ```
 
 ## Gestão de Orçamento
