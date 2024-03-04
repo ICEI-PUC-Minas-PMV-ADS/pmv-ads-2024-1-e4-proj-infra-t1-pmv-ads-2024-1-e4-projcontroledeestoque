@@ -1,46 +1,40 @@
 # Introdução
 
-Texto descritivo com a visão geral do projeto abordado. Inclui o contexto, o problema, os objetivos, a justificativa e o público-alvo do projeto.
+Conforme o artigo *Os desafios para gestão de estoques em micro e pequenas empresas: um estudo de caso* publicado por Priscila Magalhães, a gestão de estoque é essencial para garantir o bom funcionamento de grandes e pequenas empresas. Tendo em vista a grande competitividade do mercado, destacam-se as empresas que têm a capacidade de se organizar e melhor se preparam para as adversidades do cenário.
+
+Entendendo a importância da gestão de estoque, podemos pensar no que uma má gestão de estoque pode causar. Segundo Marcela Maria Eloy Paixão Oliveira e Rafaella Machado Rosa da Silva no artigo *Gestão de Estoque*, "Uma má gestão no estoque acarretaria inúmeros prejuízos à empresa. Dentre eles, elevação do cancelamento de pedidos, parada de produção por falta de matérias, falta de espaço para armazenamento, quantidades maiores de estoque enquanto a produção permanece constante, e assim vai". Pensando pelo lado do consumidor, podemos teorizar alguns problemas também, como frustrações por não receber o item desejado ou recebê-lo fora do prazo, recebimento do produto errado por confusões no estoque e por aí vai.
+
+Conforme o site de notícias Terra, menos de 40% dos varejistas investem em sistemas de gestão de estoques.
+
+    "O armazenamento adequado ainda é um desafio para muitas empresas. Segundo pesquisa, 
+    apesar de 92% dos varejistas afirmarem possuir um setor voltado para gestão de estoques, 
+    somente cerca de 1/3 deles investem em sistemas de gestão"
+
+Isso nos mostra uma grande deficiencia em uma area que já vimos ser muito importante para a prosperidade de um negocio.
+
+Tendo em mente a dificuldade na boa gerência de estoque e considerando a facilidade de acesso à internet via computadores ou dispositivos móveis atualmente, acreditamos que essa facilidade de acesso pode ser um poderoso aliado para otimizarmos a gerência de estoques de pequenos e médios negócios.
 
 ## Problema
-Nesse momento você deve apresentar o problema que a sua aplicação deve  resolver. No entanto, não é a hora de comentar sobre a aplicação.
-
-Descreva também o contexto em que essa aplicação será usada, se  houver: empresa, tecnologias, etc. Novamente, descreva apenas o que de  fato existir, pois ainda não é a hora de apresentar requisitos  detalhados ou projetos.
-
-Nesse momento, o grupo pode optar por fazer uso  de ferramentas como Design Thinking, que permite um olhar de ponta a ponta para o problema.
-
-> **Links Úteis**:
-> - [Objetivos, Problema de pesquisa e Justificativa](https://medium.com/@versioparole/objetivos-problema-de-pesquisa-e-justificativa-c98c8233b9c3)
-> - [Matriz Certezas, Suposições e Dúvidas](https://medium.com/educa%C3%A7%C3%A3o-fora-da-caixa/matriz-certezas-suposi%C3%A7%C3%B5es-e-d%C3%BAvidas-fa2263633655)
-> - [Brainstorming](https://www.euax.com.br/2018/09/brainstorming/)
+Pensando nas dificuldades de pequenos negócios na hora de gerenciar seus estoques, como por exemplo: entradas, saídas e quantidades ainda disponíveis de determinados itens. Propomos uma solução simples e otimizada de controle de estoques para melhor gestão do estoque de microempresas. 
 
 ## Objetivos
 
-Aqui você deve descrever os objetivos do trabalho indicando que o objetivo geral é desenvolver um software para solucionar o problema apresentado acima. 
+Nossa solução tem por objetivo oferecer ao microempresário uma ferramenta que o permita gerenciar o estoque de sua empresa, permitindo que as funções básicas em uma gestão de estoque sejam executadas de forma simples e otimizada.
 
-Apresente também alguns (pelo menos 2) objetivos específicos dependendo de onde você vai querer concentrar a sua prática investigativa, ou como você vai aprofundar no seu trabalho.
- 
-> **Links Úteis**:
-> - [Objetivo geral e objetivo específico: como fazer e quais verbos utilizar](https://blog.mettzer.com/diferenca-entre-objetivo-geral-e-objetivo-especifico/)
+Os objetivos específicos são:
+
+    Construir funcionalidades que permitam aos usuários registrar entradas e saídas do estoque;
+    Construir funcionalidades que permitam aos usuários registrar vendas;
+    Fornecer uma usabilidade simples e intuitiva;
+    
 
 ## Justificativa
+Tendo em vista a importância de se organizar no meio competitivo dos negócios, entendemos a importância de uma boa gerência de estoque na vida das empresas, uma vez que a falta de tal gestão pode acarretar sérios problemas para a empresa.
 
-Descreva a importância ou a motivação para trabalhar com esta aplicação que você escolheu. Indique as razões pelas quais você escolheu seus objetivos específicos ou as razões para aprofundar em certos aspectos do software.
-
-O grupo de trabalho pode fazer uso de questionários, entrevistas e dados estatísticos, que podem ser apresentados, com o objetivo de esclarecer detalhes do problema que será abordado pelo grupo.
-
-> **Links Úteis**:
-> - [Como montar a justificativa](https://guiadamonografia.com.br/como-montar-justificativa-do-tcc/)
+Além da importância de uma boa gestão, entendemos a importância de poupar tempo em situações cotidianas. Visando o melhor dos dois mundos, propomos uma aplicação que possibilite a gestão do estoque de forma eficiente e simplificada.
 
 ## Público-Alvo
 
-Descreva quem serão as pessoas que usarão a sua aplicação indicando os diferentes perfis. O objetivo aqui não é definir quem serão os clientes ou quais serão os papéis dos usuários na aplicação. A ideia é, dentro do possível, conhecer um pouco mais sobre o perfil dos usuários: conhecimentos prévios, relação com a tecnologia, relações
-hierárquicas, etc.
+Embora todos os tipos de empresa possam se beneficiar dessa ferramenta, o foco deste trabalho está nos microempreendedores. Desta forma, estabeleceu-se como público-alvo desta solução os proprietários de microempresas que enxergam a necessidade na otimização de seus processos, bem como os funcionários que buscam formas mais simples e objetivas de realizar as funções de suas rotinas diárias de trabalho.
 
-Adicione informações sobre o público-alvo por meio de uma descrição textual, diagramas de personas e mapa de stakeholders.
 
-> **Links Úteis**:
-> - [Público-alvo](https://blog.hotmart.com/pt-br/publico-alvo/)
-> - [Como definir o público alvo](https://exame.com/pme/5-dicas-essenciais-para-definir-o-publico-alvo-do-seu-negocio/)
-> - [Público-alvo: o que é, tipos, como definir seu público e exemplos](https://klickpages.com.br/blog/publico-alvo-o-que-e/)
-> - [Qual a diferença entre público-alvo e persona?](https://rockcontent.com/blog/diferenca-publico-alvo-e-persona/)
