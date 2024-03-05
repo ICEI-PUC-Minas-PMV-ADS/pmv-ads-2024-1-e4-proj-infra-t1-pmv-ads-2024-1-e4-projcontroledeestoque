@@ -15,7 +15,7 @@ Em relação à gestão de times, utilizamos uma abordagem baseada em Scrum, com
 |    **Ambiente** 	|   **Plataforma** 	|    **Link de Acesso** 	|
 |:---:	|:---:	|:---:	|
 |Repositório de código fonte/Documentação|GitHub|https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t1-pmv-ads-2024-1-e4-projcontroledeestoque/tree/main |
-|Projeto de Interface e Wireframes|Marvel APP/Figma|https://marvelapp.com/|
+|Projeto de Interface e Wireframes|Figma|https://www.figma.com/team_invite/redeem/ztwfVRcumkiUg33arHpjsT|
 |Gerenciamento do Projeto|github project|https://github.com/orgs/ICEI-PUC-Minas-PMV-ADS/projects/831|
 
 ## Controle de Versão
@@ -64,7 +64,6 @@ Silvestre
 
 > Para organização e distribuição das tarefas do projeto, a equipe está utilizando o github project estruturado com as seguintes listas:
 
-`Resources:` A lista de Resources possui o registo das documentações, links e etiquetas que explicam e cataloga o projeto. <br>
 `Backlog:` recebe todas as tarefas a serem trabalhadas e representa o Product Backlog. Qualquer adição de atividades que necessite ser aplicada no projeto deve ser adicionada nesta lista. <br>
 `To do:` recebe as tarefas que foram serapadas na sprint e representa o Sprint Backlog. São as tarefas que serão trabalhadas dentro da sprint. <br>
 `Doing:` recebe qualquer tarefa que foi iniciada por um membro da equipe. <br>
