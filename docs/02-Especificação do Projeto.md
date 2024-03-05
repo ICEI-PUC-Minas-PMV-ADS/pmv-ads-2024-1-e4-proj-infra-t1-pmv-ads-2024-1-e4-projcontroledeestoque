@@ -302,18 +302,20 @@ gantt
 
 ## Gestão de Orçamento
 
+
 | ID | Recurso               | Quantidade | Custo Unitário | Custo Mensal | Custo Semestral |
 |----|-----------------------|------------|----------------|--------------|-----------------|
 | **1**  | **Recursos Humanos**      |            |                |              |                 |   
-|    | Gestor de Projetos    | 1          | R$ 15.000,00   | R$ 15.000,00 | R$ 90.000,00    |   
-|    | Desenvolvedor / QA    | 2          | R$ 10.000,00   | R$ 20.000,00 | R$ 120.000,00   |   
+|    | Gestor de Projetos    | 1          | R$ 15.000,00   | R$ 15.000,00 | R$ 90.000,00    |    
+|    | Scrum Master    | 1          | R$ 12.000,00   | R$ 12.000,00 | R$ 72.000,00   |  
+|    | Desenvolvedor / QA    | 3          | R$ 10.000,00   | R$ 30.000,00 | R$ 180.000,00   |   
 |    | Designer UX/UI        | 1          | R$ 6.000,00    | R$ 6.000,00  | R$ 36.000,00    |   
 |    | Cursos e Treinamentos | 4          | R$ 500,00      | R$ 2.000,00  | R$ 12.000,00    |   
 | **2**  | **Hardware**              |            |                |              |                 |  
-|    | Notebook              | 4          | R$ 5.000,00    | -            | R$ 20.000,00    |   
-|    | Periféricos           | 4          | R$ 500,00      | -            | R$ 2.000,00     |   
+|    | Notebook              | 6          | R$ 5.000,00    | -            | R$ 30.000,00    |   
+|    | Periféricos           | 6          | R$ 500,00      | -            | R$ 3.000,00     |   
 | **3**  | **Software**              |            |                |              |                 |   
 |    | Licenças              | 4          | R$ 400,00      | R$ 1.600,00  | R$ 9.600,00     |   
 | **4**  | **Serviços**              |            |                |              |                 |   
 |    | Azure                 | 1          | R$ 2.500,00    | R$ 2.500,00  | R$ 15.000,00    |
-|    |                       |            | **Total**          | **R$ 47.100,00** | **R$ 304.600,00**   |
+|    |                       |            | **Total**          | **R$ 74.600,00** | **R$ 447.600,00**   |
