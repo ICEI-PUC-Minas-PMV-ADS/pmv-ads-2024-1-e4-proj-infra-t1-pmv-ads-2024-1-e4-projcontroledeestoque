@@ -1,4 +1,4 @@
-# TÍTULO DO PROJETO
+# StockFlow
 
 `Análise e Desenvolvimento de Sistemas`
 
@@ -6,15 +6,15 @@
 
 `2024.1`
 
-Descrever resumidamente, em um ou dois parágrafos, o projeto que está sendo desenvolvido.
+StockFlow é uma plataforma abrangente de gerenciamento de estoque projetada para simplificar e otimizar as operações de gerenciamento de estoque para micro e pequenas empresas. Graças à sua interface amigável e funções poderosas, o StockFlow permite rastrear com precisão as operações do armazém, desde o recebimento do produto até a venda. Permite aos usuários cadastrar produtos, gerenciar estoques em tempo real e visualizar relatórios detalhados para tomar decisões mais informadas. StockFlow se esforça para fornecer uma solução abrangente e eficiente para agilizar as operações das empresas e maximizar os resultados econômicos.
 
 ## Integrantes
-| [<img src="https://github.com/gabriellourenco12.png" width=115><br><sub>Gabriel Augusto Alves Lourenço</sub>](https://github.com/gabriellourenco12) | [<img src="https://github.com/iugorsette.png" width=115><br><sub>Iugor</sub>](https://github.com/iugorsette) | [<img src="https://github.com/MarceloHF27.png" width=115><br><sub>Marcelo</sub>](https://github.com/MarceloHF27) | [<img src="https://github.com/Nayra-Reis.png" width=115><br><sub>Nayra Alessandra Simao Reis</sub>](https://github.com/Nayra-Reis) | [<img src="https://github.com/Samuelribeiro57.png" width=115><br><sub>Samuel</sub>](https://github.com/Samuelribeiro57) | [<img src="https://github.com/Silvestre-Castro.png" width=115><br><sub>Silvestre</sub>](https://github.com/Silvestre-Castro) | 
+| [<img src="https://github.com/gabriellourenco12.png" width=115><br><sub>Gabriel Augusto Alves Lourenço</sub>](https://github.com/gabriellourenco12) | [<img src="https://github.com/iugorsette.png" width=115><br><sub>Iugor Sette Pereira</sub>](https://github.com/iugorsette) | [<img src="https://github.com/MarceloHF27.png" width=115><br><sub>Marcelo Henrique Ferreira</sub>](https://github.com/MarceloHF27) | [<img src="https://github.com/Nayra-Reis.png" width=115><br><sub>Nayra Alessandra Simao Reis</sub>](https://github.com/Nayra-Reis) | [<img src="https://github.com/Samuelribeiro57.png" width=115><br><sub>Samuel Felismino Ribeiro</sub>](https://github.com/Samuelribeiro57) | [<img src="https://github.com/Silvestre-Castro.png" width=115><br><sub>Silvestre Castro Simão</sub>](https://github.com/Silvestre-Castro) | 
 | -- | -- | -- | -- | -- | -- |
 
 ## Orientador
 
-* Nome completo do professor 1
+* Felipe Augusto Lara Soares
 
 ## Instruções de utilização
 
