@@ -134,22 +134,15 @@ Processo de geração de relatório dos produtos com mais saída.
 
 ## Indicadores de Desempenho
 
-Apresente aqui os principais indicadores de desempenho e algumas metas para o processo. Atenção: as informações necessárias para gerar os indicadores devem estar contempladas no diagrama de classe. Colocar no mínimo 5 indicadores. 
 
+| Nome do Indicador de Desempenho | Objetivo do Indicador  | Descrição do Indicador   | Cálculo do Indicador | Fonte de Dados  | Perspectiva  |
+|---------------------------------|------------------------|--------------------------|----------------------|-----------------|--------------|
+| Giro de Estoque  | Medir a eficiência da empresa na gestão de seu estoque.  | Indica quantas vezes o estoque foi renovado em um período específico.  | (Quantidade vendida no período) / (Quantidade média de estoque no período)  | Entrada, Saída, Produto        | Financeira/Operacional|
+| Margem de Lucro por Produto     | Avaliar a rentabilidade de cada produto vendido.                                     | Mostra o lucro obtido por unidade de produto vendido.                                                        | (Preço de Venda - Preço de Custo) / Preço de Venda * 100                                               | Produto                        | Financeira           |
+| Taxa de Escoamento de Estoque   | Identificar produtos com alta taxa de saída.                                         | Mede a velocidade com que os produtos são vendidos ou saem do estoque.                                       | Quantidade de saída / Quantidade total em estoque * 100                                               | Saída, Produto                 | Operacional          |
+| Valor Total de Entradas         | Monitorar o valor investido em novas entradas de estoque.                            | Calcula o valor total investido na compra de produtos para o estoque em um determinado período.              | Soma de (Quantidade * Preço de Custo) para cada entrada no período                                     | Entrada, Produto               | Financeira           |
+| Eficiência de Reposição de Estoque | Assegurar um nível adequado de estoque para atender à demanda.                      | Avalia a rapidez com que o estoque é reposto após as vendas.                                                  | Média de dias entre a saída de um produto e a entrada de reposição correspondente                     | Entrada, Saída                 | Operacional          |
 
-
-| Indicador| Objetivo do Indicador| Descrição do Indicador| Cálculo do Indicador| Fonte de Dados| Perspectiva|
-|---------------|---------------------------|-----------------------------|--------------------------|--------------------|-----------------|
-| Giro de Estoque | Otimizar a rotação de estoque | Mede quantas vezes o estoque é vendido ou utilizado em um período | Divide o custo dos bens vendidos pelo valor médio do estoque durante o período. | Registros de vendas, Inventário | Financeira/Operacional |
-| Cobertura de Estoque | Prevenir rupturas ou excessos de estoque | Indica por quantos dias o estoque atual pode cobrir as vendas | Calcula-se dividindo o estoque atual pelo consumo médio diário de produtos. | Inventário, Histórico de vendas | Operacional |
-| Precisão do Inventário | Garantir a exatidão dos registros de estoque | Reflete a exatidão entre o estoque registrado e o físico | A precisão é encontrada ao dividir o estoque registrado pelo estoque real e multiplicar por 100 para obter a porcentagem. | Inventário físico e registrado | Qualidade |
-| Tempo de Reposição de Estoque | Minimizar o tempo de espera por novos estoques | Tempo desde o pedido até a entrega | Medido pelo número de dias desde a realização do pedido até a recepção do estoque. | Pedidos de compra, Registros de entrega | Logística |
-| Taxa de Atendimento de Pedidos | Maximizar a capacidade de atender pedidos | Capacidade de atender aos pedidos com o estoque disponível | Calcula-se pela divisão do número de pedidos atendidos com o estoque existente pelo total de pedidos, multiplicado por 100 para a porcentagem. | Registros de pedidos, Inventário | Cliente/Serviço |
-| Custo de Armazenamento | Reduzir custos de manutenção de estoque | Custos associados à manutenção do estoque | Soma-se os custos fixos aos custos variáveis associados à manutenção do estoque. | Contabilidade, Inventário | Financeira |
-| Nível de Serviço ao Cliente | Melhorar a satisfação do cliente | Efetividade em atender à demanda dos clientes | Divide-se o número de demandas atendidas completamente pelo total de demandas, multiplicando o resultado por 100 para obter a porcentagem. | Registros de vendas, Feedback do cliente | Cliente/Serviço |
-| Índice de Obsolescência de Estoque | Minimizar perdas com estoque não vendido | Proporção de estoque que se tornou obsoleto | Calcula-se pela divisão do estoque obsoleto pelo estoque total, multiplicando o resultado por 100 para encontrar a porcentagem. | Inventário, Registros de vendas | Operacional |
-
-Obs.: todas as informações para gerar os indicadores devem estar no diagrama de classe a ser apresentado a posteriori. 
 
 
 ## Requisitos
