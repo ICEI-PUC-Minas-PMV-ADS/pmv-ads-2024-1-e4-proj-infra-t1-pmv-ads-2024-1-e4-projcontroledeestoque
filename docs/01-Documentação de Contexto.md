@@ -1,14 +1,10 @@
 # Introdução
 
-Conforme o artigo *Os desafios para gestão de estoques em micro e pequenas empresas: um estudo de caso* publicado por Priscila Magalhães, a gestão de estoque é essencial para garantir o bom funcionamento de grandes e pequenas empresas. Tendo em vista a grande competitividade do mercado, destacam-se as empresas que têm a capacidade de se organizar e melhor se preparam para as adversidades do cenário.
+A gestão de estoque é essencial para garantir o bom funcionamento de grandes e pequenas empresas. Tendo em vista a grande competitividade do mercado, destacam-se as empresas que têm a capacidade de se organizar e melhor se preparam para as adversidades do cenário (Priscila Magalhães, et al, 2016)
 
-Entendendo a importância da gestão de estoque, podemos pensar no que uma má gestão de estoque pode causar. Segundo Marcela Maria Eloy Paixão Oliveira e Rafaella Machado Rosa da Silva no artigo *Gestão de Estoque*, "Uma má gestão no estoque acarretaria inúmeros prejuízos à empresa. Dentre eles, elevação do cancelamento de pedidos, parada de produção por falta de matérias, falta de espaço para armazenamento, quantidades maiores de estoque enquanto a produção permanece constante, e assim vai". Pensando pelo lado do consumidor, podemos teorizar alguns problemas também, como frustrações por não receber o item desejado ou recebê-lo fora do prazo, recebimento do produto errado por confusões no estoque e por aí vai.
+Entendendo a importância da gestão de estoque, podemos pensar no que uma má gestão de estoque pode causar, "Uma má gestão no estoque acarretaria inúmeros prejuízos à empresa. Dentre eles, elevação do cancelamento de pedidos, parada de produção por falta de matérias, falta de espaço para armazenamento, quantidades maiores de estoque enquanto a produção permanece constante, e assim vai" (Marcela OLIVEIRA; Rafaella SILVA, 2014, P8). Pensando pelo lado do consumidor, podemos teorizar alguns problemas também, como frustrações por não receber o item desejado ou recebê-lo fora do prazo, recebimento do produto errado por confusões no estoque e por aí vai.
 
-Conforme o site de notícias Terra, menos de 40% dos varejistas investem em sistemas de gestão de estoques.
-
-    "O armazenamento adequado ainda é um desafio para muitas empresas. Segundo pesquisa, 
-    apesar de 92% dos varejistas afirmarem possuir um setor voltado para gestão de estoques, 
-    somente cerca de 1/3 deles investem em sistemas de gestão"
+Menos de 40% dos varejistas investem em sistemas de gestão de estoques, "O armazenamento adequado ainda é um desafio para muitas empresas. Segundo pesquisa, apesar de 92% dos varejistas afirmarem possuir um setor voltado para gestão de estoques, somente cerca de 1/3 deles investem em sistemas de gestão" (TERRA, 2023)
 
 Isso nos mostra uma grande deficiencia em uma area que já vimos ser muito importante para a prosperidade de um negocio.
 
