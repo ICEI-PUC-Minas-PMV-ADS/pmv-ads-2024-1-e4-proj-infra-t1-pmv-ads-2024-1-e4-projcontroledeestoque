@@ -2,5 +2,5 @@
 
 Faça uma apresentação de um resumo de todos o processo de desenvolvimento e no final apresente a solução desenvolvida, usando um pequeno vídeo.
 
-# Vídeo 1ª Etapa
+* Vídeo 1ª Etapa
 https://www.youtube.com/watch?v=2gwNBHn_JKE
