@@ -209,7 +209,8 @@ Enumere as restrições à sua solução. Lembre-se de que as restrições geral
 
 A matriz de rastreabilidade é uma ferramenta usada para facilitar a visualização dos relacionamento entre requisitos e outros artefatos ou objetos, permitindo a rastreabilidade entre os requisitos e os objetivos de negócio. 
 
-![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t1-pmv-ads-2024-1-e4-projcontroledeestoque/assets/79034589/491b789c-f117-4453-99a9-cc2998050eeb)
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t1-pmv-ads-2024-1-e4-projcontroledeestoque/assets/79034589/27303e85-1a99-4021-ba58-a1aec3fb58df)
+
 
 
 # Gerenciamento de Projeto
