@@ -4,3 +4,5 @@
 
 /src/stock-flow/.vs
 /src/stock-flow/obj
+/.vs
+/src/stock-flow/bin/Debug/net6.0
