@@ -2,9 +2,11 @@ using AspNetCore.Identity.MongoDbCore.Extensions;
 using AspNetCore.Identity.MongoDbCore.Infrastructure;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.IdentityModel.Tokens;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Serializers;
 using stock_flow.Models;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -47,16 +49,30 @@ builder.Services.ConfigureMongoDbIdentity<ApplicationUser, ApplicationRole, Guid
     .AddDefaultTokenProviders();
 
 builder.Services.ConfigureMongoDbIdentity<ApplicationUser, ApplicationRole, Guid>(mongoDbIdentityConfig)
-    .AddUserManager<Microsoft.AspNetCore.Identity.UserManager<ApplicationUser>>();
+    .AddUserManager<UserManager<ApplicationUser>>()
+    .AddSignInManager<SignInManager<ApplicationUser>>()
+    .AddRoleManager<RoleManager<ApplicationRole>>()
+    .AddDefaultTokenProviders();
 
 builder.Services.AddAuthentication(x =>
 {
     x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
     x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-}).AddJwtBearer(XmlConfigurationExtensions =>
+}).AddJwtBearer(x =>
 {
-    XmlConfigurationExtensions.RequireHttpsMetadata = true;
-    XmlConfigurationExtensions.SaveToken = true;
+    x.RequireHttpsMetadata = true;
+    x.SaveToken = true;
+    x.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuerSigningKey = true,
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidAudience = "https://localhost:5001",
+        ValidIssuer = "https://localhost:5001",
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes("MIICXQIBAAKBgQDgjWqdGP6wgDk04hOMnEEq/ZDwMi9RyfOqTRj60gwwsQtQJrWt")),
+        ClockSkew = TimeSpan.Zero
+    };
 });
 
 builder.Services.AddControllers();
