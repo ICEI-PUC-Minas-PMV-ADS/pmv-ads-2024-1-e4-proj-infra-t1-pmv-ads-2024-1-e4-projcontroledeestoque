@@ -13,5 +13,7 @@ namespace stock_flow.Dtos
         public string Password { get; set; } = string.Empty;
         [Required, MinLength(8), DataType(DataType.Password), Compare(nameof(Password), ErrorMessage = "Passwords do not match")]
         public string ConfirmPassword { get; set; } = string.Empty;
+
+        public string Role { get; set; } = string.Empty;
     }
 }
