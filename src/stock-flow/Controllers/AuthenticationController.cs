@@ -25,18 +25,44 @@ namespace stock_flow.Controllers
 
         [HttpPost]
         [Route("roles")]
-        public async Task<IActionResult> CreateRole([FromBody] RoleRequest request)
+        public async Task<IActionResult> Role([FromBody] RoleRequest request)
         {
-            var appRole = new ApplicationRole
+            var result = await RoleAsync(request);
+
+            return result.Success ? Ok(result) : BadRequest(result);
+        }
+
+        private async Task<RoleResponse> RoleAsync(RoleRequest request)
+        {
+            try
             {
-                Name = request.Role,
-                ConcurrencyStamp = Guid.NewGuid().ToString()
-            };
+                var appRole = new ApplicationRole
+                {
+                    Name = request.Role,
+                    ConcurrencyStamp = Guid.NewGuid().ToString()
+                };
 
-            var result = await _roleManager.CreateAsync(appRole);
+                var result = await _roleManager.CreateAsync(appRole);
 
-            return result.Succeeded ? Ok("Role created successfully") : 
-                BadRequest("An error occurred: " + string.Join(", ", result.Errors.Select(e => e.Description)));
+                return result.Succeeded ? new RoleResponse
+                {
+                    Success = true,
+                    Message = "Role created successfully"
+                } : new RoleResponse
+                {
+                    Success = false,
+                    Message = "An error occurred: " + string.Join(", ", result.Errors.Select(e => e.Description))
+                };
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return new RoleResponse
+                {
+                    Success = false,
+                    Message = "An error occurred: " + ex.Message
+                };
+            }
         }
 
 
@@ -46,7 +72,7 @@ namespace stock_flow.Controllers
         {
             var result = await RegisterAsync(request);
 
-            return result.Success ? Ok(result) : BadRequest(result.Message);
+            return result.Success ? Ok(result) : BadRequest(result);
         }
 
         private async Task<RegisterResponse> RegisterAsync(RegisterRequest request)
@@ -122,7 +148,7 @@ namespace stock_flow.Controllers
         {
             var result = await LoginAsync(request);
 
-            return result.Success ? Ok(result) : BadRequest(result.Message);
+            return result.Success ? Ok(result) : BadRequest(result);
         }
 
         private async Task<LoginResponse> LoginAsync(LoginRequest request)
@@ -168,8 +194,8 @@ namespace stock_flow.Controllers
                 var expires = DateTime.Now.AddMinutes(60);
 
                 var token = new JwtSecurityToken(
-                    issuer: "http://localhost:5001",
-                    audience: "http://localhost:5001",
+                    issuer: "https://localhost:5001",
+                    audience: "https://localhost:5001",
                     claims: claims,
                     expires: expires,
                     signingCredentials: creds);

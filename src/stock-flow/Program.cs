@@ -43,7 +43,7 @@ var mongoDbIdentityConfig = new MongoDbIdentityConfiguration
 };
 
 builder.Services.ConfigureMongoDbIdentity<ApplicationUser, ApplicationRole, Guid>(mongoDbIdentityConfig)
-    .AddUserManager<UserManager<ApplicationRole>>()
+    .AddUserManager<UserManager<ApplicationUser>>()
     .AddSignInManager<SignInManager<ApplicationUser>>()
     .AddRoleManager<RoleManager<ApplicationRole>>()
     .AddDefaultTokenProviders();
