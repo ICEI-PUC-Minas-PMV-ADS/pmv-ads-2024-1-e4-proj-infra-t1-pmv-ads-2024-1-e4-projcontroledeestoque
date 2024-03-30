@@ -6,6 +6,6 @@ namespace stock_flow.Models
     [CollectionName("roles")]
     public class ApplicationRole : MongoIdentityRole<Guid>
     {
-       public string FullName { get; set; } = string.Empty;
+       public string? FullName { get; set; }
     }
 }

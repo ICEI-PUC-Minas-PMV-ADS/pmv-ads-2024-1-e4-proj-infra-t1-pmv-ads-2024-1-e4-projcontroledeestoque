@@ -1,8 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace stock_flow.Dtos
+﻿namespace stock_flow.Controllers.Responses
 {
-    public class RegisterResponse
+    public class AuthResponse
     {
         public bool Success { get; set; }
         public string Message { get; set; } = string.Empty;

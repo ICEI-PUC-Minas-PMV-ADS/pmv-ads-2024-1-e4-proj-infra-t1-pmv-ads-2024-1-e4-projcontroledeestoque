@@ -5,7 +5,10 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Serializers;
+using stock_flow.Configs;
 using stock_flow.Models;
+using stock_flow.Services;
+using stock_flow.Services.Impl;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -20,8 +23,8 @@ var mongoDbIdentityConfig = new MongoDbIdentityConfiguration
 {
     MongoDbSettings = new MongoDbSettings
     {
-        ConnectionString = "mongodb+srv://stock-flow-admin:JujIIJ4oT8cdOKaS@stock-flow-db.399zlcb.mongodb.net/?retryWrites=true&w=majority&appName=stock-flow-db",
-        DatabaseName = "stock_flow"
+        ConnectionString = builder.Configuration["MongoDbSettings:ConnectionString"],
+        DatabaseName = builder.Configuration["MongoDbSettings:DatabaseName"]
     },
     IdentityOptionsAction = options =>
     {
@@ -43,7 +46,7 @@ var mongoDbIdentityConfig = new MongoDbIdentityConfiguration
 };
 
 builder.Services.ConfigureMongoDbIdentity<ApplicationUser, ApplicationRole, Guid>(mongoDbIdentityConfig)
-    .AddUserManager<UserManager<ApplicationRole>>()
+    .AddUserManager<UserManager<ApplicationUser>>()
     .AddSignInManager<SignInManager<ApplicationUser>>()
     .AddRoleManager<RoleManager<ApplicationRole>>()
     .AddDefaultTokenProviders();
@@ -79,6 +82,10 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+//Services configuration
+builder.Services.Configure<TestStoreDatabaseSettings>(builder.Configuration.GetSection("MongoDbSettings"));
+builder.Services.AddScoped<IAuthService, AuthService>();
 
 var app = builder.Build();
 
