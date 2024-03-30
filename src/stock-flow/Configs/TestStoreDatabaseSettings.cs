@@ -1,4 +1,4 @@
-﻿namespace stock_flow.Models
+﻿namespace stock_flow.Configs
 {
     public class TestStoreDatabaseSettings
     {

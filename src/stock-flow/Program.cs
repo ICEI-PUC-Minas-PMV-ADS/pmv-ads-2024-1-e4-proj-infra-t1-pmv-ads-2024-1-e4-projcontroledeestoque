@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Serializers;
+using stock_flow.Configs;
 using stock_flow.Models;
 using stock_flow.Services;
 using stock_flow.Services.Impl;
