@@ -1,14 +1,11 @@
-﻿using AspNetCore.Identity.MongoDbCore.Models;
-using MongoDB.Bson.Serialization.Attributes;
+﻿using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Bson;
 using MongoDbGenericRepository.Attributes;
-using stock_flow.Dtos;
-using System.ComponentModel.DataAnnotations;
 
 namespace stock_flow.Models
 {
-    [CollectionName("products")]
-    public class Products
+    [CollectionName("produtos")]
+    public class Produto
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
@@ -18,7 +15,7 @@ namespace stock_flow.Models
 
         public string Descricao { get; set; } = string.Empty;
 
-        Categoria Categoria { get; set; }
+        public List<string> Categorias { get; set; } = new List<string>();
 
         public decimal PrecoCusto { get; set; }
 

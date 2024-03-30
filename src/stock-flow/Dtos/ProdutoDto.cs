@@ -2,13 +2,8 @@
 
 namespace stock_flow.Dtos
 {
-    public class Produto
+    public class ProdutoDto
     {
-        [Required]
-        public string Id { get; set; } = string.Empty;
-
-        private Categoria? categoria;
-
         [Required]
         public string Nome { get; set; } = string.Empty;
 
@@ -16,16 +11,15 @@ namespace stock_flow.Dtos
         public string Descricao { get; set; } = string.Empty;
 
         [Required]
-        Categoria Categoria { get; set; }
+        public List<string> Categorias { get; set; } = new List<string>();
 
         [Required]
-        public double PrecoCusto { get; set; }
+        public decimal PrecoCusto { get; set; }
 
         [Required]
-        public double PrecoVenda { get; set; }
+        public decimal PrecoVenda { get; set; }
 
-        [Required]
-        public int Quantidade { get; set; }
+        public int Quantidade { get; set; } = 0;
 
         public string Imagem { get; set; } = string.Empty;
     }

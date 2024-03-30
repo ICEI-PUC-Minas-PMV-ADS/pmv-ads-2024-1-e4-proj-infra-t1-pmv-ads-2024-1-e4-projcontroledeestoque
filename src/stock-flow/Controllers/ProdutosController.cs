@@ -1,66 +1,79 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Http;
-using stock_flow.Models;
 using stock_flow.Dtos;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
-using BookStoreApi.Models;
+using stock_flow.Configs;
+using stock_flow.Models;
+using stock_flow.Services;
+using stock_flow.Controllers.Responses;
 
 namespace stock_flow.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/v1/produtos")]
     [ApiController]
     public class ProdutosController : Controller
     {
-        private readonly IMongoCollection<Produto> _productsCollection;
-        public ProdutosController(
-              IOptions<StockFlowStoreDatabaseSettings> productStoreDatabaseSettings)
+        private readonly IProdutoService _produtoService;
+        public ProdutosController(IProdutoService produtoService)
         {
-            var mongoClient = new MongoClient(
-                productStoreDatabaseSettings.Value.ConnectionString);
-
-            var mongoDatabase = mongoClient.GetDatabase(
-                productStoreDatabaseSettings.Value.DatabaseName);
-
-            _productsCollection = mongoDatabase.GetCollection<Produto>(
-                productStoreDatabaseSettings.Value.BooksCollectionName);
+            _produtoService = produtoService;
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<Produto>>> GetAsync()
+        public async Task<ActionResult<List<ProdutoDto>>> GetAsync()
         {
-            var model = await _productsCollection.Find(_ => true).ToListAsync();
+            var model = await _produtoService.GetProdutosAsync();
             return Ok(model);
         }
 
-        [HttpGet]
-        public async Task<ActionResult<Produto?>> GetAsync(string id)
+        [HttpGet("{id}")]
+        public async Task<ActionResult<ProdutoDto?>> GetAsync(string id)
         {
-            var model = await _productsCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
-            return Ok(model);
+            try
+            {
+                var model = await _produtoService.GetProdutoByIdAsync(id);
+                return Ok(model);
+            }
+            catch (Exception ex)
+            {
+                return NotFound(new BaseResponse { Message = ex.Message });
+            }
         }
 
 
         [HttpPost]
-        public async Task<ActionResult> CreateAsync(Produto newProduct)
+        public async Task<ActionResult> CreateAsync(ProdutoDto newProduct)
         {
-            await _productsCollection.InsertOneAsync(newProduct);
-            return Ok(newProduct);
+            var model = await _produtoService.CreateProdutoAsync(newProduct);
+            return Ok(model);
         }
 
-        [HttpPut]
-        public async Task<ActionResult> UpdateAsync(string id, Produto updatedProduct) 
+        [HttpPut("{id}")]
+        public async Task<ActionResult> UpdateAsync(string id, ProdutoDto updatedProduct) 
         { 
-            var model = await _productsCollection.ReplaceOneAsync(x => x.Id == id, updatedProduct);
-            return Ok(model);
+            try
+            {
+                var model = await _produtoService.UpdateProdutoAsync(id, updatedProduct);
+                return Ok(model);
+            }
+            catch (Exception ex)
+            {
+                return NotFound(new BaseResponse { Message = ex.Message });
+            }
         }
 
-        [HttpDelete]
-        public async Task<ActionResult>  RemoveAsync(string id)
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> RemoveAsync(string id)
         {
-            var model =  await _productsCollection.DeleteOneAsync(x => x.Id == id);
-            return Ok(model);
+            try
+            {
+                await _produtoService.DeleteProdutoAsync(id);
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return NotFound(new BaseResponse { Message = ex.Message });
+            }
         }
 
     }

@@ -1,6 +1,6 @@
 ﻿namespace stock_flow.Configs
 {
-    public class TestStoreDatabaseSettings
+    public class TestDatabaseSettings
     {
         public string ConnectionString { get; set; } = null!;
 
