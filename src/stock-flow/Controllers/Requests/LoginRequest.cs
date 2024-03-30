@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace stock_flow.Dtos
+namespace stock_flow.Controllers.Requests
 {
     public class LoginRequest
     {
