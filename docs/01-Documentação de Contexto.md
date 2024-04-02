@@ -1,12 +1,12 @@
 # Introdução
 
-A gestão de estoque é essencial para garantir o bom funcionamento de grandes e pequenas empresas. Tendo em vista a grande competitividade do mercado, destacam-se as empresas que têm a capacidade de se organizar e melhor se preparam para as adversidades do cenário (Priscila Magalhães, et al, 2016)
+A gestão de estoque é essencial para garantir o bom funcionamento de grandes e pequenas empresas. Tendo em vista a grande competitividade do mercado, destacam-se as empresas que têm a capacidade de se organizar e melhor se preparam para as adversidades do cenário (Priscila Magalhães et al., 2016).
 
-Entendendo a importância da gestão de estoque, podemos pensar no que uma má gestão de estoque pode causar, "Uma má gestão no estoque acarretaria inúmeros prejuízos à empresa. Dentre eles, elevação do cancelamento de pedidos, parada de produção por falta de matérias, falta de espaço para armazenamento, quantidades maiores de estoque enquanto a produção permanece constante, e assim vai" (Marcela OLIVEIRA; Rafaella SILVA, 2014, P8). Pensando pelo lado do consumidor, podemos teorizar alguns problemas também, como frustrações por não receber o item desejado ou recebê-lo fora do prazo, recebimento do produto errado por confusões no estoque e por aí vai.
+Entendendo a importância da gestão de estoque, podemos pensar no que uma má gestão de estoque pode causar. "Uma má gestão no estoque acarretaria inúmeros prejuízos à empresa. Dentre eles, elevação do cancelamento de pedidos, parada de produção por falta de matérias, falta de espaço para armazenamento, quantidades maiores de estoque enquanto a produção permanece constante, e assim vai" (Marcela OLIVEIRA; Rafaella SILVA, 2014, P8). Pensando pelo lado do consumidor, podemos teorizar alguns problemas também, como frustrações por não receber o item desejado ou recebê-lo fora do prazo, recebimento do produto errado por confusões no estoque e outros fatores.
 
-Menos de 40% dos varejistas investem em sistemas de gestão de estoques, "O armazenamento adequado ainda é um desafio para muitas empresas. Segundo pesquisa, apesar de 92% dos varejistas afirmarem possuir um setor voltado para gestão de estoques, somente cerca de 1/3 deles investem em sistemas de gestão" (TERRA, 2023)
+Menos de 40% dos varejistas investem em sistemas de gestão de estoques. "O armazenamento adequado ainda é um desafio para muitas empresas. Segundo pesquisa, apesar de 92% dos varejistas afirmarem possuir um setor voltado para gestão de estoques, somente cerca de 1/3 deles investem em sistemas de gestão" (TERRA, 2023).
 
-Isso nos mostra uma grande deficiencia em uma area que já vimos ser muito importante para a prosperidade de um negocio.
+Isso nos mostra uma grande deficiência em uma área que já vimos ser muito importante para a prosperidade de um negócio.
 
 Tendo em mente a dificuldade na boa gerência de estoque e considerando a facilidade de acesso à internet via computadores ou dispositivos móveis atualmente, acreditamos que essa facilidade de acesso pode ser um poderoso aliado para otimizarmos a gerência de estoques de pequenos e médios negócios.
 
@@ -19,9 +19,9 @@ Nossa solução tem por objetivo oferecer ao microempresário uma ferramenta que
 
 Os objetivos específicos são:
 
-    Construir funcionalidades que permitam aos usuários registrar entradas e saídas do estoque;
-    Construir funcionalidades que permitam aos usuários registrar vendas;
-    Fornecer uma usabilidade simples e intuitiva;
+Construir funcionalidades que permitam aos usuários registrar entradas e saídas do estoque.
+Construir funcionalidades que permitam aos usuários registrar vendas.
+Fornecer uma usabilidade simples e intuitiva.
     
 
 ## Justificativa
