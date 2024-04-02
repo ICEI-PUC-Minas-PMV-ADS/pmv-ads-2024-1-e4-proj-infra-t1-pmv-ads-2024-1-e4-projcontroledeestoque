@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace stock_flow.Controllers
 {
-    [Authorize(Roles = "USER")]
+    //[Authorize(Roles = "USER")]
     [ApiController]
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
