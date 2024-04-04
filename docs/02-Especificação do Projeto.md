@@ -13,33 +13,36 @@ O objetivo deste projeto é desenvolver um sistema de gerenciamento de estoque i
  ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-dist-temp/assets/81201021/c55b19bd-9a72-4938-8875-a8f8e1b6b5de)
 
  
-> ### História de usuário
+#### História de usuário
+
 > Sayori, Gerente de Operações em uma empresa de varejo, utiliza um sistema de gerenciamento de estoque para manter a disponibilidade de produtos e minimizar perdas. Ela inicia o dia analisando relatórios e dashboards que mostram os níveis de estoque, produtos mais vendidos e itens com baixo estoque, recebendo notificações automáticas para reabastecimentos necessários. Em reuniões estratégicas, ela emprega esses dados para otimizar o estoque, ajustando os pedidos conforme a demanda sazonal. Esse sistema permite a Sayori tomar decisões informadas, equilibrando oferta e demanda e contribuindo significativamente para o sucesso da empresa.
 
- 
- - Acesso fácil e rápido às informações do estoque.
- - Relatórios detalhados para tomar decisões estratégicas.
- - Notificações automáticas para reabastecimento de produtos. 
+- Acesso fácil e rápido às informações do estoque.
+- Relatórios detalhados para tomar decisões estratégicas.
+- Notificações automáticas para reabastecimento de produtos. 
 
 
 ### Carlos - Coordenador de Logística 
 
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-dist-temp/assets/81201021/8ad06031-a0de-465e-8c65-a7712bd08304)
 
-> ### História de usuário
+#### História de usuário
+
 > Carlos é responsável pela logística de uma empresa de distribuição. Ele precisa de um sistema que o ajude a otimizar a movimentação de produtos, garantindo entregas pontuais e eficientes.
-Um Coordenador de Logística, busca um sistema de gerenciamento de estoque que o auxilie na otimização da movimentação de produtos para garantir entregas pontuais. Ele necessita de funcionalidades como rastreamento em tempo real, integração com sistemas de transporte e alertas automáticos para enfrentar desafios logísticos. Ao utilizar essas funcionalidades, Carlos consegue coordenar eficientemente as entregas, planejar rotas adequadas e tomar ações proativas diante de possíveis atrasos, contribuindo para a eficiência operacional e satisfação dos clientes. O sistema torna-se uma peça fundamental para o sucesso da cadeia de distribuição da empresa.
+
+Um coordenador de logística busca um sistema de gerenciamento de estoque que o auxilie na otimização da movimentação de produtos para garantir entregas pontuais. Ele necessita de funcionalidades como rastreamento em tempo real, integração com sistemas de transporte e alertas automáticos para enfrentar desafios logísticos. Ao utilizar essas funcionalidades, Carlos consegue coordenar eficientemente as entregas, planejar rotas adequadas e tomar ações proativas diante de possíveis atrasos, contribuindo para a eficiência operacional e satisfação dos clientes. O sistema torna-se uma peça fundamental para o sucesso da cadeia de distribuição da empresa.
  
- - Rastreamento em tempo real do estoque e movimentação de produtos.
- - Integração com sistemas de transporte para coordenar entregas.
- - Alertas automáticos para possíveis atrasos ou problemas logísticos.
+- Rastreamento em tempo real do estoque e movimentação de produtos.
+- Integração com sistemas de transporte para coordenar entregas.
+- Alertas automáticos para possíveis atrasos ou problemas logísticos.
 
 
 ### Mateus - Analista de Compras 
 
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-dist-temp/assets/81201021/fc0fc049-b2b4-4e59-8fab-62fdb5bbaa25)
 
-> ### História de usuário
+#### História de usuário
+
 > Mateus, Analista de Compras, busca um sistema que o ajude a gerenciar eficientemente os estoques e a realizar pedidos de forma assertiva. Com funcionalidades como rastreamento em tempo real, integração com transporte e alertas automáticos, ele garante reposições oportunas e ações proativas diante de possíveis desafios logísticos. O sistema torna-se essencial para a eficiência do departamento de compras e contribui para um fluxo contínuo no processo de abastecimento.
 
  - Rastreamento em tempo real do estoque e movimentação de produtos.
@@ -50,11 +53,13 @@ Um Coordenador de Logística, busca um sistema de gerenciamento de estoque que o
 
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-dist-temp/assets/81201021/2134f704-d2c9-42aa-a0ef-de7a2c4977ab)
 
-> ### História de usuário
+### História de usuário
+
 > Rafaela, Operadora de Caixa, busca um sistema que forneça informações instantâneas sobre o estoque para atender clientes de forma eficiente. Com funcionalidades como disponibilidade em tempo real, alertas automáticos para produtos em baixa e facilidade de consulta, Rafaela garante um atendimento ágil, evita falta de produtos e responde prontamente às dúvidas dos clientes, contribuindo para uma experiência positiva no ponto de venda. O sistema torna-se essencial para melhorar a eficiência do atendimento ao cliente no varejo.
- - Disponibilidade em tempo real das informações de estoque.
- - Alertas para produtos fora de estoque ou com quantidade baixa.
- - Facilidade de consulta para responder a dúvidas dos clientes sobre a disponibilidade de produtos.
+
+- Disponibilidade em tempo real das informações de estoque.
+- Alertas para produtos fora de estoque ou com quantidade baixa.
+- Facilidade de consulta para responder a dúvidas dos clientes sobre a disponibilidade de produtos.
 
 
 
@@ -64,10 +69,10 @@ Um Coordenador de Logística, busca um sistema de gerenciamento de estoque que o
 
 Atualmente, a empresa de varejo enfrenta diversos desafios no gerenciamento de seu estoque, principalmente devido à falta de automação e integração nos processos existentes. A maior parte do controle de estoque é realizada manualmente ou por meio de sistemas isolados, que não se comunicam eficientemente entre si ou com fornecedores e sistemas de logística. Isso resulta em:
 
- - Desafios de Precisão: Erros humanos na entrada de dados e no acompanhamento de estoque levam a discrepâncias significativas entre o estoque registrado e o físico.
- - Demora na Reação: A falta de dados em tempo real sobre o nível de estoque atrasa a identificação de necessidades de reabastecimento, resultando em excesso de estoque ou, pior, em rupturas que afetam a satisfação do cliente.
- - Ineficiências Operacionais: Sem automação, o tempo gasto para gerenciar o estoque é substancial, desviando recursos de atividades mais estratégicas.
- - Decisões Baseadas em Intuição: A ausência de relatórios analíticos dificulta a tomada de decisão baseada em dados, tornando as compras e o planejamento de estoque menos eficazes
+- Desafios de Precisão: Erros humanos na entrada de dados e no acompanhamento de estoque levam a discrepâncias significativas entre o estoque registrado e o físico.
+- Demora na Reação: A falta de dados em tempo real sobre o nível de estoque atrasa a identificação de necessidades de reabastecimento, resultando em excesso de estoque ou, pior, em rupturas que afetam a satisfação do cliente.
+- Ineficiências Operacionais: Sem automação, o tempo gasto para gerenciar o estoque é substancial, desviando recursos de atividades mais estratégicas.
+- Decisões Baseadas em Intuição: A ausência de relatórios analíticos dificulta a tomada de decisão baseada em dados, tornando as compras e o planejamento de estoque menos eficazes
 
 ### Descrição Geral da Proposta
 
