@@ -2,13 +2,13 @@
 
 <span style="color:red">Pré-requisitos: <a href="2-Especificação do Projeto.md"> Documentação de Especificação</a></span>
 
-A metodologia de trabalho do grupo para atacar o problema consiste em seguir um processo de desenvolvimento ágil, com ciclos curtos de desenvolvimento e testes frequentes para garantir a qualidade do software. Para isso, utilizamos a ferramenta github project para gerenciar o backlog de tarefas e realizamos a documentação no repositório do projeto.
+A metodologia de trabalho do grupo para atacar o problema consiste em seguir um processo de desenvolvimento ágil, com ciclos curtos de desenvolvimento e testes frequentes para garantir a qualidade do software. Para isso, utilizamos a ferramenta GitHub project para gerenciar o backlog de tarefas e realizamos a documentação no repositório do projeto.
 
-Em relação aos ambientes de trabalho, utilizamos uma variedade de plataformas e tecnologias, dependendo das necessidades do projeto. Para desenvolvimento de backend e frontend, utilizamos a ferramenta de edição de código Visual Studio Code, as linguagens que serão utilizadas são c# e nodejs.
+Em relação aos ambientes de trabalho, utilizamos uma variedade de plataformas e tecnologias, dependendo das necessidades do projeto. Para desenvolvimento de backend e frontend, utilizamos a ferramenta de edição de código Visual Studio Code, as linguagens que serão utilizadas são C# e Node.js.
 
 Para gestão do código fonte, utilizamos o Git com o GitHub para versionamento e controle de mudanças, permitindo a colaboração entre os membros da equipe e o gerenciamento de branches e merges de forma eficiente.
 
-Em relação à gestão de times, utilizamos uma abordagem baseada em Scrum, com adaptações temos sprints semanais e retrospectivas para avaliar e melhorar continuamente o processo de desenvolvimento. Para comunicação e colaboração, utilizamos ferramentas como o whatApp e o microsoft teams para videoconferências e chats em tempo real.
+Em relação à gestão de times, utilizamos uma abordagem baseada em Scrum, com adaptações temos sprints semanais e retrospectivas para avaliar e melhorar continuamente o processo de desenvolvimento. Para comunicação e colaboração, utilizamos ferramentas como o WhatApp e o Microsoft teams para videoconferências e chats em tempo real.
 
 ## Ambiente de trabalho
 
@@ -20,7 +20,7 @@ Em relação à gestão de times, utilizamos uma abordagem baseada em Scrum, com
 
 ## Controle de Versão
 
-A ferramenta de controle de versão adotada no projeto foi o [Git](https://git-scm.com/), sendo que o [Github](https://github.com) foi utilizado para hospedagem do repositório. Será clonando em cada ambiente de desenvolvimento da equipe. Em seguida, definido as permissões de acesso ao repositório para cada membro da equipe, de acordo com suas funções e responsabilidades.
+A ferramenta de controle de versão adotada no projeto foi o [Git](https://git-scm.com/), sendo que o [Github](https://github.com) foi utilizado para hospedagem do repositório. Será clonando em cada ambiente de desenvolvimento da equipe. Em seguida, foram definidas as permissões de acesso ao repositório para cada membro da equipe, de acordo com suas funções e responsabilidades.
 
 A gerência de branches é realizada de forma a permitir uma gestão eficiente do desenvolvimento do software em diferentes frentes. São criados branches para as funcionalidades em desenvolvimento, correção de bugs e para releases. Cada branch é gerenciado de forma a manter um histórico claro e organizado, com merges realizados de forma periódica para garantir a integração do código desenvolvido por diferentes membros da equipe. O projeto segue a seguinte convenção para o nome de branches:
 
@@ -65,10 +65,10 @@ Silvestre
 > Para organização e distribuição das tarefas do projeto, a equipe está utilizando o github project estruturado com as seguintes listas:
 
 `Backlog:` recebe todas as tarefas a serem trabalhadas e representa o Product Backlog. Qualquer adição de atividades que necessite ser aplicada no projeto deve ser adicionada nesta lista. <br>
-`To do:` recebe as tarefas que foram serapadas na sprint e representa o Sprint Backlog. São as tarefas que serão trabalhadas dentro da sprint. <br>
+`To do:` recebe as tarefas que foram separadas na sprint e representa o Sprint Backlog. São as tarefas que serão trabalhadas dentro da sprint. <br>
 `Doing:` recebe qualquer tarefa que foi iniciada por um membro da equipe. <br>
 `Code Review:` recebe qualquer tarefa que precisa de uma avaliação de outro membro da equipe. <br>
-`Testing:` recebe as atividades concluidas que possuem a etiqueta de Test e passaram pelo controle de qualidade. Todas taefas nessa lista precisam de uma checagem mais rigorosa para checar se a solução possui problema e/ou falha. <br>
+`Testing:` recebe as atividades concluidas que possuem a etiqueta de Test e passaram pelo controle de qualidade. Todas tarefas nessa lista precisam de uma checagem mais rigorosa para checar se a solução possui problema e/ou falha. <br>
 `Done:` recebe todas as tarefas que passaram pelos testes e controle de qualidade e estão prontas para serem entregues ao usuário. Não existem mais alterações a serem feitas as tarefas nessa lista.
 
 O quadro kanban do grupo no github project está disponível através da URL [Github_Projects](https://github.com/orgs/ICEI-PUC-Minas-PMV-ADS/projects/831).
@@ -89,13 +89,13 @@ A gestão de times é realizada de forma a garantir uma comunicação clara e co
 As ferramentas empregadas no projeto são:
 
 - Editor de código. (Visual Studio Code)<br>
-O Visual studio code foi escolhido devido a sua grande comunidade de usuários, que desenvolve diversas extensões e plugins para aprimorar ainda mais a experiência de desenvolvimento. Além disso, ele oferece integração com serviços de controle de versão como o Git, o que facilita a gestão do código fonte e o trabalho colaborativo em equipe.<br>
+O Visual Studio Code foi escolhido devido à sua grande comunidade de usuários, que desenvolve diversas extensões e plugins para aprimorar ainda mais a experiência de desenvolvimento. Além disso, ele oferece integração com serviços de controle de versão como o Git, o que facilita a gestão do código fonte e o trabalho colaborativo em equipe.<br>
 - Ferramentas de comunicação (WhatsApp e Microsoft Teams)<br>
 O WhatsApp foi escolhido por ser uma ferramenta de mensagens instantâneas amplamente utilizada em todo o mundo, o que torna sua utilização bastante familiar para a maioria das pessoas. Ele é fácil de usar, rápido e oferece recursos como chamadas de voz e vídeo, o que pode facilitar a comunicação entre os membros da equipe em caso de necessidade.<br>
-Já o Teams por que oferece recursos avançados de comunicação, colaboração e gerenciamento de projetos. Além oferece recursos como videoconferências, compartilhamento de tela, gerenciamento de tarefas e integração com outras ferramentas da Microsoft, como o Office 365 (documentação do projeto). <br>
+Já o Microsoft Teams foi escolhido porque oferece recursos avançados de comunicação, colaboração e gerenciamento de projetos. Além oferece recursos como videoconferências, compartilhamento de tela, gerenciamento de tarefas e integração com outras ferramentas da Microsoft, como o Office 365 (documentação do projeto). <br>
 - Ferramentas de desenho de tela (Marvel App, figma)<br>
-O Marvel App foi escolhido por possui uma interface bastante intuitiva e fácil de usar, o que torna a criação do wireframe mais rápida e eficiente. Além de permitir que várias pessoas trabalhem em um mesmo projeto simultaneamente, o que é muito útil para equipes que precisam colaborar em um mesmo projeto.<br>
-- Ferramenta de gestão de projeto, quadro kanban (github project)<br>
-O github project foi escolhido por ser muito flexível, que pode ser utilizada para gerenciar projetos de diferentes tamanhos e tipos. É possível criar quadros personalizados, adicionar etiquetas, comentários e anexos, entre outras funcionalidades. E por ser uma ferramenta baseada na web e ter aplicativos para celular, o que significa que pode ser acessada de qualquer lugar e a qualquer momento.<br>
+O Marvel App foi escolhido por possuir uma interface bastante intuitiva e fácil de usar, o que torna a criação do wireframe mais rápida e eficiente. Além de permitir que várias pessoas trabalhem em um mesmo projeto simultaneamente, o que é muito útil para equipes que precisam colaborar em um mesmo projeto.<br>
+- Ferramenta de gestão de projeto, quadro kanban (GitHub Project)<br>
+O GitHub Project foi escolhido por ser muito flexível, que pode ser utilizada para gerenciar projetos de diferentes tamanhos e tipos. É possível criar quadros personalizados, adicionar etiquetas, comentários e anexos, entre outras funcionalidades. E por ser uma ferramenta baseada na web e ter aplicativos para celular, o que significa que pode ser acessada de qualquer lugar e a qualquer momento.<br>
 - Ferramenta de criação de fluxograma, diagramas e modelos (Mermaid.js, Draw.io)<br>
 Todas as ferramentas foram escolhidas pois possuem interfaces intuitivas e fáceis de usar e permitem criar modelos rapidamente e com facilidade, oferece suporte a uma ampla variedade de diagramas, incluindo diagramas de classe, diagramas de sequência, diagramas de atividades, diagrams de fluxo entre outros, tornando-as ferramentas abrangentes para modelagem de software.
