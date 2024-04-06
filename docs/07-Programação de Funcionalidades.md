@@ -24,13 +24,66 @@ Para cada requisito funcional, pode ser entregue um artefato desse tipo
 
 ## RF-4
 
+**Descrição:**
+
+Registrar produtos de compra/adição realizada.
+
+
+**Artefatos:**
+
+criação de artefato:
+
+- src\stock-flow\Configs\ComprasDatabaseSettings.cs
+- src\stock-flow\Controllers\ComprasController.cs
+- src\stock-flow\Dtos\CompraDto.cs
+- src\stock-flow\Models\Compra.cs
+- src\stock-flow\Services\ICompraService.cs
+- src\stock-flow\Services\lmpl\ICompraService.cs
+
+**Estrutura de dados utilizada:**
+
+- Classe `compras`: Armazena informações de entradas de produtos.
+- Banco MongoDB: Armazena os dados dos entradas cadastrados.
+
+
+**Acesso e verificação:**
+
+- GET, POST /api/v1/compras
+- PUT, DELETE /api/v1/compras/{id}
+
 ## RF-5
+**Descrição:**
+
+Registrar produtos de venda/baixa realizada.
+
+**Artefatos:**
+
+Artefatos criados:
+
+- src\stock-flow\Configs\VendasDatabaseSettings.cs
+- src\stock-flow\Controllers\VendasController.cs
+- src\stock-flow\Dtos\VendaDto.cs
+- src\stock-flow\Models\Venda.cs
+- src\stock-flow\Services\IVendaService.cs
+- src\stock-flow\Services\lmpl\IVendaService.cs
+
+
+**Estrutura de dados utilizada:**
+
+- Classe `vendas`: Armazena informações de vendas.
+- Banco MongoDB: Armazena os dados das vendas cadastradas.
+
+
+**Acesso e verificação:**
+
+- GET, POST /api/v1/vendas
+- PUT, DELETE /api/v1/vendas/{id}
 
 ## RF-6
 
 **Descrição:**
 
-
+Notificar o usuario sobre produtos que foram zerados.
 
 **Artefatos:**
 
@@ -54,6 +107,7 @@ Adição em artefato:
 
 **Descrição:**
 
+Permitir que o usúario gerencie fornecedores.
 
 
 **Artefatos:**
@@ -80,7 +134,7 @@ Criação de artefatos:
 
 **Descrição:**
 
-
+Permitir que o usúario encontre fornecedores por produtos.
 
 **Artefatos:**
 
