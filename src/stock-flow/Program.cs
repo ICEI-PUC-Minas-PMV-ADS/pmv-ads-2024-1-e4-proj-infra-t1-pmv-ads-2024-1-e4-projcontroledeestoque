@@ -86,8 +86,10 @@ builder.Services.AddSwaggerGen();
 //Services configuration
 builder.Services.Configure<TestDatabaseSettings>(builder.Configuration.GetSection("MongoDbSettings"));
 builder.Services.Configure<ProdutosDatabaseSettings>(builder.Configuration.GetSection("MongoDbSettings"));
+builder.Services.Configure<FornecedoresDatabaseSettings>(builder.Configuration.GetSection("MongoDbSettings"));
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IProdutoService, ProdutoService>();
+builder.Services.AddScoped<IFornecedorService, FornecedorService>();
 
 var app = builder.Build();
 
