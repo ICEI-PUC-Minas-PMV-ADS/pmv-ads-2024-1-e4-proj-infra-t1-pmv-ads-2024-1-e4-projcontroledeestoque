@@ -13,3 +13,87 @@ Para cada requisito funcional, pode ser entregue um artefato desse tipo
 > - [JSON Data Set Sample](https://opensource.adobe.com/Spry/samples/data_region/JSONDataSetSample.html)
 > - [JSON - Introduction (W3Schools)](https://www.w3schools.com/js/js_json_intro.asp)
 > - [JSON Tutorial (TutorialsPoint)](https://www.tutorialspoint.com/json/index.htm)
+
+
+
+## RF-1
+
+## RF-2
+
+## RF-3
+
+## RF-4
+
+## RF-5
+
+## RF-6
+
+**Descrição:**
+
+
+
+**Artefatos:**
+
+Adição em artefato:
+- src/stock-flow/Services/Impl/ProdutoService.cs
+
+
+**Estrutura de dados utilizada:**
+
+- Classe produto: agora consegue recuperar informações de produtos com quantidade zero
+- Banco MongoDB: devolve informações sobre as quantidades de todos os produtos
+
+
+**Acesso e verificação:**
+
+- /api/v1/produtos/quantidade-zero
+
+
+
+## RF-7
+
+**Descrição:**
+
+
+
+**Artefatos:**
+
+Criação de artefatos:
+- src/stock-flow/Configs/FornecedoresDatabaseSettings.cs
+- src/stock-flow/Controllers/FornecedoresController.cs
+- src/stock-flow/Dtos/FornecedorDto.cs
+- src/stock-flow/Models/Fornecedores.cs
+- src/stock-flow/Services/Impl/FornecedorService.cs
+- src/stock-flow/Services/IFornecedorService.cs
+
+**Estrutura de dados utilizada:**
+
+- Classe `fornecedores`: Armazena informações de fornecedores e está relacionada aos produtos
+- Banco MongoDB: Armazena os dados dos fornecedores cadastrados.
+
+**Acesso e verificação:**
+
+- GET, POST /api/v1/fornecedores
+- PUT, DELETE /api/v1/fornecedores/{id}
+
+## RF-8
+
+**Descrição:**
+
+
+
+**Artefatos:**
+
+Adição em artefato:
+- src/stock-flow/Services/Impl/ProdutoService.cs
+
+**Estrutura de dados utilizada:**
+
+- Classe `produto`: agora consegue recuperar informações de fornecedores de um produto
+- Banco MongoDB: devolve informações sobre os fornecedores de um produto
+
+
+**Acesso e verificação:**
+
+- /api/v1/produtos/{id_produto}/fornecedores
+
