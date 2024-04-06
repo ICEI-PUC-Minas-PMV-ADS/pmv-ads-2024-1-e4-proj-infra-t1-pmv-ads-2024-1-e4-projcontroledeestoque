@@ -76,5 +76,33 @@ namespace stock_flow.Controllers
             }
         }
 
+        [HttpGet("{id}/fornecedores")]
+        public async Task<ActionResult<IEnumerable<FornecedorDto>>> GetFornecedoresDoProdutoAsync(string id)
+        {
+            try
+            {
+                var fornecedores = await _produtoService.GetFornecedoresDoProdutoAsync(id);
+                return Ok(fornecedores);
+            }
+            catch (Exception ex)
+            {
+                return NotFound(new BaseResponse { Message = ex.Message });
+            }
+        }
+
+        [HttpGet("quantidade-zero")]
+        public async Task<ActionResult<IEnumerable<ProdutoDto>>> GetProdutosComQuantidadeZero()
+        {
+            try
+            {
+                var produtos = await _produtoService.GetProdutosComQuantidadeZeroAsync();
+                return Ok(produtos);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { Error = ex.Message });
+            }
+        }
+
     }
 }

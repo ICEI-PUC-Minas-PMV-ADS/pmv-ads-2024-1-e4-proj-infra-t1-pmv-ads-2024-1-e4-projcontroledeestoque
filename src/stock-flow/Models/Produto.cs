@@ -24,5 +24,7 @@ namespace stock_flow.Models
         public int Quantidade { get; set; }
 
         public string Imagem { get; set; } = string.Empty;
+
+        public List<string>? FornecedoresId { get; set; }
     }
 }
