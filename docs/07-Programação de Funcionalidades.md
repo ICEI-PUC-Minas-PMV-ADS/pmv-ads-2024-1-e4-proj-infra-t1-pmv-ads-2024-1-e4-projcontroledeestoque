@@ -48,6 +48,7 @@ Artefatos criados:
 **Descrição:**
 
 RF - 04: Registrar produtos de compra/adição realizada.
+
 RF - 05: Registrar produtos de venda/baixa realizada.
 
 
