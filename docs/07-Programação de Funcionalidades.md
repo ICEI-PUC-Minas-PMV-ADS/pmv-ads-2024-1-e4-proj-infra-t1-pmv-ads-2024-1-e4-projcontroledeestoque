@@ -13,8 +13,6 @@ Permitir que o usuário faça login.
 
 **Artefatos:**
 
-Artefatos criados:
-
 - src\stock-flow\Controllers\AuthController.cs
 - src\stock-flow\Controllers\Requests\LoginRequest.cs
 - src\stock-flow\Controllers\Requests\RegisterRequest.cs
@@ -54,8 +52,6 @@ RF - 05: Registrar produtos de venda/baixa realizada.
 
 **Artefatos:**
 
-criação de artefato:
-
 - src\stock-flow\Configs\MovimentacoesDatabaseSettings.cs
 - src\stock-flow\Controllers\MovimentacoesController.cs
 - src\stock-flow\Dtos\MovimentacoesDto.cs
@@ -82,7 +78,6 @@ Notificar o usuario sobre produtos que foram zerados.
 
 **Artefatos:**
 
-Adição em artefato:
 - src/stock-flow/Services/Impl/ProdutoService.cs
 
 
@@ -107,7 +102,6 @@ Permitir que o usúario gerencie fornecedores.
 
 **Artefatos:**
 
-Criação de artefatos:
 - src/stock-flow/Configs/FornecedoresDatabaseSettings.cs
 - src/stock-flow/Controllers/FornecedoresController.cs
 - src/stock-flow/Dtos/FornecedorDto.cs
@@ -133,7 +127,6 @@ Permitir que o usúario encontre fornecedores por produtos.
 
 **Artefatos:**
 
-Adição em artefato:
 - src/stock-flow/Services/Impl/ProdutoService.cs
 
 **Estrutura de dados utilizada:**
