@@ -102,7 +102,7 @@ namespace stock_flow.Services.Impl
             await _movimentacoesCollection.ReplaceOneAsync(x => x.Id == id, movimentacao);
             return movimentacao;
         }
-        public async Task<IEnumerable<Movimentacao>> GetMovimentacaoByDateAndTypeAsync(TipoMovimentacao tipo, DateTime dataInicial, DateTime dataFinal)
+        public async Task<IEnumerable<MovimentacaoDto>> GetMovimentacaoByDateAndTypeAsync(TipoMovimentacao tipo, DateTime dataInicial, DateTime dataFinal)
         {
             var filter = Builders<Movimentacao>.Filter.And(
                 Builders<Movimentacao>.Filter.Eq(v => v.Tipo, tipo.ToString()),
@@ -110,9 +110,18 @@ namespace stock_flow.Services.Impl
                 Builders<Movimentacao>.Filter.Lte(v => v.Data, dataFinal)
             );
 
-            return await _movimentacoesCollection.Find(filter).ToListAsync();
+            var movimentacoes = await _movimentacoesCollection.Find(filter).ToListAsync();
 
+            var movimentacaoDto = new List<MovimentacaoDto>();
+            foreach (var movimentacao in movimentacoes)
+            {
+                movimentacaoDto.Add(new MovimentacaoDto
+                {
+                    Produto = movimentacao.Produto,
+                });
+            }
 
+            return movimentacaoDto;
         }
     }
 }
