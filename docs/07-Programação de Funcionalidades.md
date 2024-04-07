@@ -7,64 +7,71 @@ Implementação do sistema descritas por meio dos requisitos funcionais e/ou nã
 
 ## RF-2
 
+**Descrição:**
+
+Permitir que o usuário faça login.
+
+**Artefatos:**
+
+Artefatos criados:
+
+- src\stock-flow\Controllers\AuthController.cs
+- src\stock-flow\Controllers\Requests\LoginRequest.cs
+- src\stock-flow\Controllers\Requests\RegisterRequest.cs
+- src\stock-flow\Controllers\Requests\RoleRequest.cs
+- src\stock-flow\Controllers\Responses\AuthResponse.cs
+- src\stock-flow\Controllers\Responses\LoginResponse.cs
+- src\stock-flow\Dtos\LoginDto.cs
+- src\stock-flow\Models\ApplicationRole.cs
+- src\stock-flow\Models\ApplicationUser.cs
+- src\stock-flow\Services\AuthService.cs
+- src\stock-flow\Services\lmpl\IAuthService.cs
+
+
+**Estrutura de dados utilizada:**
+
+- Classe `users`: Armazena informações de usuários.
+- Classe `roles`: Armazena permissões de usuários.
+- Banco MongoDB: Armazena os dados dos usuários e permissões.
+
+
+**Acesso e verificação:**
+
+- POST /api/v1/auth/roles
+- POST /api/v1/auth/register
+- POST /api/v1/auth/login
+
 ## RF-3
 
-## RF-4
+## RF-4 e RF-5
 
 **Descrição:**
 
-Registrar produtos de compra/adição realizada.
+RF - 04: Registrar produtos de compra/adição realizada.
+RF - 05: Registrar produtos de venda/baixa realizada.
 
 
 **Artefatos:**
 
 criação de artefato:
 
-- src\stock-flow\Configs\ComprasDatabaseSettings.cs
-- src\stock-flow\Controllers\ComprasController.cs
-- src\stock-flow\Dtos\CompraDto.cs
-- src\stock-flow\Models\Compra.cs
-- src\stock-flow\Services\ICompraService.cs
-- src\stock-flow\Services\lmpl\ICompraService.cs
+- src\stock-flow\Configs\MovimentacoesDatabaseSettings.cs
+- src\stock-flow\Controllers\MovimentacoesController.cs
+- src\stock-flow\Dtos\MovimentacoesDto.cs
+- src\stock-flow\Models\Movimentacoes.cs
+- src\stock-flow\Services\IMovimentacoesaService.cs
+- src\stock-flow\Services\lmpl\IMovimentacoesService.cs
 
 **Estrutura de dados utilizada:**
 
-- Classe `compras`: Armazena informações de entradas de produtos.
-- Banco MongoDB: Armazena os dados dos entradas cadastrados.
+- Classe `movimentacoes`: Armazena informações de entradas e saídas de produtos.
+- Banco MongoDB: Armazena os dados de entradas e saídas cadastrados.
 
 
 **Acesso e verificação:**
 
-- GET, POST /api/v1/compras
-- PUT, DELETE /api/v1/compras/{id}
-
-## RF-5
-**Descrição:**
-
-Registrar produtos de venda/baixa realizada.
-
-**Artefatos:**
-
-Artefatos criados:
-
-- src\stock-flow\Configs\VendasDatabaseSettings.cs
-- src\stock-flow\Controllers\VendasController.cs
-- src\stock-flow\Dtos\VendaDto.cs
-- src\stock-flow\Models\Venda.cs
-- src\stock-flow\Services\IVendaService.cs
-- src\stock-flow\Services\lmpl\IVendaService.cs
-
-
-**Estrutura de dados utilizada:**
-
-- Classe `vendas`: Armazena informações de vendas.
-- Banco MongoDB: Armazena os dados das vendas cadastradas.
-
-
-**Acesso e verificação:**
-
-- GET, POST /api/v1/vendas
-- PUT, DELETE /api/v1/vendas/{id}
+- GET, POST /api/v1/movimentacoes
+- PUT, DELETE /api/v1/movimentacoes/{id}
 
 ## RF-6
 
