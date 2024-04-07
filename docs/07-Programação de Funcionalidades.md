@@ -1,6 +1,18 @@
 # Programação de Funcionalidades
 
-Implementação do sistema descritas por meio dos requisitos funcionais e/ou não funcionais. Deve relacionar os requisitos atendidos os artefatos criados (código fonte) além das estruturas de dados utilizadas e as instruções para acesso e verificação da implementação que deve estar funcional no ambiente de hospedagem.
+## Visão Geral
+A API do Stock Flow permite aos usuários gerenciar seu estoque de produtos, visualizar relatórios de entradas e saídas dos produtos e autenticação dos usuários.
+
+## Documentação da API - Stock Flow
+A documentação completa está disposta no swagger do projeto e pode ser encontrada: https://stock-flow.azurewebsites.net/swagger/index.html
+
+## Configuração em Nuvem
+- **Banco de Dados:** MongoDB rodando numa instância do AzureCosmos DB, chaves já configuradas no projeto.
+- **Servidor:** rodando numa instância do Azure AppServices, endereço: https://stock-flow.azurewebsites.net/.
+
+## Configuração Local
+- **Banco de Dados:** MongoDB rodando localmente. Certifique-se de que o MongoDB está instalado e que você tem uma pasta `C:\data\db` para armazenar os dados.
+- **Servidor:** API desenvolvida em .NET, pode rodar localmente com IIS Express na porta 8080.
 
 
 ## RF-1
@@ -179,5 +191,5 @@ Permitir que o usúario encontre fornecedores por produtos.
 
 **Acesso e verificação:**
 
-- /api/v1/produtos/{id_produto}/fornecedores
+- GET /api/v1/produtos/{id_produto}/fornecedores
 
