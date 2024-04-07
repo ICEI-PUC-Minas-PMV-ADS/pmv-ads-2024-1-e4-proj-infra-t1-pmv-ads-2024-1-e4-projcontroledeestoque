@@ -5,6 +5,21 @@ Implementação do sistema descritas por meio dos requisitos funcionais e/ou nã
 
 ## RF-1
 
+**Descrição:**
+
+Permitir que o usuário gerencie produtos
+
+**Artefatos:**
+
+- src\stock-flow\Controllers\ProdutoController.cs
+- src\stock-flow\Dtos\Categoria.cs
+- src\stock-flow\Dtos\Produto.cs
+- src\stock-flow\Models\ApplicationCategory.cs
+- src\stock-flow\Models\ApplicationProduct.cs
+
+- Classe `ProdutosController`: Armazena informações de gerenciamento de produtos.
+- Banco MongoDB: Armazena os dados dos produtos.
+
 ## RF-2
 
 **Descrição:**
