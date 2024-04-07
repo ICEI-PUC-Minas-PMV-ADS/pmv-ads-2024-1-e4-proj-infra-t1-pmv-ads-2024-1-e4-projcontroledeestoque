@@ -1,5 +1,6 @@
 ﻿using stock_flow.Dtos;
 using stock_flow.Models;
+using stock_flow.Enums;
 
 namespace stock_flow.Services
 {
@@ -10,5 +11,6 @@ namespace stock_flow.Services
         Task<Movimentacao> CreateMovimentacaoAsync(MovimentacaoDto movimentacaoDto);
         Task<Movimentacao> UpdateMovimentacaoAsync(string id, MovimentacaoDto movimentacaoDto);
         Task DeleteMovimentacaoAsync(string id);
+        Task<IEnumerable<Movimentacao>> GetMovimentacaoByFiltroAsync(FiltroDto filtroDto);
     }
 }

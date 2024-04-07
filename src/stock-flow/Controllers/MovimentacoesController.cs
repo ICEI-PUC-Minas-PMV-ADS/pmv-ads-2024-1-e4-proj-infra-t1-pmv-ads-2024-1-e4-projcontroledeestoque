@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using stock_flow.Controllers.Responses;
 using stock_flow.Dtos;
+using stock_flow.Enums;
 using stock_flow.Models;
 using stock_flow.Services;
 

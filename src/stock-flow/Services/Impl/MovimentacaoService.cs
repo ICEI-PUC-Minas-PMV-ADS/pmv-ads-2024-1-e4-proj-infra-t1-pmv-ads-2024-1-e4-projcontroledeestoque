@@ -102,5 +102,47 @@ namespace stock_flow.Services.Impl
             await _movimentacoesCollection.ReplaceOneAsync(x => x.Id == id, movimentacao);
             return movimentacao;
         }
+
+        public async Task<IEnumerable<Movimentacao>> GetMovimentacaoByFiltroAsync(FiltroDto filtroDto)
+        {
+            var filtro = Builders<Movimentacao>.Filter.Empty;
+
+            if (DateTime.TryParse(filtroDto.DataInicio, out DateTime dataInicio))
+            {
+                filtro &= Builders<Movimentacao>.Filter.Gte(x => x.Data, dataInicio);
+            }
+
+            if (DateTime.TryParse(filtroDto.DataFim, out DateTime dataFim))
+            {
+                filtro &= Builders<Movimentacao>.Filter.Lte(x => x.Data, dataFim);
+            }
+
+            if (filtroDto.TipoMovimentacao != null)
+            {
+                filtro &= Builders<Movimentacao>.Filter.Eq(x => x.Tipo, filtroDto.TipoMovimentacao);
+            }
+
+            if (filtroDto.Produto != null)
+            {
+                filtro &= Builders<Movimentacao>.Filter.Eq(x => x.Produto, filtroDto.Produto);
+            }
+
+            if (filtroDto.Usuario != null)
+            {
+                filtro &= Builders<Movimentacao>.Filter.Eq(x => x.Usuario, filtroDto.Usuario);
+            }
+
+            if (int.TryParse(filtroDto.Quantidade, out int quantidade))
+            {
+                filtro &= Builders<Movimentacao>.Filter.Gte(x => x.Quantidade, quantidade);
+            }
+
+            if (decimal.TryParse(filtroDto.Valor, out decimal valor))
+            {
+                filtro &= Builders<Movimentacao>.Filter.Gte(x => x.Valor, valor);
+            }
+
+            return await _movimentacoesCollection.Find(filtro).ToListAsync();
+        }
     }
 }
