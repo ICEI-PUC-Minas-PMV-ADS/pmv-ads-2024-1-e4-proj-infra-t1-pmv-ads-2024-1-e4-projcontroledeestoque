@@ -8,6 +8,7 @@ namespace stock_flow.Services
         Task RegisterAsync(ApplicationUser user, string password);
         Task RoleAsync(ApplicationRole role);
         Task AddRoleUserAsync(ApplicationUser user, string role);
+        Task<ApplicationUser> GetUserByIdAsync(string id);
         Task<LoginDto> LoginAsync(string email, string password);
     }
 }

@@ -9,6 +9,7 @@ namespace stock_flow.Services
         Task<IEnumerable<Produto>> GetProdutosAsync();
         Task<Produto> CreateProdutoAsync(ProdutoDto produtoDto);
         Task<Produto> UpdateProdutoAsync(string id, ProdutoDto produtoDto);
+        Task<Produto> UpdateQuantidadeAsync(string id, int quantidade);
         Task DeleteProdutoAsync(string id);
         Task<IEnumerable<FornecedorDto>> GetFornecedoresDoProdutoAsync(string id);
         Task<IEnumerable<ProdutoDto>> GetProdutosComQuantidadeZeroAsync();

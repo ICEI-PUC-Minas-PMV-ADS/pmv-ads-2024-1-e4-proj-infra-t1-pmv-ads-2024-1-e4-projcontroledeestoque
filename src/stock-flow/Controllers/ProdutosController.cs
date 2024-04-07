@@ -1,9 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using stock_flow.Dtos;
-using Microsoft.Extensions.Options;
-using MongoDB.Driver;
-using stock_flow.Configs;
-using stock_flow.Models;
 using stock_flow.Services;
 using stock_flow.Controllers.Responses;
 

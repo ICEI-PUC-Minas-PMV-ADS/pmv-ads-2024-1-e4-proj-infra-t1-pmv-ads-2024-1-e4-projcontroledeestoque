@@ -24,7 +24,6 @@ namespace stock_flow.Services.Impl
 
             _produtosCollection = produtosDatabase.GetCollection<Produto>(produtosDatabaseSettings.Value.ProdutosCollectionName);
             _fornecedoresCollection = fornecedoresDatabase.GetCollection<Fornecedor>(fornecedoresDatabaseSettings.Value.FornecedoresCollectionName);
-
         }
 
         public async Task<Produto> CreateProdutoAsync(ProdutoDto produtoDto)
@@ -79,14 +78,25 @@ namespace stock_flow.Services.Impl
             return produto;
         }
 
+        public async Task<Produto> UpdateQuantidadeAsync(string id, int quantidade)
+        {
+            var produto = await GetProdutoByIdAsync(id);
+
+            produto.Quantidade += quantidade;
+
+            if (produto.Quantidade < 0)
+            {
+                throw new Exception("Quantidade insuficiente");
+            }
+
+            await _produtosCollection.ReplaceOneAsync(x => x.Id == id, produto);
+            return produto;
+        }
+
         public async Task<IEnumerable<FornecedorDto>> GetFornecedoresDoProdutoAsync(string produtoId)
         {
-            var produto = await _produtosCollection.Find(x => x.Id == produtoId).FirstOrDefaultAsync();
-
-            if (produto == null)
-            {
+            var produto = await _produtosCollection.Find(x => x.Id == produtoId).FirstOrDefaultAsync() ?? 
                 throw new Exception("Produto não encontrado");
-            }
 
             var fornecedores = await _fornecedoresCollection.Find(f => produto.FornecedoresId.Contains(f.Id)).ToListAsync();
 
@@ -97,6 +107,7 @@ namespace stock_flow.Services.Impl
                 Contato = fornecedor.Contato
             });
         }
+
         public async Task<IEnumerable<ProdutoDto>> GetProdutosComQuantidadeZeroAsync()
         {
             var filter = Builders<Produto>.Filter.Eq(p => p.Quantidade, 0);
@@ -113,6 +124,5 @@ namespace stock_flow.Services.Impl
 
             return produtosDto;
         }
-
     }
 }

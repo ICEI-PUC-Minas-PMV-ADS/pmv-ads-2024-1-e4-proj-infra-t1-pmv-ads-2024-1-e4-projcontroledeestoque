@@ -243,6 +243,127 @@
 			]
 		},
 		{
+			"name": "Movimentações",
+			"item": [
+				{
+					"name": "/movimentacoes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/movimentacoes",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"movimentacoes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/movimentacoes/{id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/movimentacoes/660825f7bc799f5e656b388d",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"movimentacoes",
+								"660825f7bc799f5e656b388d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/movimentacoes",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"produto\": \"660825f7bc799f5e656b388d\",\r\n  \"tipo\": \"Compra\",\r\n  \"quantidade\": 1,\r\n  \"valor\": 0,\r\n  \"usuario\": \"88d9400b-eeb6-4b36-8735-483e40d28a6a\"\r\n  //\"data\": \"2024-04-07T16:55:15.068Z\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/movimentacoes",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"movimentacoes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/produtos/{id}",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome\": \"Samsung UltraBook 3\",\r\n  \"descricao\": \"Notebook Samsung UltraBook 3 17-1300 32GB\",\r\n  \"categorias\": [\r\n    \"Informática\", \"Notebook\", \"Samsung\"\r\n  ],\r\n  \"precoCusto\": 8500.99,\r\n  \"precoVenda\": 12000.99\r\n  //\"quantidade\": 0,\r\n  //\"imagem\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/produtos/66082537bc799f5e656b388c",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"produtos",
+								"66082537bc799f5e656b388c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/produtos/{id}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/produtos/66082537bc799f5e656b388c",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"produtos",
+								"66082537bc799f5e656b388c"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Weather",
 			"request": {
 				"auth": {

@@ -59,6 +59,11 @@ namespace stock_flow.Services.Impl
             }
         }
 
+        public async Task<ApplicationUser> GetUserByIdAsync(string id)
+        {
+            return await _userManager.FindByIdAsync(id) ?? throw new AuthException("User not found");
+        }
+
         public async Task<LoginDto> LoginAsync(string email, string password)
         {
             var user = await _userManager.FindByEmailAsync(email) ?? throw new AuthException("Invalid email/password");
