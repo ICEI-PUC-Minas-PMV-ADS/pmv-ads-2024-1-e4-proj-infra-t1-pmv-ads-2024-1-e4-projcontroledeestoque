@@ -81,19 +81,5 @@ namespace stock_flow.Controllers
                 return NotFound(new BaseResponse { Message = ex.Message });
             }
         }
-        [HttpGet("data")]
-        public async Task<ActionResult<IEnumerable<Movimentacao>>> GetMovimentacaoByDateAndTypeAsync(TipoMovimentacao tipo, DateTime dataInicial, DateTime dataFinal)
-        {
-            try
-            {
-                var movimentacoes = await _movimentacaoService.GetMovimentacaoByDateAndTypeAsync(tipo, dataInicial, dataFinal);
-                return Ok(movimentacoes);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(new BaseResponse { Message = ex.Message });
-            }
-
-        }
     }
 }
