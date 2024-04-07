@@ -17,6 +17,8 @@ Permitir que o usuário gerencie produtos
 - src\stock-flow\Models\ApplicationCategory.cs
 - src\stock-flow\Models\ApplicationProduct.cs
 
+**Estrutura de dados utilizada:**
+
 - Classe `ProdutosController`: Armazena informações de gerenciamento de produtos.
 - Banco MongoDB: Armazena os dados dos produtos.
 
