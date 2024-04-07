@@ -102,5 +102,17 @@ namespace stock_flow.Services.Impl
             await _movimentacoesCollection.ReplaceOneAsync(x => x.Id == id, movimentacao);
             return movimentacao;
         }
+        public async Task<IEnumerable<Movimentacao>> GetMovimentacaoByDateAndTypeAsync(TipoMovimentacao tipo, DateTime dataInicial, DateTime dataFinal)
+        {
+            var filter = Builders<Movimentacao>.Filter.And(
+                Builders<Movimentacao>.Filter.Eq(v => v.Tipo, tipo.ToString()),
+                Builders<Movimentacao>.Filter.Gte(v => v.Data, dataInicial),
+                Builders<Movimentacao>.Filter.Lte(v => v.Data, dataFinal)
+            );
+
+            return await _movimentacoesCollection.Find(filter).ToListAsync();
+
+
+        }
     }
 }
