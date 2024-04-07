@@ -22,6 +22,11 @@ Permitir que o usuário gerencie produtos
 - Classe `ProdutosController`: Armazena informações de gerenciamento de produtos.
 - Banco MongoDB: Armazena os dados dos produtos.
 
+**Acesso e verificação:**
+
+- GET, POST /api/v1/produtos
+- PUT, DELETE /api/v1/produtos/{id}
+
 ## RF-2
 
 **Descrição:**
