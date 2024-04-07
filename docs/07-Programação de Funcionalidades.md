@@ -19,7 +19,7 @@ Permitir que o usuário gerencie produtos
 
 **Estrutura de dados utilizada:**
 
-- Classe `ProdutosController`: Armazena informações de gerenciamento de produtos.
+- Classe `produtos`: Armazena informações de gerenciamento de produtos.
 - Banco MongoDB: Armazena os dados dos produtos.
 
 **Acesso e verificação:**
@@ -62,6 +62,26 @@ Permitir que o usuário faça login.
 - POST /api/v1/auth/login
 
 ## RF-3
+**Descrição:**
+
+Emitir um relatório a cada movimentação
+
+**Artefatos:**
+
+- src\stock-flow\Controllers\RelatoriosController.cs
+- src\stock-flow\Dtos\FiltroDto.cs
+- src\stock-flow\Models\Movimentacoes.cs
+- src\stock-flow\Services\IMovimentacoesaService.cs
+- src\stock-flow\Services\lmpl\IMovimentacoesService.cs
+
+**Estrutura de dados utilizada:**
+
+- Classe `movimentacoes`: Armazena informações de entradas e saídas de produtos.
+- Banco MongoDB: Armazena os dados das movimentações.
+
+**Acesso e verificação:**
+
+- GET /api/v1/relatorios/movimentacoes?dataInicio=&dataFim=&produto=&tipo=&usuario=&quatidade=&valor=
 
 ## RF-4 e RF-5
 
@@ -96,7 +116,7 @@ RF - 05: Registrar produtos de venda/baixa realizada.
 
 **Descrição:**
 
-Notificar o usuario sobre produtos que foram zerados.
+Notificar o usuário sobre produtos que foram zerados.
 
 **Artefatos:**
 
@@ -105,7 +125,7 @@ Notificar o usuario sobre produtos que foram zerados.
 
 **Estrutura de dados utilizada:**
 
-- Classe produto: agora consegue recuperar informações de produtos com quantidade zero
+- Classe `produto`: agora consegue recuperar informações de produtos com quantidade zero
 - Banco MongoDB: devolve informações sobre as quantidades de todos os produtos
 
 
