@@ -4,3 +4,7 @@ Faça uma apresentação de um resumo de todos o processo de desenvolvimento e n
 
 * Vídeo 1ª Etapa
 https://www.youtube.com/watch?v=2gwNBHn_JKE
+
+* Vídeo 2ª Etapa
+https://www.youtube.com/watch?v=Q9PTFws-ajA
+
