@@ -32,7 +32,7 @@ namespace stock_flow.Controllers
             }
             catch (Exception ex)
             {
-                return NotFound(new BaseResponse { Message = ex.Message });
+                return NotFound(new BaseResponse { Mensagem = ex.Message });
             }
         }
 
@@ -54,7 +54,7 @@ namespace stock_flow.Controllers
             }
             catch (Exception ex)
             {
-                return NotFound(new BaseResponse { Message = ex.Message });
+                return NotFound(new BaseResponse { Mensagem = ex.Message });
             }
         }
 
@@ -68,7 +68,7 @@ namespace stock_flow.Controllers
             }
             catch (Exception ex)
             {
-                return NotFound(new BaseResponse { Message = ex.Message });
+                return NotFound(new BaseResponse { Mensagem = ex.Message });
             }
         }
 
@@ -82,7 +82,7 @@ namespace stock_flow.Controllers
             }
             catch (Exception ex)
             {
-                return NotFound(new BaseResponse { Message = ex.Message });
+                return NotFound(new BaseResponse { Mensagem = ex.Message });
             }
         }
 

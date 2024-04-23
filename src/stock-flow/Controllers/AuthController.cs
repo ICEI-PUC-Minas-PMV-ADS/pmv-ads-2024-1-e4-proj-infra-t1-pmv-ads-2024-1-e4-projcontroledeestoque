@@ -34,8 +34,8 @@ namespace stock_flow.Controllers
 
                 return Ok(new AuthResponse
                 {
-                    Success = true,
-                    Message = "Role created successfully"
+                    Sucesso = true,
+                    Mensagem = "Role cadastrada com sucesso"
                 });
             }
             catch (Exception ex)
@@ -43,15 +43,15 @@ namespace stock_flow.Controllers
                 Console.WriteLine(ex.Message);
                 return BadRequest(new AuthResponse
                 {
-                    Success = false,
-                    Message = "An error occurred: " + ex.Message
+                    Sucesso = false,
+                    Mensagem = "Um erro ocorreu: " + ex.Message
                 });
             }
         }
 
 
         [HttpPost]
-        [Route("register")]
+        [Route("cadastro")]
         public async Task<IActionResult> Register([FromBody] RegisterRequest request)
         {
             try
@@ -60,11 +60,11 @@ namespace stock_flow.Controllers
                 {
                     Email = request.Email,
                     UserName = request.Email,
-                    FullName = request.FullName,
+                    FullName = request.Nome,
                     ConcurrencyStamp = Guid.NewGuid().ToString()
                 };
 
-                await _authService.RegisterAsync(user, request.Password);
+                await _authService.RegisterAsync(user, request.Senha);
 
                 if (!string.IsNullOrEmpty(request.Role))
                 {
@@ -73,8 +73,8 @@ namespace stock_flow.Controllers
 
                 return Ok(new AuthResponse
                 {
-                    Success = true,
-                    Message = "User created successfully"
+                    Sucesso = true,
+                    Mensagem = "Usuário cadastrado com sucesso"
                 });
             }
             catch (Exception ex)
@@ -82,8 +82,8 @@ namespace stock_flow.Controllers
                 Console.WriteLine(ex.Message);
                 return BadRequest(new AuthResponse
                 {
-                    Success = false,
-                    Message = "An error occurred: " + ex.Message
+                    Sucesso = false,
+                    Mensagem = "Um erro ocorreu: " + ex.Message
                 });
             }
         }
@@ -96,26 +96,26 @@ namespace stock_flow.Controllers
         {
             try
             {
-                var result = await _authService.LoginAsync(request.Email, request.Password);
+                var result = await _authService.LoginAsync(request.Email, request.Senha);
 
                 var response = new LoginResponse
                 {
-                    Success = true,
-                    Message = "Login successful",
+                    Sucesso = true,
+                    Mensagem = "Login com sucesso",
                     AccessToken = result.AccessToken,
                     Email = result.Email,
                     UserId = result.UserId
                 };
 
-                return Ok(result);
+                return Ok(response);
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 return BadRequest(new LoginResponse
                 {
-                    Success = false,
-                    Message = "An error occurred: " + ex.Message
+                    Sucesso = false,
+                    Mensagem = "Um erro ocorreu: " + ex.Message
                 });
             }
         }

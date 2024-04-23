@@ -96,7 +96,7 @@ namespace stock_flow.Services.Impl
             movimentacao.Usuario = movimentacaoDto.Usuario;
             movimentacao.Quantidade = movimentacaoDto.Quantidade;
             movimentacao.Valor = movimentacaoDto.Valor;
-            movimentacao.Tipo = movimentacaoDto.Tipo.ToString();
+            movimentacao.Tipo = movimentacaoDto.Tipo;
             movimentacao.Data = movimentacaoDto.Data;
 
             await _movimentacoesCollection.ReplaceOneAsync(x => x.Id == id, movimentacao);
@@ -137,9 +137,29 @@ namespace stock_flow.Services.Impl
                 filtro &= Builders<Movimentacao>.Filter.Gte(x => x.Quantidade, quantidade);
             }
 
+            if (int.TryParse(filtroDto.QuantidadeMinima, out int quantidadeMinima))
+            {
+                filtro &= Builders<Movimentacao>.Filter.Gte(x => x.Quantidade, quantidadeMinima);
+            }
+            
+            if (int.TryParse(filtroDto.QuantidadeMaxima, out int quantidadeMaxima))
+            {
+                filtro &= Builders<Movimentacao>.Filter.Lte(x => x.Quantidade, quantidadeMaxima);
+            }
+
             if (decimal.TryParse(filtroDto.Valor, out decimal valor))
             {
                 filtro &= Builders<Movimentacao>.Filter.Gte(x => x.Valor, valor);
+            }
+            
+            if (decimal.TryParse(filtroDto.ValorMinimo, out decimal valorMinimo))
+            {
+                filtro &= Builders<Movimentacao>.Filter.Gte(x => x.Valor, valorMinimo);
+            }
+            
+            if (decimal.TryParse(filtroDto.ValorMaximo, out decimal valorMaximo))
+            {
+                filtro &= Builders<Movimentacao>.Filter.Lte(x => x.Valor, valorMaximo);
             }
 
             return await _movimentacoesCollection.Find(filtro).ToListAsync();

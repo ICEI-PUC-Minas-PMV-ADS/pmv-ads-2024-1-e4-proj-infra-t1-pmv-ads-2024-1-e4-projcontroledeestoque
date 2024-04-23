@@ -2,6 +2,6 @@
 {
     public class AuthResponse : BaseResponse
     {
-        public bool Success { get; set; }
+        public bool Sucesso { get; set; }
     }
 }

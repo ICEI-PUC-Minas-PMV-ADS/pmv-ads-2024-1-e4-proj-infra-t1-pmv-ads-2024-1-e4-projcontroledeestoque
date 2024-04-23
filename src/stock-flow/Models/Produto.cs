@@ -15,7 +15,7 @@ namespace stock_flow.Models
 
         public string Descricao { get; set; } = string.Empty;
 
-        public List<string> Categorias { get; set; } = new List<string>();
+        public List<string> Categorias { get; set; } = new();
 
         public decimal PrecoCusto { get; set; }
 
@@ -25,6 +25,6 @@ namespace stock_flow.Models
 
         public string Imagem { get; set; } = string.Empty;
 
-        public List<string>? FornecedoresId { get; set; }
+        public List<string> FornecedoresId { get; set; } = new();
     }
 }

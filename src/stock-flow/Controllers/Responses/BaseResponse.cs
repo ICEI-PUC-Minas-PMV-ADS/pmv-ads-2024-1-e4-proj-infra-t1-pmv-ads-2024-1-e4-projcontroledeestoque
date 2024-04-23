@@ -2,6 +2,6 @@
 {
     public class BaseResponse
     {
-        public string Message { get; set; } = string.Empty;
+        public string Mensagem { get; set; } = string.Empty;
     }
 }

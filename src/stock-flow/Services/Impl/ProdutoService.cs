@@ -9,25 +9,26 @@ namespace stock_flow.Services.Impl
     public class ProdutoService : IProdutoService
     {
         private readonly IMongoCollection<Produto> _produtosCollection;
-        private readonly IMongoCollection<Fornecedor> _fornecedoresCollection;
+        private readonly IFornecedorService _fornecedorService;
 
-        public ProdutoService(IOptions<ProdutosDatabaseSettings> produtosDatabaseSettings, IOptions<FornecedoresDatabaseSettings> fornecedoresDatabaseSettings)
+        public ProdutoService(IOptions<ProdutosDatabaseSettings> produtosDatabaseSettings,
+            IFornecedorService fornecedorService)
         {
             var produtosConnectionString = produtosDatabaseSettings.Value.ConnectionString;
-            var fornecedoresConnectionString = fornecedoresDatabaseSettings.Value.ConnectionString;
 
             var produtosClient = new MongoClient(produtosConnectionString);
-            var fornecedoresClient = new MongoClient(fornecedoresConnectionString);
 
             var produtosDatabase = produtosClient.GetDatabase(produtosDatabaseSettings.Value.DatabaseName);
-            var fornecedoresDatabase = fornecedoresClient.GetDatabase(fornecedoresDatabaseSettings.Value.DatabaseName);
 
-            _produtosCollection = produtosDatabase.GetCollection<Produto>(produtosDatabaseSettings.Value.ProdutosCollectionName);
-            _fornecedoresCollection = fornecedoresDatabase.GetCollection<Fornecedor>(fornecedoresDatabaseSettings.Value.FornecedoresCollectionName);
+            _produtosCollection =
+                produtosDatabase.GetCollection<Produto>(produtosDatabaseSettings.Value.ProdutosCollectionName);
+            _fornecedorService = fornecedorService;
         }
 
         public async Task<Produto> CreateProdutoAsync(ProdutoDto produtoDto)
         {
+            produtoDto.FornecedoresId?.ForEach(id => _fornecedorService.GetFornecedorByIdAsync(id));
+
             var produto = new Produto
             {
                 Nome = produtoDto.Nome,
@@ -52,8 +53,8 @@ namespace stock_flow.Services.Impl
 
         public async Task<Produto> GetProdutoByIdAsync(string id)
         {
-            return await _produtosCollection.Find(x => x.Id == id).FirstOrDefaultAsync() ?? 
-                throw new Exception("Produto não encontrado");
+            return await _produtosCollection.Find(x => x.Id == id).FirstOrDefaultAsync() ??
+                   throw new Exception("Produto não encontrado");
         }
 
         public async Task<IEnumerable<Produto>> GetProdutosAsync()
@@ -93,36 +94,19 @@ namespace stock_flow.Services.Impl
             return produto;
         }
 
-        public async Task<IEnumerable<FornecedorDto>> GetFornecedoresDoProdutoAsync(string produtoId)
+        public async Task<IEnumerable<Fornecedor>> GetFornecedoresDoProdutoAsync(string produtoId)
         {
-            var produto = await _produtosCollection.Find(x => x.Id == produtoId).FirstOrDefaultAsync() ?? 
-                throw new Exception("Produto não encontrado");
+            var produto = await _produtosCollection.Find(x => x.Id == produtoId).FirstOrDefaultAsync() ??
+                          throw new Exception("Produto não encontrado");
 
-            var fornecedores = await _fornecedoresCollection.Find(f => produto.FornecedoresId.Contains(f.Id)).ToListAsync();
-
-            return fornecedores.Select(fornecedor => new FornecedorDto
-            {
-                Nome = fornecedor.Nome,
-                Endereco = fornecedor.Endereco,
-                Contato = fornecedor.Contato
-            });
+            return produto.FornecedoresId?.Select(id => _fornecedorService.GetFornecedorByIdAsync(id).Result) ??
+                   Array.Empty<Fornecedor>();
         }
 
-        public async Task<IEnumerable<ProdutoDto>> GetProdutosComQuantidadeZeroAsync()
+        public async Task<IEnumerable<Produto>> GetProdutosComQuantidadeZeroAsync()
         {
             var filter = Builders<Produto>.Filter.Eq(p => p.Quantidade, 0);
-            var produtos = await _produtosCollection.Find(filter).ToListAsync();
-
-            var produtosDto = new List<ProdutoDto>();
-            foreach (var produto in produtos)
-            {
-                produtosDto.Add(new ProdutoDto
-                {
-                    Nome = produto.Nome,
-                });
-            }
-
-            return produtosDto;
+            return await _produtosCollection.Find(filter).ToListAsync();
         }
     }
 }
