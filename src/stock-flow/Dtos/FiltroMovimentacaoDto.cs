@@ -1,6 +1,6 @@
 ﻿namespace stock_flow.Dtos
 {
-    public class FiltroDto
+    public class FiltroMovimentacaoDto
     {
         public string? DataInicio { get; set; }
         public string? DataFim { get; set; }

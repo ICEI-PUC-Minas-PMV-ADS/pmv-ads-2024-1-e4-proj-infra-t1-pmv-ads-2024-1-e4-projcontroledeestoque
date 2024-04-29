@@ -8,7 +8,7 @@ using System.Net;
 namespace stock_flow.Controllers
 {
     [ApiController]
-    [Route("api/v1/auth")]
+    [Route("api/v1/autenticacao")]
     public class AuthController : Controller
     {
         private readonly IAuthService _authService;

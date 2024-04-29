@@ -1,5 +1,7 @@
 ﻿using Microsoft.Extensions.Options;
+using MongoDB.Bson;
 using MongoDB.Driver;
+using MongoDB.Driver.Linq;
 using stock_flow.Configs;
 using stock_flow.Dtos;
 using stock_flow.Models;
@@ -37,7 +39,6 @@ namespace stock_flow.Services.Impl
                 PrecoCusto = produtoDto.PrecoCusto,
                 PrecoVenda = produtoDto.PrecoVenda,
                 Quantidade = produtoDto.Quantidade,
-                Imagem = produtoDto.Imagem,
                 FornecedoresId = produtoDto.FornecedoresId
             };
 
@@ -72,7 +73,6 @@ namespace stock_flow.Services.Impl
             produto.PrecoCusto = produtoDto.PrecoCusto;
             produto.PrecoVenda = produtoDto.PrecoVenda;
             produto.Quantidade = produtoDto.Quantidade;
-            produto.Imagem = produtoDto.Imagem;
             produto.FornecedoresId = produtoDto.FornecedoresId;
 
             await _produtosCollection.ReplaceOneAsync(x => x.Id == id, produto);
@@ -107,6 +107,71 @@ namespace stock_flow.Services.Impl
         {
             var filter = Builders<Produto>.Filter.Eq(p => p.Quantidade, 0);
             return await _produtosCollection.Find(filter).ToListAsync();
+        }
+
+        public Task<List<string>> GetCategoriasAsync()
+        {
+            return _produtosCollection.AsQueryable().SelectMany(p => p.Categorias).Distinct().ToListAsync();
+        }
+
+        public async Task<List<Produto>> GetProdutosByFiltroAsync(FiltroProdutoDto filtroProdutoDto)
+        {
+            var filter = Builders<Produto>.Filter.Empty;
+
+            if (!string.IsNullOrEmpty(filtroProdutoDto.Nome))
+            {
+                filter &= Builders<Produto>.Filter.Or(
+                    Builders<Produto>.Filter.Regex(p => p.Nome, new BsonRegularExpression(filtroProdutoDto.Nome, "i")),
+                    Builders<Produto>.Filter.Regex(p => p.Descricao, new BsonRegularExpression(filtroProdutoDto.Nome, "i"))
+                );
+            }
+
+            if (decimal.TryParse(filtroProdutoDto.PrecoCustoMinimo, out var precoCustoMinimo))
+            {
+                filter &= Builders<Produto>.Filter.Gte(p => p.PrecoCusto, precoCustoMinimo);
+            }
+            
+            if (decimal.TryParse(filtroProdutoDto.PrecoCustoMaximo, out var precoCustoMaximo))
+            {
+                filter &= Builders<Produto>.Filter.Lte(p => p.PrecoCusto, precoCustoMaximo);
+            }
+            
+            if (decimal.TryParse(filtroProdutoDto.PrecoVendaMinimo, out var precoVendaMinimo))
+            {
+                filter &= Builders<Produto>.Filter.Gte(p => p.PrecoVenda, precoVendaMinimo);
+            }
+            
+            if (decimal.TryParse(filtroProdutoDto.PrecoVendaMaximo, out var precoVendaMaximo))
+            {
+                filter &= Builders<Produto>.Filter.Lte(p => p.PrecoVenda, precoVendaMaximo);
+            }
+
+            if (int.TryParse(filtroProdutoDto.Quantidade, out var quantidade))
+            {
+                filter &= Builders<Produto>.Filter.Eq(p => p.Quantidade, quantidade);
+            }
+            
+            if (int.TryParse(filtroProdutoDto.QuantidadeMinima, out var quantidadeMinima))
+            {
+                filter &= Builders<Produto>.Filter.Gte(p => p.Quantidade, quantidadeMinima);
+            }
+
+            if (int.TryParse(filtroProdutoDto.QuantidadeMaxima, out var quantidadeMaxima))
+            {
+                filter &= Builders<Produto>.Filter.Lte(p => p.Quantidade, quantidadeMaxima);
+            }
+            
+            if (!string.IsNullOrEmpty(filtroProdutoDto.Categoria))
+            {
+                filter &= Builders<Produto>.Filter.AnyEq(p => p.Categorias, filtroProdutoDto.Categoria);
+            }
+
+            if (!string.IsNullOrEmpty(filtroProdutoDto.Fornecedor))
+            {
+                filter &= Builders<Produto>.Filter.AnyEq(p => p.FornecedoresId, filtroProdutoDto.Fornecedor);
+            }
+
+            return await _produtosCollection.Find(filter).SortBy(p => p.Nome).ToListAsync();
         }
     }
 }

@@ -11,6 +11,6 @@ namespace stock_flow.Services
         Task<Movimentacao> CreateMovimentacaoAsync(MovimentacaoDto movimentacaoDto);
         Task<Movimentacao> UpdateMovimentacaoAsync(string id, MovimentacaoDto movimentacaoDto);
         Task DeleteMovimentacaoAsync(string id);
-        Task<IEnumerable<Movimentacao>> GetMovimentacaoByFiltroAsync(FiltroDto filtroDto);
+        Task<IEnumerable<Movimentacao>> GetMovimentacaoByFiltroAsync(FiltroMovimentacaoDto filtroMovimentacaoDto);
     }
 }

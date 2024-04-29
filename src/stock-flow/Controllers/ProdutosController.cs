@@ -15,11 +15,20 @@ namespace stock_flow.Controllers
             _produtoService = produtoService;
         }
 
+        
+        
         [HttpGet]
-        public async Task<ActionResult<List<ProdutoDto>>> GetAsync()
+        public async Task<ActionResult<List<ProdutoDto>>> GetProdutosByFiltroAsync([FromQuery] FiltroProdutoDto filtroProdutoDto)
         {
-            var model = await _produtoService.GetProdutosAsync();
-            return Ok(model);
+            try
+            {
+                var produtos = await _produtoService.GetProdutosByFiltroAsync(filtroProdutoDto);
+                return Ok(produtos);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new BaseResponse { Mensagem = ex.Message });
+            }
         }
 
         [HttpGet("{id}")]
@@ -96,7 +105,21 @@ namespace stock_flow.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { Error = ex.Message });
+                return StatusCode(500, new BaseResponse { Mensagem = ex.Message });
+            }
+        }
+        
+        [HttpGet("categorias")]
+        public async Task<ActionResult<List<string>>> GetCategorias()
+        {
+            try
+            {
+                var categorias = await _produtoService.GetCategoriasAsync();
+                return Ok(categorias);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new BaseResponse { Mensagem = ex.Message });
             }
         }
 

@@ -11,7 +11,7 @@ namespace stock_flow.Dtos
         public string Descricao { get; set; } = string.Empty;
 
         [Required]
-        public List<string> Categorias { get; set; } = new List<string>();
+        public List<string> Categorias { get; set; } = new();
 
         [Required]
         public decimal PrecoCusto { get; set; }
@@ -20,8 +20,6 @@ namespace stock_flow.Dtos
         public decimal PrecoVenda { get; set; }
 
         public int Quantidade { get; set; } = 0;
-
-        public string Imagem { get; set; } = string.Empty;
 
         public List<string>? FornecedoresId { get; set; }
     }

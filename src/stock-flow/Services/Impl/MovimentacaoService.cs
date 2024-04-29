@@ -103,61 +103,61 @@ namespace stock_flow.Services.Impl
             return movimentacao;
         }
 
-        public async Task<IEnumerable<Movimentacao>> GetMovimentacaoByFiltroAsync(FiltroDto filtroDto)
+        public async Task<IEnumerable<Movimentacao>> GetMovimentacaoByFiltroAsync(FiltroMovimentacaoDto filtroMovimentacaoDto)
         {
             var filtro = Builders<Movimentacao>.Filter.Empty;
 
-            if (DateTime.TryParse(filtroDto.DataInicio, out DateTime dataInicio))
+            if (DateTime.TryParse(filtroMovimentacaoDto.DataInicio, out DateTime dataInicio))
             {
                 filtro &= Builders<Movimentacao>.Filter.Gte(x => x.Data, dataInicio);
             }
 
-            if (DateTime.TryParse(filtroDto.DataFim, out DateTime dataFim))
+            if (DateTime.TryParse(filtroMovimentacaoDto.DataFim, out DateTime dataFim))
             {
                 filtro &= Builders<Movimentacao>.Filter.Lte(x => x.Data, dataFim);
             }
 
-            if (filtroDto.TipoMovimentacao != null)
+            if (filtroMovimentacaoDto.TipoMovimentacao != null)
             {
-                filtro &= Builders<Movimentacao>.Filter.Eq(x => x.Tipo, filtroDto.TipoMovimentacao);
+                filtro &= Builders<Movimentacao>.Filter.Eq(x => x.Tipo, filtroMovimentacaoDto.TipoMovimentacao);
             }
 
-            if (filtroDto.Produto != null)
+            if (filtroMovimentacaoDto.Produto != null)
             {
-                filtro &= Builders<Movimentacao>.Filter.Eq(x => x.Produto, filtroDto.Produto);
+                filtro &= Builders<Movimentacao>.Filter.Eq(x => x.Produto, filtroMovimentacaoDto.Produto);
             }
 
-            if (filtroDto.Usuario != null)
+            if (filtroMovimentacaoDto.Usuario != null)
             {
-                filtro &= Builders<Movimentacao>.Filter.Eq(x => x.Usuario, filtroDto.Usuario);
+                filtro &= Builders<Movimentacao>.Filter.Eq(x => x.Usuario, filtroMovimentacaoDto.Usuario);
             }
 
-            if (int.TryParse(filtroDto.Quantidade, out int quantidade))
+            if (int.TryParse(filtroMovimentacaoDto.Quantidade, out int quantidade))
             {
                 filtro &= Builders<Movimentacao>.Filter.Gte(x => x.Quantidade, quantidade);
             }
 
-            if (int.TryParse(filtroDto.QuantidadeMinima, out int quantidadeMinima))
+            if (int.TryParse(filtroMovimentacaoDto.QuantidadeMinima, out int quantidadeMinima))
             {
                 filtro &= Builders<Movimentacao>.Filter.Gte(x => x.Quantidade, quantidadeMinima);
             }
             
-            if (int.TryParse(filtroDto.QuantidadeMaxima, out int quantidadeMaxima))
+            if (int.TryParse(filtroMovimentacaoDto.QuantidadeMaxima, out int quantidadeMaxima))
             {
                 filtro &= Builders<Movimentacao>.Filter.Lte(x => x.Quantidade, quantidadeMaxima);
             }
 
-            if (decimal.TryParse(filtroDto.Valor, out decimal valor))
+            if (decimal.TryParse(filtroMovimentacaoDto.Valor, out decimal valor))
             {
                 filtro &= Builders<Movimentacao>.Filter.Gte(x => x.Valor, valor);
             }
             
-            if (decimal.TryParse(filtroDto.ValorMinimo, out decimal valorMinimo))
+            if (decimal.TryParse(filtroMovimentacaoDto.ValorMinimo, out decimal valorMinimo))
             {
                 filtro &= Builders<Movimentacao>.Filter.Gte(x => x.Valor, valorMinimo);
             }
             
-            if (decimal.TryParse(filtroDto.ValorMaximo, out decimal valorMaximo))
+            if (decimal.TryParse(filtroMovimentacaoDto.ValorMaximo, out decimal valorMaximo))
             {
                 filtro &= Builders<Movimentacao>.Filter.Lte(x => x.Valor, valorMaximo);
             }
