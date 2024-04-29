@@ -2,12 +2,12 @@
 using stock_flow.Controllers.Responses;
 using stock_flow.Dtos;
 using stock_flow.Services;
-using Microsoft.AspNetCore.Cors;
+// using Microsoft.AspNetCore.Cors;
 
 namespace stock_flow.Controllers
 {
     [Route("api/v1/fornecedores")]
-    [EnableCors("MyAllowSpecificOrigins")]
+    // [EnableCors("MyAllowSpecificOrigins")]
     [ApiController]
     public class FornecedoresController : ControllerBase
     {

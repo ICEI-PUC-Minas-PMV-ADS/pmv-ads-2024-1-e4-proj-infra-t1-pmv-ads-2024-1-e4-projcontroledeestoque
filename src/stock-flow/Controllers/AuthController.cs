@@ -4,13 +4,13 @@ using stock_flow.Controllers.Responses;
 using stock_flow.Models;
 using stock_flow.Services;
 using System.Net;
-using Microsoft.AspNetCore.Cors;
+// using Microsoft.AspNetCore.Cors;
 
 namespace stock_flow.Controllers
 {
     [ApiController]
     [Route("api/v1/autenticacao")]
-    [EnableCors("MyAllowSpecificOrigins")]
+    // [EnableCors("MyAllowSpecificOrigins")]
     public class AuthController : Controller
     {
         private readonly IAuthService _authService;

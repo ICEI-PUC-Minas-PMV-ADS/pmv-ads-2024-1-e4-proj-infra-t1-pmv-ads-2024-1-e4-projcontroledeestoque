@@ -12,7 +12,7 @@ using stock_flow.Services.Impl;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
-var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+// var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
 builder.Services.AddCors();
 
@@ -105,9 +105,7 @@ app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "stock_flow 
 
 app.UseHttpsRedirection();
 
-app.UseCors(
-    c => c.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()
-);
+app.UseCors(MyAllowSpecificOrigins);
 app.UseAuthentication();
 app.UseAuthorization();
 
