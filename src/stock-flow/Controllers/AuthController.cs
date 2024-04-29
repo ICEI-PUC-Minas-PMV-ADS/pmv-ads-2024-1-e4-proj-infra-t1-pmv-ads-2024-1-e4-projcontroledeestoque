@@ -9,6 +9,7 @@ namespace stock_flow.Controllers
 {
     [ApiController]
     [Route("api/v1/autenticacao")]
+    [EnableCors("MyAllowSpecificOrigins")]
     public class AuthController : Controller
     {
         private readonly IAuthService _authService;
