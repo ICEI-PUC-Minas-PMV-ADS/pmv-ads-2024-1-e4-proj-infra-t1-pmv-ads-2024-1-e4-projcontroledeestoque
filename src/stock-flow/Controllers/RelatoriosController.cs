@@ -7,6 +7,7 @@ namespace stock_flow.Controllers
 {
 
     [Route("api/v1/relatorios")]
+    [EnableCors("MyAllowSpecificOrigins")]
     [ApiController]
     public class RelatoriosController : Controller
     {

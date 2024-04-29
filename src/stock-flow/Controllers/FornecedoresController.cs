@@ -6,6 +6,7 @@ using stock_flow.Services;
 namespace stock_flow.Controllers
 {
     [Route("api/v1/fornecedores")]
+    [EnableCors("MyAllowSpecificOrigins")]
     [ApiController]
     public class FornecedoresController : ControllerBase
     {

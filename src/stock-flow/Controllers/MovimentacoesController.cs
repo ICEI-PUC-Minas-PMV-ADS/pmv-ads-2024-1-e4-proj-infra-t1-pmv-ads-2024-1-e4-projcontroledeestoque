@@ -8,6 +8,7 @@ namespace stock_flow.Controllers
 {
 
     [Route("api/v1/movimentacoes")]
+    [EnableCors("MyAllowSpecificOrigins")]
     [ApiController]
     public class MovimentacoesController : Controller
     {

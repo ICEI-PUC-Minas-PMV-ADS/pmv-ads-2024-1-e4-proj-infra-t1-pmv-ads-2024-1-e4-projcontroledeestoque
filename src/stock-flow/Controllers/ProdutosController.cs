@@ -6,6 +6,7 @@ using stock_flow.Controllers.Responses;
 namespace stock_flow.Controllers
 {
     [Route("api/v1/produtos")]
+    [EnableCors("MyAllowSpecificOrigins")]
     [ApiController]
     public class ProdutosController : Controller
     {
