@@ -4,7 +4,7 @@ using stock_flow.Controllers.Responses;
 using stock_flow.Models;
 using stock_flow.Services;
 using System.Net;
-using Microsoft.AspNetCore.EnableCors;
+using Microsoft.AspNetCore.Cors;
 
 namespace stock_flow.Controllers
 {
