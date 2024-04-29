@@ -7,10 +7,10 @@ export default function Price({ value }: { value: number }) {
   const tip = price.split(",")[0];
   const tip2 = price.split(",")[1];
   return (
-    <p className="text-zinc-200">
-      <span className="text-zinc-400 text-xs"> R$</span>
+    <p className="text-gray-200">
+      <span className="text-gray-400 text-xs"> R$</span>
       {tip}
-      <span className="text-zinc-400 text-xs"> {tip2}</span>
+      <span className="text-gray-400 text-xs"> {tip2}</span>
     </p>
   );
 }

@@ -9,10 +9,12 @@ import Home from "../page";
 
 interface ILoginResponse {
   name: string;
+  email: string;
   status?: number;
   userId?: string;
-  token?: string;
+  accessToken?: string;
   message?: string;
+  sucesso?: boolean;
 }
 
 export default function Login() {
@@ -20,16 +22,16 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  //document.title = "Login";
 
   const makeLogin = async () => {
     const res: ILoginResponse = await LoginService({ email, senha: password});
+    console.log("res:", res);
     if (res.status !== 200) {
       toast.error(res?.message || "Erro ao fazer login");
     }
-    if (res?.token) {
+    if (res?.accessToken) {
       toast.success(`Seja bem vindo ${res.name}`);
-      localStorage.setItem("token", res.token);
+      localStorage.setItem("accessToken", res.accessToken);
       setLoggedIn(true);
     }
   };
@@ -68,7 +70,7 @@ export default function Login() {
            onSubmit={handleLogin}>
           <label>Email</label>
           <input
-            className="w-full px-4 py-2 my-2 bg-gray-100 border border-gray-300 rounded-lg dark:bg-gray-700 dark:border-gray-600 focus:outline-none focus:border-blue-500 focus:bg-white focus:text-gray-900"
+            className="w-full px-4 py-2 my-2 bg-gray-100 border border-gray-300 rounded-lg dark:bg-gray-700 dark:border-gray-600 focus:outline-none focus:border-indigo-500 focus:bg-white focus:text-gray-900"
             type="email"
             placeholder="E-mail"
             value={email}
@@ -76,7 +78,7 @@ export default function Login() {
           />
           <label>Senha</label>
           <input
-            className="w-full px-4 py-2 my-2 bg-gray-100 border border-gray-300 rounded-lg dark:bg-gray-700 dark:border-gray-600 focus:outline-none focus:border-blue-500 focus:bg-white focus:text-gray-900"
+            className="w-full px-4 py-2 my-2 bg-gray-100 border border-gray-300 rounded-lg dark:bg-gray-700 dark:border-gray-600 focus:outline-none focus:border-indigo-500 focus:bg-white focus:text-gray-900"
             type="password"
             placeholder="Senha"
             value={password}
@@ -86,7 +88,7 @@ export default function Login() {
             {/* <StyledLink>Cadastrar-se</StyledLink> */}
           </Link>
           <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            className="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded"
              type="submit">
             Login
           </button>
