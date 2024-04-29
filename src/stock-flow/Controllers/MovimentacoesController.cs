@@ -3,6 +3,7 @@ using stock_flow.Controllers.Responses;
 using stock_flow.Dtos;
 using stock_flow.Models;
 using stock_flow.Services;
+using Microsoft.AspNetCore.EnableCors;
 
 namespace stock_flow.Controllers
 {
