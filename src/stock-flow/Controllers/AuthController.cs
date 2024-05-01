@@ -1,16 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Net;
+using Microsoft.AspNetCore.Mvc;
 using stock_flow.Controllers.Requests;
 using stock_flow.Controllers.Responses;
+using stock_flow.Enums;
 using stock_flow.Models;
 using stock_flow.Services;
-using System.Net;
-// using Microsoft.AspNetCore.Cors;
 
 namespace stock_flow.Controllers
 {
     [ApiController]
     [Route("api/v1/autenticacao")]
-    // [EnableCors("MyAllowSpecificOrigins")]
     public class AuthController : Controller
     {
         private readonly IAuthService _authService;
@@ -68,10 +67,8 @@ namespace stock_flow.Controllers
 
                 await _authService.RegisterAsync(user, request.Senha);
 
-                if (!string.IsNullOrEmpty(request.Role))
-                {
-                    await _authService.AddRoleUserAsync(user, request.Role);
-                }
+                await _authService.AddRoleUserAsync(user, string.IsNullOrEmpty(request.Role) ? 
+                    UserRoles.USER.ToString() : request.Role);
 
                 return Ok(new AuthResponse
                 {
