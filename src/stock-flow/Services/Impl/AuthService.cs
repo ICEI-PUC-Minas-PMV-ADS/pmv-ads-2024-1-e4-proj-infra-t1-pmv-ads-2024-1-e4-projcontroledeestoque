@@ -26,14 +26,14 @@ namespace stock_flow.Services.Impl
 
             if (userExists != null)
             {
-                throw new AuthException("User already exists!");
+                throw new AuthException("Usuário já cadastrado!");
             }
 
             var result = await _userManager.CreateAsync(user, password);
             
             if (!result.Succeeded)
             {
-                throw new AuthException("An error occurred: " + string.Join(", ", result.Errors.Select(e => e.Description)));
+                throw new AuthException(string.Join(", ", result.Errors.Select(e => e.Description)));
             }
         }
 
@@ -43,7 +43,7 @@ namespace stock_flow.Services.Impl
 
             if (!result.Succeeded)
             {
-                throw new AuthException("An error occurred: " + string.Join(", ", result.Errors.Select(e => e.Description)));
+                throw new AuthException(string.Join(", ", result.Errors.Select(e => e.Description)));
             }
         }
 
@@ -54,24 +54,24 @@ namespace stock_flow.Services.Impl
                 var result = await _userManager.AddToRoleAsync(user, role);
                 if (!result.Succeeded)
                 {
-                    throw new AuthException("An error occurred: " + string.Join(", ", result.Errors.Select(e => e.Description)));
+                    throw new AuthException(string.Join(", ", result.Errors.Select(e => e.Description)));
                 }
             }
         }
 
         public async Task<ApplicationUser> GetUserByIdAsync(string id)
         {
-            return await _userManager.FindByIdAsync(id) ?? throw new AuthException("User not found");
+            return await _userManager.FindByIdAsync(id) ?? throw new AuthException("Usuário não encontrado!");
         }
 
         public async Task<LoginDto> LoginAsync(string email, string password)
         {
-            var user = await _userManager.FindByEmailAsync(email) ?? throw new AuthException("Invalid email/password");
+            var user = await _userManager.FindByEmailAsync(email) ?? throw new AuthException("Email/senha inválidos");
 
             var isValid = await _userManager.CheckPasswordAsync(user, password);
             if (!isValid)
             {
-                throw new AuthException("Invalid email/password");
+                throw new AuthException("Email/senha inválidos");
             }
 
             // Authenticate and Generate JWT token
