@@ -66,12 +66,12 @@ namespace stock_flow.Services.Impl
 
         public async Task<LoginDto> LoginAsync(string email, string password)
         {
-            var user = await _userManager.FindByEmailAsync(email) ?? throw new AuthException("Email/senha inválidos");
+            var user = await _userManager.FindByEmailAsync(email) ?? throw new AuthException("Email e/ou senha inválidos");
 
             var isValid = await _userManager.CheckPasswordAsync(user, password);
             if (!isValid)
             {
-                throw new AuthException("Email/senha inválidos");
+                throw new AuthException("Email e/ou senha inválidos");
             }
 
             // Authenticate and Generate JWT token
