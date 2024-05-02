@@ -17,3 +17,16 @@ export async function getProducts(query?: any): Promise<Product[]> {
   console.log(response);
   return response.data;
 }
+
+export async function createProduct(product: Product): Promise<Product> {
+  const url = `https://stock-flow.azurewebsites.net/api/v1/produtos`;
+  const response = await axios.post(url, product);
+  return response.data;
+}
+
+export async function deleteProduct(id: string): Promise<Product> {
+  const url = `https://stock-flow.azurewebsites.net/api/v1/produtos/${id}`;
+  const response = await axios.delete(url);
+  return response.data;
+}
+
