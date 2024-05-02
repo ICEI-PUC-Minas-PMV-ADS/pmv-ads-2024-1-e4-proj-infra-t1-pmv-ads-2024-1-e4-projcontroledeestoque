@@ -30,3 +30,8 @@ export async function deleteProduct(id: string): Promise<Product> {
   return response.data;
 }
 
+export async function updateProduct(product: Product): Promise<Product> {
+  const url = `https://stock-flow.azurewebsites.net/api/v1/produtos/${product.id}`;
+  const response = await axios.put(url, product);
+  return response.data;
+}

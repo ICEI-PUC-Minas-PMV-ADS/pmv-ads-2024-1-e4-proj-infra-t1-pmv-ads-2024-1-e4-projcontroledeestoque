@@ -7,16 +7,18 @@ import { TrashSimple } from "@phosphor-icons/react";
 import DeleteModal from "../components/DeleteModal";
 import ProductModal from "../components/ProductModal";
 import { toast } from "react-toastify";
+import EditProductModal from "../components/EditProductModal";
 
 export default function Products() {
   const [products, setProducts] = useState<Product[]>([]);
   const [filter, setFilter] = useState("");
   const [deleteModal, setDeleteModal] = useState(false);
-  const [deleteProduct, setDeleteProduct] = useState<Product | null>(null);
-
+  const [product, setProduct] = useState<Product | null>(null);
   const [createModal, setCreateModal] = useState(false);
+  const [editModal, setEditModal] = useState(false);
+  
   const handleDelete = (produto:Product) => {
-    setDeleteProduct(produto);
+    setProduct(produto);
     setDeleteModal(!deleteModal);
     toast.success(`Produto removido com sucesso!`);
     updateProducts()
@@ -34,14 +36,23 @@ export default function Products() {
   const handleOpenCreateModal = () => {
     setCreateModal(!createModal);
   }
+  const handleCloseEditModal = () => {
+    setEditModal(!editModal);
+    updateProducts()
+    toast.success(`Produto editado com sucesso!`);
+  }
+  const handleOpenEditModal = (produto:Product) => {
+    setProduct(produto);
+    setEditModal(!editModal);
+  }
   
   useEffect(() => {
     updateProducts()
   }, [filter]);
-  return createModal ?(<ProductModal handleCloseCreateModal={handleCloseCreateModal} />): deleteModal ? (
-    <DeleteModal handleDelete={handleDelete} produto={deleteProduct} />
+  return editModal?(<EditProductModal produto={product} handleCloseEditModal={handleCloseEditModal}/>):createModal ?(<ProductModal handleCloseCreateModal={handleCloseCreateModal} />): deleteModal ? (
+    <DeleteModal handleDelete={handleDelete} produto={product} />
   ) : (
-    <div>
+    <div >
       <div>
         <h1 className="text-indigo-600">
           Stock Flow <span className="text-gray-500">Produtos</span>
@@ -107,9 +118,11 @@ export default function Products() {
         <script src="https://unpkg.com/flowbite@1.4.0/dist/flowbite.js"></script>
       </div>
 
+      <div className="flex flex-col gap-2">
       {products.map((product, index) => (
-        <div
-          className={`px-2 m-2  shadow-md flex flex-row ${
+        <button
+          onClick={() => handleOpenEditModal(product)}
+          className={`w-lvw px-2 shadow-md flex flex-row ${
             index % 2 === 0 ? "bg-gray-950" : "bg-gray-900"
           }`}
           key={product.id}
@@ -133,8 +146,9 @@ export default function Products() {
               <TrashSimple size={20} />
             </button>
           </div>
-        </div>
+        </button>
       ))}
+      </div>
     </div>
   )
 }
