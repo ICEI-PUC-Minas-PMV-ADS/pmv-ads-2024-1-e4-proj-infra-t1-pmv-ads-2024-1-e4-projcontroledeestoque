@@ -67,13 +67,18 @@ namespace stock_flow.Controllers
 
                 await _authService.RegisterAsync(user, request.Senha);
 
-                await _authService.AddRoleUserAsync(user, string.IsNullOrEmpty(request.Role) ? 
-                    UserRoles.USER.ToString() : request.Role);
+                await _authService.AddRoleUserAsync(user,
+                    string.IsNullOrEmpty(request.Role) ? UserRoles.USER.ToString() : request.Role);
 
-                return Ok(new AuthResponse
+                var result = await _authService.LoginAsync(request.Email, request.Senha);
+
+                return Ok(new LoginResponse()
                 {
                     Sucesso = true,
-                    Mensagem = "Usuário cadastrado com sucesso"
+                    Mensagem = "Usuário cadastrado com sucesso",
+                    AccessToken = result.AccessToken,
+                    Email = result.Email,
+                    UserId = result.UserId
                 });
             }
             catch (Exception ex)
@@ -90,8 +95,8 @@ namespace stock_flow.Controllers
 
         [HttpPost]
         [Route("login")]
-        [ProducesResponseType((int) HttpStatusCode.OK, Type = typeof(LoginResponse))]
-        public async Task<IActionResult> Login([FromBody]LoginRequest request)
+        [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(LoginResponse))]
+        public async Task<IActionResult> Login([FromBody] LoginRequest request)
         {
             try
             {
