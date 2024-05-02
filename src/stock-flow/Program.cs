@@ -1,15 +1,17 @@
+using System.Text;
+using System.Text.Json.Serialization;
 using AspNetCore.Identity.MongoDbCore.Extensions;
 using AspNetCore.Identity.MongoDbCore.Infrastructure;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
+using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Serializers;
 using stock_flow.Configs;
 using stock_flow.Models;
 using stock_flow.Services;
 using stock_flow.Services.Impl;
-using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,9 +19,9 @@ builder.Services.AddCors();
 
 
 // Add services to the container.
-BsonSerializer.RegisterSerializer(new GuidSerializer(MongoDB.Bson.BsonType.String));
-BsonSerializer.RegisterSerializer(new DateTimeSerializer(MongoDB.Bson.BsonType.String));
-BsonSerializer.RegisterSerializer(new DateTimeOffsetSerializer(MongoDB.Bson.BsonType.String));
+BsonSerializer.RegisterSerializer(new GuidSerializer(BsonType.String));
+BsonSerializer.RegisterSerializer(new DateTimeSerializer(BsonType.String));
+BsonSerializer.RegisterSerializer(new DateTimeOffsetSerializer(BsonType.String));
 
 // Add MongoDB identity configuration
 var mongoDbIdentityConfig = new MongoDbIdentityConfiguration
@@ -81,7 +83,10 @@ builder.Services.AddAuthentication(x =>
     };
 });
 
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddJsonOptions(options =>
+{ 
+    options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
+});
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
