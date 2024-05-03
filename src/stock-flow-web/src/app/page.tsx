@@ -1,6 +1,6 @@
 'use client'
 import Navigation from "./components/Navigation";
-import Login from "./login/page";
+import Login from "./autenticacao/login/page";
 
 
 export default function Home() {
