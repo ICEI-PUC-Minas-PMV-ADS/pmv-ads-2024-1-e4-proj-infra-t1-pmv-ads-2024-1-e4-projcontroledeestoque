@@ -24,6 +24,7 @@ export default function Fornecedores() {
     setDeleteModal(!deleteModal);
     toast.success(`Fornecedor removido com sucesso!`);
     updateFornecedores();
+    window.location.reload();
   };
 
   const updateFornecedores = () => {
@@ -36,6 +37,7 @@ export default function Fornecedores() {
     setCreateModal(!createModal);
     updateFornecedores();
     toast.success(`Fornecedor criado com sucesso!`);
+    window.location.reload();
   };
 
   const handleOpenCreateModal = () => {
@@ -46,6 +48,7 @@ export default function Fornecedores() {
     setEditModal(!editModal);
     updateFornecedores();
     toast.success(`Fornecedor editado com sucesso!`);
+    window.location.reload();
   };
 
   const handleOpenEditModal = (fornecedor: Fornecedor) => {
@@ -117,7 +120,7 @@ export default function Fornecedores() {
               value={filter}
               onChange={(e) => setFilter(e.target.value)}
               className="block p-4 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500"
-              placeholder="Nome Fornecedor"
+              placeholder="fornecedor"
               required
             ></input>
             <button
@@ -133,7 +136,6 @@ export default function Fornecedores() {
             </button>
           </div>
         </form>
-
         <script src="https://unpkg.com/flowbite@1.4.0/dist/flowbite.js"></script>
       </div>
 
@@ -153,7 +155,7 @@ export default function Fornecedores() {
               className={`bg-gray-${index % 2 === 0 ? "950" : "900"} py-2 flex items-center justify-between px-4`}
               key={fornecedor.id}
             >
-              <div onClick={() => handleOpenDetailsModal(fornecedor)} className="w-1/5">{fornecedor.nome}</div>
+              <div onClick={() => handleOpenDetailsModal(fornecedor)} className="w-1/5 text-amber-600">{fornecedor.nome}</div>
               <div className="w-1/5">{fornecedor.contato}</div>
               <div className="w-1/5">{fornecedor.endereco}</div>
               <div className="w-1/5">
