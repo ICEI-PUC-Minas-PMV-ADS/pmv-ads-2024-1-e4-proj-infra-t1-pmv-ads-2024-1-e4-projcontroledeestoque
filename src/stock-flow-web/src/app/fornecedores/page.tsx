@@ -24,7 +24,6 @@ export default function Fornecedores() {
     setDeleteModal(!deleteModal);
     toast.success(`Fornecedor removido com sucesso!`);
     updateFornecedores();
-    window.location.reload();
   };
 
   const updateFornecedores = () => {

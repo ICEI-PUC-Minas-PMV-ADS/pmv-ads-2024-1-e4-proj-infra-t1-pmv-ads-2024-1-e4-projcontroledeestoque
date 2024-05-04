@@ -11,6 +11,7 @@ export default function DeleteModal(props: Props) {
     const handleDeleteFornecedor = async () => {
         deleteFornecedor(props.fornecedor.id);
         props.handleDelete();
+        window.location.reload();
     }
 
     return (

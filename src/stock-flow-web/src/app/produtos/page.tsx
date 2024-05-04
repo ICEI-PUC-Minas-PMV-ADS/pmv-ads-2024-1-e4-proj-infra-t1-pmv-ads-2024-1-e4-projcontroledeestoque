@@ -25,7 +25,6 @@ export default function Products() {
     setDeleteModal(!deleteModal);
     toast.success(`Produto removido com sucesso!`);
     updateProducts()
-    window.location.reload();
   }
   
   const updateProducts = () => {
@@ -38,7 +37,6 @@ export default function Products() {
     setCreateModal(!createModal);
     updateProducts()
     toast.success(`Produto criado com sucesso!`);
-    window.location.reload();
   }
   
   const handleOpenCreateModal = () => {

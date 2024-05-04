@@ -9,6 +9,7 @@ export default function DeleteModal(props: Props) {
     const handleDeleteProduct = async () => {
         deleteProduct(props.product.id);
         props.handleDelete();
+        window.location.reload();
     }
 
     return (
