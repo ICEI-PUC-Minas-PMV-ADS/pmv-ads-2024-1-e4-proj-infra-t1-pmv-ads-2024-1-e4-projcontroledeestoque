@@ -1,13 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using stock_flow.Controllers.Responses;
 using stock_flow.Dtos;
+using stock_flow.Models;
 using stock_flow.Services;
-// using Microsoft.AspNetCore.Cors;
 
 namespace stock_flow.Controllers
 {
     [Route("api/v1/fornecedores")]
-    // [EnableCors("MyAllowSpecificOrigins")]
     [ApiController]
     public class FornecedoresController : ControllerBase
     {
@@ -18,7 +17,7 @@ namespace stock_flow.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<FornecedorDto>>> GetFornecedorsByFiltroAsync([FromQuery] FiltroFornecedorDto filtroFornecedorDto)
+        public async Task<ActionResult<List<Fornecedor>>> GetFornecedorsByFiltroAsync([FromQuery] FiltroFornecedorDto filtroFornecedorDto)
         {
             try
             {
@@ -32,7 +31,7 @@ namespace stock_flow.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<FornecedorDto>> GetAsync(string id)
+        public async Task<ActionResult<Fornecedor>> GetAsync(string id)
         {
             try
             {
@@ -46,7 +45,7 @@ namespace stock_flow.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<FornecedorDto>> CreateAsync(FornecedorDto fornecedorDto)
+        public async Task<ActionResult<Fornecedor>> CreateAsync(FornecedorDto fornecedorDto)
         {
             try
             {
@@ -60,7 +59,7 @@ namespace stock_flow.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<FornecedorDto>> UpdateAsync(string id, FornecedorDto fornecedorDto)
+        public async Task<ActionResult<Fornecedor>> UpdateAsync(string id, FornecedorDto fornecedorDto)
         {
             try
             {

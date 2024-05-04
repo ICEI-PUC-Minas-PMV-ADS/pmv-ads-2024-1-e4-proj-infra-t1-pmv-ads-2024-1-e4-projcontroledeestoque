@@ -3,13 +3,11 @@ using stock_flow.Controllers.Responses;
 using stock_flow.Dtos;
 using stock_flow.Models;
 using stock_flow.Services;
-// using Microsoft.AspNetCore.Cors;
 
 namespace stock_flow.Controllers
 {
 
     [Route("api/v1/movimentacoes")]
-    // [EnableCors("MyAllowSpecificOrigins")]
     [ApiController]
     public class MovimentacoesController : Controller
     {
