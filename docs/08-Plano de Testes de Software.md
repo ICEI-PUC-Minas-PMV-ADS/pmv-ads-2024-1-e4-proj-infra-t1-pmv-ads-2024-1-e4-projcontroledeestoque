@@ -1,19 +1,44 @@
 # Plano de Testes de Software
 
-<span style="color:red">Pré-requisitos: <a href="2-Especificação do Projeto.md"> Especificação do Projeto</a></span>, <a href="3-Projeto de Interface.md"> Projeto de Interface</a>
-
 Apresente os cenários de testes utilizados na realização dos testes da sua aplicação. Escolha cenários de testes que demonstrem os requisitos sendo satisfeitos.
 
-Enumere quais cenários de testes foram selecionados para teste. Neste tópico o grupo deve detalhar quais funcionalidades avaliadas, o grupo de usuários que foi escolhido para participar do teste e as ferramentas utilizadas.
- 
-## Ferramentas de Testes (Opcional)
 
-Comente sobre as ferramentas de testes utilizadas.
- 
-> **Links Úteis**:
-> - [IBM - Criação e Geração de Planos de Teste](https://www.ibm.com/developerworks/br/local/rational/criacao_geracao_planos_testes_software/index.html)
-> - [Práticas e Técnicas de Testes Ágeis](http://assiste.serpro.gov.br/serproagil/Apresenta/slides.pdf)
-> -  [Teste de Software: Conceitos e tipos de testes](https://blog.onedaytesting.com.br/teste-de-software/)
-> - [Criação e Geração de Planos de Teste de Software](https://www.ibm.com/developerworks/br/local/rational/criacao_geracao_planos_testes_software/index.html)
-> - [Ferramentas de Test para Java Script](https://geekflare.com/javascript-unit-testing/)
-> - [UX Tools](https://uxdesign.cc/ux-user-research-and-user-testing-tools-2d339d379dc7)
+| **Caso de Teste** 	| **CT-01 – Login de usuário.** 	|
+|:---:	|:---:	|
+|	Requisito Associado 	| RF-002 -  Permitir que o usuário faça login  |
+| Objetivo do Teste 	| Verificar se o usuário consegue realizar login. |
+| Passos 	| - Acessar a aplicação <br> - Preencher os campos obrigatórios <br> - Aguardar o direcionamento para a página inicial. 
+|Critério de Êxito | - O usuário conseguiu acessar os componentes da aplicação com sucesso. 
+
+
+| **Caso de Teste** 	| **CT-02 – Gestão de produtos.** 	|
+|:---:	|:---:	|
+|	Requisito Associado 	| RF-001	- Permitir que o usuário gerencie produtos. |
+| Objetivo do Teste 	| VVerificar se o usuário consegue gerenciar produtos. |
+| Passos 	| - Acessar a aplicação <br> - Inserir os dados de login. <br> - Aguardar o direcionamento para a página inicial. <br> Acessar a página de produtos. <br> - Acessar o produto desejado. <br> - Efetuar alterações(nome, quantidade). <br> - Salvar alterações.|
+|Critério de Êxito | - Usuário obteve sucesso ao gerenciar produtos. |
+
+
+| **Caso de Teste** 	| **CT-03 – Gestão de fornecedores.** 	|
+|:---:	|:---:	|
+|	Requisito Associado 	| RF-007	Permitir que o usúario gerencie fornecedores. |
+| Objetivo do Teste 	| Verificar se o usuário consegue gerenciar fornecedores. |
+| Passos 	| - Acessar a aplicação <br> - Inserir os dados de login. <br> - Aguardar o direcionamento para a página inicial. <br> Acessar a página de fornecedores. <br> - Efetuar cadastro e/ou exclusão de fornecedores. <br> - Efetuar alterações(nome, quantidade). <br> - Salvar alterações.|
+|Critério de Êxito | - Usuário obteve sucesso ao gerenciar fornecedores. |
+
+
+| **Caso de Teste** 	| **CT-04 – Estoque zerado.** 	|
+|:---:	|:---:	|
+|	Requisito Associado 	| RF-006	 Notificar o usuario sobre produtos que foram zerados. |
+| Objetivo do Teste 	| Verificar se o usuário será notificado sobre produtos zerados. |
+| Passos 	| - Acessar a aplicação <br> - Inserir os dados de login. <br> - Aguardar o direcionamento para a página inicial. <br> Acessar a página de produtos. <br> - Aguardar o Pop-up informando que existem produtos zerados em seu estoque. <br> - Fechar pop-up.|
+|Critério de Êxito | -  Usuário recebeu a informação de que o produto se encontra sem estoque. |
+
+
+| **Caso de Teste** 	| **CT-05 – Busca de fornecedores.** 	|
+|:---:	|:---:	|
+|	Requisito Associado 	| RF-008 Permitir que o usúario encontre fornecedores por produtos. |
+| Objetivo do Teste 	| Verificar se o usuário consegue encontrar fornecedor através do produto. |
+| Passos 	| - Acessar a aplicação <br> - Inserir os dados de login. <br> - Aguardar o direcionamento para a página inicial. <br> Acessar a página de produtos. <br> - Realizar a busca de algum produto de determinado fornecedor. <br> - Receber a lista de fornecedores que possuem aquele produto. <br> Escolher o fornecedor desejado.|
+|Critério de Êxito | -  Usuário conseguiu encontrar o fornecedor desejado. |
+
