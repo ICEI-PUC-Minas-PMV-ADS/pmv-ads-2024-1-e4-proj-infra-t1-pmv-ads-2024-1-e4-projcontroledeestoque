@@ -7,8 +7,8 @@ export type Fornecedor = {
 };
 export async function getFornecedores(query?: any): Promise<Fornecedor[]> {
   const url = `https://stock-flow.azurewebsites.net/api/v1/fornecedores`;
-  const name = query?.name ? `/?nome=${query.name}` : "";
-  const response = await axios.get(`${url}${name}`);
+  const queryString = query?.name ? `?nome=${query.name}` : "";
+  const response = await axios.get(`${url}${queryString}`);
   console.log(response);
   return response.data;
 }
