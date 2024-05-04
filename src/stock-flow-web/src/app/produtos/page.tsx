@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import { useEffect, useState } from "react";
 import { Product, getProducts } from "../services/produtos";
 import Price from "../components/Price";
@@ -149,7 +149,6 @@ export default function Products() {
               <div className="py-1 px-4" style={{ width: "8%" }}>Editar</div>
               <div className="py-1 px-4" style={{ width: "8%" }}>Excluir</div>
             </div>
-
 
 
             <div className="flex-grow overflow-y-auto">
