@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Options;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using stock_flow.Configs;
 using stock_flow.Dtos;
@@ -59,6 +60,28 @@ namespace stock_flow.Services.Impl
 
             await _fornecedoresCollection.ReplaceOneAsync(x => x.Id == id, fornecedor);
             return fornecedor;
+        }
+
+        public async Task<List<Fornecedor>> GetFornecedorsByFiltroAsync(FiltroFornecedorDto filtroFornecedorDto)
+        {
+            var filter = Builders<Fornecedor>.Filter.Empty;
+
+            if (!string.IsNullOrEmpty(filtroFornecedorDto.Nome))
+            {
+                filter &= Builders<Fornecedor>.Filter.Regex(p => p.Nome, new BsonRegularExpression(filtroFornecedorDto.Nome, "i"));
+            }
+
+            if (!string.IsNullOrEmpty(filtroFornecedorDto.Contato))
+            {
+                filter &= Builders<Fornecedor>.Filter.Regex(p => p.Contato, new BsonRegularExpression(filtroFornecedorDto.Contato, "i"));
+            }
+
+            if (!string.IsNullOrEmpty(filtroFornecedorDto.Endereco))
+            {
+                filter &= Builders<Fornecedor>.Filter.Regex(p => p.Endereco, new BsonRegularExpression(filtroFornecedorDto.Endereco, "i"));
+            }
+
+            return await _fornecedoresCollection.Find(filter).SortBy(p => p.Nome).ToListAsync();
         }
     }
 }

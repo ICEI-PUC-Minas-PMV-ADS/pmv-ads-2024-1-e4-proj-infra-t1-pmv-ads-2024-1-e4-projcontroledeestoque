@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Product, createProduct } from "../services/produtos";
 
 type Props = {
-  produto: Product;
+  product: Product;
   setDeleteModal: (value: boolean) => void;
 };
 export default function ProductModal(props: any) {

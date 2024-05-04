@@ -10,5 +10,6 @@ namespace stock_flow.Services
         Task<Fornecedor> CreateFornecedorAsync(FornecedorDto fornecedorDto);
         Task<Fornecedor> UpdateFornecedorAsync(string id, FornecedorDto fornecedorDto);
         Task DeleteFornecedorAsync(string id);
+        Task<List<Fornecedor>> GetFornecedorsByFiltroAsync(FiltroFornecedorDto filtroFornecedorDto);
     }
 }

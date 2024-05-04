@@ -18,10 +18,17 @@ namespace stock_flow.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<FornecedorDto>>> GetAsync()
+        public async Task<ActionResult<List<FornecedorDto>>> GetFornecedorsByFiltroAsync([FromQuery] FiltroFornecedorDto filtroFornecedorDto)
         {
-            var fornecedores = await _fornecedorService.GetFornecedorAsync();
-            return Ok(fornecedores);
+            try
+            {
+                var fornecedores = await _fornecedorService.GetFornecedorsByFiltroAsync(filtroFornecedorDto);
+                return Ok(fornecedores);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new BaseResponse { Mensagem = ex.Message });
+            }
         }
 
         [HttpGet("{id}")]
