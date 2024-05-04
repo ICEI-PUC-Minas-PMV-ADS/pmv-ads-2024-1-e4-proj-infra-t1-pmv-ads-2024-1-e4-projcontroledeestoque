@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import { useEffect, useState } from "react";
 import { Product, getProducts } from "../services/produtos";
 import Price from "../components/Price";
@@ -49,6 +49,7 @@ export default function Products() {
   useEffect(() => {
     updateProducts()
   }, [filter]);
+  // @ts-ignore
   return editModal?(<EditProductModal produto={product} handleCloseEditModal={handleCloseEditModal}/>):createModal ?(<ProductModal handleCloseCreateModal={handleCloseCreateModal} />): deleteModal ? (
     <DeleteModal handleDelete={handleDelete} produto={product} />
   ) : (
