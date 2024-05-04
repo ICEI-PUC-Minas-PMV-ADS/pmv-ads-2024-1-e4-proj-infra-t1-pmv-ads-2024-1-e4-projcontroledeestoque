@@ -70,11 +70,13 @@ export default function Products() {
   }, [filter]);
   
   return editModal ? (
-    <EditProductModal product={product} handleCloseEditModal={handleCloseEditModal} />
+    <EditProductModal product={product || { id: "", nome: "", quantidade: 0, descricao: "", precoCusto: 0, precoVenda: 0, categorias: [], imagem: "", fornecedoresId: [] }} handleCloseEditModal={handleCloseEditModal} />
   ) : createModal ? (
     <ProductModal handleCloseCreateModal={handleCloseCreateModal} />
   ) : deleteModal ? (
-    <DeleteModal handleDelete={handleDelete} product={product} />
+    product ? (
+    <DeleteModal handleDelete={() => handleDelete(product!)} product={product} setDeleteModal={setDeleteModal} />
+  ) : null
   ) : (
         <div>
           <div>

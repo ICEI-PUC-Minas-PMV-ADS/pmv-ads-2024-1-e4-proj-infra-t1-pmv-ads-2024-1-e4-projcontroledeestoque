@@ -70,11 +70,13 @@ export default function Fornecedores() {
   }, [filter]);
 
   return editModal ? (
-    <EditFornecedorModal fornecedor={fornecedor} handleCloseEditModal={handleCloseEditModal} />
+    <EditFornecedorModal fornecedor={fornecedor || { id: "", nome: "", contato: "", endereco: "" }} handleCloseEditModal={handleCloseEditModal} />
   ) : createModal ? (
     <FornecedorModal handleCloseCreateModal={handleCloseCreateModal} />
   ) : deleteModal ? (
-    <DeleteModal handleDelete={handleDelete} fornecedor={fornecedor} />
+    fornecedor ? (
+      <DeleteModal handleDelete={() => handleDelete(fornecedor!)} fornecedor={fornecedor} setDeleteModal={setDeleteModal} />
+  ) : null
   ) : (
     <div>
       <div>
@@ -135,7 +137,6 @@ export default function Fornecedores() {
             </button>
           </div>
         </form>
-        <script src="https://unpkg.com/flowbite@1.4.0/dist/flowbite.js"></script>
       </div>
 
       <div className="h-full flex flex-col ">
