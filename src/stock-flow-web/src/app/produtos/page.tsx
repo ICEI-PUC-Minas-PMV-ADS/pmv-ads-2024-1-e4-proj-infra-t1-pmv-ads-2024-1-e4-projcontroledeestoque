@@ -112,10 +112,6 @@ export default function Products() {
             </button>
           </div>
         </form>
-
-      
-
-        <script src="https://unpkg.com/flowbite@1.4.0/dist/flowbite.js"></script>
       </div>
 
       <div className="flex flex-col gap-2">
