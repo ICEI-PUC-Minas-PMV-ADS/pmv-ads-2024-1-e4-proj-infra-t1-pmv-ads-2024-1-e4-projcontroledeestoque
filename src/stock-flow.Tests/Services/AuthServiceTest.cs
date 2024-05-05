@@ -7,6 +7,8 @@ using stock_flow.Exceptions;
 using stock_flow.Models;
 using stock_flow.Services.Impl;
 
+namespace stock_flow.Tests.Services;
+
 [TestFixture]
 public class AuthServiceTests
 {
@@ -29,7 +31,7 @@ public class AuthServiceTests
     }
 
     [Test]
-    public async Task RegisterAsync_ShouldThrowAuthException_WhenUserAlreadyExists()
+    public void RegisterAsync_ShouldThrowAuthException_WhenUserAlreadyExists()
     {
         // Arrange
         var user = new ApplicationUser { Email = "test@test.com" };
@@ -40,7 +42,7 @@ public class AuthServiceTests
     }
 
     [Test]
-    public async Task RegisterAsync_ShouldThrowAuthException_WhenUserCreationFails()
+    public void RegisterAsync_ShouldThrowAuthException_WhenUserCreationFails()
     {
         // Arrange
         var user = new ApplicationUser { Email = "test@test.com" };
