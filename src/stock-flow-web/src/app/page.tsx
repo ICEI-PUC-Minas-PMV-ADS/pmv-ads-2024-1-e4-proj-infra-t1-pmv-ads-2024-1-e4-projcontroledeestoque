@@ -1,9 +1,10 @@
 'use client'
-import { useEffect, useState } from 'react';
+import {useEffect, useState} from 'react';
 import Navigation from "./components/Navigation";
-import Login from "./autenticacao/login/page";
 import {Loading} from "@/app/components/Loading";
 import {useRouter} from "next/navigation";
+import {URLS} from "@/app/utils/constantes";
+import {getAccessToken} from "@/app/utils/acess-token";
 
 export default function Home() {
     const [accessToken, setAccessToken] = useState<string | null>(null);
@@ -11,8 +12,8 @@ export default function Home() {
     const router = useRouter();
 
     useEffect(() => {
-        const token = localStorage.getItem("accessToken");
-        setAccessToken(token);
+        const accessToken = getAccessToken();
+        setAccessToken(accessToken);
         setLoading(false);
     }, []);
 
@@ -28,5 +29,5 @@ export default function Home() {
 
             <Navigation/>
         </div>
-    ) : router.push("autenticacao/login")
+    ) : router.push(URLS.AUTENTICACAO_PATH + URLS.LOGIN_PATH)
 }
