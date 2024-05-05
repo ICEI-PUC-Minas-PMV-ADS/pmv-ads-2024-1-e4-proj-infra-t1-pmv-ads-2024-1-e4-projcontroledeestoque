@@ -9,7 +9,7 @@ export type Fornecedor = {
 
 const axiosInstance = axios.create({
   baseURL: "https://stock-flow.azurewebsites.net/api/v1/fornecedores",
-  timeout: 10000,
+  timeout: 30000,
 });
 
 export async function getFornecedores(query?: any): Promise<Fornecedor[]> {

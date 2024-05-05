@@ -14,7 +14,7 @@ export type Product = {
 
 const axiosInstance = axios.create({
   baseURL: "https://stock-flow.azurewebsites.net/api/v1/produtos",
-  timeout: 10000,
+  timeout: 30000,
 });
 
 export async function getProducts(query?: any): Promise<Product[]> {
