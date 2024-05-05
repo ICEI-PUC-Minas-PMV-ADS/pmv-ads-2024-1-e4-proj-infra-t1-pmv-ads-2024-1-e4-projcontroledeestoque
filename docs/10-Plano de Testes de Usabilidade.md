@@ -1,8 +1,58 @@
 # Plano de Testes de Usabilidade
 
-O teste de usabilidade permite avaliar a qualidade da interface com o usuário da aplicação interativa. O Plano de Testes de Software é gerado a partir da especificação do sistema e consiste em casos de testes que deverão ser executados quando a implementação estiver parcial ou totalmente pronta.
+## Objetivos
 
-As referências abaixo irão auxiliá-lo na geração do artefato "Plano de Testes de Usabilidade".
+  -Detectar problemas<br>
+  -Entender como o usuário se sente ao utilizar o sistema<br>
+  -Detectar processos que podem ser otimizados<br>
+  -Avaliar a satisfação do usuário<br>
+
+## Participantes
+
+  -Matheus <br>
+  -Thaise <br>
+  -Elquineias <br>
+  -Igor<br>
+  -Arthur<br>
+
+## Processo
+
+Foi cedido ao usuário acesso a um computador, bem como usuário e senhas para efetuar no sistema, para que o mesmo realizasse a interação com o sistema.
+
+No início do teste foi entregue ao usuário um documento contendo as atividades a serem realizadas e feita uma breve apresentação do sistema. Após isso, o mediador deixou que o usuário tomasse suas próprias decisões de modo a avaliar o comportamento do usuário perante o sistema.
+
+Após o término das atividades propostas, o usuário foi submetido a um questionário para a avaliação do sistema.
+
+## Cronograma
+
+Os testes serão realizados no dia 05/05 conforme a disponibilidade dos participantes.
+
+## Atividades
+
+**Atividade 1**<br>
+Enunciado: Efetue o login no sistema.
+
+Email: test_user@example.com<br>
+Senha: Test@1234
+
+**Atividade 2**<br>
+Enunciado: Cadastre um produto
+
+**Atividade 3**<br>
+Enunciado: Edite o produto previamente cadastrado. Ex: alterar nome, quantidade em estoque, valor, etc.
+
+**Atividade 4**<br>
+Enunciado: Exclua o produto previamente cadastrado.
+
+**Atividade 5**<br>
+Enunciado: Cadastre um fornecedor.
+
+**Atividade 3**<br>
+Enunciado: Edite o fornecedor previamente cadastrado. Ex: alterar nome, contato ou endereço.
+
+**Atividade 4**<br>
+Enunciado: Exclua o fornecedor previamente cadastrado.
+
 
 > **Links Úteis**:
 > - [Teste De Usabilidade: O Que É e Como Fazer Passo a Passo (neilpatel.com)](https://neilpatel.com/br/blog/teste-de-usabilidade/)
