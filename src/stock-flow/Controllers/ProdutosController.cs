@@ -14,8 +14,6 @@ namespace stock_flow.Controllers
         {
             _produtoService = produtoService;
         }
-
-        
         
         [HttpGet]
         public async Task<ActionResult<List<ProdutoDto>>> GetProdutosByFiltroAsync([FromQuery] FiltroProdutoDto filtroProdutoDto)
