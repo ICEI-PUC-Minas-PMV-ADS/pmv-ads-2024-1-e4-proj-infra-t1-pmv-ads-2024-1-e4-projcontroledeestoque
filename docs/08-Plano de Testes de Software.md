@@ -19,7 +19,7 @@
 | **Caso de Teste** 	| **CT-03 – Gestão de produtos.** 	|
 |:---:	|:---:	|
 |	Requisito Associado 	| RF-001	- Permitir que o usuário gerencie produtos. |
-| Objetivo do Teste 	| VVerificar se o usuário consegue gerenciar produtos. |
+| Objetivo do Teste 	| Verificar se o usuário consegue gerenciar produtos. |
 | Passos 	| - Acessar a aplicação <br> - Inserir os dados de login. <br> - Aguardar o direcionamento para a página inicial. <br> Acessar a página de produtos. <br> - Acessar o produto desejado. <br> - Efetuar alterações(nome, quantidade). <br> - Salvar alterações.|
 |Critério de Êxito | - Usuário obteve sucesso ao gerenciar produtos. |
 
