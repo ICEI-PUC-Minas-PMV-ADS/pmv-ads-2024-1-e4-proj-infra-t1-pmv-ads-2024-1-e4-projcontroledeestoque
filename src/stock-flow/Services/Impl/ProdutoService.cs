@@ -106,7 +106,7 @@ namespace stock_flow.Services.Impl
         public async Task<IEnumerable<Produto>> GetProdutosComQuantidadeZeroAsync()
         {
             var filter = Builders<Produto>.Filter.Eq(p => p.Quantidade, 0);
-            return await _produtosCollection.Find(filter).ToListAsync();
+            return await _produtosCollection.Find(filter).SortBy(produto => produto.Id).ToListAsync();
         }
 
         public Task<List<string>> GetCategoriasAsync()
