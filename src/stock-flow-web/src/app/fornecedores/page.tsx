@@ -121,7 +121,7 @@ export default function Fornecedores() {
               value={filter}
               onChange={(e) => setFilter(e.target.value)}
               className="block p-4 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500"
-              placeholder="fornecedor"
+              placeholder="Loja, Empresa, etc."
               required
             ></input>
             <button
