@@ -2,7 +2,24 @@
 # Este arquivo .gitignore foi criado automaticamente pelo Microsoft(R) Visual Studio.
 ################################################################################
 
+# stock-flow
 /src/stock-flow/.vs
+/src/stock-flow/.idea
 /src/stock-flow/obj
-/.vs
 /src/stock-flow/bin/Debug/net6.0
+
+# stock-flow-tests
+/src/stock-flow.Tests/.vs
+/src/stock-flow.Tests/obj
+/src/stock-flow.Tests/bin/Debug/net6.0
+
+# stock-flow-web
+/src/stock-flow-web/.vs
+/src/stock-flow-web/.idea
+/src/stock-flow-web/obj
+
+# IDE
+/.vs
+/.idea
+/.vscode
+/src/stock-flow/stock-flow.sln.DotSettings.user
