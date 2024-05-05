@@ -8,7 +8,6 @@ import FornecedorModal from "../components/FornecedorModal";
 import {toast} from "react-toastify";
 import EditFornecedorModal from "../components/EditFornecedorModal";
 import FornecedorDetailsModal from "../components/FornecedorDetailsModal";
-import {Product} from "@/app/services/produtos";
 import {Loading} from "@/app/components/Loading";
 import {URLS} from "@/app/utils/constantes";
 import {useRouter} from "next/navigation";
@@ -16,7 +15,6 @@ import {useRouter} from "next/navigation";
 export default function Fornecedores() {
     const [accessToken, setAccessToken] = useState<string | null>(null);
     const [loading, setLoading] = useState(true);
-    const [products, setProducts] = useState<Product[]>([]);
     const [fornecedores, setFornecedores] = useState<Fornecedor[]>([]);
     const [filter, setFilter] = useState("");
     const [deleteModal, setDeleteModal] = useState(false);
@@ -26,7 +24,7 @@ export default function Fornecedores() {
     const [detailsModalOpen, setDetailsModalOpen] = useState(false);
     const [selectedFornecedor, setSelectedFornecedor] = useState<Fornecedor | null>(null);
     const router = useRouter();
-    
+
     const handleDelete = (fornecedor: Fornecedor) => {
         setFornecedor(fornecedor);
         setDeleteModal(!deleteModal);
@@ -199,4 +197,3 @@ export default function Fornecedores() {
         </div>
     );
 }
-
