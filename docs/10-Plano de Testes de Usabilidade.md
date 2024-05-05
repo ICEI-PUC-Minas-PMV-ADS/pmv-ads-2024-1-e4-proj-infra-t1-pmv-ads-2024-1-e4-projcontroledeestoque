@@ -53,13 +53,9 @@ Enunciado: Edite o fornecedor previamente cadastrado. Ex: alterar nome, contato 
 **Atividade 4**<br>
 Enunciado: Exclua o fornecedor previamente cadastrado.
 
-##Link para o formulário:
+## Link para o formulário:
 
 https://docs.google.com/forms/d/e/1FAIpQLSeHn6ycY1H74CMy0fYSToUq9L6DytZPGew6_gweDWSh3NHOhA/viewform
 
 
-> **Links Úteis**:
-> - [Teste De Usabilidade: O Que É e Como Fazer Passo a Passo (neilpatel.com)](https://neilpatel.com/br/blog/teste-de-usabilidade/)
-> - [Teste de usabilidade: tudo o que você precisa saber! | by Jon Vieira | Aela.io | Medium](https://medium.com/aela/teste-de-usabilidade-o-que-voc%C3%AA-precisa-saber-39a36343d9a6/)
-> - [Planejando testes de usabilidade: o que (e o que não) fazer | iMasters](https://imasters.com.br/design-ux/planejando-testes-de-usabilidade-o-que-e-o-que-nao-fazer/)
-> - [Ferramentas de Testes de Usabilidade](https://www.usability.gov/how-to-and-tools/resources/templates.html)
+
