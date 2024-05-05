@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Product, getProducts } from "../services/produtos";
 import Price from "../components/Price";
 import Navigation from "../components/Navigation";
@@ -19,7 +19,8 @@ export default function Products() {
   const [editModal, setEditModal] = useState(false);
   const [detailsModalOpen, setDetailsModalOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
-  
+  const formRef = useRef(null);
+
   const handleDelete = (produto:Product) => {
     setProduct(produto);
     setDeleteModal(!deleteModal);
@@ -47,7 +48,7 @@ export default function Products() {
     setEditModal(!editModal);
     updateProducts()
     toast.success(`Produto editado com sucesso!`);
-    window.location.reload();
+    
   }
   
   const handleOpenEditModal = (product:Product) => {
@@ -65,8 +66,19 @@ export default function Products() {
     setSelectedProduct(null);
   };
 
+  const handleSearch = () => {
+    getProducts({ name: filter }).then((data) => {
+      setProducts(data);
+    });
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault(); 
+    handleSearch(); 
+  };
+
   useEffect(() => {
-    updateProducts()
+    updateProducts();
   }, [filter]);
   
   return editModal ? (
@@ -94,7 +106,7 @@ export default function Products() {
           </div>
 
           <div className="mt-8 max-w-2xl mx-auto mb-6">
-            <form>
+            <form ref={formRef} onSubmit={handleSubmit}>
               <label className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-gray-300">
                 Search
               </label>
@@ -125,13 +137,8 @@ export default function Products() {
                   required
                 ></input>
                 <button
-                  type="button"
+                  type="submit"
                   className="text-white absolute right-2.5 bottom-2.5 bg-indigo-700 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800"
-                  onClick={(e) =>
-                    getProducts({ name: filter }).then((data) => {
-                      setProducts(data);
-                    })
-                  }
                 >
                   Pesquisar
                 </button>
@@ -140,54 +147,50 @@ export default function Products() {
           </div>
           
           <div>
-            <div className={`bg-gray-900 py-2 flex items-center justify-start px-4`}>
-              <div className="py-1" style={{ width: "3%" }}>Qtd</div>
-              <div className="py-1 px-2" style={{ width: "7%" }}>Produto</div>
-              <div className="py-1 px-2" style={{ width: "34%" }}>Descrição</div>
-              <div className="py-1 px-4" style={{ width: "34%" }}>Categoria</div>
-              <div className="py-1 px-4" style={{ width: "8%" }}>P.Venda</div>
-              <div className="py-1 px-4" style={{ width: "8%" }}>P.Custo</div>
-              <div className="py-1 px-4" style={{ width: "8%" }}>Editar</div>
-              <div className="py-1 px-4" style={{ width: "8%" }}>Excluir</div>
-            </div>
-
-
-            <div className="flex-grow overflow-y-auto">
-              {products.map((product, index) => (
-                <div
-                  className={`bg-gray-${index % 2 === 0 ? "950" : "900"} py-2 flex items-center justify-between px-4`}
-                  key={product.id}
-                >
-                  <div className="py-1 px-4 max-w-prose ">
-                    {product.quantidade}
-                  </div>
-                  <div onClick={() => handleOpenDetailsModal(product)} className="w-1/5 text-amber-600">{product.nome}</div>
-                  <div className="py-1 px-4 w-full ">{product.descricao}</div>
-                  <div className="py-1 px-4 w-full ">
-                    {product.categorias.map((e) => (e.length > 0 ? e : "")).join(`, `)}
-                  </div>
-                  <div className="py-1 px-4 max-w-prose min-w-32">
-                    <Price value={product.precoVenda}></Price>
-                  </div>
-                  <div className="py-1 px-4 max-w-prose min-w-32">
-                    <Price value={product.precoCusto}></Price>
-                  </div>
-                  <div className="py-1 px-4 max-w-prose min-w-32">
-                    <button onClick={() => handleOpenEditModal(product)}>
-                      <NotePencil size={20} />
-                    </button>
-                  </div>
-                  <div className="py-1 px-4 max-w-prose min-w-32">
-                    <button onClick={() => handleDelete(product)}>
-                      <TrashSimple size={20} />
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </div>
-          {detailsModalOpen && selectedProduct && (
-            <ProductDetailsModal product={selectedProduct} handleCloseDetailsModal={handleCloseDetailsModal} />
-          )}
+            <table className="tmvb-table" style={{ width: "100%" }}>
+              <thead>
+                <tr className="bg-gray-900 py-2">
+                  <th className="py-1 px-4 max-w-prose" style={{ width: "3%", textAlign: "left" }}>Qtd</th>
+                  <th className="py-1 px-4 max-w-prose" style={{ width: "7%", textAlign: "left" }}>Produto</th>
+                  <th className="py-1 px-4 max-w-prose" style={{ width: "34%", textAlign: "left" }}>Descrição</th>
+                  <th className="py-1 px-4 max-w-prose" style={{ width: "34%", textAlign: "left" }}>Categoria</th>
+                  <th className="py-1 px-4 max-w-prose" style={{ width: "8%", textAlign: "left" }}>P.Venda</th>
+                  <th className="py-1 px-4 max-w-prose" style={{ width: "8%", textAlign: "left" }}>P.Custo</th>
+                  <th className="py-1 px-4 max-w-prose" style={{ width: "8%", textAlign: "left" }}>Editar</th>
+                  <th className="py-1 px-4 max-w-prose" style={{ width: "8%", textAlign: "left" }}>Excluir</th>
+                </tr>
+              </thead>
+              <tbody>
+                {products.map((product, index) => (
+                  <tr
+                    className={`bg-gray-${index % 2 === 0 ? "950" : "900"} py-2`}
+                    key={product.id}
+                  >
+                    <td className="py-1 px-4 max-w-prose" style={{ width: "3%", textAlign: "left" }}>{product.quantidade}</td>
+                    <td className="py-1 px-4 max-w-prose" style={{ width: "7%", textAlign: "left" }} onClick={() => handleOpenDetailsModal(product)}><div className="text-amber-600">{product.nome}</div></td>
+                    <td className="py-1 px-4 max-w-prose" style={{ width: "34%", textAlign: "left" }}>{product.descricao}</td>
+                    <td className="py-1 px-4 max-w-prose" style={{ width: "34%", textAlign: "left" }}>
+                      {product.categorias.map((e) => (e.length > 0 ? e : "")).join(`, `)}
+                    </td>
+                    <td className="py-1 px-4 max-w-prose" style={{ width: "8%", textAlign: "left" }}><Price value={product.precoVenda}></Price></td>
+                    <td className="py-1 px-4 max-w-prose" style={{ width: "8%", textAlign: "left" }}><Price value={product.precoCusto}></Price></td>
+                    <td className="py-1 px-4 max-w-prose" style={{ width: "8%", textAlign: "left" }}>
+                      <button onClick={() => handleOpenEditModal(product)}>
+                        <NotePencil size={20} />
+                      </button>
+                    </td>
+                    <td className="py-1 px-4 max-w-prose" style={{ width: "8%", textAlign: "left" }}>
+                      <button onClick={() => handleDelete(product)}>
+                        <TrashSimple size={20} />
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            {detailsModalOpen && selectedProduct && (
+              <ProductDetailsModal product={selectedProduct} handleCloseDetailsModal={handleCloseDetailsModal} />
+            )}
           </div>
         </div>
   );

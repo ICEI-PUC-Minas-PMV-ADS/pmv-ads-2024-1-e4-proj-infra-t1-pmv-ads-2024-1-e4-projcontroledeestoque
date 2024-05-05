@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Navigation from "../components/Navigation";
 import { Fornecedor, getFornecedores } from "../services/fornecedores";
 import { TrashSimple, NotePencil } from "@phosphor-icons/react";
@@ -18,6 +18,7 @@ export default function Fornecedores() {
   const [editModal, setEditModal] = useState(false);
   const [detailsModalOpen, setDetailsModalOpen] = useState(false);
   const [selectedFornecedor, setSelectedFornecedor] = useState<Fornecedor | null>(null);
+  const formRef = useRef(null);
 
   const handleDelete = (fornecedor: Fornecedor) => {
     setFornecedor(fornecedor);
@@ -28,7 +29,7 @@ export default function Fornecedores() {
 
   const updateFornecedores = () => {
     getFornecedores().then((data) => {
-      setFornecedores(data);
+      setFornecedores(() => data);
     });
   };
 
@@ -36,7 +37,7 @@ export default function Fornecedores() {
     setCreateModal(!createModal);
     updateFornecedores();
     toast.success(`Fornecedor criado com sucesso!`);
-    window.location.reload();
+    
   };
 
   const handleOpenCreateModal = () => {
@@ -47,7 +48,7 @@ export default function Fornecedores() {
     setEditModal(!editModal);
     updateFornecedores();
     toast.success(`Fornecedor editado com sucesso!`);
-    window.location.reload();
+    
   };
 
   const handleOpenEditModal = (fornecedor: Fornecedor) => {
@@ -63,6 +64,17 @@ export default function Fornecedores() {
   const handleCloseDetailsModal = () => {
     setDetailsModalOpen(false);
     setSelectedFornecedor(null);
+  };
+
+  const handleSearch = () => {
+    getFornecedores({ name: filter }).then((data) => {
+      setFornecedores(data);
+    });
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault(); 
+    handleSearch(); 
   };
 
   useEffect(() => {
@@ -96,7 +108,7 @@ export default function Fornecedores() {
       </div>
 
       <div className="mt-8 max-w-2xl mx-auto mb-6">
-        <form>
+        <form ref={formRef} onSubmit={handleSubmit}>
           <label className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-gray-300">Search</label>
           <div className="relative">
             <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
@@ -121,17 +133,12 @@ export default function Fornecedores() {
               value={filter}
               onChange={(e) => setFilter(e.target.value)}
               className="block p-4 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500"
-              placeholder="fornecedor"
+              placeholder="Loja, Empresa, etc."
               required
-            ></input>
+            />
             <button
-              type="button"
+              type="submit"
               className="text-white absolute right-2.5 bottom-2.5 bg-indigo-700 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800"
-              onClick={(e) =>
-                getFornecedores({ name: filter }).then((data) => {
-                  setFornecedores(data);
-                })
-              }
             >
               Pesquisar
             </button>
@@ -139,42 +146,47 @@ export default function Fornecedores() {
         </form>
       </div>
 
-      <div className="h-full flex flex-col ">
-        <div className="bg-gray-800 text-white py-2">
-          <div className="container mx-auto grid grid-cols-5 gap-2 ">
-            <div className="w-1/5">Nome</div>
-            <div className="w-1/5">Contato</div>
-            <div className="w-1/5">Endereço</div>
-            <div className="w-1/5">Editar</div>
-            <div className="w-1/5 mx-6">Excluir</div>
-          </div>
-        </div>
-        <div className="flex-grow overflow-y-auto">
-          {fornecedores.map((fornecedor, index) => (
-            <div
-              className={`bg-gray-${index % 2 === 0 ? "950" : "900"} py-2 flex items-center justify-between px-4`}
-              key={fornecedor.id}
-            >
-              <div onClick={() => handleOpenDetailsModal(fornecedor)} className="w-1/5 text-amber-600">{fornecedor.nome}</div>
-              <div className="w-1/5">{fornecedor.contato}</div>
-              <div className="w-1/5">{fornecedor.endereco}</div>
-              <div className="w-1/5">
-                <button onClick={() => handleOpenEditModal(fornecedor)}>
-                  <NotePencil size={20} />
-                </button>
-              </div>
-              <div className="w-1/5">
-                <button onClick={() => handleDelete(fornecedor)}>
-                  <TrashSimple size={20} />
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-      {detailsModalOpen && selectedFornecedor && (
-        <FornecedorDetailsModal fornecedor={selectedFornecedor} handleCloseDetailsModal={handleCloseDetailsModal} />
-      )}
-    </div>
+      <div>
+        <table className="tmvb-table" style={{ width: "100%" }}>
+          <thead>
+            <tr className="bg-gray-900 py-2">
+              <th className="py-1 px-4 max-w-prose" style={{ width: "30%", textAlign: "left" }}>Nome</th>
+              <th className="py-1 px-4 max-w-prose" style={{ width: "25%", textAlign: "left" }}>Contato</th>
+              <th className="py-1 px-4 max-w-prose" style={{ width: "25%", textAlign: "left" }}>Endereço</th>
+              <th className="py-1 px-4 max-w-prose" style={{ width: "10%", textAlign: "left" }}>Editar</th>
+              <th className="py-1 px-4 max-w-prose" style={{ width: "10%", textAlign: "left" }}>Excluir</th>
+            </tr>
+          </thead>
+          <tbody>
+            {fornecedores.map((fornecedor, index) => (
+              <tr
+                className={`bg-gray-${index % 2 === 0 ? "950" : "900"} py-2`}
+                key={fornecedor.id}
+              >
+                <td className="py-1 px-4 max-w-prose" style={{ width: "30%", textAlign: "left" }} onClick={() => handleOpenDetailsModal(fornecedor)}>
+                  <div className="text-amber-600">{fornecedor.nome}</div>
+                </td>
+                <td className="py-1 px-4 max-w-prose" style={{ width: "25%", textAlign: "left" }}>{fornecedor.contato}</td>
+                <td className="py-1 px-4 max-w-prose" style={{ width: "25%", textAlign: "left" }}>{fornecedor.endereco}</td>
+                <td className="py-1 px-4 max-w-prose" style={{ width: "10%", textAlign: "left" }}>
+                  <button onClick={() => handleOpenEditModal(fornecedor)}>
+                    <NotePencil size={20} />
+                  </button>
+                </td>
+                <td className="py-1 px-4 max-w-prose" style={{ width: "10%", textAlign: "left" }}>
+                  <button onClick={() => handleDelete(fornecedor)}>
+                    <TrashSimple size={20} />
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+
+        {detailsModalOpen && selectedFornecedor && (
+          <FornecedorDetailsModal fornecedor={selectedFornecedor} handleCloseDetailsModal={handleCloseDetailsModal} />
+        )}
+      </div>
     </div>
   );
 }
