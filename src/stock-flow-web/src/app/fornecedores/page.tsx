@@ -11,6 +11,7 @@ import FornecedorDetailsModal from "../components/FornecedorDetailsModal";
 import {Loading} from "@/app/components/Loading";
 import {URLS} from "@/app/utils/constantes";
 import {useRouter} from "next/navigation";
+import {getAccessToken} from "@/app/utils/acess-token";
 
 export default function Fornecedores() {
     const [accessToken, setAccessToken] = useState<string | null>(null);
@@ -70,6 +71,12 @@ export default function Fornecedores() {
         setDetailsModalOpen(false);
         setSelectedFornecedor(null);
     };
+
+    useEffect(() => {
+        const accessToken = getAccessToken();
+        setAccessToken(accessToken);
+        setLoading(false);
+    }, []);
 
     useEffect(() => {
         updateFornecedores();
