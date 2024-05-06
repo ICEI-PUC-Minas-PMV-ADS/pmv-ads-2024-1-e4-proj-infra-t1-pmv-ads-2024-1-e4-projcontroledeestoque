@@ -31,10 +31,19 @@ Dispozição dos elementos na tela.
 O usuário não teve nenhuma dificuldade realizando as atividades com facilidade.
 
 ### Feedback do usuário:<br>
-
+Cumpriu o que prometeu.
 
 ### Sugestões de melhoria:<br>
+Melhorias visuais na interface. 
 
+## Elquineias
+O usuário não teve nenhuma dificuldade realizando as atividades com facilidade.
+
+### Feedback do usuário:<br>
+simples de utilizar
+
+### Sugestões de melhoria:<br>
+Atualização automática do estoque
 
 
 
