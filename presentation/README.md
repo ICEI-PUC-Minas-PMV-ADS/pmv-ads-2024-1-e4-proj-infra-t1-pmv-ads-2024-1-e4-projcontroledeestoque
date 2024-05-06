@@ -8,3 +8,6 @@ https://www.youtube.com/watch?v=2gwNBHn_JKE
 * Vídeo 2ª Etapa
 https://www.youtube.com/watch?v=Q9PTFws-ajA
 
+* Vídeo 3ª Etapa
+https://youtu.be/RHKiDhgDOm8
+
