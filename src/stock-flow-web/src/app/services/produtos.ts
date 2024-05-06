@@ -1,4 +1,5 @@
 import axios from "axios";
+
 export type Product = {
   id: string;
   nome: string;
@@ -10,28 +11,49 @@ export type Product = {
   imagem: string;
   fornecedoresId: string[] | null;
 };
+
+const axiosInstance = axios.create({
+  baseURL: "https://stock-flow.azurewebsites.net/api/v1/produtos",
+  timeout: 30000,
+});
+
 export async function getProducts(query?: any): Promise<Product[]> {
-  const url = `https://stock-flow.azurewebsites.net/api/v1/produtos`;
   const name = query?.name ? `?nome=${query.name}` : "";
-  const response = await axios.get(`${url}${name}`);
-  console.log(response);
-  return response.data;
+  try {
+    const response = await axiosInstance.get(name);
+    return response.data;
+  } catch (error) {
+    console.error("Erro ao obter produtos:", error);
+    throw error;
+  }
 }
 
 export async function createProduct(product: Product): Promise<Product> {
-  const url = `https://stock-flow.azurewebsites.net/api/v1/produtos`;
-  const response = await axios.post(url, product);
-  return response.data;
+  try {
+    const response = await axiosInstance.post("", product);
+    return response.data;
+  } catch (error) {
+    console.error("Erro ao criar produto:", error);
+    throw error;
+  }
 }
 
 export async function deleteProduct(id: string): Promise<Product> {
-  const url = `https://stock-flow.azurewebsites.net/api/v1/produtos/${id}`;
-  const response = await axios.delete(url);
-  return response.data;
+  try {
+    const response = await axiosInstance.delete(`/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error("Erro ao excluir produto:", error);
+    throw error;
+  }
 }
 
 export async function updateProduct(product: Product): Promise<Product> {
-  const url = `https://stock-flow.azurewebsites.net/api/v1/produtos/${product.id}`;
-  const response = await axios.put(url, product);
-  return response.data;
+  try {
+    const response = await axiosInstance.put(`/${product.id}`, product);
+    return response.data;
+  } catch (error) {
+    console.error("Erro ao atualizar produto:", error);
+    throw error;
+  }
 }

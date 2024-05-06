@@ -8,8 +8,12 @@ type Props = {
 export default function EditProductModal(props: Props) {
   const [product, setProduct] = useState<Product>(props.product);
   const handleEditProduct = async () => {
-    updateProduct(product);
-    props.handleCloseEditModal();
+    try {
+        await updateProduct(product);
+        props.handleCloseEditModal();
+    } catch (error) {
+        console.error("Erro ao excluir fornecedor:", error);
+    }   
   };
   
   return (

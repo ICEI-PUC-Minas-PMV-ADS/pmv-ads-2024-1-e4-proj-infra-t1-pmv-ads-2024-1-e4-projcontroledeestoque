@@ -9,9 +9,12 @@ type Props = {
 
 export default function DeleteModal(props: Props) {
     const handleDeleteFornecedor = async () => {
-        deleteFornecedor(props.fornecedor.id);
-        props.handleDelete();
-        window.location.reload();
+        try {
+            await deleteFornecedor(props.fornecedor.id);
+            props.handleDelete();
+        } catch (error) {
+            console.error("Erro ao excluir fornecedor:", error);
+        }        
     }
 
     return (
