@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Product, createProduct, updateProduct } from "../services/produtos";
+import { Product, updateProduct } from "../services/produtos";
 
 type Props = {
   product: Product;
@@ -19,6 +19,9 @@ export default function EditProductModal(props: Props) {
   return (
     <div className="bg-slate-800 bg-opacity-50 flex justify-center items-center absolute top-0 right-0 bottom-0 left-0">
       <div className="bg-gray-700 px-8 py-10 rounded-md text-center flex flex-col gap-2 ">
+      <h1 className="text-xl mb-4 font-bold text-slate-500">
+          Editando produto
+        </h1>
         <div className="flex justify-between items-center">
           <label className=""> Nome do Produto</label>
           <input

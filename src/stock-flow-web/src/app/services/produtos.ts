@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 
 export type Product = {
   id: string;
@@ -40,7 +41,7 @@ export async function createProduct(product: Product): Promise<Product> {
 
 export async function deleteProduct(id: string): Promise<Product> {
   try {
-    const response = await axiosInstance.delete(`/${id}`);
+    const response = await axiosInstance.delete(`/${id}`)
     return response.data;
   } catch (error) {
     console.error("Erro ao excluir produto:", error);

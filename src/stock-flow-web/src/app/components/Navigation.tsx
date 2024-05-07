@@ -5,12 +5,6 @@ export default function Navigation() {
     <div className="flex gap-2">
       <Link
         className=" p-2  bg-gray-900 hover:bg-indigo-700 text-white"
-        href="/"
-      >
-        Home
-      </Link>
-      <Link
-        className=" p-2  bg-gray-900 hover:bg-indigo-700 text-white"
         href="/produtos"
       >
         Produtos
@@ -20,6 +14,12 @@ export default function Navigation() {
         href="/fornecedores"
       >
         Fornecedores
+      </Link>{" "}
+      <Link
+        className=" p-2  bg-gray-900 hover:bg-indigo-700 text-white"
+        href="/relatorio"
+      >
+        Relatorios
       </Link>{" "}
     </div>
   );

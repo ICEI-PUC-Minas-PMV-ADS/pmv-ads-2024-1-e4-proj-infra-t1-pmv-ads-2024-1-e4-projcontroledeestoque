@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Product, createProduct } from "../services/produtos";
+import { toast } from "react-toastify";
 
 type Props = {
   product: Product;
@@ -19,16 +20,19 @@ export default function ProductModal(props: any) {
   });
   const handleCreateProduct = async () => {
     try {
-        await createProduct(product);
-        props.handleCloseCreateModal();
+      await createProduct(product);
+      props.handleCloseCreateModal();
     } catch (error) {
-        console.error("Erro ao excluir fornecedor:", error);
-    }   
+      console.error("Erro ao excluir fornecedor:", error);
+    }
   };
   return (
     <div className="bg-slate-800 bg-opacity-50 flex justify-center items-center absolute top-0 right-0 bottom-0 left-0">
       <div className="bg-gray-700 px-8 py-10 rounded-md text-center flex flex-col gap-2 ">
-        <div className="flex justify-between items-center">
+        <h1 className="text-xl mb-4 font-bold text-slate-500">
+          Adicionando novo produto
+        </h1>
+        <div className="flex flex-col justify-between items-center">
           <label className=""> Nome do Produto</label>
           <input
             onChange={(e) => {
