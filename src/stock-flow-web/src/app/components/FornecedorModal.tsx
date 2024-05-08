@@ -14,8 +14,12 @@ export default function FornecedorModal(props: any) {
     endereco: "",
   });
   const handleCreateFornecedor = async () => {
-    createFornecedor(fornecedor);
-    props.handleCloseCreateModal();
+    try {
+        await createFornecedor(fornecedor);
+        props.handleCloseCreateModal();
+    } catch (error) {
+        console.error("Erro ao excluir fornecedor:", error);
+    }   
   };
   return (
     <div className="bg-slate-800 bg-opacity-50 flex justify-center items-center absolute top-0 right-0 bottom-0 left-0">

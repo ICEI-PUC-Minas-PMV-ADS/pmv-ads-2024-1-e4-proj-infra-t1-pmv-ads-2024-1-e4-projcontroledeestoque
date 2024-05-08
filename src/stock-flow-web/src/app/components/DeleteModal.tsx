@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import { Product, deleteProduct } from "../services/produtos";
 
 type Props = {
@@ -7,9 +8,12 @@ type Props = {
 }
 export default function DeleteModal(props: Props) {
     const handleDeleteProduct = async () => {
-        deleteProduct(props.product.id);
-        props.handleDelete();
-        window.location.reload();
+      try {
+        await deleteProduct(props.product.id);
+        props.handleDelete(); 
+      } catch (error) {
+          console.error("Erro ao excluir fornecedor:", error);
+      }    
     }
 
     return (

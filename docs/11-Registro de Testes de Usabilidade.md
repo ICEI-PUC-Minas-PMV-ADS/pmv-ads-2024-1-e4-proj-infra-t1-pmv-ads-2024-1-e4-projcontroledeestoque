@@ -1,8 +1,50 @@
 # Registro de Testes de Usabilidade
 
-Após realizar os testes de usabilidade, obtém-se um relatório a partir das análises realizadas. O Registro de Testes de Usabilidade é um relatório que contém as evidências dos testes e relatos dos usuários participantes, baseado no Plano de Testes de Usabilidade desenvolvido para os casos de uso desta etapa.
+## Jackson
+O usuário teve um pouco de dificudade de se habituar com a interface no inicio e fez uma confusão com o que deveria ir em cada campo na area de cadastrar o fornecedor mas no decorrer do teste não encontrou mais nenhum impeditivo realizando as atividades com facilidade.
 
-As referências abaixo irão auxiliá-lo na geração do artefato “Registro de Testes de Usabilidade”.
+### Feedback do usuário:<br>
+Gostei bastante da plataforma pelo fato que eu consigo gerenciar a formas de venda. 
 
-> **Links Úteis**:
-> - [Ferramentas de Testes de Usabilidade](https://www.usability.gov/how-to-and-tools/resources/templates.html)
+### Sugestões de melhoria:<br>
+Nada a reclamar gostei muito.
+
+## Daniel
+O usuário não teve nenhuma dificuldade realizando as atividades com facilidade.
+
+### Feedback do usuário:<br>
+Gostei da Usabilidade
+
+### Sugestões de melhoria:<br>
+Interface
+
+## Julia
+A teve algumas dificuldades para identificar os botões de edição de itens no inicio.
+
+### Feedback do usuário:<br>
+Usabilidade bem simples e intuitiva e um sistema bem ágil
+
+### Sugestões de melhoria:<br>
+Dispozição dos elementos na tela.
+
+## Matheus
+O usuário não teve nenhuma dificuldade realizando as atividades com facilidade.
+
+### Feedback do usuário:<br>
+Cumpriu o que prometeu.
+
+### Sugestões de melhoria:<br>
+Melhorias visuais na interface. 
+
+## Elquineias
+O usuário não teve nenhuma dificuldade realizando as atividades com facilidade.
+
+### Feedback do usuário:<br>
+simples de utilizar
+
+### Sugestões de melhoria:<br>
+Atualização automática do estoque
+
+
+
+

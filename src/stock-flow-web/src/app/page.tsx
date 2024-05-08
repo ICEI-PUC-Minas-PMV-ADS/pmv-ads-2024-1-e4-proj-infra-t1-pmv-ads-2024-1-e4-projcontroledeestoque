@@ -5,6 +5,7 @@ import {Loading} from "@/app/components/Loading";
 import {useRouter} from "next/navigation";
 import {URLS} from "@/app/utils/constantes";
 import {getAccessToken} from "@/app/utils/acess-token";
+import { ToastContainer } from 'react-toastify';
 
 export default function Home() {
     const [accessToken, setAccessToken] = useState<string | null>(null);
@@ -23,6 +24,7 @@ export default function Home() {
 
     return accessToken ? (
         <div>
+            
             <h1 className="text-indigo-600">
                 Stock Flow <span className="text-gray-500">Home</span>
             </h1>

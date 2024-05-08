@@ -1,31 +1,54 @@
 import axios from "axios";
+
 export type Fornecedor = {
   id: string;
   nome: string;
   contato: string;
   endereco: string;
 };
+
+const axiosInstance = axios.create({
+  baseURL: "https://stock-flow.azurewebsites.net/api/v1/fornecedores",
+  timeout: 30000,
+});
+
 export async function getFornecedores(query?: any): Promise<Fornecedor[]> {
-  const url = `https://stock-flow.azurewebsites.net/api/v1/fornecedores`;
   const queryString = query?.name ? `?nome=${query.name}` : "";
-  const response = await axios.get(`${url}${queryString}`);
-  console.log(response);
-  return response.data;
+  try {
+    const response = await axiosInstance.get(queryString);
+    return response.data;
+  } catch (error) {
+    console.error("Erro ao obter fornecedores:", error);
+    throw error;
+  }
 }
+
 export async function createFornecedor(fornecedor: Fornecedor): Promise<Fornecedor> {
-  const url = `https://stock-flow.azurewebsites.net/api/v1/fornecedores`;
-  const response = await axios.post(url, fornecedor);
-  return response.data;
+  try {
+    const response = await axiosInstance.post("", fornecedor);
+    return response.data;
+  } catch (error) {
+    console.error("Erro ao criar fornecedor:", error);
+    throw error;
+  }
 }
 
 export async function deleteFornecedor(id: string): Promise<Fornecedor> {
-  const url = `https://stock-flow.azurewebsites.net/api/v1/fornecedores/${id}`;
-  const response = await axios.delete(url);
-  return response.data;
+  try {
+    const response = await axiosInstance.delete(`/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error("Erro ao excluir fornecedor:", error);
+    throw error;
+  }
 }
 
 export async function updateFornecedor(fornecedor: Fornecedor): Promise<Fornecedor> {
-  const url = `https://stock-flow.azurewebsites.net/api/v1/fornecedores/${fornecedor.id}`;
-  const response = await axios.put(url, fornecedor);
-  return response.data;
+  try {
+    const response = await axiosInstance.put(`/${fornecedor.id}`, fornecedor);
+    return response.data;
+  } catch (error) {
+    console.error("Erro ao atualizar fornecedor:", error);
+    throw error;
+  }
 }
