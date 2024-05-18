@@ -18,7 +18,7 @@ namespace stock_flow.Controllers
         }
 
         [HttpGet("movimentacoes")]
-        public async Task<ActionResult<List<Movimentacao>>> GetMovimentacoes([FromQuery] FiltroMovimentacaoDto filtroMovimentacaoDto)
+        public async Task<ActionResult<List<MovimentacaoAggregateDto>>> GetMovimentacoes([FromQuery] FiltroMovimentacaoDto filtroMovimentacaoDto)
         {
             var model = await _movimentacaoService.GetMovimentacaoByFiltroAsync(filtroMovimentacaoDto);
             return Ok(model);

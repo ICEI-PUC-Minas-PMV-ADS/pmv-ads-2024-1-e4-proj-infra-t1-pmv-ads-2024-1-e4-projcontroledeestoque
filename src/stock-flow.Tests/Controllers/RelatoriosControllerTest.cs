@@ -28,7 +28,7 @@ public class RelatoriosControllerTest
     public async Task GetMovimentacoes_ReturnsOkResult_WhenMovimentacoesExist()
     {
         _mockService.Setup(service => service.GetMovimentacaoByFiltroAsync(It.IsAny<FiltroMovimentacaoDto>()))
-            .ReturnsAsync(new List<Movimentacao> { new() });
+            .ReturnsAsync(new List<MovimentacaoAggregateDto> { new() });
 
         var result = await _controller.GetMovimentacoes(new FiltroMovimentacaoDto());
 

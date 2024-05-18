@@ -70,8 +70,19 @@ namespace stock_flow.Services.Impl
 
         public async Task DeleteMovimentacaoAsync(string id)
         {
+            var movimentacao = await GetMovimentacaoByIdAsync(id);
+            
+            var quantidade = movimentacao.Quantidade;
+            var tipo = Enum.Parse<TipoMovimentacao>(movimentacao.Tipo);
+            if (tipo == TipoMovimentacao.Compra)
+            {
+                quantidade *= -1;
+            }
+
+            await _produtoService.UpdateQuantidadeAsync(movimentacao.Produto, quantidade);
+            
             _ = await _movimentacoesCollection.DeleteOneAsync(x => x.Id == id) ??
-                throw new Exception("Movimentação não encontrado");
+                throw new Exception("Movimentação não encontrada");
         }
 
         public async Task<Movimentacao> GetMovimentacaoByIdAsync(string id)
@@ -103,7 +114,7 @@ namespace stock_flow.Services.Impl
             return movimentacao;
         }
 
-        public async Task<IEnumerable<Movimentacao>> GetMovimentacaoByFiltroAsync(FiltroMovimentacaoDto filtroMovimentacaoDto)
+        public async Task<IEnumerable<MovimentacaoAggregateDto>> GetMovimentacaoByFiltroAsync(FiltroMovimentacaoDto filtroMovimentacaoDto)
         {
             var filtro = Builders<Movimentacao>.Filter.Empty;
 
@@ -162,7 +173,40 @@ namespace stock_flow.Services.Impl
                 filtro &= Builders<Movimentacao>.Filter.Lte(x => x.Valor, valorMaximo);
             }
 
-            return await _movimentacoesCollection.Find(filtro).ToListAsync();
+            var movimentacoes = await _movimentacoesCollection.Find(filtro).ToListAsync();
+            return await GetMovimentacaoWithProdutoAndFornecedorAsync(movimentacoes);
+        }
+        
+        private async Task<IEnumerable<MovimentacaoAggregateDto>> GetMovimentacaoWithProdutoAndFornecedorAsync(IEnumerable<Movimentacao> movimentacoes)
+        {
+            var movimentacoesAggregateDto = new List<MovimentacaoAggregateDto>();
+
+            foreach (var movimentacao in movimentacoes)
+            {
+                var produto = await _produtoService.GetProdutoByIdAsync(movimentacao.Produto);
+                
+                var movimentacaoAggregateDto = new MovimentacaoAggregateDto
+                {
+                    Id = movimentacao.Id,
+                    ProdutoId = movimentacao.Produto,
+                    ProdutoNome = produto.Nome,
+                    Tipo = movimentacao.Tipo,
+                    Quantidade = movimentacao.Quantidade,
+                    Valor = movimentacao.Valor,
+                    Usuario = movimentacao.Usuario,
+                    Data = movimentacao.Data
+                };
+
+                if (produto.Fornecedores.Count > 0)
+                {
+                    var fornecedores = await _produtoService.GetFornecedoresDoProdutoAsync(movimentacao.Produto);
+                    movimentacaoAggregateDto.FornecedoresNomes = fornecedores.ToList().Select(fornecedor => fornecedor.Nome).ToList();
+                }
+
+                movimentacoesAggregateDto.Add(movimentacaoAggregateDto);
+            }
+
+            return movimentacoesAggregateDto;
         }
     }
 }

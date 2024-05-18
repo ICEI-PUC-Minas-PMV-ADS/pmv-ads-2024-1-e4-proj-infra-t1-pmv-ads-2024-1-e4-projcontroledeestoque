@@ -21,6 +21,6 @@ namespace stock_flow.Dtos
 
         public int Quantidade { get; set; } = 0;
 
-        public List<string>? FornecedoresId { get; set; }
+        public List<string>? Fornecedores { get; set; }
     }
 }

@@ -1,18 +1,20 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
-using MongoDbGenericRepository.Attributes;
 
-namespace stock_flow.Models
+namespace stock_flow.Dtos
 {
-    [CollectionName("movimentacoes")]
-    public class Movimentacao
+    public class MovimentacaoAggregateDto
     {
-        [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public string? Id { get; set; } 
+        public string Id { get; set; } = string.Empty;
 
         [BsonRepresentation(BsonType.ObjectId)]
-        public string Produto { get; set; } = string.Empty;
+        public string ProdutoId { get; set; } = string.Empty;
+
+        public string ProdutoNome { get; set; } = string.Empty;
+
+        [BsonRepresentation(BsonType.ObjectId)]
+        public List<string> FornecedoresNomes { get; set; } = new();
 
         public string Tipo { get; set; } = string.Empty;
 

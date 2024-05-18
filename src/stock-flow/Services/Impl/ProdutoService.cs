@@ -29,7 +29,7 @@ namespace stock_flow.Services.Impl
 
         public async Task<Produto> CreateProdutoAsync(ProdutoDto produtoDto)
         {
-            produtoDto.FornecedoresId?.ForEach(id => _fornecedorService.GetFornecedorByIdAsync(id));
+            produtoDto.Fornecedores?.ForEach(id => _fornecedorService.GetFornecedorByIdAsync(id));
 
             var produto = new Produto
             {
@@ -39,7 +39,7 @@ namespace stock_flow.Services.Impl
                 PrecoCusto = produtoDto.PrecoCusto,
                 PrecoVenda = produtoDto.PrecoVenda,
                 Quantidade = produtoDto.Quantidade,
-                FornecedoresId = produtoDto.FornecedoresId
+                Fornecedores = produtoDto.Fornecedores
             };
 
             await _produtosCollection.InsertOneAsync(produto);
@@ -66,6 +66,7 @@ namespace stock_flow.Services.Impl
         public async Task<Produto> UpdateProdutoAsync(string id, ProdutoDto produtoDto)
         {
             var produto = await GetProdutoByIdAsync(id);
+            produtoDto.Fornecedores?.ForEach(fornecedorId => _fornecedorService.GetFornecedorByIdAsync(fornecedorId));
 
             produto.Nome = produtoDto.Nome;
             produto.Descricao = produtoDto.Descricao;
@@ -73,7 +74,7 @@ namespace stock_flow.Services.Impl
             produto.PrecoCusto = produtoDto.PrecoCusto;
             produto.PrecoVenda = produtoDto.PrecoVenda;
             produto.Quantidade = produtoDto.Quantidade;
-            produto.FornecedoresId = produtoDto.FornecedoresId;
+            produto.Fornecedores = produtoDto.Fornecedores;
 
             await _produtosCollection.ReplaceOneAsync(x => x.Id == id, produto);
             return produto;
@@ -99,7 +100,7 @@ namespace stock_flow.Services.Impl
             var produto = await _produtosCollection.Find(x => x.Id == produtoId).FirstOrDefaultAsync() ??
                           throw new Exception("Produto não encontrado");
 
-            return produto.FornecedoresId?.Select(id => _fornecedorService.GetFornecedorByIdAsync(id).Result) ??
+            return produto.Fornecedores?.Select(id => _fornecedorService.GetFornecedorByIdAsync(id).Result) ??
                    Array.Empty<Fornecedor>();
         }
 
@@ -168,7 +169,7 @@ namespace stock_flow.Services.Impl
 
             if (!string.IsNullOrEmpty(filtroProdutoDto.Fornecedor))
             {
-                filter &= Builders<Produto>.Filter.AnyEq(p => p.FornecedoresId, filtroProdutoDto.Fornecedor);
+                filter &= Builders<Produto>.Filter.AnyEq(p => p.Fornecedores, filtroProdutoDto.Fornecedor);
             }
 
             return await _produtosCollection.Find(filter).SortBy(p => p.Nome).ToListAsync();

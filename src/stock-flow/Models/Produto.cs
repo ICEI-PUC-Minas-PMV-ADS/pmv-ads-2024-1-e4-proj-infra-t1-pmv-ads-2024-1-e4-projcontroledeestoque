@@ -22,7 +22,8 @@ namespace stock_flow.Models
         public decimal PrecoVenda { get; set; }
 
         public int Quantidade { get; set; }
-
-        public List<string>? FornecedoresId { get; set; } = new();
+        
+        [BsonRepresentation(BsonType.ObjectId)]
+        public List<string> Fornecedores { get; set; } = new();
     }
 }
