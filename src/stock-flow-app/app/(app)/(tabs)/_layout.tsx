@@ -7,6 +7,7 @@ import {useColorScheme} from '@/hooks/useColorScheme';
 
 export default function TabLayout() {
     const colorScheme = useColorScheme();
+    console.log('TabLayout aqui')
 
     return (
         <Tabs
@@ -44,7 +45,7 @@ export default function TabLayout() {
             />
 
 
-            {/*Exemplos de telas e configurações, depois alterar o index e apontar para produtos*/}
+            {/*TODO: Exemplos de telas e configurações, depois alterar o index e apontar para produtos*/}
             <Tabs.Screen
                 name="index"
                 options={{
