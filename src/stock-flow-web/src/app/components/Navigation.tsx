@@ -17,7 +17,7 @@ export default function Navigation() {
       </Link>{" "}
       <Link
         className=" p-2  bg-gray-900 hover:bg-indigo-700 text-white"
-        href="/relatorio"
+        href="/relatorios"
       >
         Relatorios
       </Link>{" "}
