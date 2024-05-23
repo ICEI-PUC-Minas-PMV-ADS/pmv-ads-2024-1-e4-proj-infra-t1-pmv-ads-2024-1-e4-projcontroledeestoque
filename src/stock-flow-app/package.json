@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^14.0.0",
+    "@hookform/resolvers": "^3.4.2",
     "@react-navigation/native": "^6.0.2",
     "expo": "~51.0.0",
     "expo-constants": "~16.0.1",
@@ -30,6 +31,7 @@
     "formik": "^2.4.6",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-hook-form": "^7.51.5",
     "react-native": "0.74.1",
     "react-native-gesture-handler": "~2.16.1",
     "react-native-reanimated": "3.10.0",
