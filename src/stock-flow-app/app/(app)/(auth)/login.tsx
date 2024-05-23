@@ -1,27 +1,18 @@
-﻿import {useEffect, useState} from "react";
+﻿import {useState} from "react";
 import LoadingOverlay from "@/components/LoadingOverlay";
-import {Alert, Pressable, StyleSheet, TextInput} from "react-native";
+import {Alert, Pressable, StyleSheet} from "react-native";
 import {ThemedViewRoot} from "@/components/ThemedViewRoot";
 import {ThemedView} from "@/components/ThemedView";
 import {ThemedText} from "@/components/ThemedText";
 import {router} from "expo-router";
 import {useSession} from "@/store/SessionProvider";
+import {ThemedTextInput} from "@/components/ThemedTextInput";
 
 export default function Login() {
     const {signIn, session, isLoading} = useSession();
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-
-    useEffect(() => {
-        setIsSubmitting(true);
-        console.log('Login session:', session);
-        if (session) {
-            console.log('Login redirecting to authenticated tabs');
-            router.replace("(tabs)");
-        }
-        setIsSubmitting(false);
-    }, [session]);
 
     async function handleLogin() {
         setIsSubmitting(true);
@@ -30,6 +21,7 @@ export default function Login() {
             await new Promise(resolve => setTimeout(resolve, 5000));
             signIn('fake-token');
             console.log('Logged in, token: ', session);
+            router.replace("(tabs)");
         } catch (error) {
             console.error(error);
             Alert.alert('Falha no login', 'Tente novamente mais tarde');
@@ -45,12 +37,12 @@ export default function Login() {
     return (
         <ThemedViewRoot style={styles.container}>
             <ThemedView>
-                <ThemedText>Login</ThemedText>
+                <ThemedText type={"title"}>Login</ThemedText>
             </ThemedView>
 
             <ThemedView>
-                <ThemedText>Email</ThemedText>
-                <TextInput
+                <ThemedText type={"subtitle"}>Email</ThemedText>
+                <ThemedTextInput
                     placeholder="Digite seu e-mail"
                     style={styles.input}
                     keyboardType={'email-address'}
@@ -59,8 +51,8 @@ export default function Login() {
                     autoCapitalize={'none'}
                 />
 
-                <ThemedText>Senha</ThemedText>
-                <TextInput
+                <ThemedText type={"subtitle"}>Senha</ThemedText>
+                <ThemedTextInput
                     placeholder="Digite sua senha"
                     secureTextEntry={true}
                     style={styles.input}
@@ -71,11 +63,11 @@ export default function Login() {
                 />
 
                 <Pressable style={styles.button} onPress={handleLogin}>
-                    <ThemedText style={styles.buttonText}>Entrar</ThemedText>
+                    <ThemedText>Entrar</ThemedText>
                 </Pressable>
 
                 <Pressable style={styles.button} onPress={() => router.replace("/cadastro")}>
-                    <ThemedText style={styles.buttonText}>Cadastrar-se</ThemedText>
+                    <ThemedText>Cadastrar-se</ThemedText>
                 </Pressable>
 
             </ThemedView>
@@ -101,8 +93,5 @@ const styles = StyleSheet.create({
         backgroundColor: 'blue',
         justifyContent: 'center',
         alignItems: 'center',
-    },
-    buttonText: {
-        color: 'white',
     },
 });
