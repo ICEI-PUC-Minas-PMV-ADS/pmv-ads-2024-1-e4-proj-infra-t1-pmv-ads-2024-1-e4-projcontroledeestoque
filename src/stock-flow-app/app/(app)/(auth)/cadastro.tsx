@@ -10,19 +10,23 @@ import * as yup from 'yup';
 import {ThemedTextInput} from "@/components/ThemedTextInput";
 import {Controller, useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
+import {IAuthResponse, RegisterUser} from "@/services/autenticacao";
 
 const schema = yup.object({
         nome: yup.string().required('Informe seu nome completo'),
         email: yup.string().email('Email inválido').required('Informe seu email'),
-        senha: yup.string().required('Informe uma senha').min(8, 'Senha deve ter no mínimo 6 caracteres'),
+        senha: yup.string().required('Informe uma senha').min(8, 'Senha deve ter no mínimo 8 caracteres'),
         senhaConfirmacao: yup.string().oneOf([yup.ref('senha')], 'As senhas não coincidem')
             .required('Confirme sua senha')
     }
 )
-
 export default function Cadastro() {
     const {signIn, session, isLoading} = useSession();
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [nome, setNome] = useState('');
+    const [email, setEmail] = useState('');
+    const [senha, setSenha] = useState('');
+    const [senhaConfirmacao, setSenhaConfirmacao] = useState('');
 
     const {control, handleSubmit, formState: {errors}} = useForm({
         resolver: yupResolver(schema)
@@ -32,17 +36,35 @@ export default function Cadastro() {
         setIsSubmitting(true);
 
         try {
-            // Simulate a network request
-            await new Promise(resolve => setTimeout(resolve, 5000));
-            signIn('fake-token');
-            console.log('Logged in, token: ', session);
-            router.replace("(tabs)");
+            const response: IAuthResponse = await RegisterUser({
+                nome: nome,
+                email: email,
+                senha: senha,
+                senhaConfirmada: senhaConfirmacao
+            });
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            
+            if (response.sucesso && response?.accessToken) {
+                console.log('Logged in, token: ', response.accessToken);
+                signIn(response.accessToken);
+                router.replace("(tabs)");
+            } else {
+                Alert.alert('Erro ao cadastrar', response.mensagem || 'Tente novamente mais tarde');
+            }
         } catch (error) {
             console.error(error);
             Alert.alert('Falha no login', 'Tente novamente mais tarde');
         } finally {
             setTimeout(() => setIsSubmitting(false), 1000);
         }
+    }
+
+    async function handleCadastroMock() {
+        setIsSubmitting(true);
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        signIn("fake-token");
+        router.replace("(tabs)");
+        setTimeout(() => setIsSubmitting(false), 1000);
     }
 
     if (isLoading || isSubmitting) {
@@ -70,7 +92,10 @@ export default function Cadastro() {
                             keyboardType={'default'}
                             onBlur={onBlur}
                             value={value}
-                            onChangeText={onChange}
+                            onChangeText={(text) => {
+                                onChange(text);
+                                setNome(text);
+                            }}
                             autoCapitalize={'words'}
                         />
                     )}
@@ -90,7 +115,10 @@ export default function Cadastro() {
                             keyboardType={'email-address'}
                             onBlur={onBlur}
                             value={value}
-                            onChangeText={onChange}
+                            onChangeText={(text) => {
+                                onChange(text);
+                                setEmail(text);
+                            }}
                             autoCapitalize={'none'}
                         />
                     )}
@@ -111,7 +139,10 @@ export default function Cadastro() {
                             keyboardType={'default'}
                             onBlur={onBlur}
                             value={value}
-                            onChangeText={onChange}
+                            onChangeText={(text) => {
+                                onChange(text);
+                                setSenha(text);
+                            }}
                             autoCapitalize={'none'}
                         />
                     )}
@@ -133,13 +164,17 @@ export default function Cadastro() {
                             keyboardType={'default'}
                             onBlur={onBlur}
                             value={value}
-                            onChangeText={onChange}
+                            onChangeText={(text) => {
+                                onChange(text);
+                                setSenhaConfirmacao(text);
+                            }}
                             autoCapitalize={'none'}
                         />
                     )}
                 />
 
-                <Pressable style={styles.button} onPress={handleSubmit(handleCadastro)}>
+                {/*TODO: remover mock*/}
+                <Pressable style={styles.button} onPress={handleSubmit(handleCadastroMock)}>
                     <ThemedText>Cadastrar</ThemedText>
                 </Pressable>
 

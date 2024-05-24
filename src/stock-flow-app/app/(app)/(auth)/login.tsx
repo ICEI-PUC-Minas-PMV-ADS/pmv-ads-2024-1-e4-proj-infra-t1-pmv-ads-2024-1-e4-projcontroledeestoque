@@ -7,6 +7,7 @@ import {ThemedText} from "@/components/ThemedText";
 import {router} from "expo-router";
 import {useSession} from "@/store/SessionProvider";
 import {ThemedTextInput} from "@/components/ThemedTextInput";
+import {IAuthResponse, LoginUser} from "@/services/autenticacao";
 
 export default function Login() {
     const {signIn, session, isLoading} = useSession();
@@ -16,18 +17,32 @@ export default function Login() {
 
     async function handleLogin() {
         setIsSubmitting(true);
+        
         try {
-            // Simulate a network request
-            await new Promise(resolve => setTimeout(resolve, 5000));
-            signIn('fake-token');
-            console.log('Logged in, token: ', session);
-            router.replace("(tabs)");
+            const response: IAuthResponse = await LoginUser({email: email, senha: password});
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            
+            if (response.sucesso && response?.accessToken) {
+                console.log('Logged in, token: ', response.accessToken);
+                signIn(response.accessToken);
+                router.replace("(tabs)");
+            } else {
+                Alert.alert('Erro ao logar', response.mensagem || 'Tente novamente mais tarde');
+            }
         } catch (error) {
             console.error(error);
             Alert.alert('Falha no login', 'Tente novamente mais tarde');
         } finally {
             setTimeout(() => setIsSubmitting(false), 1000);
         }
+    }
+    
+    async function handleLoginMock() {
+        setIsSubmitting(true);
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        signIn("fake-token");
+        router.replace("(tabs)");
+        setTimeout(() => setIsSubmitting(false), 1000);
     }
 
     if (isLoading || isSubmitting) {
@@ -62,7 +77,8 @@ export default function Login() {
                     autoCapitalize={'none'}
                 />
 
-                <Pressable style={styles.button} onPress={handleLogin}>
+                {/*TODO: remover mock*/}
+                <Pressable style={styles.button} onPress={handleLoginMock}>
                     <ThemedText>Entrar</ThemedText>
                 </Pressable>
 
