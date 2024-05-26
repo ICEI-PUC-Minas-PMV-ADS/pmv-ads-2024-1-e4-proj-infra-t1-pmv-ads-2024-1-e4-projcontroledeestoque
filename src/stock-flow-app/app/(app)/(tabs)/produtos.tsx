@@ -1,9 +1,9 @@
 import {Pressable, StyleSheet} from 'react-native';
 import {ThemedText} from '@/components/ThemedText';
 import {ThemedView} from '@/components/ThemedView';
-import {ThemedViewRoot} from "@/components/ThemedViewRoot";
 import {useSession} from "@/store/SessionProvider";
 import {router} from "expo-router";
+import ThemedViewRoot from "@/components/ThemedViewRoot";
 
 export default function ProdutosScreen() {
     const {signOut} = useSession();
@@ -14,7 +14,7 @@ export default function ProdutosScreen() {
     }
     
     return (
-        <ThemedViewRoot style={styles.container}>
+        <ThemedViewRoot>
             <ThemedView>
                 <ThemedText type="title">Produtos!</ThemedText>
             </ThemedView>
@@ -22,15 +22,11 @@ export default function ProdutosScreen() {
             <Pressable style={styles.button} onPress={handleLogout}>
                 <ThemedText style={styles.buttonText}>Logout</ThemedText>
             </Pressable>
-            
         </ThemedViewRoot>
     );
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
     button: {
         width: '80%',
         height: 50,

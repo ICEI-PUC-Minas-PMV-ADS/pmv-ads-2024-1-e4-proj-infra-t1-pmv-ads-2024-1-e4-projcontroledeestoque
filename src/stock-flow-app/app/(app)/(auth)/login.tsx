@@ -1,13 +1,14 @@
 ﻿import {useState} from "react";
 import LoadingOverlay from "@/components/LoadingOverlay";
 import {Alert, Pressable, StyleSheet} from "react-native";
-import {ThemedViewRoot} from "@/components/ThemedViewRoot";
 import {ThemedView} from "@/components/ThemedView";
 import {ThemedText} from "@/components/ThemedText";
 import {router} from "expo-router";
 import {useSession} from "@/store/SessionProvider";
 import {ThemedTextInput} from "@/components/ThemedTextInput";
 import {IAuthResponse, LoginUser} from "@/services/autenticacao";
+import ThemedViewRoot from "@/components/ThemedViewRoot";
+import {MOCK_TOKEN} from "@/constants/MockData";
 
 export default function Login() {
     const {signIn, session, isLoading} = useSession();
@@ -40,7 +41,7 @@ export default function Login() {
     async function handleLoginMock() {
         setIsSubmitting(true);
         await new Promise(resolve => setTimeout(resolve, 1000));
-        signIn("fake-token");
+        signIn(MOCK_TOKEN);
         router.replace("(tabs)");
         setTimeout(() => setIsSubmitting(false), 1000);
     }
@@ -50,7 +51,7 @@ export default function Login() {
     }
 
     return (
-        <ThemedViewRoot style={styles.container}>
+        <ThemedViewRoot>
             <ThemedView>
                 <ThemedText type={"title"}>Login</ThemedText>
             </ThemedView>
@@ -92,9 +93,6 @@ export default function Login() {
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
     input: {
         width: '80%',
         height: 50,

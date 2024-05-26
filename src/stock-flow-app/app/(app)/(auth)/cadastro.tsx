@@ -1,7 +1,6 @@
 import {useState} from "react";
 import LoadingOverlay from "@/components/LoadingOverlay";
 import {Alert, Pressable, StyleSheet} from "react-native";
-import {ThemedViewRoot} from "@/components/ThemedViewRoot";
 import {ThemedView} from "@/components/ThemedView";
 import {ThemedText} from "@/components/ThemedText";
 import {router} from "expo-router";
@@ -11,6 +10,8 @@ import {ThemedTextInput} from "@/components/ThemedTextInput";
 import {Controller, useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
 import {IAuthResponse, RegisterUser} from "@/services/autenticacao";
+import ThemedViewRoot from "@/components/ThemedViewRoot";
+import {MOCK_TOKEN} from "@/constants/MockData";
 
 const schema = yup.object({
         nome: yup.string().required('Informe seu nome completo'),
@@ -62,7 +63,7 @@ export default function Cadastro() {
     async function handleCadastroMock() {
         setIsSubmitting(true);
         await new Promise(resolve => setTimeout(resolve, 1000));
-        signIn("fake-token");
+        signIn(MOCK_TOKEN);
         router.replace("(tabs)");
         setTimeout(() => setIsSubmitting(false), 1000);
     }
@@ -72,7 +73,7 @@ export default function Cadastro() {
     }
 
     return (
-        <ThemedViewRoot style={styles.container}>
+        <ThemedViewRoot>
             <ThemedView>
                 <ThemedText type={"title"}>Cadastro</ThemedText>
             </ThemedView>
@@ -188,10 +189,6 @@ export default function Cadastro() {
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    }
-    ,
     input: {
         width: '80%',
         height:
