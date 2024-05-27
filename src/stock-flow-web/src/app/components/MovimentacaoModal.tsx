@@ -65,7 +65,7 @@ export default function MovimentacaoModal(props: any) {
         </h1>
         <div className="flex flex-col justify-between items-center">
           <label className=""> Nome do Produto</label>
-          <div className="relative">
+          <div className="relative w-full">
             <input
               onChange={handleChange}
               type="text"
