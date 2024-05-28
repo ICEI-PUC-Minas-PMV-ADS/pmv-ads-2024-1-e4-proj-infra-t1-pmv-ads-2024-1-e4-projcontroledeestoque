@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {Pressable, StyleSheet, Text} from 'react-native';
 import {ThemedText} from '@/components/ThemedText';
 import {ThemedView} from '@/components/ThemedView';
 import {useEffect, useState} from "react";
@@ -9,11 +9,37 @@ import {RelatoriosQueryParams, RelatoriosResponse} from "@/services/relatorios";
 import {MOCK_RELATORIOS} from "@/constants/MockData";
 import ThemedViewRoot from "@/components/ThemedViewRoot";
 import ListRelatorio from "@/components/relatorios/ListRelatorio";
+import DateTimePicker, {DateTimePickerEvent} from '@react-native-community/datetimepicker';
+import {toLocaleDateString} from "@/util/date";
+import {Colors} from "@/constants/Colors";
+import Ionicons from "@expo/vector-icons/Ionicons";
 
 export default function RelatoriosScreen() {
     const {session, isLoading} = useSession();
     const [appIsReady, setAppIsReady] = useState(false);
     const [relatorios, setRelatorios] = useState<RelatoriosResponse[]>([]);
+    const [dataInicio, setDataInicio] = useState(new Date());
+    const [dataFim, setDataFim] = useState(new Date());
+    const [showDataInicioPicker, setShowDataInicioPicker] = useState(false);
+    const [showDataFimPicker, setShowDataFimPicker] = useState(false);
+
+    const handleDataInicio = (event: DateTimePickerEvent, selectedDate: Date | undefined) => {
+        const currentDate = selectedDate || dataInicio;
+        setShowDataInicioPicker(false)
+        setDataInicio(currentDate);
+    };
+
+    const handleDataFim = (event: DateTimePickerEvent, selectedDate: Date | undefined) => {
+        const currentDate = selectedDate || dataFim;
+        setShowDataFimPicker(false);
+        setDataFim(currentDate);
+    };
+
+    const handleSearch = () => {
+        setAppIsReady(false);
+        fetchRelatorios({dataInicio: dataInicio.toISOString(), dataFim: dataFim.toISOString()})
+            .then(() => setTimeout(() => setAppIsReady(true), 1000));
+    }
 
     async function fetchRelatorios(queryParams: RelatoriosQueryParams) {
         //TODO: Remover MOCK e descomentar FetchRelatorios
@@ -21,7 +47,7 @@ export default function RelatoriosScreen() {
         const fetchData: RelatoriosResponse[] = MOCK_RELATORIOS;
         setRelatorios(fetchData);
     }
-    
+
     useEffect(() => {
         setAppIsReady(false);
         fetchRelatorios({}).then(() => setTimeout(() => setAppIsReady(true), 1000));
@@ -34,16 +60,71 @@ export default function RelatoriosScreen() {
     if (!session) {
         router.replace('(auth)');
     }
-    
+
     return (
         <ThemedViewRoot>
             <ThemedView>
-                <ThemedText type="title">Relatórios!</ThemedText>
+                <ThemedText type="title">Relatórios</ThemedText>
             </ThemedView>
+
+            <ThemedView style={styles.dateContainer}>
+                <Pressable style={styles.datePicker} onPress={() => setShowDataInicioPicker(true)}>
+                    <Text>De: {toLocaleDateString(dataInicio)}</Text>
+                </Pressable>
+                {showDataInicioPicker && (
+                    <DateTimePicker
+                        testID="dateTimePicker"
+                        value={dataInicio}
+                        mode={'date'}
+                        is24Hour={true}
+                        display="default"
+                        onChange={handleDataInicio}
+                        maximumDate={dataFim}
+                    />
+                )}
+
+                <Pressable style={styles.datePicker} onPress={() => setShowDataFimPicker(true)}>
+                    <Text>Até: {toLocaleDateString(dataFim)}</Text>
+                </Pressable>
+                {showDataFimPicker && (
+                    <DateTimePicker
+                        testID="dateTimePicker"
+                        value={dataFim}
+                        mode={'date'}
+                        is24Hour={true}
+                        display="default"
+                        onChange={handleDataFim}
+                        maximumDate={new Date()}
+                    />
+                )}
+
+                <Pressable style={styles.button} onPress={handleSearch}>
+                    <Ionicons name="search" size={24} color={Colors.dark.textInput}/>
+                </Pressable>
+
+            </ThemedView>
+
             <ListRelatorio relatorios={relatorios}/>
         </ThemedViewRoot>
     );
 }
 
 const styles = StyleSheet.create({
+    dateContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+    },
+
+    datePicker: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        padding: 10,
+        borderRadius: 5,
+        backgroundColor: Colors.dark.textInput,
+    },
+
+    button: {
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
 });

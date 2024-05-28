@@ -9,7 +9,7 @@ interface ListRelatorioProps {
 
 export default function ListRelatorio({relatorios}: ListRelatorioProps) {
     return (
-        <ThemedView colorName={"backgroundCard"}>
+        <ThemedView>
             {relatorios.map((item) => (
                 <CardRelatorio key={item.id} relatorio={item}/>
             ))}
