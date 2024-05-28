@@ -55,11 +55,11 @@ export default function TabLayout() {
                 }}
             />
             <Tabs.Screen
-                name="explore"
+                name="logout"
                 options={{
-                    title: 'Explore',
+                    title: 'Usuário',
                     tabBarIcon: ({color, focused}) => (
-                        <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color}/>
+                        <TabBarIcon name={focused ? 'person-circle' : 'person-circle-outline'} color={color}/>
                     ),
                 }}
             />
