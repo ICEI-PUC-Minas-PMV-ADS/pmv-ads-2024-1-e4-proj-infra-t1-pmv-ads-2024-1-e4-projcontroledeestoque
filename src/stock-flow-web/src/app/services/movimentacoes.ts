@@ -11,6 +11,17 @@ export type Movimentacao = {
   data: Date
 }
 
+export type CreateMovimentacao ={
+  produto: string
+  produtoNome?: string
+  tipo: 'Compra' | 'Venda' 
+  quantidade: number
+  valor: number
+  usuario: string
+  data: Date
+
+}
+
 const axiosInstance = axios.create({
   baseURL: 'https://stock-flow.azurewebsites.net/api/v1/relatorios/movimentacoes',
   timeout: 30000,
@@ -28,10 +39,10 @@ export async function getMovimentacoes(query?: any): Promise<Movimentacao[]> {
 }
 
 export async function createMovimentacao(
-  fornecedor: Movimentacao
+  movimentacao: CreateMovimentacao
 ): Promise<Movimentacao> {
   try {
-    const response = await axiosInstance.post('', fornecedor)
+    const response = await axiosInstance.post('', movimentacao)
     return response.data
   } catch (error) {
     console.error('Erro ao criar movimentacao:', error)
