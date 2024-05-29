@@ -16,7 +16,7 @@ export default function TabLayout() {
             }}>
 
             <Tabs.Screen
-                name="produtos"
+                name="index"
                 options={{
                     title: 'Estoque',
                     tabBarIcon: ({color, focused}) => (
@@ -42,22 +42,10 @@ export default function TabLayout() {
                     ),
                 }}
             />
-
-
-            {/*TODO: Exemplos de telas e configurações, depois alterar o index e apontar para produtos*/}
             <Tabs.Screen
-                name="index"
+                name="usuario"
                 options={{
-                    title: 'Welcome',
-                    tabBarIcon: ({color, focused}) => (
-                        <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color}/>
-                    ),
-                }}
-            />
-            <Tabs.Screen
-                name="logout"
-                options={{
-                    title: 'Usuário',
+                    title: 'Conta',
                     tabBarIcon: ({color, focused}) => (
                         <TabBarIcon name={focused ? 'person-circle' : 'person-circle-outline'} color={color}/>
                     ),

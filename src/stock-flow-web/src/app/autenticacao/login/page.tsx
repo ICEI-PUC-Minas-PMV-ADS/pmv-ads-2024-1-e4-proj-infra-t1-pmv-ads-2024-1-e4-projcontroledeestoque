@@ -58,7 +58,7 @@ export default function Login() {
             <section>
                 <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
                     <div className="flex items-center mb-6 text-2xl font-semibold text-indigo-900 dark:text-indigo-600">
-                        <Image className="w-8 h-8 mr-2" src="/favicon.ico" alt="logo" width={80} height={80}/>
+                        <Image className="w-8 h-8 mr-2" src="/box.ico" alt="logo" width={80} height={80}/>
                         Stock Flow
                     </div>
                     <div

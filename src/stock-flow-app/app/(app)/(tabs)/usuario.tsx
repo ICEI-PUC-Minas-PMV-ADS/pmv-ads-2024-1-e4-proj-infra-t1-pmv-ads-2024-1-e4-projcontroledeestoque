@@ -4,11 +4,12 @@ import {ThemedText} from "@/components/ThemedText";
 import {router} from "expo-router";
 import {useSession} from "@/store/SessionProvider";
 import ThemedViewRoot from "@/components/ThemedViewRoot";
+import {ThemedButton} from "@/components/ThemedButton";
 
 function decodeJwtPayload(session: string) {
     try {
         const [headerEnc, payloadEnc, signatureEnc] = session.split('.');
-        
+
         const payloadEncBase64 = payloadEnc.replace(/-/g, '+').replace(/_/g, '/') + '=='.slice(0, (3 * payloadEnc.length) % 4);
         const payloadDec = atob(payloadEncBase64);
         return JSON.parse(payloadDec);
@@ -18,7 +19,7 @@ function decodeJwtPayload(session: string) {
     }
 }
 
-export default function Logout() {
+export default function Usuario() {
     const {signOut, session} = useSession();
 
     if (!session) {
@@ -44,24 +45,26 @@ export default function Logout() {
             </ThemedView>
 
             <ThemedView>
-                <ThemedText type={"subtitle"}>Nome: {name}</ThemedText>
-                <ThemedText type={"subtitle"}>E-mail: {email}</ThemedText>
-                <ThemedText type={"subtitle"}>Perfil: {role}</ThemedText>
+                <ThemedText style={styles.stepContainer} type={"subtitle"}>Nome: {name}</ThemedText>
+                <ThemedText style={styles.stepContainer} type={"subtitle"}>E-mail: {email}</ThemedText>
+                <ThemedText style={styles.stepContainer} type={"subtitle"}>Permissões: {role}</ThemedText>
             </ThemedView>
 
-                <Pressable style={styles.button} onPress={handleLogout}>
-                    <ThemedText>Logout</ThemedText>
-                </Pressable>
+            <ThemedView style={styles.buttonContainer}>
+                <ThemedButton onPress={handleLogout}>
+                    Finalizar sessão
+                </ThemedButton>
+            </ThemedView>
         </ThemedViewRoot>
     );
 }
 
 const styles = StyleSheet.create({
-    button: {
-        height: 50,
-        marginVertical: 12,
-        backgroundColor: 'blue',
-        justifyContent: 'center',
-        alignItems: 'center',
+    stepContainer: {
+        gap: 8,
+        marginBottom: 12,
     },
+    buttonContainer: {
+        marginVertical: 24,
+    }
 });

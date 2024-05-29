@@ -12,6 +12,7 @@ import {yupResolver} from "@hookform/resolvers/yup";
 import {IAuthResponse, RegisterUser} from "@/services/autenticacao";
 import ThemedViewRoot from "@/components/ThemedViewRoot";
 import {MOCK_TOKEN} from "@/constants/MockData";
+import {ThemedButton} from "@/components/ThemedButton";
 
 const schema = yup.object({
         nome: yup.string().required('Informe seu nome completo'),
@@ -44,7 +45,7 @@ export default function Cadastro() {
                 senhaConfirmada: senhaConfirmacao
             });
             await new Promise(resolve => setTimeout(resolve, 1000));
-            
+
             if (response.sucesso && response?.accessToken) {
                 console.log('Logged in, token: ', response.accessToken);
                 signIn(response.accessToken);
@@ -75,10 +76,10 @@ export default function Cadastro() {
     return (
         <ThemedViewRoot>
             <ThemedView>
-                <ThemedText type={"title"}>Cadastro</ThemedText>
+                <ThemedText type={"title"}>Crie a sua conta</ThemedText>
             </ThemedView>
 
-            <ThemedView>
+            <ThemedView style={styles.inputContainer}>
                 <ThemedText type={"subtitle"}>Nome</ThemedText>
                 {errors.nome &&
                     <ThemedText type={"defaultSemiBold"} colorName={"textError"}>{errors.nome?.message}</ThemedText>}
@@ -173,45 +174,32 @@ export default function Cadastro() {
                         />
                     )}
                 />
-
-                {/*TODO: remover mock*/}
-                <Pressable style={styles.button} onPress={handleSubmit(handleCadastroMock)}>
-                    <ThemedText>Cadastrar</ThemedText>
-                </Pressable>
-
-                <Pressable style={styles.button} onPress={() => router.replace("/login")}>
-                    <ThemedText>Fazer Login</ThemedText>
-                </Pressable>
-
             </ThemedView>
+
+            {/*TODO: remover mock*/}
+            <ThemedButton onPress={handleSubmit(handleCadastroMock)}>
+                Criar conta
+            </ThemedButton>
+
+            <ThemedText type={"default"}>Já possui uma conta?
+                <ThemedText 
+                    type={"defaultSemiBold"} 
+                    colorName={"link"} 
+                    onPress={() => router.replace("/login")}> Entrar</ThemedText>
+            </ThemedText>
         </ThemedViewRoot>
     );
 }
 
 const styles = StyleSheet.create({
     input: {
-        width: '80%',
-        height:
-            50,
-        margin:
-            12,
-        borderWidth:
-            1,
-        padding:
-            10,
-    }
-    ,
-    button: {
-        width: '80%',
-        height:
-            50,
-        margin:
-            12,
-        backgroundColor:
-            'blue',
-        justifyContent:
-            'center',
-        alignItems:
-            'center',
+        height: 50,
+        marginVertical: 12,
+        borderWidth: 1,
+        borderRadius: 10,
+        padding: 10,
+    },
+    inputContainer: {
+        marginBottom: 16
     }
 });

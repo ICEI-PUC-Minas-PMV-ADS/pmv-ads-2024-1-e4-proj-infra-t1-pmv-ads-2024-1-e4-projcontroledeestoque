@@ -42,7 +42,7 @@ export default function MovimentacaoModal(props: any) {
       produto: produto.id})
     setShowOptions(false);
   };
-  const handleChange = (e) => {
+  const handleChange = (e: { target: { value: any; }; }) => {
     const { value } = e.target;
     setMovimentacao({ ...movimentacao, produtoNome: value });
 
