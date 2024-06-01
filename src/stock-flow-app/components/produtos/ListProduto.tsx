@@ -9,7 +9,7 @@ interface ListProdutoProps {
 
 export default function ListProduto({produtos}: ListProdutoProps){
     return(
-        <ThemedView colorName={"backgroundCard"}>
+        <ThemedView>
             {produtos.map((item) => (
                 <CardProdutos key={item.id} produto={item}/>
             ))}

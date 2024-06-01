@@ -11,9 +11,9 @@ export type ProdutosResponse = {
     nome: string;
     descricao?: string;
     categoria?: string[];
-    precoCusto?: number;
-    precoVenda?: number;
-    quantidade?: number;
+    precoCusto: number;
+    precoVenda: number;
+    quantidade: number;
 };
 
 export const FetchProdutos = async (queryParams: ProdutosQueryParams): Promise<Array<ProdutosResponse>> => {
