@@ -17,7 +17,7 @@ export default function FornecedoresScreen() {
     const [appIsReady, setAppIsReady] = useState(false);
     const [search, setSearch] = useState('');
     
-    //Filtro de produtos com base no nome
+    //Filtro de fornecedores com base no nome
     const fornecedoresFiltered = fornecedores.filter(item =>
         item.nome.toLowerCase().includes(search.toLowerCase())
       );
@@ -77,6 +77,7 @@ export default function FornecedoresScreen() {
 
 const styles = StyleSheet.create({
     button: {
+        borderRadius: 10,
         width: '80%',
         height: 50,
         margin: 12,
@@ -86,5 +87,21 @@ const styles = StyleSheet.create({
     },
     buttonText: {
         color: 'white',
+    },
+
+    inputText: {
+        flex: 1,
+        borderRadius: 10,
+        padding: 10,
+        marginVertical: 5,
+        borderWidth: 2,
+        borderColor: 'gray',
+    },
+    container: {
+        flex: 1,
+        borderRadius: 10,
+        padding: 10,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
 });

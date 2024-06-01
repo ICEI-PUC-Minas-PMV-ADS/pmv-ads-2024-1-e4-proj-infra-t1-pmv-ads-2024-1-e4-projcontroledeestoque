@@ -21,12 +21,14 @@ export default function CardFornecedor({fornecedor}: CardFornecedorProps){
     );
 }
 
+
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        borderRadius: 20,
+        borderRadius: 10,
         padding: 10,
-        borderBottomWidth: 1,
+        marginVertical: 5,
+        borderBottomWidth: 2,
         borderBottomColor: 'gray',
     },
     firstRow: {
@@ -36,5 +38,9 @@ const styles = StyleSheet.create({
     secondRow: {
         flexDirection: 'row',
         justifyContent: 'space-between',
+    },
+    button: {
+        flexDirection: 'row',
+        alignItems: 'center',
     },
 });
