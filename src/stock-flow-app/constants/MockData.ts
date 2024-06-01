@@ -43,7 +43,7 @@
 export const MOCK_PRODUTOS = [
     {
         "id": "6638253b6e3d9cafad89b396",
-        "nome": "HeadSet",
+        "nome": "HeadSet MOCK",
         "descricao": "HeadSet MultLaser GX-3102 P/2 + USB",
         "categorias": [
             "Informatica"
@@ -55,7 +55,7 @@ export const MOCK_PRODUTOS = [
     },
     {
         "id": "6633fbab9841de6a004e4be5",
-        "nome": "Notebook Dell",
+        "nome": "Notebook Dell MOCK",
         "descricao": "Notebook core i3 8gb ram RX-580 GDDR5 8gb SSD 1TB",
         "categorias": [
             "Informatica"
@@ -67,7 +67,7 @@ export const MOCK_PRODUTOS = [
     },
     {
         "id": "6639709f7350050e3426133e",
-        "nome": "Notebook Lenovo",
+        "nome": "Notebook Lenovo MOCK",
         "descricao": "Notebook Lenovo Ideapad 3i",
         "categorias": [
             "Informática"
@@ -79,7 +79,7 @@ export const MOCK_PRODUTOS = [
     },
     {
         "id": "66129f79573dce1105bb418b",
-        "nome": "PC",
+        "nome": "PC MOCK",
         "descricao": "Computador para trabalho Itau Tech",
         "categorias": [
             "Informatica"
@@ -91,7 +91,7 @@ export const MOCK_PRODUTOS = [
     },
     {
         "id": "660825f7bc799f5e656b388d",
-        "nome": "Samsung UltraBook 3",
+        "nome": "Samsung UltraBook 3 MOCK",
         "descricao": "Notebook Samsung UltraBook 3 17-1300 32GB",
         "categorias": [
             "Informática",
@@ -108,7 +108,7 @@ export const MOCK_PRODUTOS = [
     },
     {
         "id": "661dc2853b000bc9657538e0",
-        "nome": "Samsung UltraBook 3",
+        "nome": "Samsung UltraBook 3 MOCK",
         "descricao": "Notebook Samsung UltraBook 3 17-1300 32GB",
         "categorias": [
             "Informática",

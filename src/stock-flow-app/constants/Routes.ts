@@ -5,4 +5,5 @@ export const Routes = {
     LOGIN: API_URL + "/autenticacao/login",
     REGISTER: API_URL + "/autenticacao/cadastro",
     RELATORIOS: API_URL + "/relatorios/movimentacoes",
+    PRODUTOS: API_URL + "/produtos",
 }
