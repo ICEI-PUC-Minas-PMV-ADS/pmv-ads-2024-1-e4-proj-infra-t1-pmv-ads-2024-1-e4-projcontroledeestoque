@@ -6,4 +6,5 @@ export const Routes = {
     REGISTER: API_URL + "/autenticacao/cadastro",
     RELATORIOS: API_URL + "/relatorios/movimentacoes",
     PRODUTOS: API_URL + "/produtos",
+    FORNECEDORES:  API_URL + "fornecedores",
 }

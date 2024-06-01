@@ -127,18 +127,6 @@ export const MOCK_PRODUTOS = [
 
 export const MOCK_FORNECEDORES = [
     {
-        "id": "66355065a314c8e87d8cf3a6",
-        "nome": "123",
-        "contato": "123",
-        "endereco": "123"
-    },
-    {
-        "id": "66355065a314c8e87d8cf3a8",
-        "nome": "123",
-        "contato": "123",
-        "endereco": "124"
-    },
-    {
         "id": "6637e3cb240bfa355bc5d610",
         "nome": "Fornecedor Esportes",
         "contato": "Artigosesportivos@gmail.com",
