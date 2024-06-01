@@ -59,11 +59,10 @@ export default function ProdutosScreen() {
     return (
         <ThemedViewRoot>
             <ThemedView>
-                <ThemedText type="title">Produtos!</ThemedText>
+                <ThemedText type="title">Produtos</ThemedText>
             </ThemedView>
             
-            <TextInput
-            style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginBottom: 10 }}
+            <TextInput style = {styles.inputText}
             onChangeText={text => setSearch(text)}
             value={search}
             placeholder="Search..."
@@ -89,5 +88,14 @@ const styles = StyleSheet.create({
     },
     buttonText: {
         color: 'white',
+    },
+
+    inputText: {
+        flex: 1,
+        borderRadius: 10,
+        padding: 10,
+        marginVertical: 5,
+        borderWidth: 2,
+        borderColor: 'gray',
     },
 });
