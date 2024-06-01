@@ -69,16 +69,19 @@ export default function ProdutosScreen() {
             />
 
             <ListProduto produtos={produtosFiltered}/>
-
-            <Pressable style={styles.button} onPress={handleLogout}>
-                <ThemedText style={styles.buttonText}>Logout</ThemedText>
-            </Pressable>
+            <ThemedView style={styles.container}>
+                <Pressable style={styles.button} onPress={handleLogout}>
+                    <ThemedText style={styles.buttonText}>Logout</ThemedText>
+                </Pressable>
+            </ThemedView>
+            
         </ThemedViewRoot>
     );
 }
 
 const styles = StyleSheet.create({
     button: {
+        borderRadius: 10,
         width: '80%',
         height: 50,
         margin: 12,
@@ -97,5 +100,12 @@ const styles = StyleSheet.create({
         marginVertical: 5,
         borderWidth: 2,
         borderColor: 'gray',
+    },
+    container: {
+        flex: 1,
+        borderRadius: 10,
+        padding: 10,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
 });
