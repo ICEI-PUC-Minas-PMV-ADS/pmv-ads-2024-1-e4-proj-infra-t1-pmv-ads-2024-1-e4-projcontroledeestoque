@@ -18,7 +18,91 @@ StockFlow é uma plataforma abrangente de gerenciamento de estoque projetada par
 
 ## Instruções de utilização
 
-Assim que a primeira versão do sistema estiver disponível, deverá complementar com as instruções de utilização. Descreva como instalar eventuais dependências e como executar a aplicação.
+**Clone o Repositório:**
+```
+git clone https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t1-pmv-ads-2024-1-e4-projcontroledeestoque.git
+```
+
+
+## Projeto Backend
+### Pré-requisitos
+
+Certifique-se de ter as seguintes ferramentas instaladas em seu ambiente de desenvolvimento:
+
+- [.NET](https://dotnet.microsoft.com/en-us/download)
+
+### Configuração Inicial
+
+1. **Acesse o Diretório do Projeto:**
+```
+cd src/stock-flow
+```
+2. **Instale as Dependências:**
+```
+dotnet restore
+```
+
+### Inicialização do Projeto
+1. **Inicie o Projeto Backend:**
+```
+dotnet run
+```
+2. **Use o swagger gerado para identificar as rotas da API.**
+   
+
+## Projeto Web
+### Pré-requisitos
+
+Certifique-se de ter as seguintes ferramentas instaladas em seu ambiente de desenvolvimento:
+
+- [Node.js](https://nodejs.org/)
+- [npm](https://www.npmjs.com/) ou [Yarn](https://yarnpkg.com/)
+
+### Configuração Inicial
+
+1. **Acesse o Diretório do Projeto:**
+```
+cd src/stock-flow-web
+```
+2. **Instale as Dependências:**
+```
+npm install
+```
+
+### Inicialização do Aplicativo
+1. **Inicie o Projeto Web:**
+```
+npm run
+```
+2. **Use o seu browser para Visualizar o Projeto.**
+
+
+## Projeto Mobile
+### Pré-requisitos
+
+Certifique-se de ter as seguintes ferramentas instaladas em seu ambiente de desenvolvimento:
+
+- [Node.js](https://nodejs.org/)
+- [npm](https://www.npmjs.com/) ou [Yarn](https://yarnpkg.com/)
+- [Expo CLI](https://docs.expo.dev/get-started/installation/)
+
+### Configuração Inicial
+
+1. **Acesse o Diretório do Projeto:**
+```
+cd src/stock-flow-app
+```
+2. **Instale as Dependências:**
+```
+npm install
+```
+
+### Inicialização do Aplicativo
+1. **Inicie o Aplicativo React Native:**
+```
+expo start
+```
+2. **Use o Expo Go (para Dispositivos Físicos) ou um Emulador para Visualizar o Aplicativo.**
 
 # Documentação
 
