@@ -7,21 +7,29 @@ import LoadingOverlay from "@/components/LoadingOverlay";
 import {router} from "expo-router";
 import ThemedViewRoot from "@/components/ThemedViewRoot";
 import ListFornecedor from "@/components/fornecedores/ListFornecedor";
-import {FornecedoresQueryParams, FornecedoresResponse, FetchFornecedores } from '@/services/fornecedores';
+import {FornecedoresQueryParams, FornecedoresResponse} from '@/services/fornecedores';
 import {MOCK_FORNECEDORES} from "@/constants/MockData";
+import Ionicons from "@expo/vector-icons/Ionicons";
+import {useThemeColorName} from "@/hooks/useThemeColor";
 
 export default function FornecedoresScreen() {
-    const {signOut} = useSession();
     const {session, isLoading} = useSession();
     const [fornecedores, setFornecedores] = useState<FornecedoresResponse[]>([]);
     const [appIsReady, setAppIsReady] = useState(false);
     const [search, setSearch] = useState('');
-    
-    //Filtro de fornecedores com base no nome
-    const fornecedoresFiltered = fornecedores.filter(item =>
-        item.nome.toLowerCase().includes(search.toLowerCase())
-      );
+    const textInputColor = useThemeColorName("textInput");
+    const iconColor = useThemeColorName("icon");
 
+    const handleSearch = () => {
+        if (!search) return;
+
+        setAppIsReady(false);
+        fetchFornecedores({nome: search})
+            .then(() => setTimeout(() => {
+                setAppIsReady(true);
+                setSearch('');
+            }, 1000));
+    }
 
     async function fetchFornecedores(queryParams: FornecedoresQueryParams) {
         //TODO: Remover MOCK e descomentar FetchRelatorios
@@ -30,11 +38,9 @@ export default function FornecedoresScreen() {
         setFornecedores(fetchData);
     }
 
-
     useEffect(() => {
         setAppIsReady(false);
         fetchFornecedores({}).then(() => setTimeout(() => setAppIsReady(true), 1000));
-        
     }, []);
 
     if (isLoading || !appIsReady) {
@@ -45,63 +51,46 @@ export default function FornecedoresScreen() {
         router.replace('(auth)');
     }
 
-
-    function handleLogout() {
-        signOut();
-        router.replace('(auth)');
-    }
-    
-
-
     return (
         <ThemedViewRoot>
             <ThemedView>
-                <ThemedText type="title">Fornecedores!</ThemedText>
+                <ThemedText type="title">Fornecedores</ThemedText>
             </ThemedView>
-            
-            <TextInput
-            style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginBottom: 10 }}
-            onChangeText={text => setSearch(text)}
-            value={search}
-            placeholder="Search..."
-            />
 
-            <ListFornecedor fornecedores={fornecedoresFiltered}/>
+            <ThemedView style={styles.searchContainer}>
+                <TextInput style={[{borderColor: iconColor, backgroundColor: textInputColor}, styles.textInput]}
+                           onChangeText={text => setSearch(text)}
+                           value={search}
+                           placeholder="Pesquisar..."
+                />
 
-            <Pressable style={styles.button} onPress={handleLogout}>
-                <ThemedText style={styles.buttonText}>Logout</ThemedText>
-            </Pressable>
+                <Pressable style={styles.button} onPress={handleSearch}>
+                    <Ionicons name="search" size={24} color={iconColor}/>
+                </Pressable>
+            </ThemedView>
+
+            <ListFornecedor fornecedores={fornecedores}/>
         </ThemedViewRoot>
     );
 }
 
 const styles = StyleSheet.create({
-    button: {
-        borderRadius: 10,
-        width: '80%',
-        height: 50,
-        margin: 12,
-        backgroundColor: 'blue',
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    buttonText: {
-        color: 'white',
+    searchContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
     },
 
-    inputText: {
+    textInput: {
         flex: 1,
+        paddingVertical: 4,
+        paddingHorizontal: 10,
         borderRadius: 10,
-        padding: 10,
-        marginVertical: 5,
         borderWidth: 2,
-        borderColor: 'gray',
+        marginRight: 15,
     },
-    container: {
-        flex: 1,
-        borderRadius: 10,
-        padding: 10,
-        justifyContent: 'center',
+
+    button: {
+        flexDirection: 'row',
         alignItems: 'center',
     },
 });

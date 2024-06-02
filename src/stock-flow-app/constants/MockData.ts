@@ -43,7 +43,7 @@
 export const MOCK_PRODUTOS = [
     {
         "id": "6638253b6e3d9cafad89b396",
-        "nome": "HeadSet MOCK",
+        "nome": "HeadSet",
         "descricao": "HeadSet MultLaser GX-3102 P/2 + USB",
         "categorias": [
             "Informatica"
@@ -55,7 +55,7 @@ export const MOCK_PRODUTOS = [
     },
     {
         "id": "6633fbab9841de6a004e4be5",
-        "nome": "Notebook Dell MOCK",
+        "nome": "Notebook Dell",
         "descricao": "Notebook core i3 8gb ram RX-580 GDDR5 8gb SSD 1TB",
         "categorias": [
             "Informatica"
@@ -67,7 +67,7 @@ export const MOCK_PRODUTOS = [
     },
     {
         "id": "6639709f7350050e3426133e",
-        "nome": "Notebook Lenovo MOCK",
+        "nome": "Notebook Lenovo",
         "descricao": "Notebook Lenovo Ideapad 3i",
         "categorias": [
             "Informática"
@@ -79,7 +79,7 @@ export const MOCK_PRODUTOS = [
     },
     {
         "id": "66129f79573dce1105bb418b",
-        "nome": "PC MOCK",
+        "nome": "PC",
         "descricao": "Computador para trabalho Itau Tech",
         "categorias": [
             "Informatica"
@@ -91,7 +91,7 @@ export const MOCK_PRODUTOS = [
     },
     {
         "id": "660825f7bc799f5e656b388d",
-        "nome": "Samsung UltraBook 3 MOCK",
+        "nome": "Samsung UltraBook 3",
         "descricao": "Notebook Samsung UltraBook 3 17-1300 32GB",
         "categorias": [
             "Informática",
@@ -108,7 +108,7 @@ export const MOCK_PRODUTOS = [
     },
     {
         "id": "661dc2853b000bc9657538e0",
-        "nome": "Samsung UltraBook 3 MOCK",
+        "nome": "Samsung UltraBook 3",
         "descricao": "Notebook Samsung UltraBook 3 17-1300 32GB",
         "categorias": [
             "Informática",
@@ -150,24 +150,6 @@ export const MOCK_FORNECEDORES = [
         "contato": "lojaze@gmail.com",
         "endereco": "Rua 1234, bairro 567"
     },
-    {
-        "id": "66129f46573dce1105bb4189",
-        "nome": "loja3332",
-        "contato": "1234533333",
-        "endereco": "Avenida233333"
-    },
-    {
-        "id": "6637ffb55963880f53c5bb80",
-        "nome": "string",
-        "contato": "eletrohouse@eletrohouse.com.br",
-        "endereco": "string"
-    },
-    {
-        "id": "66354edfa314c8e87d8cf3a0",
-        "nome": "teste",
-        "contato": "teste",
-        "endereco": "teste"
-    }
 ];
 
 export const MOCK_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4OGQ5NDAwYi1lZWI2LTRiMzYtODczNS00ODNlNDBkMjhhNmEiLCJqdGkiOiI1NDNmNTA0NS1iYzM2LTRkM2MtOTIwNC01ODEyNDY1ZjQ2YjgiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiSm9obiBXaWNrIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvZW1haWxhZGRyZXNzIjoidGVzdDZAZXhhbXBsZS5jb20iLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6Ijg4ZDk0MDBiLWVlYjYtNGIzNi04NzM1LTQ4M2U0MGQyOGE2YSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IlVTRVIiLCJleHAiOjE3MTY2ODgzNTYsImlzcyI6Imh0dHBzOi8vbG9jYWxob3N0OjUwMDEiLCJhdWQiOiJodHRwczovL2xvY2FsaG9zdDo1MDAxIn0.iMNrp9-KPSvK_1qiKoetMbnXyWO57qrxjG7wTkIm3DE";

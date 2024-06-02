@@ -1,4 +1,4 @@
-import {StyleSheet, TextInput} from 'react-native';
+import {Pressable, StyleSheet, TextInput} from 'react-native';
 import {ThemedText} from '@/components/ThemedText';
 import {ThemedView} from '@/components/ThemedView';
 import {useEffect, useState} from "react";
@@ -7,33 +7,41 @@ import LoadingOverlay from "@/components/LoadingOverlay";
 import {router} from "expo-router";
 import ThemedViewRoot from "@/components/ThemedViewRoot";
 import ListProduto from "@/components/produtos/ListProduto";
-import {ProdutosQueryParams, ProdutosResponse, FetchProdutos } from '@/services/produtos';
+import {ProdutosQueryParams, ProdutosResponse} from '@/services/produtos';
 import {MOCK_PRODUTOS} from "@/constants/MockData";
+import {useThemeColorName} from "@/hooks/useThemeColor";
+import Ionicons from "@expo/vector-icons/Ionicons";
 
 export default function ProdutosScreen() {
     const {session, isLoading} = useSession();
     const [produtos, setProdutos] = useState<ProdutosResponse[]>([]);
     const [appIsReady, setAppIsReady] = useState(false);
     const [search, setSearch] = useState('');
-    
-    //Filtro de produtos com base no nome
-    const produtosFiltered = produtos.filter(item =>
-        item.nome.toLowerCase().includes(search.toLowerCase())
-      );
+    const textInputColor = useThemeColorName("textInput");
+    const iconColor = useThemeColorName("icon");
 
+    const handleSearch = () => {
+        if (!search) return;
+
+        setAppIsReady(false);
+        fetchProdutos({nome: search})
+            .then(() => setTimeout(() => {
+                setAppIsReady(true);
+                setSearch('');
+            }, 1000));
+    }
 
     async function fetchProdutos(queryParams: ProdutosQueryParams) {
-        //TODO: Remover MOCK e descomentar FetchRelatorios
+        //TODO: Remover MOCK e descomentar FetchProdutos
         //const fetchData = await FetchProdutos(queryParams);
         const fetchData: ProdutosResponse[] = MOCK_PRODUTOS;
         setProdutos(fetchData);
     }
 
-
     useEffect(() => {
         setAppIsReady(false);
         fetchProdutos({}).then(() => setTimeout(() => setAppIsReady(true), 1000));
-        
+
     }, []);
 
     if (isLoading || !appIsReady) {
@@ -49,47 +57,41 @@ export default function ProdutosScreen() {
             <ThemedView>
                 <ThemedText type="title">Produtos</ThemedText>
             </ThemedView>
-            
-            <TextInput style = {styles.inputText}
-            onChangeText={text => setSearch(text)}
-            value={search}
-            placeholder="Procurar..."
-            />
 
-            <ListProduto produtos={produtosFiltered}/>
-            
-            
+            <ThemedView style={styles.searchContainer}>
+                <TextInput style={[{borderColor: iconColor, backgroundColor: textInputColor}, styles.textInput]}
+                           onChangeText={text => setSearch(text)}
+                           value={search}
+                           placeholder="Pesquisar..."
+                />
+
+                <Pressable style={styles.button} onPress={handleSearch}>
+                    <Ionicons name="search" size={24} color={iconColor}/>
+                </Pressable>
+            </ThemedView>
+
+            <ListProduto produtos={produtos}/>
         </ThemedViewRoot>
     );
 }
 
 const styles = StyleSheet.create({
-    button: {
-        borderRadius: 10,
-        width: '80%',
-        height: 50,
-        margin: 12,
-        backgroundColor: 'blue',
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    buttonText: {
-        color: 'white',
+    searchContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
     },
 
-    inputText: {
+    textInput: {
         flex: 1,
+        paddingVertical: 4,
+        paddingHorizontal: 10,
         borderRadius: 10,
-        padding: 10,
-        marginVertical: 5,
         borderWidth: 2,
-        borderColor: 'gray',
+        marginRight: 15,
     },
-    container: {
-        flex: 1,
-        borderRadius: 10,
-        padding: 10,
-        justifyContent: 'center',
+
+    button: {
+        flexDirection: 'row',
         alignItems: 'center',
     },
 });

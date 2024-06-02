@@ -3,6 +3,8 @@ import {Routes} from "@/constants/Routes";
 
 export type FornecedoresQueryParams = {
     nome?: string;
+    contato?: string;
+    endereco?: string;
 }
 
 export type FornecedoresResponse = {

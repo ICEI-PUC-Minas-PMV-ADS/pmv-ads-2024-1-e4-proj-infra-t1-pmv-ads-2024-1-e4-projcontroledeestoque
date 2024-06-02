@@ -1,25 +1,30 @@
 ﻿import {StyleSheet, View} from "react-native";
 import {FornecedoresResponse} from "@/services/fornecedores";
 import {ThemedText} from "@/components/ThemedText";
+import {ThemedView} from "@/components/ThemedView";
+import {useThemeColorName} from "@/hooks/useThemeColor";
 
 interface CardFornecedorProps {
     fornecedor: FornecedoresResponse;
 }
 
 export default function CardFornecedor({fornecedor}: CardFornecedorProps){
-    return(
-        <View style={styles.container}>
-            <View style={styles.firstRow}>
+    const borderColor = useThemeColorName("icon");
+    
+    return (
+        <ThemedView colorName={"backgroundCard"} style={[{borderBottomColor: borderColor}, styles.container]}>
+            <View style={styles.row}>
                 <ThemedText>{fornecedor.nome}</ThemedText>
             </View>
-            <View style={styles.secondRow}>
-                <ThemedText>{fornecedor.id}</ThemedText>
-                <ThemedText>{fornecedor.contato}</ThemedText>
-                <ThemedText>{fornecedor.endereco}</ThemedText>
+            <View style={styles.row}>
+                <ThemedText>E-mail: {fornecedor.contato}</ThemedText>
             </View>
-        </View>
+            <View style={styles.row}>
+                <ThemedText>Endereço: {fornecedor.endereco}</ThemedText>
+            </View>
+        </ThemedView>
     );
-}
+};
 
 
 const styles = StyleSheet.create({
@@ -29,18 +34,9 @@ const styles = StyleSheet.create({
         padding: 10,
         marginVertical: 5,
         borderBottomWidth: 2,
-        borderBottomColor: 'gray',
     },
-    firstRow: {
+    row: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-    },
-    secondRow: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-    },
-    button: {
-        flexDirection: 'row',
-        alignItems: 'center',
     },
 });

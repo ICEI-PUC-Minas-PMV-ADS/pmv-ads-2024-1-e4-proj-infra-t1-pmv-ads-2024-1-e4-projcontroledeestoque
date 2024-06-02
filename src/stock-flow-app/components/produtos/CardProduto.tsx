@@ -1,35 +1,30 @@
 import {StyleSheet, View,} from "react-native";
 import {ProdutosResponse} from "@/services/produtos";
 import {ThemedText} from "@/components/ThemedText";
-import { ThemedView } from "../ThemedView";;
-import { useState} from "react";
+import {ThemedView} from "../ThemedView";
 import {formatNumber} from "@/util/number";
-
-
-const [produtoCompleto, setProdutoCompleto] = useState<ProdutosResponse[]>([]);
+import {useThemeColorName} from "@/hooks/useThemeColor";
 
 interface CardProdutoProps {
     produto: ProdutosResponse;
 }
 
 
-
-
-export default function CardProduto({produto}: CardProdutoProps){
-    return(
-        <ThemedView colorName={"backgroundCard"} style={styles.container}>
-            <View style={styles.firstRow}>
+export default function CardProduto({produto}: CardProdutoProps) {
+    const borderColor = useThemeColorName("icon");
+    
+    return (
+        <ThemedView colorName={"backgroundCard"} style={[{borderBottomColor: borderColor}, styles.container]}>
+            <View style={styles.row}>
                 <ThemedText>{produto.nome}</ThemedText>
-                <ThemedText>Qnt. {produto.quantidade}</ThemedText>
+                <ThemedText>{produto.quantidade}</ThemedText>
             </View>
-            <View style={styles.secondRow}>
-                <ThemedText>Custo: R${formatNumber(produto.precoCusto)}</ThemedText>
-                <ThemedText>Venda: R${formatNumber(produto.precoVenda)}</ThemedText>
+            <View style={styles.row}>
+                <ThemedText>Preço unidade: R${formatNumber(produto.precoCusto)}</ThemedText>
             </View>
         </ThemedView>
     );
 };
-
 
 
 const styles = StyleSheet.create({
@@ -39,18 +34,9 @@ const styles = StyleSheet.create({
         padding: 10,
         marginVertical: 5,
         borderBottomWidth: 2,
-        borderBottomColor: 'gray',
     },
-    firstRow: {
+    row: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-    },
-    secondRow: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-    },
-    button: {
-        flexDirection: 'row',
-        alignItems: 'center',
     },
 });

@@ -13,6 +13,7 @@ import DateTimePicker, {DateTimePickerEvent} from '@react-native-community/datet
 import {toLocaleDateString} from "@/util/date";
 import {Colors} from "@/constants/Colors";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import {useThemeColorName} from "@/hooks/useThemeColor";
 
 export default function RelatoriosScreen() {
     const {session, isLoading} = useSession();
@@ -22,6 +23,7 @@ export default function RelatoriosScreen() {
     const [dataFim, setDataFim] = useState(new Date());
     const [showDataInicioPicker, setShowDataInicioPicker] = useState(false);
     const [showDataFimPicker, setShowDataFimPicker] = useState(false);
+    const iconColor = useThemeColorName("icon");
 
     const handleDataInicio = (event: DateTimePickerEvent, selectedDate: Date | undefined) => {
         const currentDate = selectedDate || dataInicio;
@@ -68,7 +70,7 @@ export default function RelatoriosScreen() {
             </ThemedView>
 
             <ThemedView style={styles.dateContainer}>
-                <Pressable style={styles.datePicker} onPress={() => setShowDataInicioPicker(true)}>
+                <Pressable style={[{backgroundColor: iconColor} ,styles.datePicker]} onPress={() => setShowDataInicioPicker(true)}>
                     <Text>De: {toLocaleDateString(dataInicio)}</Text>
                 </Pressable>
                 {showDataInicioPicker && (
@@ -83,7 +85,7 @@ export default function RelatoriosScreen() {
                     />
                 )}
 
-                <Pressable style={styles.datePicker} onPress={() => setShowDataFimPicker(true)}>
+                <Pressable style={[{backgroundColor: iconColor} ,styles.datePicker]} onPress={() => setShowDataFimPicker(true)}>
                     <Text>Até: {toLocaleDateString(dataFim)}</Text>
                 </Pressable>
                 {showDataFimPicker && (
@@ -99,7 +101,7 @@ export default function RelatoriosScreen() {
                 )}
 
                 <Pressable style={styles.button} onPress={handleSearch}>
-                    <Ionicons name="search" size={24} color={Colors.dark.textInput}/>
+                    <Ionicons name="search" size={24} color={iconColor}/>
                 </Pressable>
 
             </ThemedView>
@@ -119,8 +121,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         padding: 10,
-        borderRadius: 5,
-        backgroundColor: Colors.dark.textInput,
+        borderRadius: 10,
     },
 
     button: {

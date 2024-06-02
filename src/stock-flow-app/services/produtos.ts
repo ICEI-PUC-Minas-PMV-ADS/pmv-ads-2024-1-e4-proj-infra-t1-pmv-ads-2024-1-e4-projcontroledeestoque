@@ -3,7 +3,11 @@ import {Routes} from "@/constants/Routes";
 
 export type ProdutosQueryParams = {
     nome?: string;
-    categoria?: string[];
+    categoria?: string;
+    quantidade?: string;
+    precoCusto?: string;
+    precoVenda?: string;
+    fornecedor?: string;
 }
 
 export type ProdutosResponse = {
