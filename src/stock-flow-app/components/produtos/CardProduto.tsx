@@ -1,32 +1,31 @@
-﻿import {StyleSheet, View} from "react-native";
-import {RelatoriosResponse} from "@/services/relatorios";
+import {StyleSheet, View,} from "react-native";
+import {ProdutosResponse} from "@/services/produtos";
 import {ThemedText} from "@/components/ThemedText";
-import {formatDate} from "@/util/date";
+import {ThemedView} from "../ThemedView";
 import {formatNumber} from "@/util/number";
-import {ThemedView} from "@/components/ThemedView";
 import {useThemeColorName} from "@/hooks/useThemeColor";
 
-interface CardRelatorioProps {
-    relatorio: RelatoriosResponse;
+interface CardProdutoProps {
+    produto: ProdutosResponse;
 }
 
-export default function CardRelatorio({relatorio}: CardRelatorioProps) {
+
+export default function CardProduto({produto}: CardProdutoProps) {
     const borderColor = useThemeColorName("icon");
     
     return (
         <ThemedView colorName={"backgroundCard"} style={[{borderBottomColor: borderColor}, styles.container]}>
             <View style={styles.row}>
-                <ThemedText>{formatDate(relatorio.data)}</ThemedText>
-                <ThemedText>{relatorio.tipo}</ThemedText>
+                <ThemedText>{produto.nome}</ThemedText>
+                <ThemedText>{produto.quantidade}</ThemedText>
             </View>
             <View style={styles.row}>
-                <ThemedText>{relatorio.quantidade}</ThemedText>
-                <ThemedText>{relatorio.produtoNome}</ThemedText>
-                <ThemedText>R${formatNumber(relatorio.valor)}</ThemedText>
+                <ThemedText>Preço unidade: R${formatNumber(produto.precoCusto)}</ThemedText>
             </View>
         </ThemedView>
     );
-}
+};
+
 
 const styles = StyleSheet.create({
     container: {
@@ -41,4 +40,3 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
     },
 });
-    

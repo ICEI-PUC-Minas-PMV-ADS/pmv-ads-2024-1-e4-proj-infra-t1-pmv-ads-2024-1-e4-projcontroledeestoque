@@ -127,18 +127,6 @@ export const MOCK_PRODUTOS = [
 
 export const MOCK_FORNECEDORES = [
     {
-        "id": "66355065a314c8e87d8cf3a6",
-        "nome": "123",
-        "contato": "123",
-        "endereco": "123"
-    },
-    {
-        "id": "66355065a314c8e87d8cf3a8",
-        "nome": "123",
-        "contato": "123",
-        "endereco": "124"
-    },
-    {
         "id": "6637e3cb240bfa355bc5d610",
         "nome": "Fornecedor Esportes",
         "contato": "Artigosesportivos@gmail.com",
@@ -162,24 +150,6 @@ export const MOCK_FORNECEDORES = [
         "contato": "lojaze@gmail.com",
         "endereco": "Rua 1234, bairro 567"
     },
-    {
-        "id": "66129f46573dce1105bb4189",
-        "nome": "loja3332",
-        "contato": "1234533333",
-        "endereco": "Avenida233333"
-    },
-    {
-        "id": "6637ffb55963880f53c5bb80",
-        "nome": "string",
-        "contato": "eletrohouse@eletrohouse.com.br",
-        "endereco": "string"
-    },
-    {
-        "id": "66354edfa314c8e87d8cf3a0",
-        "nome": "teste",
-        "contato": "teste",
-        "endereco": "teste"
-    }
 ];
 
 export const MOCK_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4OGQ5NDAwYi1lZWI2LTRiMzYtODczNS00ODNlNDBkMjhhNmEiLCJqdGkiOiI1NDNmNTA0NS1iYzM2LTRkM2MtOTIwNC01ODEyNDY1ZjQ2YjgiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiSm9obiBXaWNrIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvZW1haWxhZGRyZXNzIjoidGVzdDZAZXhhbXBsZS5jb20iLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6Ijg4ZDk0MDBiLWVlYjYtNGIzNi04NzM1LTQ4M2U0MGQyOGE2YSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IlVTRVIiLCJleHAiOjE3MTY2ODgzNTYsImlzcyI6Imh0dHBzOi8vbG9jYWxob3N0OjUwMDEiLCJhdWQiOiJodHRwczovL2xvY2FsaG9zdDo1MDAxIn0.iMNrp9-KPSvK_1qiKoetMbnXyWO57qrxjG7wTkIm3DE";

@@ -103,7 +103,7 @@ export default function Cadastro() {
                     )}
                 />
 
-                <ThemedText type={"subtitle"}>Email</ThemedText>
+                <ThemedText type={"subtitle"}>E-mail</ThemedText>
                 {errors.email &&
                     <ThemedText type={"defaultSemiBold"} colorName={"textError"}>{errors.email?.message}</ThemedText>}
 

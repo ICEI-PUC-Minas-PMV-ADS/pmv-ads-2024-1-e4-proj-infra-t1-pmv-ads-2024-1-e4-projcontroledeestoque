@@ -1,32 +1,31 @@
 ﻿import {StyleSheet, View} from "react-native";
-import {RelatoriosResponse} from "@/services/relatorios";
+import {FornecedoresResponse} from "@/services/fornecedores";
 import {ThemedText} from "@/components/ThemedText";
-import {formatDate} from "@/util/date";
-import {formatNumber} from "@/util/number";
 import {ThemedView} from "@/components/ThemedView";
 import {useThemeColorName} from "@/hooks/useThemeColor";
 
-interface CardRelatorioProps {
-    relatorio: RelatoriosResponse;
+interface CardFornecedorProps {
+    fornecedor: FornecedoresResponse;
 }
 
-export default function CardRelatorio({relatorio}: CardRelatorioProps) {
+export default function CardFornecedor({fornecedor}: CardFornecedorProps){
     const borderColor = useThemeColorName("icon");
     
     return (
         <ThemedView colorName={"backgroundCard"} style={[{borderBottomColor: borderColor}, styles.container]}>
             <View style={styles.row}>
-                <ThemedText>{formatDate(relatorio.data)}</ThemedText>
-                <ThemedText>{relatorio.tipo}</ThemedText>
+                <ThemedText>{fornecedor.nome}</ThemedText>
             </View>
             <View style={styles.row}>
-                <ThemedText>{relatorio.quantidade}</ThemedText>
-                <ThemedText>{relatorio.produtoNome}</ThemedText>
-                <ThemedText>R${formatNumber(relatorio.valor)}</ThemedText>
+                <ThemedText>E-mail: {fornecedor.contato}</ThemedText>
+            </View>
+            <View style={styles.row}>
+                <ThemedText>Endereço: {fornecedor.endereco}</ThemedText>
             </View>
         </ThemedView>
     );
-}
+};
+
 
 const styles = StyleSheet.create({
     container: {
@@ -41,4 +40,3 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
     },
 });
-    
