@@ -79,6 +79,15 @@
 | Passos 	| - Acessar a aplicação <br> - Inserir os dados de login. <br> - Aguardar o direcionamento para a página inicial. <br> Acessar a página de fornecedores. <br> - Efetuar cadastro e/ou exclusão de fornecedores. <br> - Efetuar alterações(nome, quantidade). <br> - Salvar alterações.|
 |Critério de Êxito | - Usuário obteve sucesso ao gerenciar fornecedores. |
 
+**Teste unitário referente ao Caso de Teste** <br>
+<br>
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t1-pmv-ads-2024-1-e4-projcontroledeestoque/assets/109116755/f3bbf33b-5fe9-4bd4-aa9d-f0ae4b43c5cb)<br>
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t1-pmv-ads-2024-1-e4-projcontroledeestoque/assets/109116755/60382910-4190-47a7-b5cb-14b8fc7846dc)
+
+**Swagger**<br>
+<br>
+![5](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t1-pmv-ads-2024-1-e4-projcontroledeestoque/assets/109116755/cab0a393-39ee-4851-9b8a-3ca2a730f738)
+
 
 | **Caso de Teste** 	| **CT-06 – Criar Movimentação.** 	|
 |:---:	|:---:	|
@@ -90,17 +99,6 @@
 **Swagger**<br>
 <br>
 ![ct6](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t1-pmv-ads-2024-1-e4-projcontroledeestoque/assets/70116762/dac10ee0-927c-45fa-8d4c-40b61c4f1612)
-
-
-
-**Teste unitário referente ao Caso de Teste** <br>
-<br>
-![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t1-pmv-ads-2024-1-e4-projcontroledeestoque/assets/109116755/f3bbf33b-5fe9-4bd4-aa9d-f0ae4b43c5cb)<br>
-![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t1-pmv-ads-2024-1-e4-projcontroledeestoque/assets/109116755/60382910-4190-47a7-b5cb-14b8fc7846dc)
-
-**Swagger**<br>
-<br>
-![5](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t1-pmv-ads-2024-1-e4-projcontroledeestoque/assets/109116755/cab0a393-39ee-4851-9b8a-3ca2a730f738)
 
 ## Videos
 - Funcionamento com o front-end: https://youtu.be/O_NeenPwafI <br>
