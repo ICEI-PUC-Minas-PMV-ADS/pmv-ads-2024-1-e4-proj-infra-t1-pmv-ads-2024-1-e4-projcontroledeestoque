@@ -101,7 +101,9 @@
 ![ct6](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t1-pmv-ads-2024-1-e4-projcontroledeestoque/assets/70116762/dac10ee0-927c-45fa-8d4c-40b61c4f1612)
 
 ## Videos
-- Funcionamento com o front-end: https://youtu.be/O_NeenPwafI <br>
+- Funcionamento com o front-end web: https://youtu.be/O_NeenPwafI <br>
+- Funcionamento com o front-end mobile: https://youtu.be/DWimSYdmXMM <br>
+
 - Testes Unitários: https://youtu.be/FJLDNFee_wQ<br>
 
 
