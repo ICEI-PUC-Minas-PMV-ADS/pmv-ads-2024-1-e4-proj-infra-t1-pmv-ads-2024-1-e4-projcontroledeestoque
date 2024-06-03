@@ -39,6 +39,12 @@
 | Passos 	| - Acessar a aplicação <br> - Inserir os dados de login. <br> - Aguardar o direcionamento para a página inicial. <br> Acessar a página de fornecedores. <br> - Efetuar cadastro e/ou exclusão de fornecedores. <br> - Efetuar alterações(nome, quantidade). <br> - Salvar alterações.|
 |Critério de Êxito | - Usuário obteve sucesso ao gerenciar fornecedores. |
 
+| **Caso de Teste** 	| **CT-06 – Criar Movimentação.** 	|
+|:---:	|:---:	|
+|	Requisito Associado 	| RF-003	Emitir um relatório a cada movimentação. RF-004 Registrar produtos de compra/adição realizada. RF-005 Registrar produtos de venda/baixa realizada |
+| Objetivo do Teste 	| Verificar se o movimentações são geradas. |
+| Passos 	| - Acessar a aplicação <br> - Inserir os dados de login. <br> - Aguardar o direcionamento para a página inicial. <br> Acessar a página de relatórios. <br> - Efetuar uma movimentação. <br> - Salvar.|
+|Critério de Êxito | - Usuário obteve sucesso ao criar movimentação. |
 
 
 
