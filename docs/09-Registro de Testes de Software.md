@@ -80,6 +80,19 @@
 |Critério de Êxito | - Usuário obteve sucesso ao gerenciar fornecedores. |
 
 
+| **Caso de Teste** 	| **CT-06 – Criar Movimentação.** 	|
+|:---:	|:---:	|
+|	Requisito Associado 	| RF-003	Emitir um relatório a cada movimentação. RF-004 Registrar produtos de compra/adição realizada. RF-005 Registrar produtos de venda/baixa realizada |
+| Objetivo do Teste 	| Verificar se o movimentações são geradas. |
+| Passos 	| - Acessar a aplicação <br> - Inserir os dados de login. <br> - Aguardar o direcionamento para a página inicial. <br> Acessar a página de relatórios. <br> - Efetuar uma movimentação. <br> - Salvar.|
+|Critério de Êxito | - Usuário obteve sucesso ao criar movimentação. |
+
+**Swagger**<br>
+<br>
+![ct6](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t1-pmv-ads-2024-1-e4-projcontroledeestoque/assets/70116762/dac10ee0-927c-45fa-8d4c-40b61c4f1612)
+
+
+
 **Teste unitário referente ao Caso de Teste** <br>
 <br>
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t1-pmv-ads-2024-1-e4-projcontroledeestoque/assets/109116755/f3bbf33b-5fe9-4bd4-aa9d-f0ae4b43c5cb)<br>
