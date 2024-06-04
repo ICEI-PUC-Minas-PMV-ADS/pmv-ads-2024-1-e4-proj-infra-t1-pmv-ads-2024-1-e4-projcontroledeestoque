@@ -12,6 +12,8 @@ import DateTimePicker, {DateTimePickerEvent} from '@react-native-community/datet
 import {toLocaleDateString} from "@/util/date";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import {useThemeColorName} from "@/hooks/useThemeColor";
+import {ProdutosResponse} from "@/services/produtos";
+import {MOCK_PRODUTOS, MOCK_RELATORIOS} from "@/constants/MockData";
 
 export default function RelatoriosScreen() {
     const {session, isLoading} = useSession();
@@ -42,7 +44,7 @@ export default function RelatoriosScreen() {
     }
 
     async function fetchRelatorios(queryParams: RelatoriosQueryParams) {
-        const fetchData = await FetchRelatorios(queryParams);
+        const fetchData: RelatoriosResponse[] = MOCK_RELATORIOS;
         setRelatorios(fetchData);
     }
 

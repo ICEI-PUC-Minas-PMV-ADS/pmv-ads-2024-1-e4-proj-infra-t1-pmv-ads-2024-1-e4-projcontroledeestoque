@@ -7,9 +7,10 @@ import LoadingOverlay from "@/components/LoadingOverlay";
 import {router} from "expo-router";
 import ThemedViewRoot from "@/components/ThemedViewRoot";
 import ListProduto from "@/components/produtos/ListProduto";
-import {FetchProdutos, ProdutosQueryParams, ProdutosResponse} from '@/services/produtos';
+import {ProdutosQueryParams, ProdutosResponse} from '@/services/produtos';
 import {useThemeColorName} from "@/hooks/useThemeColor";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import {MOCK_PRODUTOS} from "@/constants/MockData";
 
 export default function ProdutosScreen() {
     const {session, isLoading} = useSession();
@@ -29,7 +30,7 @@ export default function ProdutosScreen() {
     }
 
     async function fetchProdutos(queryParams: ProdutosQueryParams) {
-        const fetchData = await FetchProdutos(queryParams);
+        const fetchData: ProdutosResponse[] = MOCK_PRODUTOS;
         setProdutos(fetchData);
     }
 

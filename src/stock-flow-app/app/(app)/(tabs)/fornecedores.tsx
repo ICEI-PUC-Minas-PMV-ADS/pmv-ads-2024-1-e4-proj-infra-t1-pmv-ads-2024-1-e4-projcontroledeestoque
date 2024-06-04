@@ -7,9 +7,10 @@ import LoadingOverlay from "@/components/LoadingOverlay";
 import {router} from "expo-router";
 import ThemedViewRoot from "@/components/ThemedViewRoot";
 import ListFornecedor from "@/components/fornecedores/ListFornecedor";
-import {FetchFornecedores, FornecedoresQueryParams, FornecedoresResponse} from '@/services/fornecedores';
+import {FornecedoresQueryParams, FornecedoresResponse} from '@/services/fornecedores';
 import Ionicons from "@expo/vector-icons/Ionicons";
 import {useThemeColorName} from "@/hooks/useThemeColor";
+import {MOCK_FORNECEDORES} from "@/constants/MockData";
 
 export default function FornecedoresScreen() {
     const {session, isLoading} = useSession();
@@ -29,7 +30,7 @@ export default function FornecedoresScreen() {
     }
 
     async function fetchFornecedores(queryParams: FornecedoresQueryParams) {
-        const fetchData = await FetchFornecedores(queryParams);
+        const fetchData: FornecedoresResponse[] = MOCK_FORNECEDORES;
         setFornecedores(fetchData);
     }
 
