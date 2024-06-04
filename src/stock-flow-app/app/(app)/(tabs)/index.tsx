@@ -7,8 +7,7 @@ import LoadingOverlay from "@/components/LoadingOverlay";
 import {router} from "expo-router";
 import ThemedViewRoot from "@/components/ThemedViewRoot";
 import ListProduto from "@/components/produtos/ListProduto";
-import {ProdutosQueryParams, ProdutosResponse} from '@/services/produtos';
-import {MOCK_PRODUTOS} from "@/constants/MockData";
+import {FetchProdutos, ProdutosQueryParams, ProdutosResponse} from '@/services/produtos';
 import {useThemeColorName} from "@/hooks/useThemeColor";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
@@ -21,8 +20,6 @@ export default function ProdutosScreen() {
     const iconColor = useThemeColorName("icon");
 
     const handleSearch = () => {
-        if (!search) return;
-
         setAppIsReady(false);
         fetchProdutos({nome: search})
             .then(() => setTimeout(() => {
@@ -32,9 +29,7 @@ export default function ProdutosScreen() {
     }
 
     async function fetchProdutos(queryParams: ProdutosQueryParams) {
-        //TODO: Remover MOCK e descomentar FetchProdutos
-        //const fetchData = await FetchProdutos(queryParams);
-        const fetchData: ProdutosResponse[] = MOCK_PRODUTOS;
+        const fetchData = await FetchProdutos(queryParams);
         setProdutos(fetchData);
     }
 

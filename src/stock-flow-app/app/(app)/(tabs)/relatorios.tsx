@@ -5,13 +5,11 @@ import {useEffect, useState} from "react";
 import {useSession} from "@/store/SessionProvider";
 import LoadingOverlay from "@/components/LoadingOverlay";
 import {router} from "expo-router";
-import {RelatoriosQueryParams, RelatoriosResponse} from "@/services/relatorios";
-import {MOCK_RELATORIOS} from "@/constants/MockData";
+import {FetchRelatorios, RelatoriosQueryParams, RelatoriosResponse} from "@/services/relatorios";
 import ThemedViewRoot from "@/components/ThemedViewRoot";
 import ListRelatorio from "@/components/relatorios/ListRelatorio";
 import DateTimePicker, {DateTimePickerEvent} from '@react-native-community/datetimepicker';
 import {toLocaleDateString} from "@/util/date";
-import {Colors} from "@/constants/Colors";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import {useThemeColorName} from "@/hooks/useThemeColor";
 
@@ -44,9 +42,7 @@ export default function RelatoriosScreen() {
     }
 
     async function fetchRelatorios(queryParams: RelatoriosQueryParams) {
-        //TODO: Remover MOCK e descomentar FetchRelatorios
-        //const fetchData = await FetchRelatorios(queryParams);
-        const fetchData: RelatoriosResponse[] = MOCK_RELATORIOS;
+        const fetchData = await FetchRelatorios(queryParams);
         setRelatorios(fetchData);
     }
 

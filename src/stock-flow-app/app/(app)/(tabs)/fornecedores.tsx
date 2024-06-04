@@ -7,8 +7,7 @@ import LoadingOverlay from "@/components/LoadingOverlay";
 import {router} from "expo-router";
 import ThemedViewRoot from "@/components/ThemedViewRoot";
 import ListFornecedor from "@/components/fornecedores/ListFornecedor";
-import {FornecedoresQueryParams, FornecedoresResponse} from '@/services/fornecedores';
-import {MOCK_FORNECEDORES} from "@/constants/MockData";
+import {FetchFornecedores, FornecedoresQueryParams, FornecedoresResponse} from '@/services/fornecedores';
 import Ionicons from "@expo/vector-icons/Ionicons";
 import {useThemeColorName} from "@/hooks/useThemeColor";
 
@@ -21,8 +20,6 @@ export default function FornecedoresScreen() {
     const iconColor = useThemeColorName("icon");
 
     const handleSearch = () => {
-        if (!search) return;
-
         setAppIsReady(false);
         fetchFornecedores({nome: search})
             .then(() => setTimeout(() => {
@@ -32,9 +29,7 @@ export default function FornecedoresScreen() {
     }
 
     async function fetchFornecedores(queryParams: FornecedoresQueryParams) {
-        //TODO: Remover MOCK e descomentar FetchRelatorios
-        //const fetchData = await FetchProdutos(queryParams);
-        const fetchData: FornecedoresResponse[] = MOCK_FORNECEDORES;
+        const fetchData = await FetchFornecedores(queryParams);
         setFornecedores(fetchData);
     }
 
