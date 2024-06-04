@@ -105,6 +105,7 @@
 - Funcionamento com o front-end mobile: https://youtu.be/DWimSYdmXMM <br>
 
 - Testes Unitários: https://youtu.be/FJLDNFee_wQ<br>
+- Testes de Integração: https://youtu.be/XZETEGjp4i0
 
 
 ## Avaliação
