@@ -26,7 +26,10 @@ const axiosInstance = axios.create({
   baseURL: 'https://stock-flow.azurewebsites.net/api/v1/relatorios/movimentacoes',
   timeout: 30000,
 })
-
+const createInstance = axios.create({
+  baseURL: 'https://stock-flow.azurewebsites.net/api/v1/movimentacoes',
+  timeout: 30000,
+})
 export async function getMovimentacoes(query?: any): Promise<Movimentacao[]> {
   const queryString = query?.name ? `?nome=${query.name}` : ''
   try {
@@ -42,7 +45,8 @@ export async function createMovimentacao(
   movimentacao: CreateMovimentacao
 ): Promise<Movimentacao> {
   try {
-    const response = await axiosInstance.post('', movimentacao)
+    movimentacao.usuario = localStorage.getItem('userId') || ''
+    const response = await createInstance.post('', movimentacao)
     return response.data
   } catch (error) {
     console.error('Erro ao criar movimentacao:', error)

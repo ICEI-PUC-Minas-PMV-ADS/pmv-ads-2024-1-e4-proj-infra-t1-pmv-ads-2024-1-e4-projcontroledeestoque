@@ -1,120 +1,130 @@
-"use client";
-import "react-toastify/dist/ReactToastify.css";
-import { useEffect, useState, useRef } from "react";
-import { Product, getProducts } from "../services/produtos";
-import Price from "../components/Price";
-import Navigation from "../components/Navigation";
-import { NotePencil, TrashSimple } from "@phosphor-icons/react";
-import DeleteModal from "../components/DeleteModal";
-import ProductModal from "../components/ProductModal";
-import { ToastContainer, toast } from "react-toastify";
-import EditProductModal from "../components/EditProductModal";
-import ProductDetailsModal from "../components/ProductDetailsModal";
-import { useRouter } from "next/navigation";
-import { getAccessToken } from "@/app/utils/acess-token";
-import { Loading } from "@/app/components/Loading";
-import { URLS } from "@/app/utils/constantes";
+'use client'
+import 'react-toastify/dist/ReactToastify.css'
+import { useEffect, useState, useRef } from 'react'
+import { Product, getProducts } from '../services/produtos'
+import Price from '../components/Price'
+import Navigation from '../components/Navigation'
+import { ChartLineUp, NotePencil, TrashSimple } from '@phosphor-icons/react'
+import DeleteModal from '../components/DeleteModal'
+import ProductModal from '../components/ProductModal'
+import { ToastContainer, toast } from 'react-toastify'
+import EditProductModal from '../components/EditProductModal'
+import ProductDetailsModal from '../components/ProductDetailsModal'
+import { useRouter } from 'next/navigation'
+import { getAccessToken } from '@/app/utils/acess-token'
+import { Loading } from '@/app/components/Loading'
+import { URLS } from '@/app/utils/constantes'
+import MovimentacaoModal from '../components/MovimentacaoModal'
 
 export default function Products() {
-  const [accessToken, setAccessToken] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [products, setProducts] = useState<Product[]>([]);
-  const [filter, setFilter] = useState("");
-  const [deleteModal, setDeleteModal] = useState(false);
-  const [product, setProduct] = useState<Product | null>(null);
-  const [createModal, setCreateModal] = useState(false);
-  const [editModal, setEditModal] = useState(false);
-  const [detailsModalOpen, setDetailsModalOpen] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
-  const router = useRouter();
-  const formRef = useRef(null);
+  const [accessToken, setAccessToken] = useState<string | null>(null)
+  const [loading, setLoading] = useState(true)
+  const [products, setProducts] = useState<Product[]>([])
+  const [filter, setFilter] = useState('')
+  const [deleteModal, setDeleteModal] = useState(false)
+  const [product, setProduct] = useState<Product | null>(null)
+  const [createModal, setCreateModal] = useState(false)
+  const [editModal, setEditModal] = useState(false)
+  const [movementModal, setMovementModal] = useState(false)
+  const [detailsModalOpen, setDetailsModalOpen] = useState(false)
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
+  const router = useRouter()
+  const formRef = useRef(null)
 
   const handleDelete = (produto: Product) => {
-    setProduct(produto);
-    setDeleteModal(!deleteModal);
-    updateProducts(`Produto ${produto.nome} excluído com sucesso!`);
-  };
+    setProduct(produto)
+    setDeleteModal(!deleteModal)
+    updateProducts(`Produto ${produto.nome} excluído com sucesso!`)
+  }
 
   const updateProducts = (message?: string) => {
     getProducts().then((data) => {
-      setProducts(data);
-      message && toast.success(message);
-    });
-  };
+      setProducts(data)
+      message && toast.success(message)
+    })
+  }
 
   const handleCloseCreateModal = () => {
-    setCreateModal(!createModal);
-    updateProducts();
-    setTimeout(() => toast.success(`Produto criado com sucesso!`), 1000);
-  };
+    setCreateModal(!createModal)
+    updateProducts()
+    setTimeout(() => toast.success(`Produto criado com sucesso!`), 1000)
+  }
 
   const handleOpenCreateModal = () => {
-    setCreateModal(!createModal);
-  };
+    setCreateModal(!createModal)
+  }
 
   const handleCloseEditModal = () => {
-    setEditModal(!editModal);
-    updateProducts();
-    toast.success(`Produto editado com sucesso!`);
-  };
+    setEditModal(!editModal)
+    updateProducts()
+    toast.success(`Produto editado com sucesso!`)
+  }
 
   const handleOpenEditModal = (product: Product) => {
-    setProduct(product);
-    setEditModal(!editModal);
-  };
+    setProduct(product)
+    setEditModal(!editModal)
+  }
+  const handleOpenMovementModal = (product: Product) => {
+    setProduct(product)
+    setMovementModal(!movementModal)
+  }
+  const handleCloseMovementModal = () => {
+    setMovementModal(false)
+    setProduct(null)
+  }
 
   const handleOpenDetailsModal = (product: Product) => {
-    setSelectedProduct(product);
-    setDetailsModalOpen(true);
-  };
+    setSelectedProduct(product)
+    setDetailsModalOpen(true)
+  }
 
   const handleCloseDetailsModal = () => {
-    setDetailsModalOpen(false);
-    setSelectedProduct(null);
-  };
+    setDetailsModalOpen(false)
+    setSelectedProduct(null)
+  }
 
   const handleSearch = () => {
     getProducts({ name: filter }).then((data) => {
-      setProducts(data);
-    });
-  };
+      setProducts(data)
+    })
+  }
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    handleSearch();
-  };
+    e.preventDefault()
+    handleSearch()
+  }
 
   useEffect(() => {
-    const accessToken = getAccessToken();
-    setAccessToken(accessToken);
-    setLoading(false);
-  }, []);
+    const accessToken = getAccessToken()
+    setAccessToken(accessToken)
+    setLoading(false)
+  }, [])
 
   useEffect(() => {
-    updateProducts();
-  }, [filter]);
+    updateProducts()
+  }, [filter])
 
   if (loading) {
-    return <Loading />;
+    return <Loading />
   }
 
   if (!accessToken) {
-    router.push(URLS.AUTENTICACAO_PATH + URLS.LOGIN_PATH);
-    return;
+    router.push(URLS.AUTENTICACAO_PATH + URLS.LOGIN_PATH)
+    return
   }
 
   return editModal ? (
     <EditProductModal
       product={
         product || {
-          id: "",
-          nome: "",
+          id: '',
+          nome: '',
           quantidade: 0,
-          descricao: "",
+          descricao: '',
           precoCusto: 0,
           precoVenda: 0,
           categorias: [],
-          imagem: "",
+          imagem: '',
           fornecedoresId: [],
         }
       }
@@ -122,7 +132,13 @@ export default function Products() {
     />
   ) : createModal ? (
     <ProductModal handleCloseCreateModal={handleCloseCreateModal} />
-  ) : deleteModal ? (
+  ) : movementModal ? (
+    <MovimentacaoModal
+    produto={product}
+    handleCloseMovementModal={handleCloseMovementModal}
+    />
+  ) :
+  deleteModal ? (
     product ? (
       <DeleteModal
         handleDelete={() => handleDelete(product!)}
@@ -144,18 +160,17 @@ export default function Products() {
         pauseOnHover
       />
       <div>
-        <h1 className="text-indigo-600">
-          Stock Flow <span className="text-gray-500">Produtos</span>
-        </h1>
         <div className="flex w-full justify-between">
           <Navigation />
-          <button
-            onClick={handleOpenCreateModal}
-            className="middle none text-zinc-950 center mr-4 rounded-lg bg-amber-600 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-amber-500/20 transition-all hover:shadow-lg hover:shadow-amber-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-            data-ripple-light="true"
-          >
-            Novo Produto
-          </button>
+          <div>
+            <button
+              onClick={handleOpenCreateModal}
+              className="middle none text-zinc-950 center mr-4 rounded-lg bg-amber-600 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-amber-500/20 transition-all hover:shadow-lg hover:shadow-amber-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+              data-ripple-light="true"
+            >
+              Novo Produto
+            </button>
+          </div>
         </div>
       </div>
 
@@ -201,21 +216,21 @@ export default function Products() {
       </div>
 
       <table className="w-full">
-        <thead className="bg-gray-900">
+        <thead className="">
           <tr>
-            <th className="py-1 px-4 max-w-prose">Qtd</th>
+            <th className="py-1 px-2 max-w-prose">Qtd</th>
             <th className="py-1 px-4 max-w-prose">Produto</th>
             <th className="py-1 px-4 max-w-prose">Descrição</th>
             <th className="py-1 px-4 max-w-prose">Categoria</th>
             <th className="py-1 px-4 max-w-prose">P.Venda</th>
             <th className="py-1 px-4 max-w-prose">P.Custo</th>
-            <th className="py-1 px-4 max-w-prose"> </th>
+            <th className="py-1 px-2 max-w-prose"> </th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="">
           {products.map((product, index) => (
             <tr
-              className={`bg-gray-${index % 2 === 0 ? "950" : "900"} py-2`}
+              className={`bg-gray-${index % 2 === 0 ? '950' : '900'} py-2`}
               key={product.id}
             >
               <td className="py-1 px-4 max-w-prose">{product.quantidade}</td>
@@ -228,7 +243,7 @@ export default function Products() {
               <td className="py-1 px-4 max-w-prose">{product.descricao}</td>
               <td className="py-1 px-4 max-w-prose">
                 {product.categorias
-                  .map((e) => (e.length > 0 ? e : ""))
+                  .map((e) => (e.length > 0 ? e : ''))
                   .join(`, `)}
               </td>
               <td className="py-1 px-4 max-w-prose">
@@ -245,22 +260,18 @@ export default function Products() {
                   <NotePencil size={20} />
                 </button>
                 <button
-                  data-tooltip-target="tooltip-default"
                   className="hover:bg-red-800 rounded-md"
                   onClick={() => handleDelete(product)}
                 >
                   <TrashSimple size={20} />
                 </button>
-                <div
-                  id="tooltip-default"
-                  role="tooltip"
-                  className="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700"
+                <button
+                  className="hover:bg-indigo-800 rounded-md"
+                  onClick={() => handleOpenMovementModal(product)}
                 >
-                  Tooltip content
-                  <div className="tooltip-arrow" data-popper-arrow>
-                    aaa
-                  </div>
-                </div>
+                <ChartLineUp size={20} />
+                </button>
+                
               </td>
             </tr>
           ))}
@@ -273,5 +284,5 @@ export default function Products() {
         />
       )}
     </div>
-  );
+  )
 }

@@ -3,12 +3,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import { useEffect, useState, useRef } from 'react'
 import Price from '../components/Price'
 import Navigation from '../components/Navigation'
-import { NotePencil, TrashSimple } from '@phosphor-icons/react'
-import DeleteModal from '../components/DeleteModal'
-import ProductModal from '../components/ProductModal'
 import { ToastContainer, toast } from 'react-toastify'
-import EditProductModal from '../components/EditProductModal'
-import ProductDetailsModal from '../components/ProductDetailsModal'
 import { useRouter } from 'next/navigation'
 import { getAccessToken } from '@/app/utils/acess-token'
 import { Loading } from '@/app/components/Loading'
@@ -21,10 +16,7 @@ export default function Relatorios() {
   const [loading, setLoading] = useState(true)
   const [products, setProducts] = useState<Movimentacao[]>([])
   const [filter, setFilter] = useState('')
-  const [deleteModal, setDeleteModal] = useState(false)
-  const [product, setProduct] = useState<Movimentacao | null>(null)
   const [createModal, setCreateModal] = useState(false)
-  const [editModal, setEditModal] = useState(false)
   const [detailsModalOpen, setDetailsModalOpen] = useState(false)
   const [selectedProduct, setSelectedProduct] = useState<Movimentacao | null>(
     null
@@ -49,17 +41,6 @@ export default function Relatorios() {
     setCreateModal(!createModal)
   }
 
-
-
-  const handleOpenDetailsModal = (product: Movimentacao) => {
-    setSelectedProduct(product)
-    setDetailsModalOpen(true)
-  }
-
-  const handleCloseDetailsModal = () => {
-    setDetailsModalOpen(false)
-    setSelectedProduct(null)
-  }
 
   const handleSearch = () => {
     getMovimentacoes({ name: filter }).then((data) => {
@@ -91,9 +72,7 @@ export default function Relatorios() {
     return
   }
 
-  return createModal ? (
-    <MovimentacaoModal handleCloseCreateModal={handleCloseCreateModal} />
-  ) : (
+  return (
     <div>
       <ToastContainer
         position='top-right'
@@ -107,9 +86,6 @@ export default function Relatorios() {
         pauseOnHover
       />
       <div>
-        <h1 className='text-indigo-600'>
-          Stock Flow <span className='text-gray-500'>Movimentações</span>
-        </h1>
         <div className='flex w-full justify-between'>
           <Navigation />
           <button

@@ -21,6 +21,7 @@ export default function Login() {
         console.log("res:", res);
         if (res.sucesso && res?.accessToken) {
             localStorage.setItem("accessToken", res.accessToken);
+            localStorage.setItem("userId", res.userId);
             toast.success(`Seja bem vindo!`);
             setLoggedIn(true);
         } else {

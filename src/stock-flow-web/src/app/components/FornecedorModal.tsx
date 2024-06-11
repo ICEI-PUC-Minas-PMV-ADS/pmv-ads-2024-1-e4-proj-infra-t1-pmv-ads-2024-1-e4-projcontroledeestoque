@@ -24,8 +24,8 @@ export default function FornecedorModal(props: any) {
   return (
     <div className="bg-slate-800 bg-opacity-50 flex justify-center items-center absolute top-0 right-0 bottom-0 left-0">
       <div className="bg-gray-700 px-8 py-10 rounded-md text-center flex flex-col gap-2 ">
-        <div className="flex justify-between items-center">
-          <label className=""> Nome do fornecedor: </label>
+        <div className="flex justify-between items-center ">
+          <label className="w-2/4"> Fornecedor: </label>
           <input
             onChange={(e) => {
               setFornecedor({ ...fornecedor, nome: e.target.value });
@@ -35,7 +35,7 @@ export default function FornecedorModal(props: any) {
           />
         </div>
         <div className="flex justify-between items-center">
-          <label className=""> Contato: </label>
+          <label className="w-2/4"> Contato: </label>
           <input
             onChange={(e) => {
               setFornecedor({ ...fornecedor, contato: e.target.value });
@@ -45,7 +45,7 @@ export default function FornecedorModal(props: any) {
           />
         </div>
         <div className="flex justify-between items-center">
-          <label className=""> Endereco: </label>
+          <label className="w-2/4"> Endereco: </label>
           <input
             onChange={(e) => {
               setFornecedor({ ...fornecedor, endereco: e.target.value });
@@ -54,7 +54,7 @@ export default function FornecedorModal(props: any) {
             className="border bg-gray-400 text-indigo-950 border-gray-300 rounded-md w-full p-2.5"
           />
         </div>
-        <div>
+        <div className="pt-4">
           <button
             className="bg-red-700 px-4 py-2 rounded-md text-md text-white"
             onClick={props.handleCloseCreateModal}
