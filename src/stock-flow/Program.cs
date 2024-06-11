@@ -101,6 +101,11 @@ builder.Services.AddScoped<IProdutoService, ProdutoService>();
 builder.Services.AddScoped<IFornecedorService, FornecedorService>();
 builder.Services.AddScoped<IMovimentacaoService, MovimentacaoService>();
 
+// Add Lazy<T> registrations
+builder.Services.AddTransient(provider => new Lazy<IProdutoService>(() => provider.GetService<IProdutoService>()));
+builder.Services.AddTransient(provider => new Lazy<IFornecedorService>(() => provider.GetService<IFornecedorService>()));
+builder.Services.AddTransient(provider => new Lazy<IMovimentacaoService>(() => provider.GetService<IMovimentacaoService>()));
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

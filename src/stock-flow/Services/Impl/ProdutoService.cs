@@ -24,6 +24,7 @@ namespace stock_flow.Services.Impl
 
             _produtosCollection =
                 produtosDatabase.GetCollection<Produto>(produtosDatabaseSettings.Value.ProdutosCollectionName);
+            
             _fornecedorService = fornecedorService;
         }
 
@@ -102,6 +103,14 @@ namespace stock_flow.Services.Impl
 
             return produto.Fornecedores?.Select(id => _fornecedorService.GetFornecedorByIdAsync(id).Result) ??
                    Array.Empty<Fornecedor>();
+        }
+
+        public Task RemoveFornecedorFromProdutosAsync(string id)
+        {
+            var filter = Builders<Produto>.Filter.AnyEq(p => p.Fornecedores, id);
+            var update = Builders<Produto>.Update.Pull(p => p.Fornecedores, id);
+
+            return _produtosCollection.UpdateManyAsync(filter, update);
         }
 
         public async Task<IEnumerable<Produto>> GetProdutosComQuantidadeZeroAsync()
