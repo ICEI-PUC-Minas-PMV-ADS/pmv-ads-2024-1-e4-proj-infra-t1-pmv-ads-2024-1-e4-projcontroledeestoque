@@ -15,6 +15,7 @@ export default function Relatorios() {
   const [accessToken, setAccessToken] = useState<string | null>(null)
   const [loading, setLoading] = useState(true)
   const [products, setProducts] = useState<Movimentacao[]>([])
+  const [filteredProducts, setFilteredProducts] = useState<Movimentacao[]>([]) // Novo estado para produtos filtrados
   const [filter, setFilter] = useState('')
   const [createModal, setCreateModal] = useState(false)
   const [detailsModalOpen, setDetailsModalOpen] = useState(false)
@@ -27,6 +28,7 @@ export default function Relatorios() {
   const updateMovimentacoes = (message?: string) => {
     getMovimentacoes().then((data) => {
       setProducts(data)
+      setFilteredProducts(data)
       message && toast.success(message)
     })
   }
@@ -43,9 +45,10 @@ export default function Relatorios() {
 
 
   const handleSearch = () => {
-    getMovimentacoes({ name: filter }).then((data) => {
-      setProducts(data)
-    })
+    const filtered = products.filter(product =>
+      product.produtoNome.toLowerCase().includes(filter.toLowerCase())
+    )
+    setFilteredProducts(filtered)
   }
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -123,7 +126,7 @@ export default function Relatorios() {
               value={filter}
               onChange={(e) => setFilter(e.target.value)}
               className='block p-4 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500'
-              placeholder='Notebook, Fones, etc.'
+              placeholder='Nome do produto'
               required></input>
             <button
               type='submit'
@@ -145,8 +148,9 @@ export default function Relatorios() {
             <th className='py-1 px-4 max-w-prose'>Data</th>
           </tr>
         </thead>
+
         <tbody>
-          {products.map((product, index) => (
+          {filteredProducts.map((product, index) => ( // Alterado para usar filteredProducts
             <tr
               className={`bg-gray-${index % 2 === 0 ? '950' : '900'} py-2`}
               key={product.id}>
@@ -173,6 +177,7 @@ export default function Relatorios() {
             </tr>
           ))}
         </tbody>
+        
       </table>
       {detailsModalOpen && selectedProduct && (
         // <ProductDetailsModal
