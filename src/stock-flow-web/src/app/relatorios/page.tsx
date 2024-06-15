@@ -142,6 +142,7 @@ export default function Relatorios() {
             <th className='py-1 px-4 max-w-prose'>Tipo</th>
             <th className='py-1 px-4 max-w-prose'>Forncedores</th>
             <th className='py-1 px-4 max-w-prose'>Valor total</th>
+            <th className='py-1 px-4 max-w-prose'>Data</th>
           </tr>
         </thead>
         <tbody>
@@ -168,6 +169,7 @@ export default function Relatorios() {
                 className={`py-1 px-4 max-w-prose `}>
                 <Price value={product.valor}></Price>
               </td>
+              <td className='py-1 px-4 max-w-prose'>{new Date(product.data).toLocaleDateString()}</td>
             </tr>
           ))}
         </tbody>
