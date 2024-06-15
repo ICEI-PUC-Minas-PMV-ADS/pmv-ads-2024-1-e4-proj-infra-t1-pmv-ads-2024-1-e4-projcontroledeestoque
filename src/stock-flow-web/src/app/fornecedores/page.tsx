@@ -1,11 +1,12 @@
 'use client'
+import 'react-toastify/dist/ReactToastify.css'
 import React, {useEffect, useRef, useState} from 'react'
 import Navigation from '../components/Navigation'
 import {Fornecedor, getFornecedores} from '../services/fornecedores'
 import {NotePencil, TrashSimple} from '@phosphor-icons/react'
 import DeleteModal from '../components/FornecedorModal/DeleteModalFornecedor'
 import FornecedorModal from '../components/FornecedorModal/FornecedorModal'
-import {toast} from 'react-toastify'
+import {toast, ToastContainer} from 'react-toastify'
 import EditFornecedorModal from '../components/FornecedorModal/EditFornecedorModal'
 import {Loading} from '@/app/components/Loading'
 import {URLS} from '@/app/utils/constantes'
@@ -21,18 +22,8 @@ export default function Fornecedores() {
     const [fornecedor, setFornecedor] = useState<Fornecedor | null>(null)
     const [createModal, setCreateModal] = useState(false)
     const [editModal, setEditModal] = useState(false)
-    const [detailsModalOpen, setDetailsModalOpen] = useState(false)
-    const [selectedFornecedor, setSelectedFornecedor] =
-        useState<Fornecedor | null>(null)
     const router = useRouter()
     const formRef = useRef(null)
-
-    const handleDelete = (fornecedor: Fornecedor) => {
-        setFornecedor(fornecedor)
-        setDeleteModal(!deleteModal)
-        toast.success(`Fornecedor removido com sucesso!`)
-        updateFornecedores()
-    }
 
     const updateFornecedores = () => {
         getFornecedores().then((data) => {
@@ -40,10 +31,23 @@ export default function Fornecedores() {
         })
     }
 
+    const handleToast = (message: string) => {
+        setTimeout(() => toast.success(message), 300)
+    }
+
+    const handleCloseDeleteModal = () => {
+        setDeleteModal(!deleteModal)
+        updateFornecedores()
+    }
+
+    const handleOpenDeleteModal = (fornecedor: Fornecedor) => {
+        setFornecedor(fornecedor)
+        setDeleteModal(!deleteModal)
+    }
+
     const handleCloseCreateModal = () => {
         setCreateModal(!createModal)
         updateFornecedores()
-        toast.success(`Fornecedor criado com sucesso!`)
     }
 
     const handleOpenCreateModal = () => {
@@ -53,7 +57,6 @@ export default function Fornecedores() {
     const handleCloseEditModal = () => {
         setEditModal(!editModal)
         updateFornecedores()
-        toast.success(`Fornecedor editado com sucesso!`)
     }
 
     const handleOpenEditModal = (fornecedor: Fornecedor) => {
@@ -61,10 +64,6 @@ export default function Fornecedores() {
         setEditModal(!editModal)
     }
 
-    const handleOpenDetailsModal = (fornecedor: Fornecedor) => {
-        setSelectedFornecedor(fornecedor)
-        setDetailsModalOpen(true)
-    }
     const handleSearch = () => {
         getFornecedores({name: filter}).then((data) => {
             setFornecedores(data)
@@ -99,25 +98,38 @@ export default function Fornecedores() {
         <EditFornecedorModal
             fornecedor={fornecedor || {id: '', nome: '', contato: '', endereco: ''}}
             handleCloseEditModal={handleCloseEditModal}
+            handleToast={handleToast}
         />
     ) : createModal ? (
-        <FornecedorModal handleCloseCreateModal={handleCloseCreateModal}/>
+        <FornecedorModal handleCloseCreateModal={handleCloseCreateModal} handleToast={handleToast}/>
     ) : deleteModal ? (
         fornecedor ? (
             <DeleteModal
-                handleDelete={() => handleDelete(fornecedor!)}
+                handleCloseDeleteModal={handleCloseDeleteModal}
+                handleToast={handleToast}
                 fornecedor={fornecedor}
                 setDeleteModal={setDeleteModal}
             />
         ) : null
     ) : (
         <div>
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
             <div>
                 <div className="flex w-full justify-between">
                     <Navigation/>
                     <button
                         onClick={handleOpenCreateModal}
-                        className="middle none text-zinc-950 center mr-4 rounded-lg bg-amber-600 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-amber-500/20 transition-all hover:shadow-lg hover:shadow-amber-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                        className="middle none text-zinc-950 center mr-4 rounded-lg bg-amber-600 py-3 px-6 font-sans text-xs font-bold uppercase shadow-md shadow-amber-500/20 transition-all hover:shadow-lg hover:shadow-amber-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                         data-ripple-light="true"
                     >
                         Novo Fornecedor
@@ -184,7 +196,6 @@ export default function Fornecedores() {
                         >
                             <td
                                 className="py-1 px-4 max-w-prose"
-                                onClick={() => handleOpenDetailsModal(fornecedor)}
                             >
                                 <div className="text-amber-600">{fornecedor.nome}</div>
                             </td>
@@ -198,7 +209,7 @@ export default function Fornecedores() {
                                 </button>
                                 <button
                                     className="hover:bg-red-800 rounded-md"
-                                    onClick={() => handleDelete(fornecedor)}>
+                                    onClick={() => handleOpenDeleteModal(fornecedor)}>
                                     <TrashSimple size={20}/>
                                 </button>
                             </td>

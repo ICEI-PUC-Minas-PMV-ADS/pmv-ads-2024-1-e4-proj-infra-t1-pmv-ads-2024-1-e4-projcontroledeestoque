@@ -4,13 +4,16 @@ import { Fornecedor, updateFornecedor } from "../../services/fornecedores";
 type Props = {
   fornecedor: Fornecedor;
   handleCloseEditModal: () => void;
+  handleToast: (message: string) => void;
 };
+
 export default function EditFornecedorModal(props: Props) {
   const [fornecedor, setFornecedor] = useState<Fornecedor>(props.fornecedor);
   const handleEditFornecedor = async () => {
     try {
         await updateFornecedor(fornecedor);
         props.handleCloseEditModal();
+        props.handleToast(`Fornecedor ${fornecedor.nome} editado com sucesso!`);
     } catch (error) {
         console.error("Erro ao excluir fornecedor:", error);
     }   
