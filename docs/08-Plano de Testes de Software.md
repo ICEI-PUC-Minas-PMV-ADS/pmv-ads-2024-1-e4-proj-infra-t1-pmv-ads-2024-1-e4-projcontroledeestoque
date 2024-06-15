@@ -43,8 +43,15 @@
 |:---:	|:---:	|
 |	Requisito Associado 	| RF-003	Emitir um relatório a cada movimentação. RF-004 Registrar produtos de compra/adição realizada. RF-005 Registrar produtos de venda/baixa realizada |
 | Objetivo do Teste 	| Verificar se o movimentações são geradas. |
-| Passos 	| - Acessar a aplicação <br> - Inserir os dados de login. <br> - Aguardar o direcionamento para a página inicial. <br> Acessar a página de relatórios. <br> - Efetuar uma movimentação. <br> - Salvar.|
+| Passos 	| - Acessar a aplicação <br> - Inserir os dados de login. <br> - Aguardar o direcionamento para a página inicial. <br> - Acessar a página de produtos. <br> - Clicar no icone de movimentações. <br> - Criar uma movimentação. <br> - Salvar|
 |Critério de Êxito | - Usuário obteve sucesso ao criar movimentação. |
+
+| **Caso de Teste** 	| **CT-07 – Verificar relatorios de movimentações.** 	|
+|:---:	|:---:	|
+|	Requisito Associado 	| RF-003	Emitir um relatório a cada movimentação. |
+| Objetivo do Teste 	| Verificar se o movimentações são geradas. |
+| Passos 	| - Acessar a aplicação <br> - Inserir os dados de login. <br> - Aguardar o direcionamento para a página inicial. <br> - Acessar a página de relatórios. <br> - buscar pelo relatorio desejado.|
+|Critério de Êxito | - Usuário o relatorio desejado. |
 
 
 
