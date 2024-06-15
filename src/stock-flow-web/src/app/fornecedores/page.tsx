@@ -65,12 +65,6 @@ export default function Fornecedores() {
         setSelectedFornecedor(fornecedor)
         setDetailsModalOpen(true)
     }
-
-    const handleCloseDetailsModal = () => {
-        setDetailsModalOpen(false)
-        setSelectedFornecedor(null)
-    }
-
     const handleSearch = () => {
         getFornecedores({name: filter}).then((data) => {
             setFornecedores(data)

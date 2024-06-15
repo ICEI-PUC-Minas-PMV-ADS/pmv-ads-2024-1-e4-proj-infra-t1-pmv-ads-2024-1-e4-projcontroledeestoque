@@ -57,7 +57,7 @@ export default function EditFornecedorModal(props: Props) {
           />
         </div>
 
-        <div>
+        <div className="pt-4">
           <button
               className="bg-red-700 px-4 py-2 rounded-md text-md text-white"
               onClick={props.handleCloseEditModal}
