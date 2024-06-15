@@ -1,4 +1,4 @@
-import React from "react";
+﻿import React from "react";
 import { Product } from "../services/produtos";
 
 type Props = {
@@ -13,63 +13,55 @@ const ProductDetailsModal = ({ product, handleCloseDetailsModal }: Props) => {
         <h1 className="text-xl mb-4 font-bold text-slate-500">
           Detalhes do Produto
         </h1>
-        <div className="flex justify-between items-center">
-          <label className=""> Nome do Produto</label>
+        <div className="flex-col">
+          <label className=""> Nome do Produto: </label>
           <input
-            value={product.nome}
-            readOnly
-            className="border bg-gray-400 text-indigo-950 border-gray-300 rounded-md w-full p-2.5"
-          />
-        </div>
-        <div className="flex justify-between items-center">
-          <label htmlFor=""> Preço de custo </label>
-          <input
-            value={product.precoCusto}
-            readOnly
-            className="border bg-gray-400 text-indigo-950 border-gray-300 rounded-md w-1/4 p-2.5"
-          />
-          <label htmlFor=""> Preço de venda </label>
-          <input
-            value={product.precoVenda}
-            readOnly
-            className="border bg-gray-400 text-indigo-950 border-gray-300 rounded-md w-1/4 p-2.5"
-          />
-        </div>
-        <div className="flex justify-between items-center">
-          <label htmlFor=""> Quantidade </label>
-          <input
-            value={product.quantidade}
-            readOnly
-            className="border bg-gray-400 text-indigo-950 border-gray-300 rounded-md w-1/4 p-2.5"
-          />
-          <label htmlFor=""> Categoria </label>
-          <input
-            value={product.categorias[0]}
-            readOnly
-            className="border bg-gray-400 text-indigo-950 border-gray-300 rounded-md w-1/4 p-2.5"
+              value={product.nome}
+              readOnly
+              className="border bg-gray-400 text-indigo-950 border-gray-300 rounded-md w-full p-2.5"
           />
         </div>
         <div className="flex-col">
-          <label htmlFor=""> Descrição </label>
+          <label htmlFor=""> Descrição: </label>
 
           <textarea
-            value={product.descricao}
-            readOnly
-            className="border bg-gray-400 text-indigo-950 border-gray-300 rounded-md w-full p-2.5"
+              value={product.descricao}
+              readOnly
+              className="border bg-gray-400 text-indigo-950 border-gray-300 rounded-md w-full p-2.5"
           />
         </div>
-        <div className="flex-col ">
-          <label htmlFor=""> Imagem </label>
+        <div className="flex justify-between items-center">
+          <label htmlFor=""> Preço de custo: </label>
           <input
-            
-            readOnly
-            className=" bg-gray-400 border text-indigo-950 border-gray-300 rounded-md w-full p-2.5"
+              value={product.precoCusto}
+              readOnly
+              className="border bg-gray-400 text-indigo-950 border-gray-300 rounded-md w-1/4 p-2.5"
+          />
+          <label htmlFor=""> Preço de venda: </label>
+          <input
+              value={product.precoVenda}
+              readOnly
+              className="border bg-gray-400 text-indigo-950 border-gray-300 rounded-md w-1/4 p-2.5"
+          />
+        </div>
+        <div className="flex justify-between items-center">
+          <label htmlFor=""> Quantidade: </label>
+          <input
+              value={product.quantidade}
+              readOnly
+              className="border bg-gray-400 text-indigo-950 border-gray-300 rounded-md w-1/4 p-2.5"
+          />
+          <label htmlFor=""> Categoria: </label>
+          <input
+              value={product.categorias[0]}
+              readOnly
+              className="border bg-gray-400 text-indigo-950 border-gray-300 rounded-md w-1/4 p-2.5"
           />
         </div>
         <div>
           <button
-            className="bg-red-500 px-4 py-2 rounded-md text-md text-white"
-            onClick={handleCloseDetailsModal}
+              className="bg-red-500 px-4 py-2 rounded-md text-md text-white"
+              onClick={handleCloseDetailsModal}
           >
             Fechar
           </button>

@@ -9,7 +9,6 @@ export type Product = {
   precoCusto: number;
   precoVenda: number;
   quantidade: number;
-  imagem: string;
   fornecedoresId: string[] | null;
 };
 

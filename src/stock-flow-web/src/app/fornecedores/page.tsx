@@ -7,7 +7,6 @@ import DeleteModal from '../components/DeleteModalFornecedor'
 import FornecedorModal from '../components/FornecedorModal'
 import {toast} from 'react-toastify'
 import EditFornecedorModal from '../components/EditFornecedorModal'
-import FornecedorDetailsModal from '../components/FornecedorDetailsModal'
 import {Loading} from '@/app/components/Loading'
 import {URLS} from '@/app/utils/constantes'
 import {useRouter} from 'next/navigation'
@@ -198,10 +197,14 @@ export default function Fornecedores() {
                             <td className="py-1 px-4 max-w-prose">{fornecedor.contato}</td>
                             <td className="py-1 px-4 max-w-prose">{fornecedor.endereco}</td>
                             <td className="py-1 px-4 max-w-prose">
-                                <button onClick={() => handleOpenEditModal(fornecedor)}>
+                                <button
+                                    className="hover:bg-yellow-800 rounded-md mr-2"
+                                    onClick={() => handleOpenEditModal(fornecedor)}>
                                     <NotePencil size={20}/>
                                 </button>
-                                <button onClick={() => handleDelete(fornecedor)}>
+                                <button
+                                    className="hover:bg-red-800 rounded-md"
+                                    onClick={() => handleDelete(fornecedor)}>
                                     <TrashSimple size={20}/>
                                 </button>
                             </td>
@@ -209,13 +212,6 @@ export default function Fornecedores() {
                     ))}
                     </tbody>
                 </table>
-
-                {detailsModalOpen && selectedFornecedor && (
-                    <FornecedorDetailsModal
-                        fornecedor={selectedFornecedor}
-                        handleCloseDetailsModal={handleCloseDetailsModal}
-                    />
-                )}
             </div>
         </div>
     )
