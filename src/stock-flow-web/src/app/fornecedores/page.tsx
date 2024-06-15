@@ -120,7 +120,18 @@ export default function Fornecedores() {
         ) : null
     ) : (
         <div>
-            <div>
+                <ToastContainer
+                    position="top-right"
+                    autoClose={5000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                />
+                <div>
                 <div className="flex w-full justify-between">
                     <Navigation/>
                     <button
