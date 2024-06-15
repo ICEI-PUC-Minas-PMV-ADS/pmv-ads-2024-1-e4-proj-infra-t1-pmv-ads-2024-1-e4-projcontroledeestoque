@@ -1,5 +1,5 @@
 import React from "react";
-import { Fornecedor, deleteFornecedor } from "../services/fornecedores";
+import { Fornecedor, deleteFornecedor } from "../../services/fornecedores";
 
 type Props = {
     fornecedor: Fornecedor;

@@ -8,7 +8,7 @@ export default function Navigation() {
   const routes = [
     { name: 'Produtos', path: '/produtos' },
     { name: 'Fornecedores', path: '/fornecedores' },
-    { name: 'Relatorios', path: '/relatorios' },
+    { name: 'Relatórios', path: '/relatorios' },
   ]
 
   return (

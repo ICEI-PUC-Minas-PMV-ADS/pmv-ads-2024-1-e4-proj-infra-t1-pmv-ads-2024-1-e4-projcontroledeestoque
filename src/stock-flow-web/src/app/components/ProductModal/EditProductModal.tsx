@@ -1,9 +1,10 @@
 import {useState} from "react";
-import {Product, updateProduct} from "../services/produtos";
+import {Product, updateProduct} from "../../services/produtos";
 
 type Props = {
     product: Product;
     handleCloseEditModal: () => void;
+    handleToast: (value: string) => void;
 };
 export default function EditProductModal(props: Props) {
     const [product, setProduct] = useState<Product>(props.product);
@@ -11,8 +12,9 @@ export default function EditProductModal(props: Props) {
         try {
             await updateProduct(product);
             props.handleCloseEditModal();
+            props.handleToast(`Produto ${product.nome} atualizado com sucesso!`);
         } catch (error) {
-            console.error("Erro ao excluir fornecedor:", error);
+            console.error("Erro ao excluir produto:", error);
         }
     };
 

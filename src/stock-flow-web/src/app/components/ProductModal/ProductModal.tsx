@@ -1,11 +1,12 @@
 import {useState} from 'react'
-import {createProduct, Product} from '../services/produtos'
+import {createProduct, Product} from '../../services/produtos'
 
 type Props = {
-    product: Product
-    setDeleteModal: (value: boolean) => void
+    handleCloseCreateModal: () => void
+    handleToast: (value: string) => void
 }
-export default function ProductModal(props: any) {
+
+export default function ProductModal(props: Props) {
     const [product, setProduct] = useState<Product>({
         id: '',
         nome: '',
@@ -16,14 +17,17 @@ export default function ProductModal(props: any) {
         quantidade: 0,
         fornecedoresId: [],
     })
+
     const handleCreateProduct = async () => {
         try {
             await createProduct(product)
             props.handleCloseCreateModal()
+            props.handleToast('Produto criado com sucesso!')
         } catch (error) {
-            console.error('Erro ao excluir fornecedor:', error)
+            console.error('Erro ao criar Produto:', error)
         }
     }
+
     return (
         <div
             className="bg-slate-800 bg-opacity-50 flex justify-center items-center absolute top-0 right-0 bottom-0 left-0">
@@ -52,7 +56,7 @@ export default function ProductModal(props: any) {
                         className="border bg-gray-400 text-indigo-950 border-gray-300 rounded-md w-full p-2.5"
                     />
                 </div>
-                
+
                 <div className="flex justify-between items-center">
                     <label htmlFor=""> Preço de custo: </label>
                     <input
@@ -91,8 +95,8 @@ export default function ProductModal(props: any) {
                 </div>
                 <div className="pt-4">
                     <button
-                        className="bg-red-700 px-4 py-2 rounded-md text-md text-white"
                         onClick={props.handleCloseCreateModal}
+                        className="bg-red-700 px-4 py-2 rounded-md text-md text-white"
                     >
                         Cancelar
                     </button>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Fornecedor, updateFornecedor } from "../services/fornecedores";
+import { Fornecedor, updateFornecedor } from "../../services/fornecedores";
 
 type Props = {
   fornecedor: Fornecedor;

@@ -5,11 +5,11 @@ import {getProducts, Product} from '../services/produtos'
 import Price from '../components/Price'
 import Navigation from '../components/Navigation'
 import {ChartLineUp, NotePencil, TrashSimple} from '@phosphor-icons/react'
-import DeleteModal from '../components/DeleteModal'
-import ProductModal from '../components/ProductModal'
+import DeleteProductModal from '../components/ProductModal/DeleteProductModal'
+import ProductModal from '../components/ProductModal/ProductModal'
 import {toast, ToastContainer} from 'react-toastify'
-import EditProductModal from '../components/EditProductModal'
-import ProductDetailsModal from '../components/ProductDetailsModal'
+import EditProductModal from '../components/ProductModal/EditProductModal'
+import ProductDetailsModal from '../components/ProductModal/ProductDetailsModal'
 import {useRouter} from 'next/navigation'
 import {getTokenData} from '@/app/utils/token-data'
 import {Loading} from '@/app/components/Loading'
@@ -32,23 +32,29 @@ export default function Products() {
     const router = useRouter()
     const formRef = useRef(null)
 
-    const handleDelete = (produto: Product) => {
-        setProduct(produto)
-        setDeleteModal(!deleteModal)
-        updateProducts(`Produto ${produto.nome} excluído com sucesso!`)
-    }
-
-    const updateProducts = (message?: string) => {
+    const updateProducts = () => {
         getProducts().then((data) => {
             setProducts(data)
-            message && toast.success(message)
         })
+    }
+
+    const handleToast = (message: string) => {
+        setTimeout(() => toast.success(message), 300)
+    }
+
+    const handleCloseDeleteModal = () => {
+        setDeleteModal(!deleteModal)
+        updateProducts()
+    }
+    
+    const handleOpenDeleteModal = (product: Product) => {
+        setProduct(product)
+        setDeleteModal(!editModal)
     }
 
     const handleCloseCreateModal = () => {
         setCreateModal(!createModal)
         updateProducts()
-        setTimeout(() => toast.success(`Produto criado com sucesso!`), 1000)
     }
 
     const handleOpenCreateModal = () => {
@@ -58,7 +64,6 @@ export default function Products() {
     const handleCloseEditModal = () => {
         setEditModal(!editModal)
         updateProducts()
-        toast.success(`Produto editado com sucesso!`)
     }
 
     const handleOpenEditModal = (product: Product) => {
@@ -132,9 +137,10 @@ export default function Products() {
                 }
             }
             handleCloseEditModal={handleCloseEditModal}
+            handleToast={handleToast}
         />
     ) : createModal ? (
-        <ProductModal handleCloseCreateModal={handleCloseCreateModal}/>
+        <ProductModal handleCloseCreateModal={handleCloseCreateModal} handleToast={handleToast}/>
     ) : movementModal ? (
             <MovimentacaoModal
                 produto={product}
@@ -144,8 +150,9 @@ export default function Products() {
         ) :
         deleteModal ? (
             product ? (
-                <DeleteModal
-                    handleDelete={() => handleDelete(product!)}
+                <DeleteProductModal
+                    handleDelete={handleCloseDeleteModal}
+                    handleToast={handleToast}
                     product={product}
                     setDeleteModal={setDeleteModal}
                 />
@@ -271,7 +278,7 @@ export default function Products() {
                                 </button>
                                 <button
                                     className="hover:bg-red-800 rounded-md"
-                                    onClick={() => handleDelete(product)}
+                                    onClick={() => handleOpenDeleteModal(product)}
                                 >
                                     <TrashSimple size={20}/>
                                 </button>
