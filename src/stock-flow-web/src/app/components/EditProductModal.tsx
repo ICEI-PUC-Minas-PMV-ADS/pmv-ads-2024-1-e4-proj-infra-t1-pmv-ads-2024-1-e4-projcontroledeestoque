@@ -5,6 +5,7 @@ import { Product, updateProduct } from "../services/produtos";
 type Props = {
   product: Product;
   handleCloseEditModal: (success?: boolean) => void;
+
 };
 
 export default function EditProductModal(props: Props) {
@@ -110,7 +111,5 @@ export default function EditProductModal(props: Props) {
             Salvar
           </button>
         </div>
-      </div>
-    </div>
-  );
+    );
 }

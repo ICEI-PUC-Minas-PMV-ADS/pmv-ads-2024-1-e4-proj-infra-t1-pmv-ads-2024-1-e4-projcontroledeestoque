@@ -2,20 +2,19 @@
 import 'react-toastify/dist/ReactToastify.css'
 import {useEffect, useRef, useState} from 'react'
 import Price from '../components/Price'
-import Navigation from '../components/Navigation'
 import {toast, ToastContainer} from 'react-toastify'
 import {useRouter} from 'next/navigation'
 import {getTokenData} from '@/app/utils/token-data'
 import {Loading} from '@/app/components/Loading'
 import {URLS} from '@/app/utils/constantes'
 import {getMovimentacoes, Movimentacao} from '../services/movimentacoes'
+import Navigation from "@/app/components/Navigation";
 
 export default function Relatorios() {
     const [accessToken, setAccessToken] = useState<string | null>(null)
     const [loading, setLoading] = useState(true)
     const [products, setProducts] = useState<Movimentacao[]>([])
     const [filter, setFilter] = useState('')
-    const [createModal, setCreateModal] = useState(false)
     const [detailsModalOpen, setDetailsModalOpen] = useState(false)
     const [selectedProduct, setSelectedProduct] = useState<Movimentacao | null>(
         null
@@ -29,17 +28,6 @@ export default function Relatorios() {
             message && toast.success(message)
         })
     }
-
-    const handleCloseCreateModal = () => {
-        setCreateModal(!createModal)
-        updateMovimentacoes()
-        setTimeout(() => toast.success(`Movimentação criado com sucesso!`), 1000)
-    }
-
-    const handleOpenCreateModal = () => {
-        setCreateModal(!createModal)
-    }
-
 
     const handleSearch = () => {
         getMovimentacoes({name: filter}).then((data) => {
@@ -87,12 +75,6 @@ export default function Relatorios() {
             <div>
                 <div className='flex w-full justify-between'>
                     <Navigation/>
-                    <button
-                        onClick={handleOpenCreateModal}
-                        className='middle none text-zinc-950 center mr-4 rounded-lg bg-amber-600 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-amber-500/20 transition-all hover:shadow-lg hover:shadow-amber-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none'
-                        data-ripple-light='true'>
-                        Nova Movimentação
-                    </button>
                 </div>
             </div>
 
@@ -139,7 +121,7 @@ export default function Relatorios() {
                     <th className='py-1 px-4 max-w-prose'>Qtd</th>
                     <th className='py-1 px-4 max-w-prose'>Produto</th>
                     <th className='py-1 px-4 max-w-prose'>Tipo</th>
-                    <th className='py-1 px-4 max-w-prose'>Forncedores</th>
+                    <th className='py-1 px-4 max-w-prose'>Fornecedores</th>
                     <th className='py-1 px-4 max-w-prose'>Valor total</th>
                 </tr>
                 </thead>
@@ -148,7 +130,7 @@ export default function Relatorios() {
                     <tr
                         className={`bg-gray-${index % 2 === 0 ? '950' : '900'} py-2`}
                         key={product.id}>
-                        <td className='py-1 px-4 max-w-prose '>{product.quantidade}</td>
+                        <td className='text-center py-1 px-4 max-w-prose '>{product.quantidade}</td>
                         <td
                             className={`py-1 px-4 max-w-prose border-s border-gray-${
                                 index % 2 === 0 ? '900' : '950'
@@ -156,7 +138,7 @@ export default function Relatorios() {
                             {product.produtoNome}
                         </td>
                         <td
-                            className={`py-1 px-4 max-w-prose border-s border-gray-${
+                            className={`text-center py-1 px-4 max-w-prose border-s border-gray-${
                                 index % 2 === 0 ? '900' : '950'
                             }`}>
                             {product.tipo}
@@ -168,7 +150,7 @@ export default function Relatorios() {
                         </td>
 
                         <td
-                            className={`py-1 px-4 max-w-prose border-s border-gray-${
+                            className={`text-center py-1 px-4 max-w-prose border-s border-gray-${
                                 index % 2 === 0 ? '900' : '950'
                             }`}>
                             <Price value={product.valor}></Price>

@@ -1,6 +1,5 @@
-import { useState } from 'react'
-import { Product, createProduct } from '../services/produtos'
-import { toast } from 'react-toastify'
+import {useState} from 'react'
+import {createProduct, Product} from '../services/produtos'
 
 type Props = {
   product: Product
@@ -109,6 +108,5 @@ export default function ProductModal(props: any) {
           </button>
         </div>
       </div>
-    </div>
-  )
+    )
 }

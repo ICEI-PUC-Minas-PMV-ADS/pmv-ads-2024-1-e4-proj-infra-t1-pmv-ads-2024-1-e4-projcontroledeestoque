@@ -68,12 +68,12 @@ export default function Products() {
         setProduct(product)
         setEditModal(!editModal)
     }
-    
+
     const handleOpenMovementModal = (product: Product) => {
         setProduct(product)
         setMovementModal(!movementModal)
     }
-    
+
     const handleCloseMovementModal = () => {
         setMovementModal(false)
         setProduct(null)
@@ -131,7 +131,6 @@ export default function Products() {
                     precoCusto: 0,
                     precoVenda: 0,
                     categorias: [],
-                    imagem: '',
                     fornecedoresId: [],
                 }
             }
@@ -244,7 +243,7 @@ export default function Products() {
                             className={`bg-gray-${index % 2 === 0 ? '950' : '900'} py-2`}
                             key={product.id}
                         >
-                            <td className="py-1 px-4 max-w-prose">{product.quantidade}</td>
+                            <td className="text-center py-1 px-4 max-w-prose">{product.quantidade}</td>
                             <td
                                 className="py-1 px-4 max-w-prose"
                                 onClick={() => handleOpenDetailsModal(product)}
@@ -257,15 +256,21 @@ export default function Products() {
                                     .map((e) => (e.length > 0 ? e : ''))
                                     .join(`, `)}
                             </td>
-                            <td className="py-1 px-4 max-w-prose">
+                            <td className="text-center py-1 px-4 max-w-prose">
                                 <Price value={product.precoVenda}></Price>
                             </td>
-                            <td className="py-1 px-4 max-w-prose">
+                            <td className="text-center py-1 px-4 max-w-prose">
                                 <Price value={product.precoCusto}></Price>
                             </td>
                             <td className="py-1 px-4 max-w-prose">
                                 <button
-                                    className="hover:bg-yellow-800 rounded-md"
+                                    className="hover:bg-indigo-800 rounded-md mr-2 items-center"
+                                    onClick={() => handleOpenMovementModal(product)}
+                                >
+                                    <ChartLineUp size={20}/>
+                                </button>
+                                <button
+                                    className="hover:bg-yellow-800 rounded-md mr-2 items-center"
                                     onClick={() => handleOpenEditModal(product)}
                                 >
                                     <NotePencil size={20}/>
@@ -276,13 +281,6 @@ export default function Products() {
                                 >
                                     <TrashSimple size={20}/>
                                 </button>
-                                <button
-                                    className="hover:bg-indigo-800 rounded-md"
-                                    onClick={() => handleOpenMovementModal(product)}
-                                >
-                                    <ChartLineUp size={20}/>
-                                </button>
-
                             </td>
                         </tr>
                     ))}
