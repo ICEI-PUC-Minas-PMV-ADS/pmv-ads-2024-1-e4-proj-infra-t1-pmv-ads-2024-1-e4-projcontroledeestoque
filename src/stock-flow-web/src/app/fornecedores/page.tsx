@@ -32,7 +32,6 @@ export default function Fornecedores() {
     const handleDelete = (fornecedor: Fornecedor) => {
         setFornecedor(fornecedor)
         setDeleteModal(!deleteModal)
-        updateFornecedores(`Fornecedor ${fornecedor.nome} excluído com sucesso!`)
   }
 
     const updateFornecedores = (message?: string) => {
@@ -42,20 +41,24 @@ export default function Fornecedores() {
         })
   }
 
-    const handleCloseCreateModal = () => {
+    const handleCloseCreateModal = (success?: boolean) => {
         setCreateModal(!createModal)
         updateFornecedores()
-        setTimeout(() => toast.success(`Fornecedor criado com sucesso!`), 1000)
+        if (success) {
+            setTimeout(() => toast.success(`Fornecedor criado com sucesso!`), 1000)
+        }
     }
 
     const handleOpenCreateModal = () => {
         setCreateModal(!createModal)
     }
 
-    const handleCloseEditModal = () => {
+    const handleCloseEditModal = (success?: boolean) => {
         setEditModal(!editModal)
         updateFornecedores()
-        setTimeout(() => toast.success(`Fornecedor editado com sucesso!`), 1000)
+        if (success) {
+            setTimeout(() => toast.success(`Fornecedor editado com sucesso!`), 1000)
+        }
     }
 
     const handleOpenEditModal = (fornecedor: Fornecedor) => {
@@ -113,7 +116,10 @@ export default function Fornecedores() {
     ) : deleteModal ? (
         fornecedor ? (
             <DeleteModal
-                handleDelete={() => handleDelete(fornecedor!)}
+                handleDelete={() => {
+                    updateFornecedores(`Produto ${fornecedor.nome} excluído com sucesso!`);
+                    setDeleteModal(false);
+                }}
                 fornecedor={fornecedor}
                 setDeleteModal={setDeleteModal}
             />

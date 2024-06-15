@@ -12,10 +12,15 @@ export default function DeleteModal(props: Props) {
         try {
             await deleteFornecedor(props.fornecedor.id);
             props.handleDelete();
+            props.setDeleteModal(false);
         } catch (error) {
             console.error("Erro ao excluir fornecedor:", error);
         }        
-    }
+    };
+
+    const handleCancel = () => {
+        props.setDeleteModal(false);
+    };
 
     return (
         <>
@@ -25,7 +30,7 @@ export default function DeleteModal(props: Props) {
                         Deseja excluir {props.fornecedor.nome}?
                     </h1>
                     <button className="bg-red-500 px-4 py-2 rounded-md text-md text-white"
-                        onClick={ props.handleDelete}
+                        onClick={handleCancel}
                     >
                         Cancelar
                     </button>

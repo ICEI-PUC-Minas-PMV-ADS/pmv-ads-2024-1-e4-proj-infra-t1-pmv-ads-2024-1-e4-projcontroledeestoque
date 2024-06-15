@@ -33,32 +33,35 @@ export default function Products() {
     const formRef = useRef(null)
 
     const handleDelete = (produto: Product) => {
-        setProduct(produto)
-        setDeleteModal(!deleteModal)
-        updateProducts(`Produto ${produto.nome} excluído com sucesso!`)
-    }
+        setProduct(produto);
+        setDeleteModal(true);
+    };
 
     const updateProducts = (message?: string) => {
         getProducts().then((data) => {
-            setProducts(data)
-            message && toast.success(message)
-        })
-    }
+            setProducts(data);
+            message && toast.success(message);
+        });
+    };
 
-    const handleCloseCreateModal = () => {
+    const handleCloseCreateModal = (success?: boolean) => {
         setCreateModal(!createModal)
         updateProducts()
-        setTimeout(() => toast.success(`Produto criado com sucesso!`), 1000)
+        if (success) {
+            setTimeout(() => toast.success(`Produto criado com sucesso!`), 1000)
+        }
     }
 
     const handleOpenCreateModal = () => {
         setCreateModal(!createModal)
     }
 
-    const handleCloseEditModal = () => {
+    const handleCloseEditModal = (success?: boolean) => {
         setEditModal(!editModal)
         updateProducts()
-        toast.success(`Produto editado com sucesso!`)
+        if (success) {
+            setTimeout(() => toast.success(`Produto editado com sucesso!`), 1000)
+        }
     }
 
     const handleOpenEditModal = (product: Product) => {
@@ -146,7 +149,10 @@ export default function Products() {
         deleteModal ? (
             product ? (
                 <DeleteModal
-                    handleDelete={() => handleDelete(product!)}
+                    handleDelete={() => {
+                        updateProducts(`Produto ${product.nome} excluído com sucesso!`);
+                        setDeleteModal(false);
+                    }}
                     product={product}
                     setDeleteModal={setDeleteModal}
                 />

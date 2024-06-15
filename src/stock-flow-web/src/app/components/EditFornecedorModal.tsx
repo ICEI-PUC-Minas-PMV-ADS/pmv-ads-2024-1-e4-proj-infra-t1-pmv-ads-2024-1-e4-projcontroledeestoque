@@ -3,17 +3,21 @@ import { Fornecedor, updateFornecedor } from "../services/fornecedores";
 
 type Props = {
   fornecedor: Fornecedor;
-  handleCloseEditModal: () => void;
+  handleCloseEditModal: (success?: boolean) => void;
 };
 export default function EditFornecedorModal(props: Props) {
   const [fornecedor, setFornecedor] = useState<Fornecedor>(props.fornecedor);
   const handleEditFornecedor = async () => {
     try {
         await updateFornecedor(fornecedor);
-        props.handleCloseEditModal();
+        props.handleCloseEditModal(true);
     } catch (error) {
         console.error("Erro ao excluir fornecedor:", error);
     }   
+  }
+
+  const handleCancelEdit = () => {
+    props.handleCloseEditModal(false); 
   };
   
   return (
@@ -56,7 +60,7 @@ export default function EditFornecedorModal(props: Props) {
         <div>
           <button
             className="bg-red-700 px-4 py-2 rounded-md text-md text-white"
-            onClick={props.handleCloseEditModal}
+            onClick={handleCancelEdit}
           >
             Cancelar
           </button>

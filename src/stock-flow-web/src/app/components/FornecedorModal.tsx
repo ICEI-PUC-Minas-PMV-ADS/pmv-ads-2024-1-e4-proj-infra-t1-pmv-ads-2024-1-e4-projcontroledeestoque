@@ -5,6 +5,7 @@ import { Fornecedor, createFornecedor } from "../services/fornecedores";
 type Props = {
   fornecedor: Fornecedor;
   setDeleteModal: (value: boolean) => void;
+  handleCloseEditModal: (success?: boolean) => void;
 };
 export default function FornecedorModal(props: any) {
   const [fornecedor, setFornecedor] = useState<Fornecedor>({
@@ -16,10 +17,14 @@ export default function FornecedorModal(props: any) {
   const handleCreateFornecedor = async () => {
     try {
         await createFornecedor(fornecedor);
-        props.handleCloseCreateModal();
+        props.handleCloseCreateModal(true);
     } catch (error) {
         console.error("Erro ao excluir fornecedor:", error);
     }   
+  }
+
+  const handleCancelEdit = () => {
+    props.handleCloseCreateModal(false); 
   };
   return (
     <div className="bg-slate-800 bg-opacity-50 flex justify-center items-center absolute top-0 right-0 bottom-0 left-0">
@@ -57,7 +62,7 @@ export default function FornecedorModal(props: any) {
         <div className="pt-4">
           <button
             className="bg-red-700 px-4 py-2 rounded-md text-md text-white"
-            onClick={props.handleCloseCreateModal}
+            onClick={handleCancelEdit}
           >
             Cancelar
           </button>
