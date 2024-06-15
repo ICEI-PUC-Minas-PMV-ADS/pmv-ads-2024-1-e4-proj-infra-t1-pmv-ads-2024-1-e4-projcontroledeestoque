@@ -23,8 +23,9 @@ export default function Cadastro() {
             senhaConfirmada: passwordConfirm, nome: name
         });
         console.log("res:", res);
-        if (res.sucesso && res?.accessToken) {
+        if (res.sucesso && res?.accessToken && res?.userId) {
             localStorage.setItem("accessToken", res.accessToken);
+            localStorage.setItem("userId", res.userId);
             toast.success(`Seja bem vindo!`);
             setLoggedIn(true);
         } else {

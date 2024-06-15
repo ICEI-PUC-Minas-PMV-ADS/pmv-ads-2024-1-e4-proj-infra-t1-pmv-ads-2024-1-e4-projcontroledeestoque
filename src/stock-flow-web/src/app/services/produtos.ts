@@ -1,5 +1,5 @@
 import axios from "axios";
-import { toast } from "react-toastify";
+import {ROUTES} from "@/app/utils/constantes";
 
 export type Product = {
   id: string;
@@ -14,8 +14,8 @@ export type Product = {
 };
 
 const axiosInstance = axios.create({
-  baseURL: "https://stock-flow.azurewebsites.net/api/v1/produtos",
-  timeout: 30000,
+  baseURL: ROUTES.PRODUTOS,
+  timeout: 60000,
 });
 
 export async function getProducts(query?: any): Promise<Product[]> {

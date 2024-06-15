@@ -1,4 +1,5 @@
 import axios, {AxiosError} from "axios";
+import {ROUTES} from "@/app/utils/constantes";
 
 interface ILoginUser {
     email: string;
@@ -20,11 +21,9 @@ export interface IAuthResponse {
     accessToken?: string;
 }
 
-const API_URL = "https://stock-flow.azurewebsites.net/api/v1/autenticacao";
-
-export const LoginUser = async (login : ILoginUser): Promise<IAuthResponse> => {
+export const LoginUser = async (login: ILoginUser): Promise<IAuthResponse> => {
     try {
-        const {data} = await axios.post(`${API_URL}/login`, login);
+        const {data} = await axios.post(`${ROUTES.LOGIN}`, login);
         return {...data};
     } catch (err) {
         console.log("err:", err);
@@ -37,9 +36,9 @@ export const LoginUser = async (login : ILoginUser): Promise<IAuthResponse> => {
     }
 }
 
-export const RegisterUser = async (register : IRegisterUser): Promise<IAuthResponse> => {
+export const RegisterUser = async (register: IRegisterUser): Promise<IAuthResponse> => {
     try {
-        const {data} = await axios.post(`${API_URL}/cadastro`, register);
+        const {data} = await axios.post(`${ROUTES.REGISTER}`, register);
         return {...data};
     } catch (err) {
         if (err instanceof AxiosError) {

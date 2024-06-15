@@ -4,7 +4,6 @@ import {toast, ToastContainer} from "react-toastify";
 
 import "react-toastify/dist/ReactToastify.css";
 import {IAuthResponse, LoginUser} from "../../services/autenticacao";
-import Home from "../../page";
 import Image from "next/image";
 import {LoadingSpinner} from "@/app/components/LoadingSpinner";
 import {useRouter} from "next/navigation";
@@ -19,7 +18,7 @@ export default function Login() {
     const makeLogin = async () => {
         const res: IAuthResponse = await LoginUser({email: email, senha: password});
         console.log("res:", res);
-        if (res.sucesso && res?.accessToken) {
+        if (res.sucesso && res?.accessToken && res?.userId) {
             localStorage.setItem("accessToken", res.accessToken);
             localStorage.setItem("userId", res.userId);
             toast.success(`Seja bem vindo!`);
