@@ -47,10 +47,10 @@ Enunciado: Exclua o produto previamente cadastrado.
 **Atividade 5**<br>
 Enunciado: Cadastre um fornecedor.
 
-**Atividade 3**<br>
+**Atividade 6**<br>
 Enunciado: Edite o fornecedor previamente cadastrado. Ex: alterar nome, contato ou endereço.
 
-**Atividade 4**<br>
+**Atividade 7**<br>
 Enunciado: Exclua o fornecedor previamente cadastrado.
 
 ## Link para o formulário:
