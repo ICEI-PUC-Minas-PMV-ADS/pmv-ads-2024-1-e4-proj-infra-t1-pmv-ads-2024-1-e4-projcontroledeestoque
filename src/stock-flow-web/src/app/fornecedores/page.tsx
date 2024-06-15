@@ -1,11 +1,12 @@
 'use client'
+import 'react-toastify/dist/ReactToastify.css'
 import React, {useEffect, useRef, useState} from 'react'
 import Navigation from '../components/Navigation'
 import {Fornecedor, getFornecedores} from '../services/fornecedores'
 import {NotePencil, TrashSimple} from '@phosphor-icons/react'
 import DeleteModal from '../components/DeleteModalFornecedor'
 import FornecedorModal from '../components/FornecedorModal'
-import {toast} from 'react-toastify'
+import { ToastContainer, toast } from 'react-toastify'
 import EditFornecedorModal from '../components/EditFornecedorModal'
 import FornecedorDetailsModal from '../components/FornecedorDetailsModal'
 import {Loading} from '@/app/components/Loading'
@@ -31,20 +32,20 @@ export default function Fornecedores() {
     const handleDelete = (fornecedor: Fornecedor) => {
         setFornecedor(fornecedor)
         setDeleteModal(!deleteModal)
-        toast.success(`Fornecedor removido com sucesso!`)
-        updateFornecedores()
-    }
+        updateFornecedores(`Fornecedor ${fornecedor.nome} excluído com sucesso!`)
+  }
 
-    const updateFornecedores = () => {
+    const updateFornecedores = (message?: string) => {
         getFornecedores().then((data) => {
-            setFornecedores(() => data)
+          setFornecedores(() => data)
+          message && toast.success(message)
         })
-    }
+  }
 
     const handleCloseCreateModal = () => {
         setCreateModal(!createModal)
         updateFornecedores()
-        toast.success(`Fornecedor criado com sucesso!`)
+        setTimeout(() => toast.success(`Fornecedor criado com sucesso!`), 1000)
     }
 
     const handleOpenCreateModal = () => {
@@ -54,7 +55,7 @@ export default function Fornecedores() {
     const handleCloseEditModal = () => {
         setEditModal(!editModal)
         updateFornecedores()
-        toast.success(`Fornecedor editado com sucesso!`)
+        setTimeout(() => toast.success(`Fornecedor editado com sucesso!`), 1000)
     }
 
     const handleOpenEditModal = (fornecedor: Fornecedor) => {
