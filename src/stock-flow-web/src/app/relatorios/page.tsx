@@ -151,27 +151,21 @@ export default function Relatorios() {
               key={product.id}>
               <td className='py-1 px-4 max-w-prose '>{product.quantidade}</td>
               <td
-                className={`py-1 px-4 max-w-prose border-s border-gray-${
-                  index % 2 === 0 ? '900' : '950'
-                }`}>
+                className={`py-1 px-4 max-w-prose`}>
                 {product.produtoNome}
               </td>
               <td
-                className={`py-1 px-4 max-w-prose border-s border-gray-${
-                  index % 2 === 0 ? '900' : '950'
-                }`}>
+                className={`py-1 px-4 max-w-prose `}>
                 {product.tipo}
               </td>
-              <td className={`py-1 px-4 max-w-prose border-s border-gray-950`}>
+              <td className={`py-1 px-4 max-w-prose `}>
                 {product.fornecedoresNomes
                   .map((e) => (e.length > 0 ? e : ''))
                   .join(`, `)}
               </td>
 
               <td
-                className={`py-1 px-4 max-w-prose border-s border-gray-${
-                  index % 2 === 0 ? '900' : '950'
-                }`}>
+                className={`py-1 px-4 max-w-prose `}>
                 <Price value={product.valor}></Price>
               </td>
             </tr>
