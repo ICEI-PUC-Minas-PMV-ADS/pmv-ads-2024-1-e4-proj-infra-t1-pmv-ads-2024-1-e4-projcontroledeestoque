@@ -116,8 +116,7 @@
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t1-pmv-ads-2024-1-e4-projcontroledeestoque/assets/109116755/90e5b6cc-115e-48dd-86fe-1276b270ac9b)<br>
 
 **Swagger**<br>
-
-<br>
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t1-pmv-ads-2024-1-e4-projcontroledeestoque/assets/109116755/12459efd-b806-41a7-b5e6-2f28e56a66db)<br>
 
 
 
