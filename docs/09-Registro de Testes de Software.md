@@ -108,9 +108,9 @@
 | **Caso de Teste** 	| **CT-07 – Verificar relatorios de movimentações.** 	|
 |:---:	|:---:	|
 |	Requisito Associado 	| RF-003	Emitir um relatório a cada movimentação. |
-| Objetivo do Teste 	| Verificar relatorios gerados pelas movimentações. |
+| Objetivo do Teste 	| Acessar relatórios gerados pelo sistema. |
 | Passos 	| - Acessar a aplicação <br> - Inserir os dados de login. <br> - Aguardar o direcionamento para a página inicial. <br> - Acessar a página de relatórios. <br> - buscar pelo relatorio desejado.|
-|Critério de Êxito | - Usuário o relatorio desejado. |
+|Critério de Êxito | - Usuário encontrou o relatorio desejado. |
 
 **Teste unitário referente ao Caso de Teste** <br>
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t1-pmv-ads-2024-1-e4-projcontroledeestoque/assets/109116755/90e5b6cc-115e-48dd-86fe-1276b270ac9b)<br>
