@@ -40,7 +40,8 @@ export function SessionProvider(props: React.PropsWithChildren) {
     const isValidSession = () => {
         if (session) {
             const [, payload] = session.split(".");
-            const {exp} = JSON.parse(atob(payload));
+            const paddedPayload = payload.padEnd(payload.length + 4 - (payload.length % 4), '=');
+            const {exp} = JSON.parse(atob(paddedPayload));
             const now = new Date().getTime();
             if (exp * 1000 < now) {
                 signOut()

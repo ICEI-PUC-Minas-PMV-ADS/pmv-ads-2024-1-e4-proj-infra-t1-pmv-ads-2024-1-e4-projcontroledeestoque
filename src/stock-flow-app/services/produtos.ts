@@ -14,7 +14,7 @@ export type ProdutosResponse = {
     id?: string;
     nome: string;
     descricao?: string;
-    categoria?: string[];
+    categorias?: string[];
     precoCusto: number;
     precoVenda: number;
     quantidade: number;

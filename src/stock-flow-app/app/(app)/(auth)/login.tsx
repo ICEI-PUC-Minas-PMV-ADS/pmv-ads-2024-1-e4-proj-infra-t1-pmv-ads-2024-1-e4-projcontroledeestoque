@@ -38,11 +38,10 @@ export default function Login() {
             await new Promise(resolve => setTimeout(resolve, 1000));
 
             if (response.sucesso && response?.accessToken) {
-                console.log('Logged in, token: ', response.accessToken);
                 signIn(response.accessToken);
                 router.replace("(tabs)");
             } else {
-                Alert.alert('Erro ao logar', response.mensagem || 'Tente novamente mais tarde');
+                Alert.alert('Falha no login', response.mensagem || 'Tente novamente mais tarde');
             }
         } catch (error) {
             console.error(error);
@@ -120,8 +119,7 @@ export default function Login() {
 
             </ThemedView>
 
-            {/*TODO: remover mock*/}
-            <ThemedButton onPress={handleSubmit(handleLoginMock)}>
+            <ThemedButton onPress={handleSubmit(handleLogin)}>
                 Entrar
             </ThemedButton>
 

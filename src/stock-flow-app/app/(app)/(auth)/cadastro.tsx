@@ -51,11 +51,11 @@ export default function Cadastro() {
                 signIn(response.accessToken);
                 router.replace("(tabs)");
             } else {
-                Alert.alert('Erro ao cadastrar', response.mensagem || 'Tente novamente mais tarde');
+                Alert.alert('Falha no cadastro', response.mensagem || 'Tente novamente mais tarde');
             }
         } catch (error) {
             console.error(error);
-            Alert.alert('Falha no login', 'Tente novamente mais tarde');
+            Alert.alert('Falha no cadastro', 'Tente novamente mais tarde');
         } finally {
             setTimeout(() => setIsSubmitting(false), 1000);
         }
@@ -176,8 +176,7 @@ export default function Cadastro() {
                 />
             </ThemedView>
 
-            {/*TODO: remover mock*/}
-            <ThemedButton onPress={handleSubmit(handleCadastroMock)}>
+            <ThemedButton onPress={handleSubmit(handleCadastro)}>
                 Criar conta
             </ThemedButton>
 

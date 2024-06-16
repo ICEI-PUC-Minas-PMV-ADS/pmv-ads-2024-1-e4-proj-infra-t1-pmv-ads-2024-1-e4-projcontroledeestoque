@@ -12,7 +12,7 @@ import {useThemeColorName} from "@/hooks/useThemeColor";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
 export default function ProdutosScreen() {
-    const {session, isLoading} = useSession();
+    const {isValidSession, isLoading} = useSession();
     const [produtos, setProdutos] = useState<ProdutosResponse[]>([]);
     const [appIsReady, setAppIsReady] = useState(false);
     const [search, setSearch] = useState('');
@@ -35,16 +35,16 @@ export default function ProdutosScreen() {
 
     useEffect(() => {
         setAppIsReady(false);
-        fetchProdutos({}).then(() => setTimeout(() => setAppIsReady(true), 1000));
 
+        if (!isValidSession()) {
+            router.replace('(auth)');
+        }
+
+        fetchProdutos({}).then(() => setTimeout(() => setAppIsReady(true), 1000));
     }, []);
 
     if (isLoading || !appIsReady) {
         return <LoadingOverlay message="Buscando Produtos..."/>;
-    }
-
-    if (!session) {
-        router.replace('(auth)');
     }
 
     return (

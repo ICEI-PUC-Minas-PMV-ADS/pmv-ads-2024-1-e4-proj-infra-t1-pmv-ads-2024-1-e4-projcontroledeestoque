@@ -12,12 +12,22 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import {useThemeColorName} from "@/hooks/useThemeColor";
 
 export default function FornecedoresScreen() {
-    const {session, isLoading} = useSession();
+    const {isValidSession, isLoading} = useSession();
     const [fornecedores, setFornecedores] = useState<FornecedoresResponse[]>([]);
     const [appIsReady, setAppIsReady] = useState(false);
     const [search, setSearch] = useState('');
     const textInputColor = useThemeColorName("textInput");
     const iconColor = useThemeColorName("icon");
+
+    useEffect(() => {
+        setAppIsReady(false);
+
+        if (!isValidSession()) {
+            router.replace('(auth)');
+        }
+
+        fetchFornecedores({}).then(() => setTimeout(() => setAppIsReady(true), 1000));
+    }, []);
 
     const handleSearch = () => {
         setAppIsReady(false);
@@ -33,17 +43,8 @@ export default function FornecedoresScreen() {
         setFornecedores(fetchData);
     }
 
-    useEffect(() => {
-        setAppIsReady(false);
-        fetchFornecedores({}).then(() => setTimeout(() => setAppIsReady(true), 1000));
-    }, []);
-
     if (isLoading || !appIsReady) {
         return <LoadingOverlay message="Buscando fornecedores..."/>;
-    }
-
-    if (!session) {
-        router.replace('(auth)');
     }
 
     return (

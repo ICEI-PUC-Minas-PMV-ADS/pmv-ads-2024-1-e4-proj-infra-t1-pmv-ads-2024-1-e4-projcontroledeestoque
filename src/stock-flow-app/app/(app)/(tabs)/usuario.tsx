@@ -1,4 +1,4 @@
-import {Pressable, StyleSheet} from "react-native";
+import {StyleSheet} from "react-native";
 import {ThemedView} from "@/components/ThemedView";
 import {ThemedText} from "@/components/ThemedText";
 import {router} from "expo-router";
@@ -12,7 +12,8 @@ function decodeJwtPayload(session: string) {
 
         const payloadEncBase64 = payloadEnc.replace(/-/g, '+').replace(/_/g, '/') + '=='.slice(0, (3 * payloadEnc.length) % 4);
         const payloadDec = atob(payloadEncBase64);
-        return JSON.parse(payloadDec);
+        const payloadDecUtf8 = decodeURIComponent(escape(payloadDec));
+        return JSON.parse(payloadDecUtf8);
     } catch (error) {
         console.error('Failed to decode JWT payload:', error);
         return null;
