@@ -49,9 +49,9 @@
 | **Caso de Teste** 	| **CT-07 – Verificar relatorios de movimentações.** 	|
 |:---:	|:---:	|
 |	Requisito Associado 	| RF-003	Emitir um relatório a cada movimentação. |
-| Objetivo do Teste 	| Verificar se o movimentações são geradas. |
+| Objetivo do Teste 	| Acessar relatórios gerados pelo sistema. |
 | Passos 	| - Acessar a aplicação <br> - Inserir os dados de login. <br> - Aguardar o direcionamento para a página inicial. <br> - Acessar a página de relatórios. <br> - buscar pelo relatorio desejado.|
-|Critério de Êxito | - Usuário o relatorio desejado. |
+|Critério de Êxito | - Usuário encontrou o relatorio desejado. |
 
 
 

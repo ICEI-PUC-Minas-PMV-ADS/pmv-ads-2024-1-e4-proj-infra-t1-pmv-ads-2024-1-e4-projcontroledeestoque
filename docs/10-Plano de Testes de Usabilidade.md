@@ -54,7 +54,10 @@ Enunciado: Edite o fornecedor previamente cadastrado. Ex: alterar nome, contato 
 Enunciado: Exclua o fornecedor previamente cadastrado.
 
 **Atividade 8**<br>
-Enunciado: Criar uma movimentação.
+Enunciado: Crie uma movimentação.
+
+**Atividade 9**<br>
+Enunciado: Consulte um relatório.
 
 ## Link para o formulário:
 
