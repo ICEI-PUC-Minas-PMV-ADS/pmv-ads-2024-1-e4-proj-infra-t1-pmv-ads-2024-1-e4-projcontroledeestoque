@@ -19,31 +19,33 @@ export default function Relatorios() {
         DataFim: '',
         TipoMovimentacao: ''
     })
+    const [tempFilters, setTempFilters] = useState({
+        DataInicio: '',
+        DataFim: '',
+        TipoMovimentacao: ''
+    })
     const [detailsModalOpen, setDetailsModalOpen] = useState(false)
-    const [selectedProduct, setSelectedProduct] = useState<Movimentacao | null>(
-        null
-    )
+    const [selectedProduct, setSelectedProduct] = useState<Movimentacao | null>(null)
     const router = useRouter()
     const formRef = useRef(null)
 
-    const updateMovimentacoes = async () => {
+    const updateMovimentacoes = async (filters: any) => {
         try {
             const data = await getMovimentacoes(filters);
             setProducts(data);
         } catch (error) {
             console.error('Erro ao buscar movimentações:', error);
-            toast.error('Erro ao buscar movimentações.');
         }
     };
 
+    
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        setFilters(tempFilters);
         try {
-            await updateMovimentacoes();
-            toast.success('Filtros aplicados com sucesso.');
+            await updateMovimentacoes(tempFilters);
         } catch (error) {
             console.error('Erro ao buscar movimentações:', error);
-            toast.error('Erro ao aplicar filtros.');
         }
     };
 
@@ -66,7 +68,7 @@ export default function Relatorios() {
     }, [])
 
     useEffect(() => {
-        updateMovimentacoes()
+        updateMovimentacoes(filters)
     }, [filters])
 
     if (loading) {
@@ -97,46 +99,50 @@ export default function Relatorios() {
                 </div>
             </div>
 
-            <div className='mt-6 mb-6 bg-gray-500'>
-                <form ref={formRef} onSubmit={handleSubmit} className="flex flex-wrap items-center justify-center gap-4">
-                    <div className='flex items-center gap-4'>
-                        <label>Data Início:</label>
-                        <input
-                            type='date'
-                            value={filters.DataInicio}
-                            onChange={(e) => setFilters({ ...filters, DataInicio: e.target.value })}
-                            className='border rounded-md px-2 py-1 text-black'
-                        />
-                    </div>
-                    <div className='flex items-center gap-4'>
-                        <label>Data Fim:</label>
-                        <input
-                            type='date'
-                            value={filters.DataFim}
-                            onChange={(e) => setFilters({ ...filters, DataFim: e.target.value })}
-                            className='border rounded-md px-2 py-1 text-black'
-                        />
-                    </div>
-                    <div className='flex items-center gap-4'>
-                        <label>Tipo:</label>
-                        <select
-                            value={filters.TipoMovimentacao}
-                            onChange={(e) => setFilters({ ...filters, TipoMovimentacao: e.target.value })}
-                            className='border rounded-md px-2 py-1 text-black'
+            <div className='flex flex-col items-center justify-center h-full'>
+                <div className='inline-flex flex-col items-center bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 p-1 rounded-lg mt-8 mb-6'>
+                    <form ref={formRef} onSubmit={handleSubmit} className="flex flex-wrap items-center justify-center gap-4">
+                        <div className='flex items-center gap-4'>
+                            <label className='text-sm font-medium text-gray-900 dark:text-gray-300'>Data Início:</label>
+                            <input
+                                type='date'
+                                value={tempFilters.DataInicio}
+                                onChange={(e) => setTempFilters({ ...tempFilters, DataInicio: e.target.value })}
+                                className='block p-2.5 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500'
+                            />
+                        </div>
+                        <div className='flex items-center gap-4'>
+                            <label className='text-sm font-medium text-gray-900 dark:text-gray-300'>Data Fim:</label>
+                            <input
+                                type='date'
+                                value={tempFilters.DataFim}
+                                onChange={(e) => setTempFilters({ ...tempFilters, DataFim: e.target.value })}
+                                className='block p-2.5 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500'
+                            />
+                        </div>
+                        <div className='flex items-center gap-4'>
+                            <label className='text-sm font-medium text-gray-900 dark:text-gray-300'>Tipo:</label>
+                            <select
+                                value={tempFilters.TipoMovimentacao}
+                                onChange={(e) => setTempFilters({ ...tempFilters, TipoMovimentacao: e.target.value })}
+                                className='block p-2.5 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500'
+                            >
+                                <option value=''>Selecione...</option>
+                                <option value='Compra'>Compra</option>
+                                <option value='Venda'>Venda</option>
+                            </select>
+                        </div>
+                        <button
+                            type='submit'
+                            className='text-white bg-indigo-700 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800'
                         >
-                            <option value=''>Selecione...</option>
-                            <option value='Compra'>Compra</option>
-                            <option value='Venda'>Venda</option>
-                        </select>
-                    </div>
-                    <button
-                        type='submit'
-                        className='text-white bg-indigo-700 hover:bg-indigo-800 px-4 py-2 rounded-lg'
-                    >
-                        Aplicar Filtro
-                    </button>
-                </form>
+                            Pesquisar
+                        </button>
+                    </form>
+                </div>
             </div>
+
+
 
 
             <table className='w-full'>

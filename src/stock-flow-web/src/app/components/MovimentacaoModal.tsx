@@ -44,12 +44,11 @@ export default function MovimentacaoModal(props: Props) {
     }
 
     useEffect(() => {
-        setMovimentacao({
-            ...movimentacao,
-            valor:
-                Number(props.produto?.precoCusto) * Number(movimentacao.quantidade),
-        })
-    }, [movimentacao.quantidade])
+        setMovimentacao(prevMovimentacao => ({
+            ...prevMovimentacao,
+            valor: Number(props.produto?.precoCusto) * Number(prevMovimentacao.quantidade),
+        }));
+    }, [movimentacao.quantidade, props.produto?.precoCusto]);
 
     const handleCreatemovimentacao = async () => {
         try {
