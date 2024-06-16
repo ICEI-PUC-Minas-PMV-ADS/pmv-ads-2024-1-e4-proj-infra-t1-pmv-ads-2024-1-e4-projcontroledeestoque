@@ -56,6 +56,9 @@ Enunciado: Exclua o fornecedor previamente cadastrado.
 **Atividade 8**<br>
 Enunciado: Criar uma movimentação.
 
+**Atividade 9**<br>
+Enunciado: Consultar relatórios.
+
 ## Link para o formulário:
 
 https://docs.google.com/forms/d/e/1FAIpQLSeHn6ycY1H74CMy0fYSToUq9L6DytZPGew6_gweDWSh3NHOhA/viewform
