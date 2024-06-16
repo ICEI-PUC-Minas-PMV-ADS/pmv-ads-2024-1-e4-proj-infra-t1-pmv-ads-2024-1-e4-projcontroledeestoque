@@ -34,13 +34,20 @@ const movimentacoesInstance = axios.create({
 })
 
 export async function getMovimentacoes(query?: any): Promise<Movimentacao[]> {
-    const queryString = query?.name ? `?nome=${query.name}` : ''
     try {
-        const response = await relatoriosInstance.get(queryString)
-        return response.data
+        const allFieldsUndefined = Object.values(query || {}).every(value => value === undefined || value === '');
+
+        if (!allFieldsUndefined) {
+            const response = await relatoriosInstance.get('', { params: query });
+            return response.data;
+        } else {
+            const queryString = query?.name ? `?nome=${query.name}` : ''
+            const response = await relatoriosInstance.get(queryString)
+            return response.data;
+        }
     } catch (error) {
-        console.error('Erro ao obter movimentacao:', error)
-        throw error
+        console.error('Erro ao obter movimentacao:', error);
+        throw error;
     }
 }
 
@@ -53,5 +60,15 @@ export async function createMovimentacao(
     } catch (error) {
         console.error('Erro ao criar movimentacao:', error)
         throw error
+    }
+}
+
+export async function updateMovimentacoes(filters: any): Promise<Movimentacao[]> {
+    try {
+        const data = await getMovimentacoes(filters);
+        return data;
+    } catch (error) {
+        console.error('Erro ao obter movimentacao:', error);
+        throw error;
     }
 }
