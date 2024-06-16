@@ -173,7 +173,8 @@ namespace stock_flow.Services.Impl
                 filtro &= Builders<Movimentacao>.Filter.Lte(x => x.Valor, valorMaximo);
             }
 
-            var movimentacoes = await _movimentacoesCollection.Find(filtro).ToListAsync();
+            var sort = Builders<Movimentacao>.Sort.Descending(m => m.Data);
+            var movimentacoes = await _movimentacoesCollection.Find(filtro).Sort(sort).ToListAsync();
             return await GetMovimentacaoWithProdutoAndFornecedorAsync(movimentacoes);
         }
         
