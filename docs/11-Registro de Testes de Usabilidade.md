@@ -19,7 +19,7 @@ Gostei da Usabilidade
 Interface
 
 ## Julia
-A teve algumas dificuldades para identificar os botões de edição de itens no inicio.
+Teve algumas dificuldades para identificar os botões de edição de itens e também para acessar a área de registro de movimentações.
 
 ### Feedback do usuário:<br>
 Usabilidade bem simples e intuitiva e um sistema bem ágil
