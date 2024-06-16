@@ -1,13 +1,11 @@
 'use client'
-import 'react-toastify/dist/ReactToastify.css'
-import { useEffect, useRef, useState } from 'react'
+import {useEffect, useRef, useState} from 'react'
 import Price from '../components/Price'
-import { toast, ToastContainer } from 'react-toastify'
-import { useRouter } from 'next/navigation'
-import { getTokenData } from '@/app/utils/token-data'
-import { Loading } from '@/app/components/Loading'
-import { URLS } from '@/app/utils/constantes'
-import { getMovimentacoes, Movimentacao } from '../services/movimentacoes'
+import {useRouter} from 'next/navigation'
+import {getTokenData} from '@/app/utils/token-data'
+import {Loading} from '@/app/components/Loading'
+import {URLS} from '@/app/utils/constantes'
+import {getMovimentacoes, Movimentacao} from '../services/movimentacoes'
 import Navigation from "@/app/components/Navigation";
 
 export default function Relatorios() {
@@ -24,8 +22,6 @@ export default function Relatorios() {
         DataFim: '',
         TipoMovimentacao: ''
     })
-    const [detailsModalOpen, setDetailsModalOpen] = useState(false)
-    const [selectedProduct, setSelectedProduct] = useState<Movimentacao | null>(null)
     const router = useRouter()
     const formRef = useRef(null)
 
@@ -38,7 +34,6 @@ export default function Relatorios() {
         }
     };
 
-    
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setFilters(tempFilters);
@@ -51,10 +46,8 @@ export default function Relatorios() {
 
     const formatDate = (date: string) => {
         if (!date) return "";
-
         try {
-            const formattedDate = new Date(date).toLocaleDateString('pt-BR');
-            return formattedDate;
+            return new Date(date).toLocaleDateString('pt-BR');
         } catch (error) {
             console.error('Erro ao formatar data:', error);
             return date;
@@ -77,22 +70,11 @@ export default function Relatorios() {
 
     if (!accessToken) {
         router.push(URLS.LOGIN_PATH)
-        return null
+        return
     }
 
     return (
         <div>
-            <ToastContainer
-                position='top-right'
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-            />
             <div>
                 <div className='flex w-full justify-between'>
                     <Navigation/>
@@ -100,23 +82,25 @@ export default function Relatorios() {
             </div>
 
             <div className='flex flex-col items-center justify-center h-full'>
-                <div className='inline-flex flex-col items-center bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 p-1 rounded-lg mt-8 mb-6'>
-                    <form ref={formRef} onSubmit={handleSubmit} className="flex flex-wrap items-center justify-center gap-4">
+                <div
+                    className='inline-flex flex-col items-center bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 p-1 rounded-lg mt-8 mb-6 px-2'>
+                    <form ref={formRef} onSubmit={handleSubmit}
+                          className="flex flex-wrap items-center justify-center gap-4">
                         <div className='flex items-center gap-4'>
-                            <label className='text-sm font-medium text-gray-900 dark:text-gray-300'>Data Início:</label>
+                            <label className='text-sm font-medium text-gray-900 dark:text-gray-300'>De:</label>
                             <input
                                 type='date'
                                 value={tempFilters.DataInicio}
-                                onChange={(e) => setTempFilters({ ...tempFilters, DataInicio: e.target.value })}
+                                onChange={(e) => setTempFilters({...tempFilters, DataInicio: e.target.value})}
                                 className='block p-2.5 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500'
                             />
                         </div>
                         <div className='flex items-center gap-4'>
-                            <label className='text-sm font-medium text-gray-900 dark:text-gray-300'>Data Fim:</label>
+                            <label className='text-sm font-medium text-gray-900 dark:text-gray-300'>Até:</label>
                             <input
                                 type='date'
                                 value={tempFilters.DataFim}
-                                onChange={(e) => setTempFilters({ ...tempFilters, DataFim: e.target.value })}
+                                onChange={(e) => setTempFilters({...tempFilters, DataFim: e.target.value})}
                                 className='block p-2.5 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500'
                             />
                         </div>
@@ -124,7 +108,7 @@ export default function Relatorios() {
                             <label className='text-sm font-medium text-gray-900 dark:text-gray-300'>Tipo:</label>
                             <select
                                 value={tempFilters.TipoMovimentacao}
-                                onChange={(e) => setTempFilters({ ...tempFilters, TipoMovimentacao: e.target.value })}
+                                onChange={(e) => setTempFilters({...tempFilters, TipoMovimentacao: e.target.value})}
                                 className='block p-2.5 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500'
                             >
                                 <option value=''>Selecione...</option>
@@ -143,70 +127,61 @@ export default function Relatorios() {
             </div>
 
 
-
-
             <table className='w-full'>
                 <thead className='bg-gray-900'>
-                    <tr>
-                        <th className='py-1 px-4 max-w-prose'>Qtd</th>
-                        <th className='py-1 px-4 max-w-prose'>Produto</th>
-                        <th className='py-1 px-4 max-w-prose'>Tipo</th>
-                        <th className='py-1 px-4 max-w-prose'>Data</th>
-                        <th className='py-1 px-4 max-w-prose'>Fornecedores</th>
-                        <th className='py-1 px-4 max-w-prose'>Valor total</th>
-                    </tr>
+                <tr>
+                    <th className='py-1 px-4 max-w-prose'>Data</th>
+                    <th className='py-1 px-4 max-w-prose'>Tipo</th>
+                    <th className='py-1 px-4 max-w-prose'>Qtd</th>
+                    <th className='py-1 px-4 max-w-prose'>Produto</th>
+                    <th className='py-1 px-4 max-w-prose'>Fornecedores</th>
+                    <th className='py-1 px-4 max-w-prose'>Valor total</th>
+                </tr>
                 </thead>
                 <tbody>
-                    {products.map((product, index) => (
-                        <tr
-                            className={`bg-gray-${index % 2 === 0 ? '950' : '900'} py-2`}
-                            key={product.id}
+                {products.map((product, index) => (
+                    <tr
+                        className={`bg-gray-${index % 2 === 0 ? '950' : '900'} py-2`}
+                        key={product.id}
+                    >
+                        <td
+                            className={`text-amber-600 text-center py-1 px-4 max-w-prose border-gray-${
+                                index % 2 === 0 ? '900' : '950'
+                            }`}
                         >
-                            <td className='text-center py-1 px-4 max-w-prose '>{product.quantidade}</td>
-                            <td
-                                className={`py-1 px-4 max-w-prose border-gray-${
-                                    index % 2 === 0 ? '900' : '950'
-                                }`}
-                            >
-                                {product.produtoNome}
-                            </td>
-                            <td
-                                className={`text-center py-1 px-4 max-w-prose border-gray-${
-                                    index % 2 === 0 ? '900' : '950'
-                                }`}
-                            >
-                                {product.tipo}
-                            </td>
-                            <td
-                                className={`text-center py-1 px-4 max-w-prose border-gray-${
-                                    index % 2 === 0 ? '900' : '950'
-                                }`}
-                            >
-                                {formatDate(product.data.toString())}
-                            </td>
-                            <td className={`py-1 px-4 max-w-prose border-gray-950`}>
-                                {product.fornecedoresNomes
-                                    .map((e) => (e.length > 0 ? e : ''))
-                                    .join(`, `)}
-                            </td>
-                            <td
-                                className={`text-center py-1 px-4 max-w-prose border-gray-${
-                                    index % 2 === 0 ? '900' : '950'
-                                }`}
-                            >
-                                <Price value={product.valor}></Price>
-                            </td>
-                        </tr>
-                    ))}
+                            {formatDate(product.data.toString())}
+                        </td>
+                        <td
+                            className={`text-center py-1 px-4 max-w-prose border-gray-${
+                                index % 2 === 0 ? '900' : '950'
+                            } ${product.tipo === 'Compra' ? 'text-green-400' : 'text-red-400'} `}
+                        >
+                            {product.tipo}
+                        </td>
+                        <td className='text-center py-1 px-4 max-w-prose '>{product.quantidade}</td>
+                        <td
+                            className={`py-1 px-4 max-w-prose border-gray-${
+                                index % 2 === 0 ? '900' : '950'
+                            }`}
+                        >
+                            {product.produtoNome}
+                        </td>
+                        <td className={`py-1 px-4 max-w-prose border-gray-950`}>
+                            {product.fornecedoresNomes
+                                .map((e) => (e.length > 0 ? e : ''))
+                                .join(`, `)}
+                        </td>
+                        <td
+                            className={`text-center py-1 px-4 max-w-prose border-gray-${
+                                index % 2 === 0 ? '900' : '950'
+                            }`}
+                        >
+                            <Price value={product.valor}></Price>
+                        </td>
+                    </tr>
+                ))}
                 </tbody>
             </table>
-            {detailsModalOpen && selectedProduct && (
-                // <ProductDetailsModal
-                //   product={selectedProduct}
-                //   handleCloseDetailsModal={handleCloseDetailsModal}
-                // />
-                <></>
-            )}
         </div>
     )
 }
