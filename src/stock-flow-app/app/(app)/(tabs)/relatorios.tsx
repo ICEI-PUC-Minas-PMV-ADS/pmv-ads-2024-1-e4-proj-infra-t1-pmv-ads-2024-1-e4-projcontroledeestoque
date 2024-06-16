@@ -21,6 +21,7 @@ export default function RelatoriosScreen() {
     const [dataFim, setDataFim] = useState(new Date());
     const [showDataInicioPicker, setShowDataInicioPicker] = useState(false);
     const [showDataFimPicker, setShowDataFimPicker] = useState(false);
+    const textInputColor = useThemeColorName("textInput");
     const iconColor = useThemeColorName("icon");
 
     useEffect(() => {
@@ -67,7 +68,7 @@ export default function RelatoriosScreen() {
             </ThemedView>
 
             <ThemedView style={styles.dateContainer}>
-                <Pressable style={[{backgroundColor: iconColor}, styles.datePicker]}
+                <Pressable style={[{borderColor: iconColor, backgroundColor: textInputColor}, styles.datePicker]}
                            onPress={() => setShowDataInicioPicker(true)}>
                     <Text>De: {toLocaleDateString(dataInicio)}</Text>
                 </Pressable>
@@ -83,7 +84,7 @@ export default function RelatoriosScreen() {
                     />
                 )}
 
-                <Pressable style={[{backgroundColor: iconColor}, styles.datePicker]}
+                <Pressable style={[{borderColor: iconColor, backgroundColor: textInputColor}, styles.datePicker]}
                            onPress={() => setShowDataFimPicker(true)}>
                     <Text>Até: {toLocaleDateString(dataFim)}</Text>
                 </Pressable>
@@ -119,8 +120,9 @@ const styles = StyleSheet.create({
     datePicker: {
         flexDirection: 'row',
         alignItems: 'center',
-        padding: 10,
+        padding: 8.5,
         borderRadius: 10,
+        borderWidth: 2,
     },
 
     button: {

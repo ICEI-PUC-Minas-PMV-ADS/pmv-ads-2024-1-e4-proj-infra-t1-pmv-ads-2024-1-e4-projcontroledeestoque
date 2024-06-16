@@ -19,6 +19,8 @@ export const Colors = {
     tabIconSelected: tintColorLight,
     textInput: '#fff',
     textError: '#a11111',
+    buy: '#41c363',
+    sell: '#dd3e3e',
   },
   dark: {
     text: '#ECEDEE',
@@ -32,5 +34,7 @@ export const Colors = {
     tabIconSelected: tintColorDark,
     textInput: '#fff',
     textError: '#d82626',
+    buy: '#41c363',
+    sell: '#dd3e3e',
   },
 };

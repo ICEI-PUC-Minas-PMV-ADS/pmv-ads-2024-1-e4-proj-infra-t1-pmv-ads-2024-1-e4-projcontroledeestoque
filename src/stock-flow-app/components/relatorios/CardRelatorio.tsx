@@ -12,17 +12,22 @@ interface CardRelatorioProps {
 
 export default function CardRelatorio({relatorio}: CardRelatorioProps) {
     const borderColor = useThemeColorName("icon");
-    
+    const buyColor = useThemeColorName("buy");
+    const sellColor = useThemeColorName("sell");
+
+    const color = relatorio.tipo === 'Compra' ? buyColor : sellColor;
+
     return (
         <ThemedView colorName={"backgroundCard"} style={[{borderBottomColor: borderColor}, styles.container]}>
             <View style={styles.row}>
-                <ThemedText>{formatDate(relatorio.data)}</ThemedText>
-                <ThemedText>{relatorio.tipo}</ThemedText>
+                <ThemedText type={"cardTitle"}>{formatDate(relatorio.data)}</ThemedText>
+                <ThemedText type={"cardTitle"} style={{color: color, borderBottomWidth: 0}}>{relatorio.tipo}</ThemedText>
             </View>
             <View style={styles.row}>
-                <ThemedText>{relatorio.quantidade}</ThemedText>
-                <ThemedText>{relatorio.produtoNome}</ThemedText>
-                <ThemedText>R${formatNumber(relatorio.valor)}</ThemedText>
+                <ThemedText type={"cardSubtitle"}>{relatorio.quantidade}   {relatorio.produtoNome}</ThemedText>
+            </View>
+            <View style={styles.row}>
+                <ThemedText type={"cardDescription"}>Total: R${formatNumber(relatorio.valor)}</ThemedText>
             </View>
         </ThemedView>
     );

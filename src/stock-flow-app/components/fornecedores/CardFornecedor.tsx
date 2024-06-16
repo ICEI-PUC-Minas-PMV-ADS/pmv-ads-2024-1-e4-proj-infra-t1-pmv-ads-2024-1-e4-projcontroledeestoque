@@ -14,7 +14,7 @@ export default function CardFornecedor({fornecedor}: CardFornecedorProps){
     return (
         <ThemedView colorName={"backgroundCard"} style={[{borderBottomColor: borderColor}, styles.container]}>
             <View style={styles.row}>
-                <ThemedText>{fornecedor.nome}</ThemedText>
+                <ThemedText type={"cardTitle"}>{fornecedor.nome}</ThemedText>
             </View>
             <View style={styles.row}>
                 <ThemedText>E-mail: {fornecedor.contato}</ThemedText>

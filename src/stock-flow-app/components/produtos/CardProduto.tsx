@@ -9,23 +9,22 @@ interface CardProdutoProps {
     produto: ProdutosResponse;
 }
 
-
 export default function CardProduto({produto}: CardProdutoProps) {
     const borderColor = useThemeColorName("icon");
     return (
         <ThemedView colorName={"backgroundCard"} style={[{borderBottomColor: borderColor}, styles.container]}>
             <View style={styles.row}>
-                <ThemedText type={"subtitle"} numberOfLines={1} ellipsizeMode='tail' >{produto.nome}</ThemedText>
-                <ThemedText type={"subtitle"}>{produto.quantidade}</ThemedText>
+                <ThemedText type={"cardTitle"} numberOfLines={1} ellipsizeMode='tail' >{produto.nome}</ThemedText>
+                <ThemedText type={"cardTitle"}>{produto.quantidade}</ThemedText>
             </View>
             <View style={styles.row}>
-                <ThemedText>{produto.categorias?.join(', ')}</ThemedText>
+                <ThemedText type={"cardSubtitle"}>{produto.categorias?.join(', ')}</ThemedText>
             </View>
             <View style={styles.row}>
-                <ThemedText>Preço custo: R${formatNumber(produto.precoCusto)}</ThemedText>
+                <ThemedText type={"cardDescription"}>Preço custo: R${formatNumber(produto.precoCusto)}</ThemedText>
             </View>
             <View style={styles.row}>
-                <ThemedText>Preço venda: R${formatNumber(produto.precoVenda)}</ThemedText>
+                <ThemedText type={"cardDescription"}>Preço venda: R${formatNumber(produto.precoVenda)}</ThemedText>
             </View>
         </ThemedView>
     );
