@@ -17,12 +17,7 @@ export default function Relatorios() {
     const [filters, setFilters] = useState({
         DataInicio: '',
         DataFim: '',
-        TipoMovimentacao: '',
-        produto: '',
-        usuario: '',
-        quantidade: '',
-        ValorMinimo: '',
-        ValorMaximo: ''
+        TipoMovimentacao: ''
     })
     const [detailsModalOpen, setDetailsModalOpen] = useState(false)
     const [selectedProduct, setSelectedProduct] = useState<Movimentacao | null>(
@@ -49,6 +44,18 @@ export default function Relatorios() {
         } catch (error) {
             console.error('Erro ao buscar movimentações:', error);
             toast.error('Erro ao aplicar filtros.');
+        }
+    };
+
+    const formatDate = (date: string) => {
+        if (!date) return "";
+
+        try {
+            const formattedDate = new Date(date).toLocaleDateString('pt-BR');
+            return formattedDate;
+        } catch (error) {
+            console.error('Erro ao formatar data:', error);
+            return date;
         }
     };
 
@@ -122,24 +129,6 @@ export default function Relatorios() {
                             <option value='Venda'>Venda</option>
                         </select>
                     </div>
-                    <div className='flex items-center gap-4'>
-                        <label>Valor Mínimo:</label>
-                        <input
-                            type='number'
-                            value={filters.valorMinimo}
-                            onChange={(e) => setFilters({ ...filters, valorMinimo: e.target.value })}
-                            className='border rounded-md px-2 py-1 text-black w-28'
-                        />
-                    </div>
-                    <div className='flex items-center gap-4'>
-                        <label>Valor Máximo:</label>
-                        <input
-                            type='number'
-                            value={filters.valorMaximo}
-                            onChange={(e) => setFilters({ ...filters, valorMaximo: e.target.value })}
-                            className='border rounded-md px-2 py-1 text-black w-28'
-                        />
-                    </div>
                     <button
                         type='submit'
                         className='text-white bg-indigo-700 hover:bg-indigo-800 px-4 py-2 rounded-lg'
@@ -156,6 +145,7 @@ export default function Relatorios() {
                         <th className='py-1 px-4 max-w-prose'>Qtd</th>
                         <th className='py-1 px-4 max-w-prose'>Produto</th>
                         <th className='py-1 px-4 max-w-prose'>Tipo</th>
+                        <th className='py-1 px-4 max-w-prose'>Data</th>
                         <th className='py-1 px-4 max-w-prose'>Fornecedores</th>
                         <th className='py-1 px-4 max-w-prose'>Valor total</th>
                     </tr>
@@ -180,6 +170,13 @@ export default function Relatorios() {
                                 }`}
                             >
                                 {product.tipo}
+                            </td>
+                            <td
+                                className={`text-center py-1 px-4 max-w-prose border-gray-${
+                                    index % 2 === 0 ? '900' : '950'
+                                }`}
+                            >
+                                {formatDate(product.data.toString())}
                             </td>
                             <td className={`py-1 px-4 max-w-prose border-gray-950`}>
                                 {product.fornecedoresNomes
