@@ -1,0 +1,26 @@
+message: Please cite this software using these metadata.
+title: Projeto Controle de Estoque
+authors:
+  - family-names:  Augusto Alves Lourenço
+    given-names: Gabriel
+  - family-names: Sette Pereira
+    given-names:  Iugor
+  - family-names: Henrique Ferreira
+    given-names: Marcelo
+  - family-names: Alessandra Simao Reis
+    given-names: Nayra
+  - family-names: Felismino Ribeiro
+    given-names: Samuel
+  - family-names: Castro Simão
+    given-names: Silvestre
+  - name-suffix: Professor
+    affiliation: PUC Minas
+    family-names: Augusto Lara Soares
+    given-names: Felipe
+keywords:
+  - Estoque
+  - Almoxarifado
+  - Controle
+repository-code: https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t1-pmv-ads-2024-1-e4-projcontroledeestoque
+version: 1.0.0
+date-released: 2024-06-19
